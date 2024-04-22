@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,6 +12,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int currentPatrolPositionIndex;
     [SerializeField] private EnemyState state;
     [SerializeField] private bool sawPlayer;
+
+    [Header("Field of View")]
+    [SerializeField] private float fieldOfViewAngle = 90f;
+    [SerializeField] private float viewDistance = 10f; 
 
     [Header("Components")]
     [SerializeField] private NavMeshAgent agent;
@@ -27,6 +29,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int inverseRotateOnIdle = 1;
     [SerializeField] private int rotatingSpeedOnIdle = 5;
     [SerializeField] private int chanseToChangeState = 5;
+
+    [Space]
+    [Header("Chase")]
+    [SerializeField] private List<IPlayer> playersOnReachArea;
+    [SerializeField] private Dictionary<IPlayer, Vector3> lastSeenPlayersWithPosition;
+
     public void Initialize(EnemyData data)
     {
         transform.position = patrolTransform[UnityEngine.Random.Range(0, patrolTransform.Count)].position;
@@ -38,9 +46,19 @@ public class Enemy : MonoBehaviour
         state = EnemyState.Idle;
     }
 
+    public void AddIPlayer(IPlayer IPlayer)
+    {
+        playersOnReachArea.Add(IPlayer);
+    }
+
+    public void RemoveIPlayer(IPlayer IPlayer)
+    {
+        playersOnReachArea.Remove(IPlayer);
+    }
+
     private void Update()
     {
-        switch(state)
+        switch (state)
         {
             case EnemyState.Idle:
                 Idle();
@@ -48,7 +66,12 @@ public class Enemy : MonoBehaviour
             case EnemyState.Patrol:
                 Patrol();
                 break;
+            case EnemyState.Chase:
+                Chase();
+                break;
         }
+
+        CheckPlayers();
     }
 
     private void Idle()
@@ -63,7 +86,7 @@ public class Enemy : MonoBehaviour
         }
 
         transform.Rotate(0, rotatingSpeedOnIdle * Time.deltaTime * inverseRotateOnIdle, 0);
-        
+
         bool endIdle = UnityEngine.Random.Range(0, 1000) < chanseToChangeState;
 
         if (endIdle || currentTimeToChangeState > timeToChangeState)
@@ -77,7 +100,7 @@ public class Enemy : MonoBehaviour
     {
         agent.SetDestination(patrolTransform[currentPatrolPositionIndex].position);
 
-        if(agent.remainingDistance <= agent.stoppingDistance)
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
             currentPatrolPositionIndex = (currentPatrolPositionIndex + 1) % patrolTransform.Count;
         }
@@ -86,14 +109,61 @@ public class Enemy : MonoBehaviour
 
     private void Chase()
     {
+        float distanse = float.PositiveInfinity;
+        IPlayer currentChasingPlayer = null;
 
+        foreach (var item in lastSeenPlayersWithPosition)
+        {
+            float distanceFlag = (item.Key.GetTransform().position - transform.position).magnitude;
+            if (distanceFlag < distanse)
+            {
+                distanse = distanceFlag;
+                currentChasingPlayer = item.Key;
+            }
+        }
+
+        if(currentChasingPlayer != null)
+        {
+            agent.SetDestination(currentChasingPlayer.GetTransform().position);
+        }
     }
 
+    private void CheckPlayers()
+    {
+        for(int i = 0; i < playersOnReachArea.Count; i++)
+        {
+            RaycastHit hit;
+            if(Physics.Raycast(transform.position, (playersOnReachArea[i].GetTransform().position - transform.position).normalized, out hit, Mathf.Infinity))
+            {
+                if(hit.transform.TryGetComponent(out IPlayer IPlayer))
+                {
+                    state = EnemyState.Chase;
 
+                    if (!lastSeenPlayersWithPosition.ContainsKey(IPlayer))
+                    {
+                        lastSeenPlayersWithPosition.Add(IPlayer, IPlayer.GetTransform().position);
+                    }
+                    else if(lastSeenPlayersWithPosition.ContainsKey(IPlayer))
+                    {
+                        lastSeenPlayersWithPosition[IPlayer] = hit.transform.position;
+                    }
+                }
+            }
+        }
+    }
     private IEnumerator Wait(float time, Action action)
     {
         yield return new WaitForSeconds(time);
 
         action.Invoke();
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Drawing Field of View
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position, Quaternion.Euler(0, -fieldOfViewAngle / 2, 0) * transform.forward * viewDistance);
+        Gizmos.DrawRay(transform.position, Quaternion.Euler(0, fieldOfViewAngle / 2, 0) * transform.forward * viewDistance);
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * viewDistance);
     }
 }

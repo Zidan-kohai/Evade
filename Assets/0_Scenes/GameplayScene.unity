@@ -1694,7 +1694,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2262,18 +2262,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_00
       objectReference: {fileID: 0}
-    - target: {fileID: 1522501397259290760, guid: b69ecd668ea103c4ba74e5f537b7aa21, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3724760561176921427, guid: b69ecd668ea103c4ba74e5f537b7aa21, type: 3}
-      propertyPath: timeToChangeState
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3724760561176921427, guid: b69ecd668ea103c4ba74e5f537b7aa21, type: 3}
-      propertyPath: chanseToChangeState
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3724760561176921427, guid: b69ecd668ea103c4ba74e5f537b7aa21, type: 3}
       propertyPath: patrolTransform.Array.data[0]
       value: 
@@ -2398,6 +2386,10 @@ PrefabInstance:
     - target: {fileID: 836883443137320651, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861547996078224846, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: gravity
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 2861547996078224846, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: inputManager

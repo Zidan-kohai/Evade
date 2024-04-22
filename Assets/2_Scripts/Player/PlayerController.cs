@@ -1,7 +1,6 @@
-using System.Security.Cryptography;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IPlayer
 {
     [Header("Transform")]
     [SerializeField] private float startSpeed = 1f;
@@ -43,6 +42,13 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
 
         characterController.Move(velocity * Time.deltaTime);
+    }
+
+
+
+    public Transform GetTransform()
+    {
+        return transform;
     }
 
     private void Rotate()
