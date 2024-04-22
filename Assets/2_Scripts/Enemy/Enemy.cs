@@ -1,6 +1,10 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,12 +20,19 @@ public class Enemy : MonoBehaviour
     [SerializeField] private SpriteRenderer enemyVisual;
     [SerializeField] private AudioSource audiosource;
 
+    [Header("Idle")]
+    [SerializeField] private float lastedTimeFromStartIdleToRotate = 0f;
+    [SerializeField] private float timeToChangeState = 5f;
+    [SerializeField] private float currentTimeToChangeState = 0f;
+    [SerializeField] private int inverseRotateOnIdle = 1;
+    [SerializeField] private int rotatingSpeedOnIdle = 5;
+    [SerializeField] private int chanseToChangeState = 5;
     public void Initialize(EnemyData data)
     {
-        transform.position = patrolTransform[Random.Range(0, patrolTransform.Count)].position;
+        transform.position = patrolTransform[UnityEngine.Random.Range(0, patrolTransform.Count)].position;
         enemyVisual.sprite = data.enemyVisual;
         audiosource.clip = data.voise;
-        currentPatrolPositionIndex = Random.Range(0, patrolTransform.Count);
+        currentPatrolPositionIndex = UnityEngine.Random.Range(0, patrolTransform.Count);
         gameObject.SetActive(true);
 
         state = EnemyState.Idle;
@@ -32,11 +43,33 @@ public class Enemy : MonoBehaviour
         switch(state)
         {
             case EnemyState.Idle:
-                state = EnemyState.Patrol;
+                Idle();
                 break;
             case EnemyState.Patrol:
                 Patrol();
                 break;
+        }
+    }
+
+    private void Idle()
+    {
+        lastedTimeFromStartIdleToRotate += Time.deltaTime;
+        currentTimeToChangeState += Time.deltaTime;
+
+        if (lastedTimeFromStartIdleToRotate > 3f)
+        {
+            inverseRotateOnIdle *= -1;
+            lastedTimeFromStartIdleToRotate = 0f;
+        }
+
+        transform.Rotate(0, rotatingSpeedOnIdle * Time.deltaTime * inverseRotateOnIdle, 0);
+        
+        bool endIdle = UnityEngine.Random.Range(0, 1000) < chanseToChangeState;
+
+        if (endIdle || currentTimeToChangeState > timeToChangeState)
+        {
+            state = EnemyState.Patrol;
+            currentTimeToChangeState = 0f;
         }
     }
 
@@ -54,5 +87,13 @@ public class Enemy : MonoBehaviour
     private void Chase()
     {
 
+    }
+
+
+    private IEnumerator Wait(float time, Action action)
+    {
+        yield return new WaitForSeconds(time);
+
+        action.Invoke();
     }
 }

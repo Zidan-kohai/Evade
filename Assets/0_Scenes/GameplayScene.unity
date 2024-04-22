@@ -1527,6 +1527,7 @@ MonoBehaviour:
   - {fileID: 2031888116}
   - {fileID: 119607313}
   enemyDataHandler: {fileID: 11400000, guid: d6f1da1a49b342c4983a2b9350038916, type: 2}
+  spawnedEnemyCount: 0
 --- !u!1 &1252223313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,6 +2265,14 @@ PrefabInstance:
     - target: {fileID: 1522501397259290760, guid: b69ecd668ea103c4ba74e5f537b7aa21, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724760561176921427, guid: b69ecd668ea103c4ba74e5f537b7aa21, type: 3}
+      propertyPath: timeToChangeState
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3724760561176921427, guid: b69ecd668ea103c4ba74e5f537b7aa21, type: 3}
+      propertyPath: chanseToChangeState
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3724760561176921427, guid: b69ecd668ea103c4ba74e5f537b7aa21, type: 3}
       propertyPath: patrolTransform.Array.data[0]
