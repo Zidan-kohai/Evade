@@ -32,8 +32,8 @@ public class Enemy : MonoBehaviour
 
     [Space]
     [Header("Chase")]
-    [SerializeField] private List<IPlayer> playersOnReachArea;
-    [SerializeField] private Dictionary<IPlayer, Vector3> lastSeenPlayersWithPosition;
+    [SerializeField] private List<IPlayer> playersOnReachArea = new List<IPlayer>();
+    [SerializeField] private Dictionary<IPlayer, Vector3> lastSeenPlayersWithPosition = new Dictionary<IPlayer, Vector3>();
 
     public void Initialize(EnemyData data)
     {

@@ -2262,6 +2262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_00
       objectReference: {fileID: 0}
+    - target: {fileID: 1522501397259290760, guid: b69ecd668ea103c4ba74e5f537b7aa21, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3724760561176921427, guid: b69ecd668ea103c4ba74e5f537b7aa21, type: 3}
       propertyPath: patrolTransform.Array.data[0]
       value: 
