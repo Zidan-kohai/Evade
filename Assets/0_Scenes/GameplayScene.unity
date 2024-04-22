@@ -154,6 +154,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1495846645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &252495044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 252495045}
+  m_Layer: 0
+  m_Name: CheckgroundRayOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &252495045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252495044}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.083, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1495846645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &349821582
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +905,7 @@ Transform:
   - {fileID: 773247346}
   - {fileID: 23325896}
   - {fileID: 963194228}
+  - {fileID: 252495045}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1495846646
@@ -914,10 +946,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5729a20f8d0fbb4c80f6cf5dc2883c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
-  mouseSensitivity: 120
+  moveSpeed: 9
+  maxSpeed: 15
+  mouseSensitivity: 180
+  minVerticalRotateClamp: -90
+  maxVerticalRotateClamp: 90
+  verticalRotation: 0
   jumpHeight: 2
   gravity: -9.81
+  groundChekcRaycastOrigin: {fileID: 252495045}
+  groundChekcRaycastHeight: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  isOnGround: 0
+  velocity: {x: 0, y: 0, z: 0}
   inputManager: {fileID: 442789067}
 --- !u!1 &1698165319
 GameObject:
