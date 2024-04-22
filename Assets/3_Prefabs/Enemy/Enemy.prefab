@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 4762079538153053988}
   - component: {fileID: 7129009690107177239}
   - component: {fileID: 3724760561176921427}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4762079538153053988
 Transform:
   m_ObjectHideFlags: 0
@@ -84,6 +84,9 @@ MonoBehaviour:
   sawPlayer: 0
   fieldOfViewAngle: 90
   viewDistance: 10
+  allLayers:
+    serializedVersion: 2
+    m_Bits: 119
   agent: {fileID: 7129009690107177239}
   enemyVisual: {fileID: 14444786742572869}
   audiosource: {fileID: 1324352390537379765}
@@ -103,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8404603115968216867}
   - component: {fileID: 1324352390537379765}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2753115438238796316}
   - component: {fileID: 14444786742572869}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +319,7 @@ GameObject:
   - component: {fileID: 6161233337905719183}
   - component: {fileID: 4173423218352306102}
   - component: {fileID: 7932478277565639729}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ReachArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1401955411153141168}
   - component: {fileID: 4327883629043280046}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3823830190349082080}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

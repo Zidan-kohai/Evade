@@ -15,7 +15,8 @@ public class Enemy : MonoBehaviour
 
     [Header("Field of View")]
     [SerializeField] private float fieldOfViewAngle = 90f;
-    [SerializeField] private float viewDistance = 10f; 
+    [SerializeField] private float viewDistance = 10f;
+    [SerializeField] private LayerMask allLayers;
 
     [Header("Components")]
     [SerializeField] private NavMeshAgent agent;
@@ -110,7 +111,8 @@ public class Enemy : MonoBehaviour
     private void Chase()
     {
         float distanse = float.PositiveInfinity;
-        IPlayer currentChasingPlayer = null;
+        Vector3 targetPosition = transform.position;
+        IPlayer currentChasingPlayerForKey = null;
 
         foreach (var item in lastSeenPlayersWithPosition)
         {
@@ -118,22 +120,34 @@ public class Enemy : MonoBehaviour
             if (distanceFlag < distanse)
             {
                 distanse = distanceFlag;
-                currentChasingPlayer = item.Key;
+                targetPosition = item.Value;
+                currentChasingPlayerForKey = item.Key;
             }
         }
 
-        if(currentChasingPlayer != null)
+        if(currentChasingPlayerForKey != null)
         {
-            agent.SetDestination(currentChasingPlayer.GetTransform().position);
+            agent.SetDestination(targetPosition);
+        }
+
+        if(agent.remainingDistance <= agent.stoppingDistance && currentChasingPlayerForKey != null)
+        {
+            lastSeenPlayersWithPosition.Remove(currentChasingPlayerForKey);
+        }
+
+        if(lastSeenPlayersWithPosition.Count == 0)
+        {
+            state = EnemyState.Idle;
         }
     }
-
     private void CheckPlayers()
     {
         for(int i = 0; i < playersOnReachArea.Count; i++)
         {
             RaycastHit hit;
-            if(Physics.Raycast(transform.position, (playersOnReachArea[i].GetTransform().position - transform.position).normalized, out hit, Mathf.Infinity))
+            Vector3 direcrtion = playersOnReachArea[i].GetTransform().position - transform.position;
+
+            if (Physics.Raycast(transform.position, direcrtion.normalized, out hit, Mathf.Infinity, allLayers, QueryTriggerInteraction.Ignore))
             {
                 if(hit.transform.TryGetComponent(out IPlayer IPlayer))
                 {
@@ -143,7 +157,7 @@ public class Enemy : MonoBehaviour
                     {
                         lastSeenPlayersWithPosition.Add(IPlayer, IPlayer.GetTransform().position);
                     }
-                    else if(lastSeenPlayersWithPosition.ContainsKey(IPlayer))
+                    else
                     {
                         lastSeenPlayersWithPosition[IPlayer] = hit.transform.position;
                     }

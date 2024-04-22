@@ -44,8 +44,6 @@ public class PlayerController : MonoBehaviour, IPlayer
         characterController.Move(velocity * Time.deltaTime);
     }
 
-
-
     public Transform GetTransform()
     {
         return transform;
@@ -94,7 +92,7 @@ public class PlayerController : MonoBehaviour, IPlayer
         }
     }
 
-    public void ApplyGravity()
+    private void ApplyGravity()
     {
         if (!isOnGround)
         {
