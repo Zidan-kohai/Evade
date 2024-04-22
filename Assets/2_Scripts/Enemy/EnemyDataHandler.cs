@@ -6,7 +6,7 @@ public class EnemyDataHandler : ScriptableObject
 {
     [SerializeField] private List<EnemyData> enemiesData;    
 
-    public EnemyData GetRandomEnemy()
+    public EnemyData GetRandomEnemyData()
     {
         return enemiesData[Random.Range(0, enemiesData.Count)];
     }
