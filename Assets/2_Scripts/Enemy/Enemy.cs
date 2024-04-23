@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 {
     [Header("Transform")]
     [SerializeField] private float speed = 5;
@@ -49,14 +49,20 @@ public class Enemy : MonoBehaviour
         state = EnemyState.Idle;
     }
 
-    public void AddIPlayer(IPlayer IPlayer)
+    public void AddHumanoid(IHumanoid IHumanoid)
     {
-        playersOnReachArea.Add(IPlayer);
+        if(IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        {
+            playersOnReachArea.Add(player);
+        }
     }
 
-    public void RemoveIPlayer(IPlayer IPlayer)
+    public void RemoveHumanoid(IHumanoid IHumanoid)
     {
-        playersOnReachArea.Remove(IPlayer);
+        if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        {
+            playersOnReachArea.Remove(player);
+        }
     }
 
     private void Update()
@@ -218,4 +224,5 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawRay(transform.position, Quaternion.Euler(0, fieldOfViewAngle / 2, 0) * transform.forward * viewDistance);
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * viewDistance);
     }
+
 }
