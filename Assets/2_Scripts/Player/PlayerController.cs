@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
@@ -149,11 +147,6 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
     {
         float mouseX = inputManager.GetMouseDeltaX * mouseSensitivity * Time.deltaTime;
         transform.Rotate(Vector3.up * mouseX);
-
-        float mouseY = inputManager.GetMouseDeltaY * mouseSensitivity * Time.deltaTime;
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, minVerticalRotateClamp, maxVerticalRotateClamp);
-        Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
     }
 
     private void Move(float startSpeed, float maxSpeed)
