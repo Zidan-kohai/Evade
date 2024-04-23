@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IPlayer
+public class PlayerController : MonoBehaviour, IPlayer, IHumanoid
 {
     [Header("Transform")]
     [SerializeField] private float startSpeedOnPlayerUp = 1f;

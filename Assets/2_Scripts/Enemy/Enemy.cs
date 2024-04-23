@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     [SerializeField] private bool sawPlayer;
 
     [Header("Field of View")]
+    [SerializeField] private ReachArea reachArea;
     [SerializeField] private float fieldOfViewAngle = 90f;
     [SerializeField] private float viewDistance = 10f;
     [SerializeField] private LayerMask allLayers;
@@ -45,6 +46,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         audiosource.clip = data.voise;
         currentPatrolPositionIndex = UnityEngine.Random.Range(0, patrolTransform.Count);
         gameObject.SetActive(true);
+        reachArea.SetISee(this);
 
         state = EnemyState.Idle;
     }

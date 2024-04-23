@@ -82,6 +82,7 @@ MonoBehaviour:
   currentPatrolPositionIndex: 0
   state: 0
   sawPlayer: 0
+  reachArea: {fileID: 4173423218352306102}
   fieldOfViewAngle: 90
   viewDistance: 10
   allLayers:
@@ -354,7 +355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15d2fd7285311c42811931f70f6a14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 3724760561176921427}
 --- !u!65 &7932478277565639729
 BoxCollider:
   m_ObjectHideFlags: 0

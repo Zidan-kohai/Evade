@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
 {
@@ -11,10 +12,18 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
     [SerializeField] private float currrentSpeed = 1f;
 
     [Space, Header("Components")]
+    [SerializeField] private NavMeshAgent agent;
     [SerializeField] private PlayerState state;
 
     [Header("Enemy")]
     [SerializeField] List<IEnemy> enemies;
+    [SerializeField] ReachArea reachArea;
+
+    public void Initialize()
+    {
+        agent.speed = startSpeedOnPlayerUp;
+        reachArea.SetISee(this);
+    }
 
     public void AddHumanoid(IHumanoid IHumanoid)
     {
