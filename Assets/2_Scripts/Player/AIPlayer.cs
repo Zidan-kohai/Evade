@@ -14,11 +14,19 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
     [Space, Header("Components")]
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private ReachArea reachArea;
-    [SerializeField] private PlayerState state;
 
     [Header("Humanoids")]
     [SerializeField] private List<IEnemy> enemies = new List<IEnemy>();
     [SerializeField] private List<IPlayer> players = new List<IPlayer>();
+
+    [Header("State")]
+    [SerializeField] private PlayerState state;
+    [SerializeField] private float timeToUpFromFall;
+    [SerializeField] private float timeToDeathFromFall;
+    [SerializeField] private float lastedTimeFromFallToUp;
+    [SerializeField] private float lastedTimeFromFallToDeath;
+
+
     //Later we delete this func
     private void OnEnable()
     {
@@ -81,25 +89,39 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         return state == PlayerState.Death;
     }
 
+    public void Raising()
+    {
+        lastedTimeFromFallToUp -= Time.deltaTime;
+
+        if(lastedTimeFromFallToUp <= 0)
+        {
+            ChangeState(PlayerState.Idle);
+        }
+    }
+
     private void ChangeState(PlayerState newState)
     {
         if (state == newState ||
             ((state == PlayerState.Fall) &&
-            (newState != PlayerState.Raising || newState != PlayerState.Death))) return;
+            (newState == PlayerState.Raising || newState == PlayerState.Death))) return;
 
         state = newState;
 
         switch (state)
         {
             case PlayerState.Idle:
+                Debug.Log("Idle");
                 break;
             case PlayerState.Run:
                 break;
             case PlayerState.Fall:
                 Debug.Log("Fall");
+                lastedTimeFromFallToUp = timeToUpFromFall; 
                 break;
             case PlayerState.Death:
+                Debug.Log("Death");
                 break;
         }
     }
+
 }

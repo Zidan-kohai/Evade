@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
     private List<IPlayer> players = new List<IPlayer>();
 
     [Header("Interactive")]
-    [SerializeField] private bool canHelp;
     [SerializeField] private float distanceToHelp;
 
     private void Start()
@@ -70,7 +69,10 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
 
         characterController.Move(velocity * Time.deltaTime);
         
-        CheckNearPlayerToHelp();
+        if(CanHelp(out IPlayer player) && inputManager.GetIsE)
+        {
+            player.Raising();
+        }
     }
 
     public Transform GetTransform()
@@ -98,13 +100,23 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         ChangeState(PlayerState.Fall);
     }
 
+    public void Raising()
+    {
+        lastedTimeFromFallToUp -= Time.deltaTime;
+
+        if (lastedTimeFromFallToUp <= 0)
+        {
+            ChangeState(PlayerState.Idle);
+        }
+    }
+
     public void AddHumanoid(IHumanoid IHumanoid)
     {
         if(IHumanoid.gameObject.TryGetComponent(out IEnemy enemy))
         {
             enemies.Add(enemy);
         }
-        else if(IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        else if(IHumanoid.gameObject.TryGetComponent(out IPlayer player) && player != this)
         {
             players.Add(player);
         }
@@ -188,7 +200,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
     {
         if (state == newState || 
             ((state == PlayerState.Fall) && 
-            (newState != PlayerState.Raising || newState != PlayerState.Death))) return;
+            (newState == PlayerState.Raising || newState == PlayerState.Death))) return;
 
         state = newState;
 
@@ -206,19 +218,19 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         }
     }
 
-    private void CheckNearPlayerToHelp()
+    private bool CanHelp(out IPlayer player)
     {
         for(int i = 0; i < players.Count; i++)
         {
             float distanceToPlayer = (players[i].GetTransform().position - transform.position).magnitude;
             if(players[i].IsFall() && distanceToPlayer < distanceToHelp)
             {
-                canHelp = true;
-                return;
+                player = players[i];
+                return true;
             }
         }
-
-        canHelp = false;
+        player = null;
+        return false;
     }
 
     private void OnDrawGizmos()

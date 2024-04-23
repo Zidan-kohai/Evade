@@ -11,4 +11,6 @@ public interface IPlayer
     public Transform GetTransform();
 
     public void Fall();
+
+    public void Raising();
 }

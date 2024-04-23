@@ -260,6 +260,10 @@ MonoBehaviour:
   agent: {fileID: 3663144800095553858}
   reachArea: {fileID: 2861010759206526833}
   state: 0
+  timeToUpFromFall: 1
+  timeToDeathFromFall: 1000
+  lastedTimeFromFallToUp: 1
+  lastedTimeFromFallToDeath: 1000
 --- !u!136 &2689890232233979099
 CapsuleCollider:
   m_ObjectHideFlags: 0

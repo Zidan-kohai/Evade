@@ -6,13 +6,14 @@ public class InputManager : MonoBehaviour
     private float mouseDeltaY;
     private float moveHorizontal;
     private float moveVertical;
-    private bool space; 
-
+    private bool space;
+    private bool IsE;
     public float GetMouseDeltaX => mouseDeltaX;
     public float GetMouseDeltaY => mouseDeltaY;
     public float GetMoveHorizontal => moveHorizontal;
     public float GetMoveVertical => moveVertical;
     public bool GetSpace => space;
+    public bool GetIsE => IsE;
 
     void Update()
     {
@@ -24,5 +25,7 @@ public class InputManager : MonoBehaviour
         moveVertical = Input.GetAxis("Vertical");
 
         space = Input.GetButtonDown("Jump");
+
+        IsE = Input.GetKey(KeyCode.E);
     }
 }
