@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour
     [Header("Chase")]
     [SerializeField] private List<IPlayer> playersOnReachArea = new List<IPlayer>();
     [SerializeField] private Dictionary<IPlayer, Vector3> lastSeenPlayersWithPosition = new Dictionary<IPlayer, Vector3>();
+    [SerializeField] private float distanseToAttack = 1.5f;
 
     public void Initialize(EnemyData data)
     {
@@ -112,27 +114,45 @@ public class Enemy : MonoBehaviour
     {
         float distanse = float.PositiveInfinity;
         Vector3 targetPosition = transform.position;
-        IPlayer currentChasingPlayerForKey = null;
+        IPlayer currentChasingPlayer = null;
 
-        foreach (var item in lastSeenPlayersWithPosition)
+        for (int i = 0; i < lastSeenPlayersWithPosition.Count; i++)
         {
-            float distanceFlag = (item.Key.GetTransform().position - transform.position).magnitude;
+            IPlayer player = lastSeenPlayersWithPosition.ElementAt(i).Key;
+            Vector3 position = lastSeenPlayersWithPosition.ElementAt(i).Value;
+
+            if (player.IsFallOrDeath())
+            {
+                lastSeenPlayersWithPosition.Remove(player);
+                playersOnReachArea.Remove(player);
+                continue;
+            }
+
+            float distanceFlag = (player.GetTransform().position - transform.position).magnitude;
             if (distanceFlag < distanse)
             {
                 distanse = distanceFlag;
-                targetPosition = item.Value;
-                currentChasingPlayerForKey = item.Key;
+                targetPosition = position;
+                currentChasingPlayer = player;
             }
         }
 
-        if(currentChasingPlayerForKey != null)
+        if(currentChasingPlayer != null)
         {
             agent.SetDestination(targetPosition);
+
+            bool isAttaked = TryAttack(currentChasingPlayer);
+
+            if(isAttaked)
+            {
+                lastSeenPlayersWithPosition.Remove(currentChasingPlayer);
+                return;
+            }
         }
 
-        if(agent.remainingDistance <= agent.stoppingDistance && currentChasingPlayerForKey != null)
+        if(agent.remainingDistance <= agent.stoppingDistance && currentChasingPlayer != null)
         {
-            lastSeenPlayersWithPosition.Remove(currentChasingPlayerForKey);
+            lastSeenPlayersWithPosition.Remove(currentChasingPlayer);
         }
 
         if(lastSeenPlayersWithPosition.Count == 0)
@@ -140,6 +160,23 @@ public class Enemy : MonoBehaviour
             state = EnemyState.Idle;
         }
     }
+
+    private bool TryAttack(IPlayer currentChasingPlayer)
+    {
+        float distanceToPlayer = (currentChasingPlayer.GetTransform().position - transform.position).magnitude;
+
+        if (distanceToPlayer < distanseToAttack)
+        {
+            currentChasingPlayer.Fall();
+
+            playersOnReachArea.Remove(currentChasingPlayer);
+
+            return true;
+        }
+
+        return false;
+    }
+
     private void CheckPlayers()
     {
         for(int i = 0; i < playersOnReachArea.Count; i++)
@@ -165,6 +202,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
     private IEnumerator Wait(float time, Action action)
     {
         yield return new WaitForSeconds(time);
