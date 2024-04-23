@@ -1,7 +1,7 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IPlayer, IHumanoid
+public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
 {
     [Header("Transform")]
     [SerializeField] private float startSpeedOnPlayerUp = 1f;
@@ -23,14 +23,28 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid
 
     [Header("State")]
     [SerializeField] private PlayerState state;
+    [SerializeField] private float timeToUpFromFall;
+    [SerializeField] private float timeToDeathFromFall;
+    [SerializeField] private float lastedTimeFromFallToUp;
+    [SerializeField] private float lastedTimeFromFallToDeath;
 
     [Header("Components")]
     [SerializeField] private InputManager inputManager;
+    [SerializeField] private ReachArea reachArea;
     private CharacterController characterController;
+
+    [Header("Humanoids")]
+    private List<IEnemy> enemies = new List<IEnemy>();
+    private List<IPlayer> players = new List<IPlayer>();
+
+    [Header("Interactive")]
+    [SerializeField] private bool canHelp;
+    [SerializeField] private float distanceToHelp;
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        reachArea.SetISee(this);
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -55,6 +69,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid
         ApplyGravity();
 
         characterController.Move(velocity * Time.deltaTime);
+        
+        CheckNearPlayerToHelp();
     }
 
     public Transform GetTransform()
@@ -67,9 +83,43 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid
         return state == PlayerState.Fall || state == PlayerState.Death;
     }
 
+    public bool IsFall()
+    {
+        return state == PlayerState.Fall;
+    }
+
+    public bool IsDeath()
+    {
+        return state == PlayerState.Death;
+    }
+
     public void Fall()
     {
         ChangeState(PlayerState.Fall);
+    }
+
+    public void AddHumanoid(IHumanoid IHumanoid)
+    {
+        if(IHumanoid.gameObject.TryGetComponent(out IEnemy enemy))
+        {
+            enemies.Add(enemy);
+        }
+        else if(IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        {
+            players.Add(player);
+        }
+    }
+
+    public void RemoveHumanoid(IHumanoid IHumanoid)
+    {
+        if (IHumanoid.gameObject.TryGetComponent(out IEnemy enemy))
+        {
+            enemies.Remove(enemy);
+        }
+        else if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        {
+            players.Remove(player);
+        }
     }
 
     private void Rotate()
@@ -156,11 +206,24 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid
         }
     }
 
+    private void CheckNearPlayerToHelp()
+    {
+        for(int i = 0; i < players.Count; i++)
+        {
+            float distanceToPlayer = (players[i].GetTransform().position - transform.position).magnitude;
+            if(players[i].IsFall() && distanceToPlayer < distanceToHelp)
+            {
+                canHelp = true;
+                return;
+            }
+        }
+
+        canHelp = false;
+    }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawRay(groundChekcRaycastOrigin.position, Vector3.down * groundChekcRaycastHeight);
     }
-
 }

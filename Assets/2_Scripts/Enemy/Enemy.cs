@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     [Header("Field of View")]
     [SerializeField] private ReachArea reachArea;
+    [SerializeField] private Vector3 biasOnThrowRaycast;
     [SerializeField] private float fieldOfViewAngle = 90f;
     [SerializeField] private float viewDistance = 10f;
     [SerializeField] private LayerMask allLayers;
@@ -53,7 +54,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     public void AddHumanoid(IHumanoid IHumanoid)
     {
-        if(IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
         {
             playersOnReachArea.Add(player);
         }
@@ -145,25 +146,25 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
             }
         }
 
-        if(currentChasingPlayer != null)
+        if (currentChasingPlayer != null)
         {
             agent.SetDestination(targetPosition);
 
             bool isAttaked = TryAttack(currentChasingPlayer);
 
-            if(isAttaked)
+            if (isAttaked)
             {
                 lastSeenPlayersWithPosition.Remove(currentChasingPlayer);
                 return;
             }
         }
 
-        if(agent.remainingDistance <= agent.stoppingDistance && currentChasingPlayer != null)
+        if (agent.remainingDistance <= agent.stoppingDistance && currentChasingPlayer != null)
         {
             lastSeenPlayersWithPosition.Remove(currentChasingPlayer);
         }
 
-        if(lastSeenPlayersWithPosition.Count == 0)
+        if (lastSeenPlayersWithPosition.Count == 0)
         {
             state = EnemyState.Idle;
         }
@@ -187,14 +188,14 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     private void CheckPlayers()
     {
-        for(int i = 0; i < playersOnReachArea.Count; i++)
+        for (int i = 0; i < playersOnReachArea.Count; i++)
         {
             RaycastHit hit;
             Vector3 direcrtion = playersOnReachArea[i].GetTransform().position - transform.position;
 
-            if (Physics.Raycast(transform.position, direcrtion.normalized, out hit, Mathf.Infinity, allLayers, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(transform.position + biasOnThrowRaycast, (direcrtion + biasOnThrowRaycast).normalized, out hit, Mathf.Infinity, allLayers, QueryTriggerInteraction.Ignore))
             {
-                if(hit.transform.TryGetComponent(out IPlayer IPlayer))
+                if (hit.transform.TryGetComponent(out IPlayer IPlayer))
                 {
                     state = EnemyState.Chase;
 
@@ -225,6 +226,15 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         Gizmos.DrawRay(transform.position, Quaternion.Euler(0, -fieldOfViewAngle / 2, 0) * transform.forward * viewDistance);
         Gizmos.DrawRay(transform.position, Quaternion.Euler(0, fieldOfViewAngle / 2, 0) * transform.forward * viewDistance);
         Gizmos.DrawLine(transform.position, transform.position + transform.forward * viewDistance);
+
+        Gizmos.color = Color.black;
+
+        for (int i = 0; i < playersOnReachArea.Count; i++)
+        {
+            Vector3 direcrtion = playersOnReachArea[i].GetTransform().position - transform.position;
+            Gizmos.DrawRay(transform.position + biasOnThrowRaycast, direcrtion + biasOnThrowRaycast);
+        }
+
     }
 
 }
