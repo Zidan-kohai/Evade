@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
 {
-    [Header("Transform")]
+    [Header("Movement")]
     [SerializeField] private float startSpeedOnPlayerUp = 1f;
     [SerializeField] private float maxSpeedOnPlayerUp = 5f;
     [SerializeField] private float startSpeedOnPlayerFall = 0.5f;
@@ -89,7 +89,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         return state == PlayerState.Death;
     }
 
-    public void Raising()
+    public float Raising()
     {
         lastedTimeFromFallToUp -= Time.deltaTime;
 
@@ -97,6 +97,13 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         {
             ChangeState(PlayerState.Idle);
         }
+
+        return Mathf.Abs(lastedTimeFromFallToUp / timeToUpFromFall - 1);
+    }
+
+    public float GetPercentOfRaising()
+    {
+        return Mathf.Abs(lastedTimeFromFallToUp / timeToUpFromFall - 1);
     }
 
     private void ChangeState(PlayerState newState)

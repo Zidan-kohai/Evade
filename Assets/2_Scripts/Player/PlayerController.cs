@@ -1,17 +1,19 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
 {
-    [Header("Transform")]
+    [Header("Movement")]
     [SerializeField] private float startSpeedOnPlayerUp = 1f;
     [SerializeField] private float maxSpeedOnPlayerUp = 5f;
     [SerializeField] private float startSpeedOnPlayerFall = 0.5f;
     [SerializeField] private float maxSpeedOnPlayerFall = 1f;
     [SerializeField] private float currrentSpeed = 1f;
     [SerializeField] private float mouseSensitivity = 100f;
-    [SerializeField] private float minVerticalRotateClamp = 100f;
-    [SerializeField] private float maxVerticalRotateClamp = 100f;
+    [SerializeField] private float minVerticalRotateClamp = -90f;
+    [SerializeField] private float maxVerticalRotateClamp = 90f;
     [SerializeField] private float verticalRotation = 0f;
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private float gravity = -9.81f;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
     [Header("Components")]
     [SerializeField] private InputManager inputManager;
     [SerializeField] private ReachArea reachArea;
+    [SerializeField] private ActionHandler actionUI;
     private CharacterController characterController;
 
     [Header("Humanoids")]
@@ -50,6 +53,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
 
     private void Update()
     {
+        #region Movement
+
         Rotate();
 
         if (state != PlayerState.Fall)
@@ -68,11 +73,10 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         ApplyGravity();
 
         characterController.Move(velocity * Time.deltaTime);
-        
-        if(CanHelp(out IPlayer player) && inputManager.GetIsE)
-        {
-            player.Raising();
-        }
+
+        #endregion
+
+        Help();
     }
 
     public Transform GetTransform()
@@ -100,7 +104,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         ChangeState(PlayerState.Fall);
     }
 
-    public void Raising()
+    public float Raising()
     {
         lastedTimeFromFallToUp -= Time.deltaTime;
 
@@ -108,6 +112,13 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         {
             ChangeState(PlayerState.Idle);
         }
+
+        return Mathf.Abs(lastedTimeFromFallToUp / timeToUpFromFall - 1);
+    }
+
+    public float GetPercentOfRaising()
+    {
+        return Mathf.Abs(lastedTimeFromFallToUp / timeToUpFromFall - 1);
     }
 
     public void AddHumanoid(IHumanoid IHumanoid)
@@ -218,6 +229,24 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         }
     }
 
+    private void Help()
+    {
+        if (CanHelp(out IPlayer player))
+        {
+            actionUI.CanHelp(player.GetPercentOfRaising());
+
+            if (inputManager.GetIsE)
+            {
+                float helpPercent = player.Raising();
+                actionUI.Help(helpPercent);
+            }
+        }
+        else
+        {
+            actionUI.CannotHelp();
+        }
+    }
+
     private bool CanHelp(out IPlayer player)
     {
         for(int i = 0; i < players.Count; i++)
@@ -229,6 +258,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
                 return true;
             }
         }
+
         player = null;
         return false;
     }

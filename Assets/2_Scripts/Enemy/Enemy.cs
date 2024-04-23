@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 {
-    [Header("Transform")]
+    [Header("Movement")]
     [SerializeField] private float speed = 5;
     [SerializeField] private List<Transform> patrolTransform;
     [SerializeField] private int currentPatrolPositionIndex;

@@ -12,5 +12,6 @@ public interface IPlayer
 
     public void Fall();
 
-    public void Raising();
+    public float Raising();
+    public float GetPercentOfRaising();
 }
