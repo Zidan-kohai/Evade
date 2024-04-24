@@ -55,14 +55,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
 
         Rotate();
 
-        if (state != PlayerState.Fall)
-        {
-            Move(startSpeedOnPlayerUp, maxSpeedOnPlayerUp);
-        }
-        else
-        {
-            Move(startSpeedOnPlayerFall, maxSpeedOnPlayerFall);
-        }
+        Move();
 
         CheckGround();
 
@@ -149,8 +142,17 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         transform.Rotate(Vector3.up * mouseX);
     }
 
-    private void Move(float startSpeed, float maxSpeed)
+    private void Move()
     {
+        float startSpeed = startSpeedOnPlayerUp;
+        float maxSpeed = maxSpeedOnPlayerUp;
+
+        if (state != PlayerState.Fall)
+        {
+            startSpeed = startSpeedOnPlayerFall;
+            maxSpeed = maxSpeedOnPlayerFall;
+        }
+
         float moveHorizontal = inputManager.GetMoveHorizontal;
         float moveVertical = inputManager.GetMoveVertical;
 
