@@ -15,6 +15,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
     [SerializeField] private float startSpeedOnPlayerFall = 0.5f;
     [SerializeField] private float maxSpeedOnPlayerFall = 1f;
     [SerializeField] private float currrentSpeed = 1f;
+    [SerializeField] private float currrentMinSpeed = 1f;
+    [SerializeField] private float currrentMaxSpeed = 1f;
 
     [Space, Header("Components")]
     [SerializeField] private NavMeshAgent agent;
@@ -180,18 +182,27 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         switch (state)
         {
             case PlayerState.Idle:
+                currrentMinSpeed = startSpeedOnPlayerUp;
+                currrentMaxSpeed = maxSpeedOnPlayerUp;
+                currrentSpeed = currrentMinSpeed;
                 ChangeColor(colorOnUpState);
+
                 Debug.Log(gameObject.name + "Idle");
                 break;
             case PlayerState.Walk:
                 break;
             case PlayerState.Fall:
+                currrentMinSpeed = startSpeedOnPlayerFall;
+                currrentMaxSpeed = maxSpeedOnPlayerFall;
+                currrentSpeed = currrentMinSpeed;
                 ChangeColor(colorOnFallState);
+
                 Debug.Log(gameObject.name + "Fall");
                 passedTimeFromFallToUp = timeToUpFromFall; 
                 break;
             case PlayerState.Death:
                 ChangeColor(colorOnDeathState);
+
                 Debug.Log(gameObject.name + "Death");
                 break;
         }
@@ -226,11 +237,12 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
 
     private void OnWalk()
     {
-        agent.SetDestination(pointsToWalk[currnetWalkPointIndex].position);
+        SetDestination(pointsToWalk[currnetWalkPointIndex].position);
 
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             currnetWalkPointIndex = (currnetWalkPointIndex + 1) % pointsToWalk.Count;
+            ChangeState(PlayerState.Idle);
         }
     }
 
@@ -275,7 +287,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
             }
         }
 
-        agent.SetDestination(nearnestPlayer.GetTransform().position);
+        SetDestination(nearnestPlayer.GetTransform().position);
     }
 
     private void MoveAwayFromEnemies()
@@ -285,7 +297,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
 
         if (CheckGround(escapePoint))
         {
-            agent.SetDestination(escapePoint);
+            SetDestination(escapePoint);
         }
         else
         {
@@ -329,7 +341,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
             Vector3 point = transform.position + direction * agent.speed;
             if (CheckGround(point))
             {
-                agent.SetDestination(point);
+                SetDestination(point);
                 return;
             }
         }
@@ -337,6 +349,17 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         Debug.Log("No valid escape route found!");
         agent.SetDestination(transform.position);
     }
+
+    private void SetDestination(Vector3 target)
+    {
+        currrentSpeed += Time.deltaTime;
+
+        currrentSpeed = Mathf.Clamp(currrentSpeed, currrentMinSpeed, currrentMaxSpeed);
+
+        agent.speed = currrentSpeed;
+        agent.SetDestination(target);
+    }
+
 
     private IEnumerator Wait(float time, Action action)
     {
