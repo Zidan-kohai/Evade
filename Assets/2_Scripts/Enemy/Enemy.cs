@@ -40,6 +40,25 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     [SerializeField] private Dictionary<IPlayer, Vector3> lastSeenPlayersWithPosition = new Dictionary<IPlayer, Vector3>();
     [SerializeField] private float distanseToAttack = 1.5f;
 
+
+    private void Update()
+    {
+        switch (state)
+        {
+            case EnemyState.Idle:
+                OnIdle();
+                break;
+            case EnemyState.Patrol:
+                OnPatrol();
+                break;
+            case EnemyState.Chase:
+                OnChase();
+                break;
+        }
+
+        CheckPlayers();
+    }
+
     public void Initialize(EnemyData data)
     {
         transform.position = patrolTransform[UnityEngine.Random.Range(0, patrolTransform.Count)].position;
@@ -68,30 +87,12 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         }
     }
 
-    private void Update()
-    {
-        switch (state)
-        {
-            case EnemyState.Idle:
-                Idle();
-                break;
-            case EnemyState.Patrol:
-                Patrol();
-                break;
-            case EnemyState.Chase:
-                Chase();
-                break;
-        }
-
-        CheckPlayers();
-    }
-
     public Transform GetTransform()
     {
         return transform;
     }
 
-    private void Idle()
+    private void OnIdle()
     {
         lastedTimeFromStartIdleToRotate += Time.deltaTime;
         currentTimeToChangeState += Time.deltaTime;
@@ -113,7 +114,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         }
     }
 
-    private void Patrol()
+    private void OnPatrol()
     {
         agent.SetDestination(patrolTransform[currentPatrolPositionIndex].position);
 
@@ -124,7 +125,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     }
 
-    private void Chase()
+    private void OnChase()
     {
         float distanse = float.PositiveInfinity;
         Vector3 targetPosition = transform.position;

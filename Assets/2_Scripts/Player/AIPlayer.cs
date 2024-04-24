@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Analytics;
 
 public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
 {
@@ -63,15 +64,16 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         switch(state)
         {
             case PlayerState.Idle:
-                Idle();
+                OnIdle();
                 break;
             case PlayerState.Walk:
-                Walk();
+                OnWalk();
                 break;
             case PlayerState.Escape:
                 MoveAwayFromEnemies();
                 break;
             case PlayerState.Fall:
+                OnFall();
                 break;
             case PlayerState.Death:
                 break;
@@ -200,7 +202,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         meshRenderer.materials[0].color = color;
     }
 
-    private void Idle()
+    private void OnIdle()
     {
         lastedTimeFromStartIdleToRotate += Time.deltaTime;
         currentTimeToChangeState += Time.deltaTime;
@@ -222,7 +224,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         }
     }
 
-    private void Walk()
+    private void OnWalk()
     {
         agent.SetDestination(pointsToWalk[currnetWalkPointIndex].position);
 
@@ -230,6 +232,50 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         {
             currnetWalkPointIndex = (currnetWalkPointIndex + 1) % pointsToWalk.Count;
         }
+    }
+
+    private void OnFall()
+    {
+        if(players.Count > 0)
+        {
+            WalkToPlayer();
+        }
+        else
+        {
+            OnWalk();
+        }
+    }
+
+    private void WalkToPlayer()
+    {
+        bool isHaveUpPlayer = false;
+        float distanceToPlayer = float.PositiveInfinity;
+        IPlayer nearnestPlayer = null;
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i].IsDeath()) continue;
+
+            float distance = (players[i].GetTransform().position - transform.position).magnitude;
+            bool isPlayerUp = !players[i].IsFall();
+
+            if (isHaveUpPlayer == false && isPlayerUp == true)
+            {
+                isHaveUpPlayer = true;
+                distanceToPlayer = distance;
+                nearnestPlayer = players[i];
+            }
+            else if (isHaveUpPlayer == isPlayerUp)
+            {
+                if (distance < distanceToPlayer)
+                {
+                    distanceToPlayer = distance;
+                    nearnestPlayer = players[i];
+                }
+            }
+        }
+
+        agent.SetDestination(nearnestPlayer.GetTransform().position);
     }
 
     private void MoveAwayFromEnemies()
@@ -243,7 +289,6 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         }
         else
         {
-            // Try different directions if the direct escape route is not viable
             TryAlternativeRoutes(escapeDirection);
         }
     }
@@ -278,7 +323,6 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
 
     private void TryAlternativeRoutes(Vector3 initialDirection)
     {
-        // Check alternative directions, here simplified to right and left
         Vector3[] alternatives = { transform.right, -transform.right };
         foreach (var direction in alternatives)
         {
@@ -290,9 +334,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
             }
         }
 
-        // If no valid ground found, stop or handle accordingly
         Debug.Log("No valid escape route found!");
-        agent.SetDestination(transform.position); // Stay in place
+        agent.SetDestination(transform.position);
     }
 
     private IEnumerator Wait(float time, Action action)
