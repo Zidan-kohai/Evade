@@ -47,6 +47,11 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
     [SerializeField] private float maxEscapeTime;
     [SerializeField] private Coroutine stopEscapeCoroutine;
 
+    [Header("Help")]
+    [SerializeField] private float safeDistance;
+    [SerializeField] private float helpDistance;
+    [SerializeField] private IPlayer playerToHelp;
+
     [Header("Visual On Change State"), Tooltip("In Future We need To Delete this all")]
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private Color colorOnUpState;
@@ -66,10 +71,12 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         switch(state)
         {
             case PlayerState.Idle:
-                OnIdle();
+                if(!CheckPlayerAndEnemyToHelp())
+                    OnIdle();
                 break;
             case PlayerState.Walk:
-                OnWalk();
+                if (!CheckPlayerAndEnemyToHelp())
+                    OnWalk();
                 break;
             case PlayerState.Escape:
                 MoveAwayFromEnemies();
@@ -82,6 +89,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
             case PlayerState.Raising:
                 break;
         }
+
+        CheckPlayerAndEnemyToHelp();
     }
 
     public void Initialize()
@@ -250,7 +259,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
     {
         if(players.Count > 0)
         {
-            WalkToPlayer();
+            WalkToPlayerOnFail();
         }
         else
         {
@@ -258,7 +267,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         }
     }
 
-    private void WalkToPlayer()
+    private void WalkToPlayerOnFail()
     {
         bool isHaveUpPlayer = false;
         float distanceToPlayer = float.PositiveInfinity;
@@ -350,6 +359,72 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         agent.SetDestination(transform.position);
     }
 
+    private bool CheckPlayerAndEnemyToHelp()
+    {
+        if (state != PlayerState.Idle && state != PlayerState.Walk || players.Count == 0) return false;
+
+        #region CheckPlayer
+
+        float distanceToPlayer = float.PositiveInfinity;
+        IPlayer nearnestPlayer = null;
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i].IsDeath()) continue;
+
+            float distance = (players[i].GetTransform().position - transform.position).magnitude;
+            bool isPlayerFail = players[i].IsFall();
+
+            if(isPlayerFail && distance < distanceToPlayer)
+            {
+                distanceToPlayer = distance;
+                nearnestPlayer = players[i];
+            }
+        }
+
+        #endregion
+
+        #region Check Enemy
+
+        float distanceToNeanestEnemy = float.PositiveInfinity;
+        IEnemy nearnestEnemy = null;
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            float distance = (enemies[i].GetTransform().position - transform.position).magnitude;
+
+            if (distance < distanceToNeanestEnemy)
+            {
+                distanceToNeanestEnemy = distance;
+                nearnestEnemy = enemies[i];
+            }
+        }
+
+        #endregion
+
+        if (nearnestPlayer == null || distanceToNeanestEnemy < safeDistance) return false;
+
+        playerToHelp = nearnestPlayer;
+
+        TryHelp(nearnestPlayer);
+
+        return true;
+    }
+
+    private void TryHelp(IPlayer player)
+    {
+        float distanceToPlayer = (player.GetTransform().position - transform.position).magnitude;
+
+        if(distanceToPlayer < helpDistance)
+        {
+            player.Raising();
+        }
+        else
+        {
+            SetDestination(player.GetTransform().position);
+        }
+    }
+
     private void SetDestination(Vector3 target)
     {
         currrentSpeed += Time.deltaTime;
@@ -359,7 +434,6 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         agent.speed = currrentSpeed;
         agent.SetDestination(target);
     }
-
 
     private IEnumerator Wait(float time, Action action)
     {
