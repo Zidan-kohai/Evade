@@ -9,6 +9,12 @@ public class ActionHandler : MonoBehaviour
     [SerializeField] private GameObject raisingExplain;
     [SerializeField] private SimpleSlider raisingPercent;
 
+    [Header("Carry")]
+    [SerializeField] private GameObject carryHandler;
+    [SerializeField] private GameObject carryExplain;
+    [SerializeField] private GameObject putExplain;
+
+
     #region Help
 
     public void CanHelp(float percentOfRaising)
