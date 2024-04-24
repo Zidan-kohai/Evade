@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         float startSpeed = startSpeedOnPlayerUp;
         float maxSpeed = maxSpeedOnPlayerUp;
 
-        if (state != PlayerState.Fall)
+        if (state == PlayerState.Fall)
         {
             startSpeed = startSpeedOnPlayerFall;
             maxSpeed = maxSpeedOnPlayerFall;
