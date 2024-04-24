@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         gameObject.SetActive(true);
         reachArea.SetISee(this);
 
-        state = EnemyState.Idle;
+        ChangeState(EnemyState.Idle);
     }
 
     public void AddHumanoid(IHumanoid IHumanoid)
@@ -86,6 +86,11 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         CheckPlayers();
     }
 
+    public Transform GetTransform()
+    {
+        return transform;
+    }
+
     private void Idle()
     {
         lastedTimeFromStartIdleToRotate += Time.deltaTime;
@@ -103,7 +108,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
         if (endIdle || currentTimeToChangeState > timeToChangeState)
         {
-            state = EnemyState.Patrol;
+            ChangeState(EnemyState.Patrol);
             currentTimeToChangeState = 0f;
         }
     }
@@ -166,7 +171,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
         if (lastSeenPlayersWithPosition.Count == 0)
         {
-            state = EnemyState.Idle;
+            ChangeState(EnemyState.Idle);
         }
     }
 
@@ -197,7 +202,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
             {
                 if (hit.transform.TryGetComponent(out IPlayer IPlayer))
                 {
-                    state = EnemyState.Chase;
+                    ChangeState(EnemyState.Chase);
 
                     if (!lastSeenPlayersWithPosition.ContainsKey(IPlayer))
                     {
@@ -212,12 +217,33 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         }
     }
 
+    private void ChangeState(EnemyState newState)
+    {
+        if (state == newState) return;
+
+        state = newState;
+
+        switch (state)
+        {
+            case EnemyState.Idle:
+                break;
+            case EnemyState.Patrol:
+                break;
+            case EnemyState.Chase:
+                break;
+            default:
+                break;
+        }
+
+    }
+    
     private IEnumerator Wait(float time, Action action)
     {
         yield return new WaitForSeconds(time);
 
         action.Invoke();
     }
+
 
     private void OnDrawGizmos()
     {

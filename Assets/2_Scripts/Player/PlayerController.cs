@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
     [SerializeField] private PlayerState state;
     [SerializeField] private float timeToUpFromFall;
     [SerializeField] private float timeToDeathFromFall;
-    [SerializeField] private float lastedTimeFromFallToUp;
-    [SerializeField] private float lastedTimeFromFallToDeath;
+    [SerializeField] private float passedTimeFromFallToUp;
+    [SerializeField] private float passedTimeFromFallToDeath;
 
     [Header("Components")]
     [SerializeField] private InputManager inputManager;
@@ -104,19 +104,19 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
 
     public float Raising()
     {
-        lastedTimeFromFallToUp -= Time.deltaTime;
+        passedTimeFromFallToUp -= Time.deltaTime;
 
-        if (lastedTimeFromFallToUp <= 0)
+        if (passedTimeFromFallToUp <= 0)
         {
             ChangeState(PlayerState.Idle);
         }
 
-        return Mathf.Abs(lastedTimeFromFallToUp / timeToUpFromFall - 1);
+        return Mathf.Abs(passedTimeFromFallToUp / timeToUpFromFall - 1);
     }
 
     public float GetPercentOfRaising()
     {
-        return Mathf.Abs(lastedTimeFromFallToUp / timeToUpFromFall - 1);
+        return Mathf.Abs(passedTimeFromFallToUp / timeToUpFromFall - 1);
     }
 
     public void AddHumanoid(IHumanoid IHumanoid)
@@ -169,7 +169,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         {
             currrentSpeed += Time.deltaTime;
             currrentSpeed = Mathf.Clamp(currrentSpeed, startSpeed, maxSpeed);
-            ChangeState(PlayerState.Run);
+            ChangeState(PlayerState.Walk);
         }
     }
 
@@ -202,9 +202,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
 
     private void ChangeState(PlayerState newState)
     {
-        if (state == newState || 
-            ((state == PlayerState.Fall) && 
-            (newState == PlayerState.Raising || newState == PlayerState.Death))) return;
+        if (state == newState ||
+            ((state == PlayerState.Fall) && (passedTimeFromFallToUp > 0))) return;
 
         state = newState;
 
@@ -212,10 +211,11 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         {
             case PlayerState.Idle:
                 break;
-            case PlayerState.Run:
+            case PlayerState.Walk:
                 break;
             case PlayerState.Fall:
-                Debug.Log("Fall");
+                Debug.Log("Fall"); 
+                passedTimeFromFallToUp = timeToUpFromFall;
                 break;
             case PlayerState.Death: 
                 break;

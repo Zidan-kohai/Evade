@@ -252,10 +252,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e855ea0f03f66d840b73f68a2a1f4249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeedOnPlayerUp: 1
-  maxSpeedOnPlayerUp: 5
+  pointsToWalk:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  currnetWalkPointIndex: 0
+  startSpeedOnPlayerUp: 5
+  maxSpeedOnPlayerUp: 15
   startSpeedOnPlayerFall: 0.5
-  maxSpeedOnPlayerFall: 1
+  maxSpeedOnPlayerFall: 2
   currrentSpeed: 1
   agent: {fileID: 3663144800095553858}
   reachArea: {fileID: 2861010759206526833}
@@ -264,6 +273,18 @@ MonoBehaviour:
   timeToDeathFromFall: 1000
   lastedTimeFromFallToUp: 1
   lastedTimeFromFallToDeath: 1000
+  lastedTimeFromStartIdleToRotate: 0
+  timeToChangeState: 5
+  currentTimeToChangeState: 0
+  inverseRotateOnIdle: 1
+  rotatingSpeedOnIdle: 5
+  chanseToChangeState: 5
+  minEscapeTime: 3
+  maxEscapeTime: 5
+  meshRenderer: {fileID: 6081190393317726576}
+  colorOnUpState: {r: 1, g: 1, b: 1, a: 1}
+  colorOnFallState: {r: 0.9811321, g: 0.6395067, b: 0.087931626, a: 1}
+  colorOnDeathState: {r: 1, g: 0, b: 0, a: 1}
 --- !u!136 &2689890232233979099
 CapsuleCollider:
   m_ObjectHideFlags: 0

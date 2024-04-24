@@ -1,7 +1,8 @@
 ﻿public enum PlayerState
 {
     Idle,
-    Run,
+    Walk,
+    Escape,
     Fall,
     Death,
     Raising
