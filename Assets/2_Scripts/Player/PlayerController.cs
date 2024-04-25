@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
+public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 {
     [Header("Movement")]
     [SerializeField] private float startSpeedOnPlayerUp = 1f;
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
     [SerializeField] private InputManager inputManager;
     [SerializeField] private ReachArea reachArea;
     [SerializeField] private ActionHandler actionUI;
+    [SerializeField] private PlayerAnimationController animationController;
     private CharacterController characterController;
 
     [Header("Humanoids")]
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
     {
         characterController = GetComponent<CharacterController>();
         reachArea.SetISee(this);
+        animationController.SetIMove(this);
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -136,6 +138,18 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         }
     }
 
+    public float MoveSpeed()
+    {
+        Vector3 move = new Vector3(velocity.x, 0, velocity.z);
+
+        return move.magnitude;
+    }
+
+    public bool IsJump()
+    {
+        return !isOnGround && velocity.y > 0.01;
+    }
+
     private void Rotate()
     {
         float mouseX = inputManager.GetMouseDeltaX * mouseSensitivity * Time.deltaTime;
@@ -216,7 +230,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
             case PlayerState.Walk:
                 break;
             case PlayerState.Fall:
-                Debug.Log("Fall"); 
+                //Debug.Log("Fall"); 
                 passedTimeFromFallToUp = timeToUpFromFall;
                 break;
             case PlayerState.Death: 
@@ -263,4 +277,5 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid,ISee
         Gizmos.color = Color.yellow;
         Gizmos.DrawRay(groundChekcRaycastOrigin.position, Vector3.down * groundChekcRaycastHeight);
     }
+
 }

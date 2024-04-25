@@ -196,7 +196,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
                 currrentSpeed = currrentMinSpeed;
                 ChangeColor(colorOnUpState);
 
-                Debug.Log(gameObject.name + "Idle");
+                //Debug.Log(gameObject.name + "Idle");
                 break;
             case PlayerState.Walk:
                 break;
@@ -206,13 +206,13 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
                 currrentSpeed = currrentMinSpeed;
                 ChangeColor(colorOnFallState);
 
-                Debug.Log(gameObject.name + "Fall");
+                //Debug.Log(gameObject.name + "Fall");
                 passedTimeFromFallToUp = timeToUpFromFall; 
                 break;
             case PlayerState.Death:
                 ChangeColor(colorOnDeathState);
 
-                Debug.Log(gameObject.name + "Death");
+                //Debug.Log(gameObject.name + "Death");
                 break;
         }
     }
