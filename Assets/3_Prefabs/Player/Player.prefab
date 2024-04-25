@@ -168,8 +168,8 @@ MonoBehaviour:
   state: 0
   timeToUpFromFall: 0
   timeToDeathFromFall: 0
-  lastedTimeFromFallToUp: 0
-  lastedTimeFromFallToDeath: 0
+  passedTimeFromFallToUp: 0
+  passedTimeFromFallToDeath: 0
   inputManager: {fileID: 0}
   reachArea: {fileID: 8162641037547260621}
   actionUI: {fileID: 0}
