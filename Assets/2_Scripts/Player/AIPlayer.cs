@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Analytics;
 
-public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
+public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 {
     [Header("Movement")]
     [SerializeField] private List<Transform> pointsToWalk;
@@ -21,6 +21,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
     [Space, Header("Components")]
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private ReachArea reachArea;
+    [SerializeField] private PlayerAnimationController animationController;
 
     [Header("Humanoids")]
     [SerializeField] private List<IEnemy> enemies = new List<IEnemy>();
@@ -64,6 +65,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
     {
         agent.speed = startSpeedOnPlayerUp;
         reachArea.SetISee(this);
+        animationController.SetIMove(this);
     }
 
     private void Update()
@@ -181,6 +183,16 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
         return Mathf.Abs(passedTimeFromFallToUp / timeToUpFromFall - 1);
     }
 
+    public float MoveSpeed()
+    {
+        return agent.velocity.magnitude;
+    }
+
+    public bool IsJump()
+    {
+        return false;
+    }
+
     private void ChangeState(PlayerState newState)
     {
         if (state == newState ||
@@ -194,7 +206,6 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
                 currrentMinSpeed = startSpeedOnPlayerUp;
                 currrentMaxSpeed = maxSpeedOnPlayerUp;
                 currrentSpeed = currrentMinSpeed;
-                ChangeColor(colorOnUpState);
 
                 //Debug.Log(gameObject.name + "Idle");
                 break;
@@ -204,22 +215,15 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
                 currrentMinSpeed = startSpeedOnPlayerFall;
                 currrentMaxSpeed = maxSpeedOnPlayerFall;
                 currrentSpeed = currrentMinSpeed;
-                ChangeColor(colorOnFallState);
 
                 //Debug.Log(gameObject.name + "Fall");
                 passedTimeFromFallToUp = timeToUpFromFall; 
                 break;
             case PlayerState.Death:
-                ChangeColor(colorOnDeathState);
 
                 //Debug.Log(gameObject.name + "Death");
                 break;
         }
-    }
-
-    private void ChangeColor(Color color)
-    {
-        meshRenderer.materials[0].color = color;
     }
 
     private void OnIdle()
@@ -441,4 +445,5 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid
 
         action.Invoke();
     }
+
 }
