@@ -46,16 +46,16 @@ NavMeshAgent:
   m_GameObject: {fileID: 1522501397259290760}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.3
+  m_Radius: 2
   m_Speed: 5
-  m_Acceleration: 10
+  m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 3
+  m_Height: 20
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -71,7 +71,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5682b406daeb52b4d919fa58369057b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 70
+  currentPatrolPositionIndex: 0
+  sawPlayer: 0
+  state: 0
   patrolTransform:
   - {fileID: 0}
   - {fileID: 0}
@@ -80,9 +83,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  currentPatrolPositionIndex: 0
-  state: 0
-  sawPlayer: 0
   reachArea: {fileID: 4173423218352306102}
   biasOnThrowRaycast: {x: 0, y: 1, z: 0}
   fieldOfViewAngle: 90
@@ -119,8 +119,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.8, y: 2.8932247, z: 0.14918542}
-  m_Center: {x: 0, y: 0.9734869, z: -0.009862706}
+  m_Size: {x: 20, y: 20, z: 0.15}
+  m_Center: {x: 0, y: 10, z: 0}
 --- !u!1 &3774152271872689663
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,8 +275,8 @@ Transform:
   m_GameObject: {fileID: 3987874235574732473}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 9.1, z: 0}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3823830190349082080}
@@ -397,8 +397,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 25, y: 5, z: 25}
-  m_Center: {x: 0, y: 2.5, z: 0}
+  m_Size: {x: 150, y: 10, z: 150}
+  m_Center: {x: 0, y: 6, z: 0}
 --- !u!1 &8115940942660691883
 GameObject:
   m_ObjectHideFlags: 0

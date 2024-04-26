@@ -9,10 +9,10 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 {
     [Header("Movement")]
     [SerializeField] private float speed = 5;
-    [SerializeField] private List<Transform> patrolTransform;
     [SerializeField] private int currentPatrolPositionIndex;
-    [SerializeField] private EnemyState state;
     [SerializeField] private bool sawPlayer;
+    [SerializeField] private EnemyState state;
+    [SerializeField] private List<Transform> patrolTransform;
 
     [Header("Field of View")]
     [SerializeField] private ReachArea reachArea;
@@ -59,16 +59,19 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         CheckPlayers();
     }
 
-    public void Initialize(EnemyData data)
+    public void Initialize(EnemyData data, List<Transform> PatrolPoint, Vector3 spawnPoint)
     {
-        transform.position = patrolTransform[UnityEngine.Random.Range(0, patrolTransform.Count)].position;
+        ChangeState(EnemyState.Idle);
+
+        transform.position = spawnPoint;
         enemyVisual.sprite = data.enemyVisual;
         audiosource.clip = data.voise;
-        currentPatrolPositionIndex = UnityEngine.Random.Range(0, patrolTransform.Count);
         gameObject.SetActive(true);
         reachArea.SetISee(this);
+        agent.speed = speed;
 
-        ChangeState(EnemyState.Idle);
+        patrolTransform = PatrolPoint;
+        currentPatrolPositionIndex = UnityEngine.Random.Range(0, patrolTransform.Count);
     }
 
     public void AddHumanoid(IHumanoid IHumanoid)

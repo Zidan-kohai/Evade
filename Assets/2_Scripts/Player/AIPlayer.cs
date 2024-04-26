@@ -8,15 +8,16 @@ using UnityEngine.Analytics;
 public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 {
     [Header("Movement")]
-    [SerializeField] private List<Transform> pointsToWalk;
-    [SerializeField] private int currnetWalkPointIndex;
-    [SerializeField] private float startSpeedOnPlayerUp = 1f;
-    [SerializeField] private float maxSpeedOnPlayerUp = 5f;
-    [SerializeField] private float startSpeedOnPlayerFall = 0.5f;
-    [SerializeField] private float maxSpeedOnPlayerFall = 1f;
-    [SerializeField] private float currrentSpeed = 1f;
+    [SerializeField] private float startSpeedOnPlayerUp = 50f;
+    [SerializeField] private float maxSpeedOnPlayerUp = 80f;
+    [SerializeField] private float startSpeedOnPlayerFall = 20f;
+    [SerializeField] private float maxSpeedOnPlayerFall = 30f;
+    [SerializeField] private float currrentSpeed = 50f;
+    [SerializeField] private int speedScaleFactor = 3;
     [SerializeField] private float currrentMinSpeed = 1f;
     [SerializeField] private float currrentMaxSpeed = 1f;
+    [SerializeField] private List<Transform> pointsToWalk;
+    [SerializeField] private int currnetWalkPointIndex;
 
     [Space, Header("Components")]
     [SerializeField] private NavMeshAgent agent;
@@ -206,22 +207,20 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 currrentMinSpeed = startSpeedOnPlayerUp;
                 currrentMaxSpeed = maxSpeedOnPlayerUp;
                 currrentSpeed = currrentMinSpeed;
-
-                //Debug.Log(gameObject.name + "Idle");
                 break;
+
             case PlayerState.Walk:
                 break;
+
             case PlayerState.Fall:
                 currrentMinSpeed = startSpeedOnPlayerFall;
                 currrentMaxSpeed = maxSpeedOnPlayerFall;
                 currrentSpeed = currrentMinSpeed;
-
-                //Debug.Log(gameObject.name + "Fall");
                 passedTimeFromFallToUp = timeToUpFromFall; 
                 break;
+
             case PlayerState.Death:
 
-                //Debug.Log(gameObject.name + "Death");
                 break;
         }
     }
@@ -431,7 +430,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     private void SetDestination(Vector3 target)
     {
-        currrentSpeed += Time.deltaTime;
+        currrentSpeed += Time.deltaTime * speedScaleFactor;
 
         currrentSpeed = Mathf.Clamp(currrentSpeed, currrentMinSpeed, currrentMaxSpeed);
 

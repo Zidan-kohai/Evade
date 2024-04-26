@@ -8,6 +8,7 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] private Avatar slowRunAvatar;
     [SerializeField] private Avatar fastRunAvatar;
     [SerializeField] private Avatar jumpAvatar;
+    [SerializeField] private float speedOnFastRun;
 
     private Avatar currentAvatar;
 
@@ -39,11 +40,11 @@ public class PlayerAnimationController : MonoBehaviour
         {
             ChangeAvatar(jumpAvatar);
         }
-        else if (moveSpeed > 10)
+        else if (moveSpeed > speedOnFastRun)
         {
             ChangeAvatar(fastRunAvatar);
         }
-        else if (moveSpeed < 10 && moveSpeed > 0.01)
+        else if (moveSpeed < speedOnFastRun && moveSpeed > 0.01)
         {
             ChangeAvatar(slowRunAvatar);
         }

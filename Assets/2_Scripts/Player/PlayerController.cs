@@ -4,15 +4,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 {
     [Header("Movement")]
-    [SerializeField] private float startSpeedOnPlayerUp = 1f;
-    [SerializeField] private float maxSpeedOnPlayerUp = 5f;
-    [SerializeField] private float startSpeedOnPlayerFall = 0.5f;
-    [SerializeField] private float maxSpeedOnPlayerFall = 1f;
-    [SerializeField] private float currrentSpeed = 1f;
+    [SerializeField] private float startSpeedOnPlayerUp = 50f;
+    [SerializeField] private float maxSpeedOnPlayerUp = 80f;
+    [SerializeField] private float startSpeedOnPlayerFall = 20;
+    [SerializeField] private float maxSpeedOnPlayerFall = 30;
+    [SerializeField] private float currrentSpeed = 50f;
+    [SerializeField] private int speedScaleFactor = 3;
     [SerializeField] private float mouseSensitivity = 100f;
-    [SerializeField] private float minVerticalRotateClamp = -90f;
-    [SerializeField] private float maxVerticalRotateClamp = 90f;
-    [SerializeField] private float verticalRotation = 0f;
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private Transform groundChekcRaycastOrigin; 
@@ -183,7 +181,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         }
         else
         {
-            currrentSpeed += Time.deltaTime;
+            currrentSpeed += Time.deltaTime * speedScaleFactor;
             currrentSpeed = Mathf.Clamp(currrentSpeed, startSpeed, maxSpeed);
             ChangeState(PlayerState.Walk);
         }

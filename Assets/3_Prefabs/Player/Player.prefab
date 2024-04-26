@@ -179,16 +179,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5729a20f8d0fbb4c80f6cf5dc2883c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeedOnPlayerUp: 5
-  maxSpeedOnPlayerUp: 15
-  startSpeedOnPlayerFall: 0.5
-  maxSpeedOnPlayerFall: 1
+  startSpeedOnPlayerUp: 70
+  maxSpeedOnPlayerUp: 90
+  startSpeedOnPlayerFall: 30
+  maxSpeedOnPlayerFall: 40
   currrentSpeed: 1
+  speedScaleFactor: 4
   mouseSensitivity: 180
-  minVerticalRotateClamp: -90
-  maxVerticalRotateClamp: 90
-  verticalRotation: 0
-  jumpHeight: 2
+  jumpHeight: 7
   gravity: -15
   groundChekcRaycastOrigin: {fileID: 5380563815051711409}
   groundChekcRaycastHeight: 1
@@ -1301,6 +1299,7 @@ MonoBehaviour:
   slowRunAvatar: {fileID: 9000000, guid: 31359df397345584eb7de047254ffa10, type: 2}
   fastRunAvatar: {fileID: 9000000, guid: 6bc0a947497f93d41b2267d8bf6ef9bf, type: 2}
   jumpAvatar: {fileID: 9000000, guid: 3ca6a767ec55f5c42af69a082d3b1cfb, type: 2}
+  speedOnFastRun: 70
 --- !u!1 &6633020411424046989
 GameObject:
   m_ObjectHideFlags: 0
