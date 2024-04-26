@@ -84,7 +84,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   reachArea: {fileID: 4173423218352306102}
-  biasOnThrowRaycast: {x: 0, y: 1, z: 0}
+  biasOnThrowRaycast: {x: 0, y: 5, z: 0}
   fieldOfViewAngle: 90
   viewDistance: 10
   allLayers:
@@ -99,7 +99,7 @@ MonoBehaviour:
   inverseRotateOnIdle: 1
   rotatingSpeedOnIdle: 5
   chanseToChangeState: 1
-  distanseToAttack: 5
+  distanseToAttack: 7
 --- !u!65 &1996905498317043747
 BoxCollider:
   m_ObjectHideFlags: 0

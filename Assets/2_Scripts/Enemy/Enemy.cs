@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using static Unity.Burst.Intrinsics.X86;
 
 public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 {
@@ -248,7 +249,6 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         action.Invoke();
     }
 
-
     private void OnDrawGizmos()
     {
         // Drawing Field of View
@@ -267,4 +267,13 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     }
 
+    //Maybe i change this solution in future
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.TryGetComponent(out IPlayer player))
+        {
+            Debug.Log("collision.transform.name: " + collision.transform.name);
+            player.Fall();
+        }
+    }
 }
