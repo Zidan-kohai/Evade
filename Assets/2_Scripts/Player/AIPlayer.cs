@@ -60,15 +60,6 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private Color colorOnFallState;
     [SerializeField] private Color colorOnDeathState;
 
-
-    //Later we delete this func
-    private void OnEnable()
-    {
-        agent.speed = startSpeedOnPlayerUp;
-        reachArea.SetISee(this);
-        animationController.SetIMove(this);
-    }
-
     private void Update()
     {
         switch(state)
@@ -96,10 +87,17 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         CheckPlayerAndEnemyToHelp();
     }
 
-    public void Initialize()
+    public void Initialize(List<Transform> Points, Vector3 spawnPoint)
     {
+        ChangeState(PlayerState.Idle);
+
+        transform.position = spawnPoint;
         agent.speed = startSpeedOnPlayerUp;
         reachArea.SetISee(this);
+        animationController.SetIMove(this);
+        gameObject.SetActive(true);
+
+        pointsToWalk = Points;
     }
 
     public void AddHumanoid(IHumanoid IHumanoid)
