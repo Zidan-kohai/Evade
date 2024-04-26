@@ -16,22 +16,27 @@ public class ActionHandler : MonoBehaviour
 
 
     #region Help
-
-    public void CanHelp(float percentOfRaising)
+    public void ShowHelpingUIManual()
     {
         raisingHandler.SetActive(true);
         raisingExplain.SetActive(true);
+    }
+    public void ShowHelpingUISlider(float percentOfRaising)
+    {
+        raisingHandler.SetActive(true);
+        raisingPercent.gameObject.SetActive(true);
 
         raisingPercent.Fill(percentOfRaising);
     }
 
-    public void CannotHelp()
+    public void DisableHelpingUIHandler()
     {
         raisingHandler.SetActive(false);
         raisingExplain.SetActive(false);
+        raisingPercent.gameObject.SetActive(false);
     }
 
-    public void Help(float helpPercent)
+    public void FilHelpigUI(float helpPercent)
     {
         raisingExplain.SetActive(false);
 

@@ -99,9 +99,14 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     {
         passedTimeFromFallToUp -= Time.deltaTime;
 
+        float raisingPercent = GetPercentOfRaising();
+
+        actionUI.ShowHelpingUISlider(raisingPercent);
+
         if (passedTimeFromFallToUp <= 0)
         {
             ChangeState(PlayerState.Idle);
+            actionUI.DisableHelpingUIHandler();
         }
 
         return Mathf.Abs(passedTimeFromFallToUp / timeToUpFromFall - 1);
@@ -241,17 +246,17 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     {
         if (CanHelp(out IPlayer player))
         {
-            actionUI.CanHelp(player.GetPercentOfRaising());
+            actionUI.ShowHelpingUIManual();
 
             if (inputManager.GetIsE)
             {
                 float helpPercent = player.Raising();
-                actionUI.Help(helpPercent);
+                actionUI.FilHelpigUI(helpPercent);
             }
         }
         else
         {
-            actionUI.CannotHelp();
+            actionUI.DisableHelpingUIHandler();
         }
     }
 
