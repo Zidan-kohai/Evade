@@ -1329,8 +1329,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeedOnPlayerUp: 70
   maxSpeedOnPlayerUp: 90
-  startSpeedOnPlayerFall: 5
-  maxSpeedOnPlayerFall: 10
+  startSpeedOnPlayerFall: 3
+  maxSpeedOnPlayerFall: 7
   currrentSpeed: 5
   speedScaleFactor: 4
   currrentMinSpeed: 5
@@ -1360,8 +1360,8 @@ MonoBehaviour:
   chanseToChangeState: 5
   minEscapeTime: 3
   maxEscapeTime: 5
-  safeDistance: 10
-  helpDistance: 2
+  safeDistance: 25
+  helpDistance: 11
   meshRenderer: {fileID: 0}
   colorOnUpState: {r: 1, g: 1, b: 1, a: 1}
   colorOnFallState: {r: 0.9811321, g: 0.6395067, b: 0.087931626, a: 1}
