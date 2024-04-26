@@ -22,29 +22,34 @@ public class PlayerAnimationController : MonoBehaviour
 
         animator.SetFloat("RunSpeed", moveSpeed);
 
-        if(moveSpeed > 5)
+        
+        bool jumped = movement.IsJump();
+
+        if (jumped)
+        {
+            animator.SetBool("Jumping", true);
+        }
+        else
+        {
+            animator.SetBool("Jumping", false);
+        }
+
+
+        if(jumped)
+        {
+            ChangeAvatar(jumpAvatar);
+        }
+        else if (moveSpeed > 10)
         {
             ChangeAvatar(fastRunAvatar);
         }
-        else if(moveSpeed < 5 && moveSpeed > 0.01)
+        else if (moveSpeed < 10 && moveSpeed > 0.01)
         {
             ChangeAvatar(slowRunAvatar);
         }
         else
         {
             ChangeAvatar(idleAvatar);
-        }
-        bool jumped = movement.IsJump();
-
-        if (jumped)
-        {
-            Debug.Log("Jumped");
-            animator.SetBool("Jumping", true);
-            ChangeAvatar(jumpAvatar);
-        }
-        else
-        {
-            animator.SetBool("Jumping", false);
         }
     }
 

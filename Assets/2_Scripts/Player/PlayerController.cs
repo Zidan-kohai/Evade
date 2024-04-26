@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     public bool IsJump()
     {
-        return !isOnGround && velocity.y > 0.01;
+        return !isOnGround && velocity.y != 0;
     }
 
     private void Rotate()
