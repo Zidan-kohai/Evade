@@ -67,7 +67,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
         #endregion
 
-        Help();
+        if(state != PlayerState.Fall && state != PlayerState.Death)
+            Help();
     }
 
     public Transform GetTransform()
