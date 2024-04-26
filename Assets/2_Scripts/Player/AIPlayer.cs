@@ -202,6 +202,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         switch (state)
         {
             case PlayerState.Idle:
+                animationController.Up();
                 currrentMinSpeed = startSpeedOnPlayerUp;
                 currrentMaxSpeed = maxSpeedOnPlayerUp;
                 currrentSpeed = currrentMinSpeed;
@@ -211,6 +212,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 break;
 
             case PlayerState.Fall:
+                animationController.Fall();
                 currrentMinSpeed = startSpeedOnPlayerFall;
                 currrentMaxSpeed = maxSpeedOnPlayerFall;
                 currrentSpeed = currrentMinSpeed;

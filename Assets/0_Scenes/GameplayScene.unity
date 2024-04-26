@@ -2888,7 +2888,7 @@ Transform:
   m_GameObject: {fileID: 122790194}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.15, y: 14, z: 276.25}
+  m_LocalPosition: {x: -44.1, y: 14, z: 253.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21770,7 +21770,7 @@ MonoBehaviour:
   - {fileID: 101938822}
   - {fileID: 614904002}
   enemyDataHandler: {fileID: 11400000, guid: d6f1da1a49b342c4983a2b9350038916, type: 2}
-  minSpawnCount: 1
+  minSpawnCount: 5
   spawnedEnemyCount: 0
 --- !u!1 &1148924076
 GameObject:
@@ -42913,7 +42913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883443137320651, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.15
+      value: -44.1
       objectReference: {fileID: 0}
     - target: {fileID: 836883443137320651, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -42921,7 +42921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 836883443137320651, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 271.25
+      value: 248.3
       objectReference: {fileID: 0}
     - target: {fileID: 836883443137320651, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42959,6 +42959,10 @@ PrefabInstance:
       propertyPath: inputManager
       value: 
       objectReference: {fileID: 442789067}
+    - target: {fileID: 6452385235044809338, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: ac94bc34ebedaec4eb60ccaadd06a053, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

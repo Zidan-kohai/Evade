@@ -99,7 +99,7 @@ MonoBehaviour:
   inverseRotateOnIdle: 1
   rotatingSpeedOnIdle: 5
   chanseToChangeState: 1
-  distanseToAttack: 1.5
+  distanseToAttack: 5
 --- !u!65 &1996905498317043747
 BoxCollider:
   m_ObjectHideFlags: 0

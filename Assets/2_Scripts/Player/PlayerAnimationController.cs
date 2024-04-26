@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
@@ -8,13 +9,28 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] private Avatar slowRunAvatar;
     [SerializeField] private Avatar fastRunAvatar;
     [SerializeField] private Avatar jumpAvatar;
+    [SerializeField] private Avatar fallAvatar;
     [SerializeField] private float speedOnFastRun;
 
-    private Avatar currentAvatar;
-
+    [SerializeField] private Avatar currentAvatar;
+    [SerializeField] private bool isFall;
     public void SetIMove(IMove movement)
     {
         this.movement = movement;
+    }
+
+    public void Fall()
+    {
+        isFall = true;
+        animator.SetBool("Crawl", isFall);
+        ChangeAvatar(fallAvatar);
+    }
+
+    public void Up()
+    {
+        isFall = false;
+        animator.SetBool("Crawl", isFall);
+        ChangeAvatar(idleAvatar);
     }
 
     public void Update()
@@ -35,8 +51,11 @@ public class PlayerAnimationController : MonoBehaviour
             animator.SetBool("Jumping", false);
         }
 
-
-        if(jumped)
+        if(isFall)
+        {
+            ChangeAvatar(fallAvatar);
+        }
+        else if(jumped)
         {
             ChangeAvatar(jumpAvatar);
         }
@@ -53,7 +72,6 @@ public class PlayerAnimationController : MonoBehaviour
             ChangeAvatar(idleAvatar);
         }
     }
-
 
     public void ChangeAvatar(Avatar newAvatar)
     {

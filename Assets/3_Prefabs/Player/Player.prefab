@@ -1299,7 +1299,10 @@ MonoBehaviour:
   slowRunAvatar: {fileID: 9000000, guid: 31359df397345584eb7de047254ffa10, type: 2}
   fastRunAvatar: {fileID: 9000000, guid: 6bc0a947497f93d41b2267d8bf6ef9bf, type: 2}
   jumpAvatar: {fileID: 9000000, guid: 3ca6a767ec55f5c42af69a082d3b1cfb, type: 2}
+  fallAvatar: {fileID: 9000000, guid: ac94bc34ebedaec4eb60ccaadd06a053, type: 2}
   speedOnFastRun: 70
+  currentAvatar: {fileID: 0}
+  isFall: 0
 --- !u!1 &6633020411424046989
 GameObject:
   m_ObjectHideFlags: 0
