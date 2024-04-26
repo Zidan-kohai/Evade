@@ -224,11 +224,12 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         switch(state)
         {
             case PlayerState.Idle:
+                animationController.Up();
                 break;
             case PlayerState.Walk:
                 break;
             case PlayerState.Fall:
-                //Debug.Log("Fall"); 
+                animationController.Fall();
                 passedTimeFromFallToUp = timeToUpFromFall;
                 break;
             case PlayerState.Death: 

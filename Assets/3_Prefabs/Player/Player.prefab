@@ -181,8 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeedOnPlayerUp: 70
   maxSpeedOnPlayerUp: 90
-  startSpeedOnPlayerFall: 30
-  maxSpeedOnPlayerFall: 40
+  startSpeedOnPlayerFall: 5
+  maxSpeedOnPlayerFall: 10
   currrentSpeed: 1
   speedScaleFactor: 4
   mouseSensitivity: 180
@@ -196,8 +196,8 @@ MonoBehaviour:
   isOnGround: 0
   velocity: {x: 0, y: 0, z: 0}
   state: 0
-  timeToUpFromFall: 0
-  timeToDeathFromFall: 0
+  timeToUpFromFall: 2
+  timeToDeathFromFall: 2
   passedTimeFromFallToUp: 0
   passedTimeFromFallToDeath: 0
   inputManager: {fileID: 0}
