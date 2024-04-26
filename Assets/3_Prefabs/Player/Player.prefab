@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 836883443137320651}
   - component: {fileID: 312035018805426778}
   - component: {fileID: 2861547996078224846}
+  - component: {fileID: 1512673573069339496}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -160,13 +161,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 5
-  m_Radius: 0.5
+  m_Height: 15
+  m_Radius: 3
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 3.5, z: 0}
+  m_Center: {x: 0, y: 8.5, z: 0}
 --- !u!114 &2861547996078224846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +186,7 @@ MonoBehaviour:
   maxSpeedOnPlayerFall: 10
   currrentSpeed: 1
   speedScaleFactor: 4
-  mouseSensitivity: 180
+  mouseSensitivity: 5
   jumpHeight: 7
   gravity: -15
   groundChekcRaycastOrigin: {fileID: 5380563815051711409}
@@ -195,6 +196,7 @@ MonoBehaviour:
     m_Bits: 64
   isOnGround: 0
   velocity: {x: 0, y: 0, z: 0}
+  visualHandler: {fileID: 7285955864922664786}
   state: 0
   timeToUpFromFall: 2
   timeToDeathFromFall: 2
@@ -205,6 +207,33 @@ MonoBehaviour:
   actionUI: {fileID: 0}
   animationController: {fileID: 3072787035800879077}
   distanceToHelp: 10
+--- !u!54 &1512673573069339496
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569462121483549870}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1101943947940754484
 GameObject:
   m_ObjectHideFlags: 0

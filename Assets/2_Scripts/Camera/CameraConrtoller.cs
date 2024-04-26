@@ -15,6 +15,22 @@ public class CameraConrtoller : MonoBehaviour
     [SerializeField] private float verticalRotation = 0f;
     [SerializeField] private CameraState state;
 
+    //Need to Refactoring
+    private void Start()
+    {
+        switch (state)
+        {
+            case CameraState.First:
+                firstPersonCamera.gameObject.SetActive(true);
+                thirdPersonCamera.gameObject.SetActive(false);
+                break;
+            case CameraState.Third:
+                firstPersonCamera.gameObject.SetActive(false);
+                thirdPersonCamera.gameObject.SetActive(true);
+                break;
+        }
+    }
+
     private void Update()
     {
         switch (state)
@@ -37,8 +53,12 @@ public class CameraConrtoller : MonoBehaviour
         switch (state)
         {
             case CameraState.First:
+                firstPersonCamera.gameObject.SetActive(true);
+                thirdPersonCamera.gameObject.SetActive(false);   
                 break;
             case CameraState.Third:
+                firstPersonCamera.gameObject.SetActive(false);
+                thirdPersonCamera.gameObject.SetActive(true);
                 break;
         }
     }
@@ -53,6 +73,6 @@ public class CameraConrtoller : MonoBehaviour
 
     private void ThirdPersonConrtoller()
     {
-
+        float mouseY = inputManager.GetMouseDeltaY * mouseSensitivity * Time.deltaTime;
     }
 }

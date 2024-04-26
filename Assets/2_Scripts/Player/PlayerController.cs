@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     [SerializeField] private LayerMask groundLayer; 
     [SerializeField] private bool isOnGround;
     [SerializeField] private Vector3 velocity;
-
+    [SerializeField] private GameObject visualHandler;
     [Header("State")]
     [SerializeField] private PlayerState state;
     [SerializeField] private float timeToUpFromFall;
@@ -156,8 +156,18 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     private void Rotate()
     {
-        float mouseX = inputManager.GetMouseDeltaX * mouseSensitivity * Time.deltaTime;
-        transform.Rotate(Vector3.up * mouseX);
+        //First Person Controller
+        //float mouseX = inputManager.GetMouseDeltaX * mouseSensitivity * Time.deltaTime;
+        //transform.Rotate(Vector3.up * mouseX);
+
+        //Third Person Conteroller
+        
+        Vector3 velocityXY = new Vector3(velocity.x, 0, velocity.z);
+
+        if (velocityXY.magnitude < 0.01f) return;
+
+        Quaternion targetRotation = Quaternion.LookRotation(velocityXY.normalized, Vector3.up);
+        visualHandler.transform.rotation = Quaternion.Lerp(visualHandler.transform.rotation, targetRotation, Time.deltaTime * mouseSensitivity);
     }
 
     private void Move()
@@ -175,7 +185,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         float moveVertical = inputManager.GetMoveVertical;
 
         
-        Vector3 move = transform.right * moveHorizontal + transform.forward * moveVertical;
+        Vector3 move = Camera.main.transform.right * moveHorizontal + Camera.main.transform.forward * moveVertical;
 
         velocity.x = move.x * currrentSpeed;
         velocity.z = move.z * currrentSpeed;
