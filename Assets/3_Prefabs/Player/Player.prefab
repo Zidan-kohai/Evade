@@ -204,7 +204,7 @@ MonoBehaviour:
   reachArea: {fileID: 8162641037547260621}
   actionUI: {fileID: 0}
   animationController: {fileID: 3072787035800879077}
-  distanceToHelp: 8
+  distanceToHelp: 10
 --- !u!1 &1101943947940754484
 GameObject:
   m_ObjectHideFlags: 0
