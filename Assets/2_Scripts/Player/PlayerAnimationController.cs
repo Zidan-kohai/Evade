@@ -22,15 +22,15 @@ public class PlayerAnimationController : MonoBehaviour
     public void Fall()
     {
         isFall = true;
-        animator.SetBool("Crawl", isFall);
         ChangeAvatar(fallAvatar);
+        animator.SetTrigger("Crawl");
     }
 
     public void Up()
     {
         isFall = false;
-        animator.SetBool("Crawl", isFall);
         ChangeAvatar(idleAvatar);
+        animator.SetTrigger("Up");
     }
 
     public void Update()
