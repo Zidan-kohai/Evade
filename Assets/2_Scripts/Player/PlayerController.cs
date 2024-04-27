@@ -192,7 +192,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
         if(moveHorizontal == 0 && moveVertical == 0)
         {
-            currrentSpeed = startSpeed;
+            currrentSpeed -= Time.deltaTime * speedScaleFactor * 4;
+            currrentSpeed = Mathf.Clamp(currrentSpeed, 0, maxSpeed);
             ChangeState(PlayerState.Idle);
         }
         else
@@ -201,6 +202,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
             currrentSpeed = Mathf.Clamp(currrentSpeed, startSpeed, maxSpeed);
             ChangeState(PlayerState.Walk);
         }
+
+        actionUI.ChangeSpeed(currrentSpeed);
     }
 
     private void Jump()

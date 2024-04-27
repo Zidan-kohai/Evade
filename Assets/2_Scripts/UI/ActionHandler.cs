@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ public class ActionHandler : MonoBehaviour
     [SerializeField] private GameObject carryExplain;
     [SerializeField] private GameObject putExplain;
 
+    [Header("Speed")]
+    [SerializeField] private GameObject speedHandler;
+    [SerializeField] private TextMeshProUGUI speedValueView;
 
     #region Help
     public void ShowHelpingUIManual()
@@ -49,6 +53,16 @@ public class ActionHandler : MonoBehaviour
             raisingPercent.Fill(0);
             raisingHandler.SetActive(false);
         }
+    }
+
+    #endregion
+
+
+    #region Speed
+
+    public void ChangeSpeed(float value)
+    {
+        speedValueView.text = value.ToString("F0");
     }
 
     #endregion

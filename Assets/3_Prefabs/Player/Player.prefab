@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeedOnPlayerUp: 70
-  maxSpeedOnPlayerUp: 90
+  maxSpeedOnPlayerUp: 130
   startSpeedOnPlayerFall: 5
   maxSpeedOnPlayerFall: 10
   currrentSpeed: 1
