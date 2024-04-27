@@ -296,4 +296,10 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         Gizmos.DrawRay(groundChekcRaycastOrigin.position, Vector3.down * groundChekcRaycastHeight);
     }
 
+    //maybe i refactoring it in future
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        currrentSpeed -= Time.deltaTime * speedScaleFactor * 10;
+        currrentSpeed = Mathf.Clamp(currrentSpeed, 0, 1000);
+    }
 }
