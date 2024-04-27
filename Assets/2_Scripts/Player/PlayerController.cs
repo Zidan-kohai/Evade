@@ -1,8 +1,13 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 {
+    //I Refactoring it as soon as i can
+    [Header("managers")]
+    [SerializeField] private GameplayController gamelpayController;
+
     [Header("Movement")]
     [SerializeField] private float startSpeedOnPlayerUp = 50f;
     [SerializeField] private float maxSpeedOnPlayerUp = 80f;
@@ -23,8 +28,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     [SerializeField] private PlayerState state;
     [SerializeField] private float timeToUpFromFall;
     [SerializeField] private float timeToDeathFromFall;
-    [SerializeField] private float passedTimeFromFallToUp;
-    [SerializeField] private float passedTimeFromFallToDeath;
+    [SerializeField] private float lostedTimeFromFallToUp;
+    [SerializeField] private float lostedTimeFromFallToDeath;
 
     [Header("Components")]
     [SerializeField] private InputManager inputManager;
@@ -51,6 +56,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     private void Update()
     {
+        if (state == PlayerState.Death) return;
+
         #region Movement
 
         Rotate();
@@ -66,6 +73,19 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         characterController.Move(velocity * Time.deltaTime);
 
         #endregion
+
+        switch (state)
+        {
+            case PlayerState.Idle:
+                break;
+            case PlayerState.Walk:
+                break;
+            case PlayerState.Fall:
+                OnFall();
+                break;
+            case PlayerState.Death:
+                break;
+        }
 
         if(state != PlayerState.Fall && state != PlayerState.Death)
             Help();
@@ -98,24 +118,24 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     public float Raising()
     {
-        passedTimeFromFallToUp -= Time.deltaTime;
+        lostedTimeFromFallToUp -= Time.deltaTime;
 
         float raisingPercent = GetPercentOfRaising();
 
         actionUI.ShowHelpingUISlider(raisingPercent);
 
-        if (passedTimeFromFallToUp <= 0)
+        if (lostedTimeFromFallToUp <= 0)
         {
             ChangeState(PlayerState.Idle);
             actionUI.DisableHelpingUIHandler();
         }
 
-        return Mathf.Abs(passedTimeFromFallToUp / timeToUpFromFall - 1);
+        return Mathf.Abs(lostedTimeFromFallToUp / timeToUpFromFall - 1);
     }
 
     public float GetPercentOfRaising()
     {
-        return Mathf.Abs(passedTimeFromFallToUp / timeToUpFromFall - 1);
+        return Mathf.Abs(lostedTimeFromFallToUp / timeToUpFromFall - 1);
     }
 
     public void AddHumanoid(IHumanoid IHumanoid)
@@ -152,6 +172,18 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     public bool IsJump()
     {
         return !isOnGround && velocity.y != 0;
+    }
+
+    private void OnFall()
+    {
+        lostedTimeFromFallToDeath -= Time.deltaTime;
+
+        actionUI.ChangeDeathPercent(lostedTimeFromFallToDeath / timeToUpFromFall);
+
+        if (lostedTimeFromFallToDeath <= 0)
+        {
+            ChangeState(PlayerState.Death);
+        }
     }
 
     private void Rotate()
@@ -238,7 +270,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     private void ChangeState(PlayerState newState)
     {
         if (state == newState ||
-            ((state == PlayerState.Fall) && (passedTimeFromFallToUp > 0))) return;
+            ((state == PlayerState.Fall) && (lostedTimeFromFallToUp > 0) && newState != PlayerState.Death)) return;
 
         state = newState;
 
@@ -251,9 +283,11 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
                 break;
             case PlayerState.Fall:
                 animationController.Fall();
-                passedTimeFromFallToUp = timeToUpFromFall;
+                lostedTimeFromFallToUp = timeToUpFromFall;
+                lostedTimeFromFallToDeath = timeToDeathFromFall;
                 break;
-            case PlayerState.Death: 
+            case PlayerState.Death:
+                Death();
                 break;
         }
     }
@@ -290,6 +324,12 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
         player = null;
         return false;
+    }
+
+    private void Death()
+    {
+        gamelpayController.OnPlayerDeath();
+        animationController.Death();
     }
 
     private void OnDrawGizmos()

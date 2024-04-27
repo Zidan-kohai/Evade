@@ -592,7 +592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b267875b378be642b46f2fc6acf721e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 1
 --- !u!1 &102454035
 GameObject:
   m_ObjectHideFlags: 0
@@ -3198,10 +3197,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd154709a802da2418b8a3d86d7791fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windows:
-  - {fileID: 1179140340}
-  - {fileID: 1457319782}
-  - {fileID: 97756850}
+  mainWindow: {fileID: 1179140336}
+  ModesWindow: {fileID: 1457319778}
+  TelegramWindow: {fileID: 97756845}
+  currentOpenedWindow: 0
 --- !u!1 &869131486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3635,7 +3634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfc480a1bb27ff4ab0ff674870327d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
 --- !u!1 &1187700304
 GameObject:
   m_ObjectHideFlags: 0
@@ -4635,7 +4633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bf18cf618d4234ba5406d1ab857b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 1
 --- !u!1001 &1476166854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6355,9 +6352,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1457319782}
-        m_TargetAssemblyTypeName: Window, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 851719562}
+        m_TargetAssemblyTypeName: WindowHandler, Assembly-CSharp
+        m_MethodName: OpenModesWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6488,9 +6485,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 97756850}
-        m_TargetAssemblyTypeName: Window, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 851719562}
+        m_TargetAssemblyTypeName: WindowHandler, Assembly-CSharp
+        m_MethodName: OpenTelegramWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6754,7 +6751,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1928342755}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 851719562}
+        m_TargetAssemblyTypeName: WindowHandler, Assembly-CSharp
+        m_MethodName: OpenMainMenuWindow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1928342755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7354,9 +7363,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1179140340}
-        m_TargetAssemblyTypeName: Window, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 851719562}
+        m_TargetAssemblyTypeName: WindowHandler, Assembly-CSharp
+        m_MethodName: OpenMainMenuWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

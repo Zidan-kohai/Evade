@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,15 +10,23 @@ public class ActionHandler : MonoBehaviour
     [SerializeField] private GameObject raisingHandler;
     [SerializeField] private GameObject raisingExplain;
     [SerializeField] private SimpleSlider raisingPercent;
+    private Coroutine raisingCoroutine;
 
     [Header("Carry")]
     [SerializeField] private GameObject carryHandler;
     [SerializeField] private GameObject carryExplain;
     [SerializeField] private GameObject putExplain;
+    private Coroutine carryCoroutine;
 
     [Header("Speed")]
     [SerializeField] private GameObject speedHandler;
     [SerializeField] private TextMeshProUGUI speedValueView;
+    private Coroutine speedCoroutine;
+
+    [Header("Death")]
+    [SerializeField] private GameObject DeathHandler;
+    [SerializeField] private SimpleSlider deathPercent;
+    private Coroutine deathCoroutine;
 
     #region Help
     public void ShowHelpingUIManual()
@@ -57,7 +66,6 @@ public class ActionHandler : MonoBehaviour
 
     #endregion
 
-
     #region Speed
 
     public void ChangeSpeed(float value)
@@ -66,4 +74,32 @@ public class ActionHandler : MonoBehaviour
     }
 
     #endregion
+
+    #region Deathing
+
+    public void ChangeDeathPercent(float value)
+    {
+        deathPercent.Fill(value);
+        DeathHandler.SetActive(true);
+
+        if (deathCoroutine != null)
+            StopCoroutine(deathCoroutine);
+
+        deathCoroutine = StartCoroutine(Wait(1f, () =>
+        {
+            DeathHandler.SetActive(false);
+        }));
+
+        //we can remove logic for showng lose menu here 
+    }
+
+    #endregion
+
+
+    private IEnumerator Wait(float waitTime, Action action)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        action?.Invoke();
+    }
 }

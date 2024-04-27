@@ -7,7 +7,6 @@ public class GameplayMainMenu : MonoBehaviour
     [SerializeField] private GameObject exerciseHandler;
     [SerializeField] private TextMeshProUGUI lostTimeView;
 
-
     public void ChangeLostedTime(float time)
     {
         TimeSpan timeSpan = TimeSpan.FromSeconds(time);

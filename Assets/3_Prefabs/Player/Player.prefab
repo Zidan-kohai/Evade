@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5729a20f8d0fbb4c80f6cf5dc2883c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamelpayController: {fileID: 0}
   startSpeedOnPlayerUp: 70
   maxSpeedOnPlayerUp: 130
   startSpeedOnPlayerFall: 5
@@ -199,9 +200,9 @@ MonoBehaviour:
   visualHandler: {fileID: 7285955864922664786}
   state: 0
   timeToUpFromFall: 2
-  timeToDeathFromFall: 2
-  passedTimeFromFallToUp: 0
-  passedTimeFromFallToDeath: 0
+  timeToDeathFromFall: 30
+  lostedTimeFromFallToUp: 0
+  lostedTimeFromFallToDeath: 0
   inputManager: {fileID: 0}
   reachArea: {fileID: 8162641037547260621}
   actionUI: {fileID: 0}

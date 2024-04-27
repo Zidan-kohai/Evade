@@ -1,14 +1,63 @@
 using UnityEngine;
-using System.Collections.Generic;
 public class WindowHandler : MonoBehaviour
 {
-    [SerializeField] private List<Window> windows;
+    [SerializeField] private GameObject mainWindow;
+    [SerializeField] private GameObject ModesWindow;
+    [SerializeField] private GameObject TelegramWindow;
+    [SerializeField] private MainMenuWindowState currentOpenedWindow;
 
-    private void Start()
+    public void OpenMainMenuWindow()
     {
-        foreach (var window in windows) 
+        mainWindow.SetActive(true);
+        CloseCurrentWindow();
+
+        currentOpenedWindow = MainMenuWindowState.MainMenu;
+    }
+
+    private void CloseMainMenuWindow()
+    {
+        mainWindow.SetActive(false);
+    }
+
+    public void OpenTelegramWindow()
+    {
+        TelegramWindow.SetActive(true);
+        CloseCurrentWindow();
+        currentOpenedWindow = MainMenuWindowState.Telegram;
+    }
+
+    private void CloseTelegramWindow()
+    {
+        TelegramWindow.SetActive(false);
+    }
+
+    public void OpenModesWindow()
+    {
+        ModesWindow.SetActive(true);
+        CloseCurrentWindow(); 
+        currentOpenedWindow = MainMenuWindowState.Modes;
+    }
+
+    private void CloseModesWindow()
+    {
+        ModesWindow.SetActive(false);
+    }
+
+    private void CloseCurrentWindow()
+    {
+        switch(currentOpenedWindow)
         {
-            window.Initialize();
-        } 
+            case MainMenuWindowState.MainMenu:
+                CloseMainMenuWindow();
+                break;
+
+            case MainMenuWindowState.Modes:
+                CloseModesWindow();
+                break;
+
+            case MainMenuWindowState.Telegram:
+                CloseTelegramWindow();
+                break;
+        }
     }
 }
