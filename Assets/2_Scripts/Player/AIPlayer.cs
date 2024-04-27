@@ -205,7 +205,6 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 animationController.Up();
                 currrentMinSpeed = startSpeedOnPlayerUp;
                 currrentMaxSpeed = maxSpeedOnPlayerUp;
-                currrentSpeed = currrentMinSpeed;
                 break;
 
             case PlayerState.Walk:
@@ -245,6 +244,9 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
             ChangeState(PlayerState.Walk);
             currentTimeToChangeState = 0f;
         }
+
+        currrentSpeed -= Time.deltaTime;
+        currrentSpeed = Mathf.Clamp(currrentSpeed, 0, currrentMaxSpeed);
     }
 
     private void OnWalk()
