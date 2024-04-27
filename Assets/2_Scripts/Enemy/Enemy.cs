@@ -268,11 +268,11 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     }
 
     //Maybe i change this solution in future
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider col)
     {
-        if (collision.transform.TryGetComponent(out IPlayer player))
+        if (col.transform.TryGetComponent(out IPlayer player))
         {
-            Debug.Log("collision.transform.name: " + collision.transform.name);
+            Debug.Log("collision.transform.name: " + col.transform.name);
             player.Fall();
         }
     }
