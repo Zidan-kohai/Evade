@@ -187,8 +187,8 @@ MonoBehaviour:
   currrentSpeed: 1
   speedScaleFactor: 4
   mouseSensitivity: 5
-  jumpHeight: 7
-  gravity: -15
+  jumpHeight: 100
+  gravity: -100
   groundChekcRaycastOrigin: {fileID: 5380563815051711409}
   groundChekcRaycastHeight: 1
   groundLayer:
