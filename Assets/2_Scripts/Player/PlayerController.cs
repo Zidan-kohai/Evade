@@ -213,6 +213,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y);
             velocity.y += jumpVelocity;
             isOnGround = false;
+            currrentSpeed += Time.deltaTime * speedScaleFactor * 30;
+            currrentSpeed = Mathf.Clamp(currrentSpeed, 0, maxSpeedOnPlayerUp);
         }
     }
 
