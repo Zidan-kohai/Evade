@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     [SerializeField] private float maxSpeedOnPlayerFall = 30;
     [SerializeField] private float currrentSpeed = 50f;
     [SerializeField] private int speedScaleFactor = 3;
+    [SerializeField] private int slowFactor = 3;
     [SerializeField] private float mouseSensitivity = 100f;
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private float gravity = -9.81f;
@@ -243,8 +244,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
         if(moveHorizontal == 0 && moveVertical == 0)
         {
-            currrentSpeed -= Time.deltaTime * speedScaleFactor * 4;
-            currrentSpeed = Mathf.Clamp(currrentSpeed, 0, maxSpeed);
+            currrentSpeed = 0;
             ChangeState(PlayerState.Idle);
         }
         else
@@ -363,7 +363,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     //maybe i refactoring it in future
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        currrentSpeed -= Time.deltaTime * speedScaleFactor * 10;
+        currrentSpeed -= Time.deltaTime * slowFactor;
         currrentSpeed = Mathf.Clamp(currrentSpeed, 0, 1000);
     }
 
