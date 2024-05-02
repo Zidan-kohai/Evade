@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Analytics;
@@ -55,13 +56,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private float helpDistance;
     [SerializeField] private IPlayer playerToHelp;
 
-    [Header("Visual On Change State"), Tooltip("In Future We need To Delete this all")]
-    [SerializeField] private MeshRenderer meshRenderer;
-    [SerializeField] private Color colorOnUpState;
-    [SerializeField] private Color colorOnFallState;
-    [SerializeField] private Color colorOnDeathState;
-
     private Coroutine coroutine;
+    private string name;
 
     private void Update()
     {
@@ -105,6 +101,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         pointsToWalk = Points;
 
         CameraConrtoller.AddCameraST(virtualCamera);
+
+        name = Helper.GetRandomName();
     }
 
     public void AddHumanoid(IHumanoid IHumanoid)
@@ -231,6 +229,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 break;
 
             case PlayerState.Fall:
+                PlayerStateShower.ShowState(name, state);
                 animationController.Fall();
                 currrentMinSpeed = startSpeedOnPlayerFall;
                 currrentMaxSpeed = maxSpeedOnPlayerFall;
@@ -249,6 +248,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     {
         if(coroutine != null) StopCoroutine(coroutine);
 
+        PlayerStateShower.ShowState(name, state);
         agent.SetDestination(transform.position);
         animationController.Death();
     }

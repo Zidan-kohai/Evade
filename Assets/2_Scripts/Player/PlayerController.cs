@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     [SerializeField] private float distanceToHelp;
 
     private Coroutine coroutine;
+    private string name = "Вы";
 
     private void Start()
     {
@@ -316,6 +318,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
             case PlayerState.Walk:
                 break;
             case PlayerState.Fall:
+                PlayerStateShower.ShowState(name, state);
                 CameraConrtoller.PlayerFallST();
                 animationController.Fall();
                 lostedTimeFromFallToUp = timeToUpFromFall;
@@ -365,6 +368,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     private void Death()
     {
+        PlayerStateShower.ShowState(name, state);
         gamelpayController.OnPlayerDeath();
         animationController.Death();
     }

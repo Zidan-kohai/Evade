@@ -6,7 +6,6 @@ public class GameplayController : MonoBehaviour
 {
     [SerializeField] private GameplayMainMenu mainMenu;
     [SerializeField] private GameplayLoseMenu loseMenu;
-    [SerializeField] private GameObject cameraSwitherHandler;
     [SerializeField] private GameObject lookMenu;
     [SerializeField] private float lastedtime;
 
@@ -22,8 +21,6 @@ public class GameplayController : MonoBehaviour
         //I know this is a shit
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
-        cameraSwitherHandler.SetActive(false);
 
         loseMenu.Show(180 - lastedtime);
     }
