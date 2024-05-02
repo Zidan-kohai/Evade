@@ -58,9 +58,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         reachArea.SetISee(this);
         animationController.SetIMove(this);
 
-        Cursor.lockState = CursorLockMode.Locked;
-
-        CameraConrtoller.AddCameraST(virtualCamera);
+       //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -208,18 +206,32 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     private void Rotate()
     {
-        //First Person Controller
-        //float mouseX = inputManager.GetMouseDeltaX * mouseSensitivity * Time.deltaTime;
-        //transform.Rotate(Vector3.up * mouseX);
+        switch(CameraConrtoller.GetCameraStateST())
+        {
+            case CameraState.First:
+                FirstPersonRotate();
+                break;
+            case CameraState.Third:
+                ThirdPersonRotate();
+                break;
+        }
 
-        //Third Person Conteroller
-        
+    }
+
+    private void ThirdPersonRotate()
+    {
         Vector3 velocityXY = new Vector3(velocity.x, 0, velocity.z);
 
         if (velocityXY.magnitude < 0.01f) return;
 
         Quaternion targetRotation = Quaternion.LookRotation(velocityXY.normalized, Vector3.up);
         visualHandler.transform.rotation = Quaternion.Lerp(visualHandler.transform.rotation, targetRotation, Time.deltaTime * mouseSensitivity);
+    }
+
+    private void FirstPersonRotate()
+    {
+        float mouseX = inputManager.GetMouseDeltaX * mouseSensitivity * Time.deltaTime;
+        transform.Rotate(Vector3.up * mouseX);
     }
 
     private void Move()
@@ -299,10 +311,12 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         {
             case PlayerState.Idle:
                 animationController.Up();
+                CameraConrtoller.PlayerUpST();
                 break;
             case PlayerState.Walk:
                 break;
             case PlayerState.Fall:
+                CameraConrtoller.PlayerFallST();
                 animationController.Fall();
                 lostedTimeFromFallToUp = timeToUpFromFall;
                 lostedTimeFromFallToDeath = timeToDeathFromFall;

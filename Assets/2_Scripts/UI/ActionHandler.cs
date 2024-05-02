@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ActionHandler : MonoBehaviour
@@ -27,6 +26,9 @@ public class ActionHandler : MonoBehaviour
     [SerializeField] private GameObject DeathHandler;
     [SerializeField] private SimpleSlider deathPercent;
     private Coroutine deathCoroutine;
+
+    [Header("Camera")]
+    [SerializeField] private GameObject cameraSwither;
 
     #region Help
     public void ShowHelpingUIManual()
@@ -57,7 +59,15 @@ public class ActionHandler : MonoBehaviour
 
         raisingPercent.Fill(helpPercent);
 
-        if(helpPercent == 1)
+        if (raisingCoroutine != null)
+            StopCoroutine(raisingCoroutine);
+
+        raisingCoroutine = StartCoroutine(Wait(1f, () =>
+        {
+            raisingHandler.SetActive(false);
+        }));
+
+        if (helpPercent == 1)
         {   
             raisingPercent.Fill(0);
             raisingHandler.SetActive(false);
@@ -94,7 +104,6 @@ public class ActionHandler : MonoBehaviour
     }
 
     #endregion
-
 
     private IEnumerator Wait(float waitTime, Action action)
     {
