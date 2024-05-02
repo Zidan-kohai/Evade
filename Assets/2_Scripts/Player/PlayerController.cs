@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     [SerializeField] private bool isOnGround;
     [SerializeField] private Vector3 velocity;
     [SerializeField] private GameObject visualHandler;
+    [SerializeField] private int helpCount;
 
     [Header("State")]
     [SerializeField] private PlayerState state;
@@ -51,8 +52,10 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     [Header("Interactive")]
     [SerializeField] private float distanceToHelp;
 
-    private Coroutine coroutine;
+    [Header("General")]
     private string name = "Вы";
+    private float livedTime = 0;
+    private Coroutine coroutine;
 
     private void Start()
     {
@@ -66,6 +69,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     private void Update()
     {
         if (state == PlayerState.Death) return;
+
+        livedTime += Time.deltaTime;
 
         #region Movement
 
@@ -318,7 +323,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
             case PlayerState.Walk:
                 break;
             case PlayerState.Fall:
-                PlayerStateShower.ShowState(name, state);
+                PlayerStateShower.ShowState(state);
                 CameraConrtoller.PlayerFallST();
                 animationController.Fall();
                 lostedTimeFromFallToUp = timeToUpFromFall;
@@ -342,6 +347,11 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
             {
                 float helpPercent = player.Raising();
                 actionUI.FilHelpigUI(helpPercent);
+
+                if(helpPercent == 1)
+                {
+                    helpCount++;
+                }
             }
         }
         else
@@ -368,8 +378,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     private void Death()
     {
-        PlayerStateShower.ShowState(name, state);
-        gamelpayController.OnPlayerDeath();
+        PlayerStateShower.ShowState(state);
+        gamelpayController.OnPlayerDeath(livedTime);
         animationController.Death();
     }
 

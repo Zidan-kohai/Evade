@@ -16,13 +16,13 @@ public class GameplayController : MonoBehaviour
         mainMenu.ChangeLostedTime(lastedtime);
     }
 
-    public void OnPlayerDeath()
+    public void OnPlayerDeath(float livedTime)
     {
         //I know this is a shit
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        loseMenu.Show(180 - lastedtime);
+        loseMenu.Show(livedTime);
     }
 
     public void ShowLookPanel()

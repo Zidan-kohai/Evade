@@ -2,10 +2,8 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Analytics;
 
 public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 {
@@ -54,14 +52,19 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [Header("Help")]
     [SerializeField] private float safeDistance;
     [SerializeField] private float helpDistance;
+    [SerializeField] private int helpCount;
     [SerializeField] private IPlayer playerToHelp;
 
+    [Header("General")]
+    [SerializeField] private float livedTime = 0;
     private Coroutine coroutine;
     private string name;
 
     private void Update()
     {
         if (state == PlayerState.Death) return;
+
+        livedTime += Time.deltaTime;
 
         switch (state)
         {
@@ -229,7 +232,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 break;
 
             case PlayerState.Fall:
-                PlayerStateShower.ShowState(name, state);
+                PlayerStateShower.ShowAIState(name, state);
                 animationController.Fall();
                 currrentMinSpeed = startSpeedOnPlayerFall;
                 currrentMaxSpeed = maxSpeedOnPlayerFall;
@@ -248,7 +251,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     {
         if(coroutine != null) StopCoroutine(coroutine);
 
-        PlayerStateShower.ShowState(name, state);
+        PlayerStateShower.ShowAIState(name, state);
         agent.SetDestination(transform.position);
         animationController.Death();
     }
@@ -457,7 +460,10 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
         if(distanceToPlayer < helpDistance)
         {
-            player.Raising();
+            if(player.Raising() == 1)
+            {
+                helpCount++;
+            }
         }
         else
         {
