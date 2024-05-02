@@ -1594,10 +1594,8 @@ MonoBehaviour:
   maxEscapeTime: 5
   safeDistance: 15
   helpDistance: 11
-  meshRenderer: {fileID: 0}
-  colorOnUpState: {r: 1, g: 1, b: 1, a: 1}
-  colorOnFallState: {r: 0.9811321, g: 0.6395067, b: 0.087931626, a: 1}
-  colorOnDeathState: {r: 1, g: 0, b: 0, a: 1}
+  helpCount: 0
+  livedTime: 0
 --- !u!136 &2689890232233979099
 CapsuleCollider:
   m_ObjectHideFlags: 0

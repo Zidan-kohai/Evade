@@ -106,7 +106,17 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         CameraConrtoller.AddCameraST(virtualCamera);
 
         name = Helper.GetRandomName();
+
+        GameplayController.AddPlayer(this);
     }
+
+    public string GetName() => name;
+
+    public int GetEarnedMoney() => 0;
+
+    public int GetHelpCount() => helpCount;
+
+    public float GetSurvivedTime() => livedTime + 0.2f;
 
     public void AddHumanoid(IHumanoid IHumanoid)
     {

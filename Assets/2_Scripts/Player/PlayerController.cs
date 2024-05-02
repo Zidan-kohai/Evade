@@ -62,8 +62,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         characterController = GetComponent<CharacterController>();
         reachArea.SetISee(this);
         animationController.SetIMove(this);
-
-       //Cursor.lockState = CursorLockMode.Locked;
+        GameplayController.AddPlayer(this);
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -105,10 +105,18 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
             Help();
     }
 
+    public string GetName() => name;
+
+    public int GetEarnedMoney() => 0;
+
     public Transform GetTransform()
     {
         return transform;
     }
+
+    public int GetHelpCount() => helpCount;
+
+    public float GetSurvivedTime() => livedTime;
 
     public bool IsFallOrDeath()
     {
