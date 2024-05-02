@@ -239,6 +239,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         
         Vector3 move = Camera.main.transform.right * moveHorizontal + Camera.main.transform.forward * moveVertical;
 
+        move.Normalize();
+
         velocity.x = move.x * currrentSpeed;
         velocity.z = move.z * currrentSpeed;
 
