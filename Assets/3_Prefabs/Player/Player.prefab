@@ -81,7 +81,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 2
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -199,6 +199,7 @@ MonoBehaviour:
   isOnGround: 0
   velocity: {x: 0, y: 0, z: 0}
   visualHandler: {fileID: 7285955864922664786}
+  helpCount: 0
   state: 0
   timeToUpFromFall: 2
   timeToDeathFromFall: 30
@@ -287,7 +288,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 2
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 836883443137320651}
   m_Follow: {fileID: 836883443137320651}

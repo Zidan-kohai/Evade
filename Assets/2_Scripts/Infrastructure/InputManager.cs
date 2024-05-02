@@ -8,12 +8,14 @@ public class InputManager : MonoBehaviour
     private float moveVertical;
     private bool space;
     private bool IsE;
+    private bool IsTab;
     public float GetMouseDeltaX => mouseDeltaX;
     public float GetMouseDeltaY => mouseDeltaY;
     public float GetMoveHorizontal => moveHorizontal;
     public float GetMoveVertical => moveVertical;
     public bool GetSpace => space;
     public bool GetIsE => IsE;
+    public bool GetIsTab => IsTab;
 
     void Update()
     {
@@ -27,5 +29,7 @@ public class InputManager : MonoBehaviour
         space = Input.GetButtonDown("Jump");
 
         IsE = Input.GetKey(KeyCode.E);
+
+        IsTab = Input.GetKeyDown(KeyCode.Tab);
     }
 }

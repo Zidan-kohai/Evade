@@ -24,6 +24,9 @@ public class CameraConrtoller : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         switch (currentState)
         {
             case CameraState.First:
@@ -49,6 +52,9 @@ public class CameraConrtoller : MonoBehaviour
             case CameraState.Third:
                 break;
         }
+
+        if (inputManager.GetIsTab)
+            NextState();
     }
 
     public static void AddCameraST(CinemachineVirtualCamera virtualCamera)
