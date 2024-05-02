@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     [SerializeField] private bool isOnGround;
     [SerializeField] private Vector3 velocity;
     [SerializeField] private GameObject visualHandler;
+
     [Header("State")]
     [SerializeField] private PlayerState state;
     [SerializeField] private float timeToUpFromFall;
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     [Header("Interactive")]
     [SerializeField] private float distanceToHelp;
+
+    private Coroutine coroutine;
 
     private void Start()
     {
@@ -113,11 +117,21 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     public void Fall()
     {
+        if (state == PlayerState.Death) return;
         ChangeState(PlayerState.Fall);
     }
 
     public float Raising()
     {
+        ChangeState(PlayerState.Raising);
+
+        if (coroutine != null) StopCoroutine(coroutine);
+
+        coroutine = StartCoroutine(Wait(0.5f, () =>
+        {
+            ChangeState(PlayerState.Fall);
+        }));
+
         lostedTimeFromFallToUp -= Time.deltaTime;
 
         float raisingPercent = GetPercentOfRaising();
@@ -128,6 +142,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         {
             ChangeState(PlayerState.Idle);
             actionUI.DisableHelpingUIHandler();
+            StopCoroutine(coroutine);
         }
 
         return Mathf.Abs(lostedTimeFromFallToUp / timeToUpFromFall - 1);
@@ -178,7 +193,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     {
         lostedTimeFromFallToDeath -= Time.deltaTime;
 
-        actionUI.ChangeDeathPercent(lostedTimeFromFallToDeath / timeToUpFromFall);
+        actionUI.ChangeDeathPercent(lostedTimeFromFallToDeath / timeToDeathFromFall);
 
         if (lostedTimeFromFallToDeath <= 0)
         {
@@ -286,6 +301,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
                 lostedTimeFromFallToUp = timeToUpFromFall;
                 lostedTimeFromFallToDeath = timeToDeathFromFall;
                 break;
+            case PlayerState.Raising:
+                break;
             case PlayerState.Death:
                 Death();
                 break;
@@ -332,10 +349,11 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         animationController.Death();
     }
 
-    private void OnDrawGizmos()
+    private IEnumerator Wait(float waitTime, Action action)
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawRay(groundChekcRaycastOrigin.position, Vector3.down * groundChekcRaycastHeight);
+        yield return new WaitForSeconds(waitTime);
+
+        action?.Invoke();
     }
 
     //maybe i refactoring it in future
@@ -344,4 +362,11 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         currrentSpeed -= Time.deltaTime * speedScaleFactor * 10;
         currrentSpeed = Mathf.Clamp(currrentSpeed, 0, 1000);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(groundChekcRaycastOrigin.position, Vector3.down * groundChekcRaycastHeight);
+    }
+
 }

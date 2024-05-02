@@ -28424,7 +28424,7 @@ PrefabInstance:
       objectReference: {fileID: 210689042}
     - target: {fileID: 2861547996078224846, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: timeToDeathFromFall
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6452385235044809338, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_Avatar

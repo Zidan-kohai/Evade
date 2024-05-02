@@ -142,6 +142,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     public void Fall()
     {
+        if (state == PlayerState.Death) return;
         ChangeState(PlayerState.Fall);
     }
 
@@ -219,7 +220,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 break;
 
             case PlayerState.Death:
-
+                animationController.Death();
                 break;
         }
     }
