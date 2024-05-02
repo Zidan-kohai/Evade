@@ -32,8 +32,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private PlayerState state;
     [SerializeField] private float timeToUpFromFall;
     [SerializeField] private float timeToDeathFromFall;
-    [SerializeField] private float passedTimeFromFallToUp;
-    [SerializeField] private float lastedTimeFromFallToDeath;
+    [SerializeField] private float lostedTimeFromFallToUp;
+    [SerializeField] private float lostedTimeFromFallToDeath;
 
 
     [Header("Idle")]
@@ -60,9 +60,13 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private Color colorOnFallState;
     [SerializeField] private Color colorOnDeathState;
 
+    private Coroutine coroutine;
+
     private void Update()
     {
-        switch(state)
+        if (state == PlayerState.Death) return;
+
+        switch (state)
         {
             case PlayerState.Idle:
                 if(!CheckPlayerAndEnemyToHelp())
@@ -78,9 +82,9 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
             case PlayerState.Fall:
                 OnFall();
                 break;
-            case PlayerState.Death:
-                break;
             case PlayerState.Raising:
+                break;
+            case PlayerState.Death:
                 break;
         }
 
@@ -143,6 +147,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     public void Fall()
     {
         if (state == PlayerState.Death) return;
+
         ChangeState(PlayerState.Fall);
     }
 
@@ -168,19 +173,30 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     public float Raising()
     {
-        passedTimeFromFallToUp -= Time.deltaTime;
+        ChangeState(PlayerState.Raising);
 
-        if(passedTimeFromFallToUp <= 0)
+        if (coroutine != null) StopCoroutine(coroutine);
+
+        coroutine = StartCoroutine(Wait(0.5f, () =>
         {
-            ChangeState(PlayerState.Idle);
+            ChangeState(PlayerState.Fall);
+        }));
+
+        lostedTimeFromFallToUp -= Time.deltaTime;
+
+
+        if(lostedTimeFromFallToUp <= 0)
+        {
+            ChangeState(PlayerState.Idle); 
+            StopCoroutine(coroutine);
         }
 
-        return Mathf.Abs(passedTimeFromFallToUp / timeToUpFromFall - 1);
+        return Mathf.Abs(lostedTimeFromFallToUp / timeToUpFromFall - 1);
     }
 
     public float GetPercentOfRaising()
     {
-        return Mathf.Abs(passedTimeFromFallToUp / timeToUpFromFall - 1);
+        return Mathf.Abs(lostedTimeFromFallToUp / timeToUpFromFall - 1);
     }
 
     public float MoveSpeed()
@@ -196,7 +212,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     private void ChangeState(PlayerState newState)
     {
         if (state == newState ||
-            ((state == PlayerState.Fall) && (passedTimeFromFallToUp > 0))) return;
+            ((state == PlayerState.Fall) && (lostedTimeFromFallToUp > 0) && (newState != PlayerState.Death))) return;
 
         state = newState;
 
@@ -216,13 +232,22 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 currrentMinSpeed = startSpeedOnPlayerFall;
                 currrentMaxSpeed = maxSpeedOnPlayerFall;
                 currrentSpeed = currrentMinSpeed;
-                passedTimeFromFallToUp = timeToUpFromFall; 
+                lostedTimeFromFallToUp = timeToUpFromFall;
+                lostedTimeFromFallToDeath = timeToDeathFromFall;
                 break;
 
             case PlayerState.Death:
-                animationController.Death();
+                Death();
                 break;
         }
+    }
+
+    private void Death()
+    {
+        if(coroutine != null) StopCoroutine(coroutine);
+
+        agent.SetDestination(transform.position);
+        animationController.Death();
     }
 
     private void OnIdle()
@@ -263,7 +288,13 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     private void OnFall()
     {
-        if(players.Count > 0)
+        lostedTimeFromFallToDeath -= Time.deltaTime;
+
+        if(lostedTimeFromFallToDeath < 0)
+        {
+            ChangeState(PlayerState.Death);
+        }
+        else if(players.Count > 0)
         {
             WalkToPlayerOnFail();
         }

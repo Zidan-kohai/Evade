@@ -1349,9 +1349,9 @@ MonoBehaviour:
   animationController: {fileID: 14873245123960596}
   state: 0
   timeToUpFromFall: 2
-  timeToDeathFromFall: 1000
-  passedTimeFromFallToUp: 0
-  lastedTimeFromFallToDeath: 1000
+  timeToDeathFromFall: 30
+  lostedTimeFromFallToUp: 0
+  lostedTimeFromFallToDeath: 0
   lastedTimeFromStartIdleToRotate: 0
   timeToChangeState: 5
   currentTimeToChangeState: 0
