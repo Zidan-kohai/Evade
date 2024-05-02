@@ -7,7 +7,8 @@ public class PlayerSpawner : Spawner
     [SerializeField] private List<Transform> Points;
     [SerializeField] private int minSpawnCount;
     [SerializeField] private int spawnedEnemyCount;
-    private void Awake()
+
+    private void Start()
     {
         SpawnUnits();
     }

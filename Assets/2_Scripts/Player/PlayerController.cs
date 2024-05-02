@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     [SerializeField] private ReachArea reachArea;
     [SerializeField] private ActionHandler actionUI;
     [SerializeField] private PlayerAnimationController animationController;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
     private CharacterController characterController;
 
     [Header("Humanoids")]
@@ -56,6 +58,8 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         animationController.SetIMove(this);
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        CameraConrtoller.AddCameraST(virtualCamera);
     }
 
     private void Update()

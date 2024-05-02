@@ -1,78 +1,54 @@
 using Cinemachine;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraConrtoller : MonoBehaviour
 {
+    private static CameraConrtoller instance;
+
     [Header("Components")]
     [SerializeField] private Camera camera;
     [SerializeField] private InputManager inputManager;
     [SerializeField] private CinemachineVirtualCamera firstPersonCamera;
-    [SerializeField] private CinemachineVirtualCamera thirdPersonCamera;
+    [SerializeField] private List<CinemachineVirtualCamera> AIPlayersCamera;
+    [SerializeField] private int currentAIPlayerCameraIndex;
 
-    [SerializeField] private float mouseSensitivity;
-    [SerializeField] private float minVerticalRotateClamp = -90f;
-    [SerializeField] private float maxVerticalRotateClamp = 90f; 
-    [SerializeField] private float verticalRotation = 0f;
-    [SerializeField] private CameraState state;
+    //[SerializeField] private float mouseSensitivity;
+    //[SerializeField] private float minVerticalRotateClamp = -90f;
+    //[SerializeField] private float maxVerticalRotateClamp = 90f; 
+    //[SerializeField] private float verticalRotation = 0f;
+    //[SerializeField] private CameraState state;
 
-    //Need to Refactoring
-    private void Start()
+    private void Awake()
     {
-        switch (state)
-        {
-            case CameraState.First:
-                firstPersonCamera.gameObject.SetActive(true);
-                thirdPersonCamera.gameObject.SetActive(false);
-                break;
-            case CameraState.Third:
-                firstPersonCamera.gameObject.SetActive(false);
-                thirdPersonCamera.gameObject.SetActive(true);
-                break;
-        }
+        instance = this;
     }
 
-    private void Update()
+    public static void AddCameraST(CinemachineVirtualCamera virtualCamera)
     {
-        switch (state)
-        {
-            case CameraState.First:
-                FirstPersonConrtoller();
-                break;
-            case CameraState.Third:
-                ThirdPersonConrtoller();
-                break;
-        }
+        instance.AddCamera(virtualCamera);
     }
 
-    public void ChangeState(CameraState newState)
+    private void AddCamera(CinemachineVirtualCamera virtualCamera)
     {
-        if (newState == state) return;
-
-        state = newState;
-
-        switch (state)
-        {
-            case CameraState.First:
-                firstPersonCamera.gameObject.SetActive(true);
-                thirdPersonCamera.gameObject.SetActive(false);   
-                break;
-            case CameraState.Third:
-                firstPersonCamera.gameObject.SetActive(false);
-                thirdPersonCamera.gameObject.SetActive(true);
-                break;
-        }
+        AIPlayersCamera.Add(virtualCamera);
     }
 
-    private void FirstPersonConrtoller()
+    public void NextCamera()
     {
-        float mouseY = inputManager.GetMouseDeltaY * mouseSensitivity * Time.deltaTime;
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, minVerticalRotateClamp, maxVerticalRotateClamp);
-        firstPersonCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+        AIPlayersCamera[currentAIPlayerCameraIndex].Priority = 1;
+
+        currentAIPlayerCameraIndex = (currentAIPlayerCameraIndex + 1) % AIPlayersCamera.Count;
+
+        AIPlayersCamera[currentAIPlayerCameraIndex].Priority = 2;
     }
 
-    private void ThirdPersonConrtoller()
+    public void PreviousCamera()
     {
-        float mouseY = inputManager.GetMouseDeltaY * mouseSensitivity * Time.deltaTime;
+        AIPlayersCamera[currentAIPlayerCameraIndex].Priority = 1;
+
+        currentAIPlayerCameraIndex = (currentAIPlayerCameraIndex - 1) < 0 ? AIPlayersCamera.Count - 1 : currentAIPlayerCameraIndex - 1;
+
+        AIPlayersCamera[currentAIPlayerCameraIndex].Priority = 2;
     }
 }

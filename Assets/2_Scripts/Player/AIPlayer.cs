@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private ReachArea reachArea;
     [SerializeField] private PlayerAnimationController animationController;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
     [Header("Humanoids")]
     [SerializeField] private List<IEnemy> enemies = new List<IEnemy>();
@@ -34,7 +36,6 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private float timeToDeathFromFall;
     [SerializeField] private float lostedTimeFromFallToUp;
     [SerializeField] private float lostedTimeFromFallToDeath;
-
 
     [Header("Idle")]
     [SerializeField] private float lastedTimeFromStartIdleToRotate = 0f;
@@ -102,6 +103,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         gameObject.SetActive(true);
 
         pointsToWalk = Points;
+
+        CameraConrtoller.AddCameraST(virtualCamera);
     }
 
     public void AddHumanoid(IHumanoid IHumanoid)
@@ -332,8 +335,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 }
             }
         }
-
-        SetDestination(nearnestPlayer.GetTransform().position);
+        if(nearnestPlayer != null) 
+            SetDestination(nearnestPlayer.GetTransform().position);
     }
 
     private void MoveAwayFromEnemies()
