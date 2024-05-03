@@ -356,7 +356,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
                 float helpPercent = player.Raising();
                 actionUI.FilHelpigUI(helpPercent);
 
-                if(helpPercent == 1)
+                if(helpPercent >= 1)
                 {
                     helpCount++;
                 }

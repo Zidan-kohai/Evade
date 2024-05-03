@@ -470,7 +470,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
         if(distanceToPlayer < helpDistance)
         {
-            if(player.Raising() == 1)
+            if(player.Raising() >= 1)
             {
                 helpCount++;
             }
