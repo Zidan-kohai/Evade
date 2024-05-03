@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameplayWinMenu : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class GameplayWinMenu : MonoBehaviour
         {
             AddPlayer(player.GetName(), player.GetHelpCount(), player.GetSurvivedTime(), player.GetEarnedMoney());
         }
+
+        StartCoroutine(Wait(5f, () =>
+        {
+            gameObject.SetActive(false);
+            chooseMap.Initialize(playerCount);
+        }));
     }
 
     public void AddPlayer(string name, int helpedCount, float survivedCount, int earnedMoney)
@@ -30,5 +37,11 @@ public class GameplayWinMenu : MonoBehaviour
                 return;
             }
         }
+    }
+
+    private IEnumerator Wait(float waitTime, Action action)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+        action?.Invoke();
     }
 }
