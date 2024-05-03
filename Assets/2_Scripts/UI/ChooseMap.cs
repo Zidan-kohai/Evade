@@ -47,6 +47,8 @@ public class ChooseMap : MonoBehaviour
             return;
         }
         //there should be a logic in deciding which card to launch
+
+        sceneLoader.LoadScene(1);
     }
 
     private void AddEventToButton()
