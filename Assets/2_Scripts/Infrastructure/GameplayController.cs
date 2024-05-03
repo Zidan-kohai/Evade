@@ -63,11 +63,7 @@ public class GameplayController : MonoBehaviour
     {
         gameOver = true;
         Time.timeScale = 0;
-        winMenu.gameObject.SetActive(true);
-        foreach (var player in players)
-        {
-            winMenu.AddPlayer(player.GetName(), player.GetHelpCount(), player.GetSurvivedTime(), player.GetEarnedMoney());
-        }
+        winMenu.Initialize(players);
     }
 
 }
