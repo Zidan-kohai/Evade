@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -34,19 +35,8 @@ public class ChooseMap : MonoBehaviour
         SpawnPlayerIcon(playerCount);
 
         AddEventToButton();
-        
-    }
 
-    private void Update()
-    {
-        timeToChooseMap -= Time.deltaTime;
-        TimeSpan time = TimeSpan.FromSeconds(timeToChooseMap);
-        timeView.text = $"{time.Minutes} : {time.Seconds}";
-
-        if(timeToChooseMap <= 0)
-        {
-            DecideWhichMapOpen();
-        }
+        StartCoroutine(Wait());
     }
 
     private void DecideWhichMapOpen()
@@ -98,5 +88,18 @@ public class ChooseMap : MonoBehaviour
                 player.Initialize(i.ToString());
             }
         }
+    }
+
+    private IEnumerator Wait()
+    {
+        while(timeToChooseMap > 0)
+        {
+            yield return new WaitForSecondsRealtime(1f);
+            timeToChooseMap -= 1f;
+            TimeSpan time = TimeSpan.FromSeconds(timeToChooseMap);
+            timeView.text = $"{time.Minutes} : {time.Seconds}";
+        }
+
+        DecideWhichMapOpen();
     }
 }
