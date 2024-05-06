@@ -17211,7 +17211,7 @@ MonoBehaviour:
   speedValueView: {fileID: 286354094}
   DeathHandler: {fileID: 100519839}
   deathPercent: {fileID: 22094021}
-  cameraSwither: {fileID: 0}
+  cameraSwither: {fileID: 492470159}
 --- !u!114 &1021704850 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1855033327553490587, guid: 0d2236ee8cb079e49a26fe46c4aca0a8, type: 3}

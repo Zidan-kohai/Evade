@@ -14,6 +14,7 @@ public class CameraConrtoller : MonoBehaviour
     [SerializeField] private List<CinemachineVirtualCamera> AIPlayersCamera;
     [SerializeField] private int currentAIPlayerCameraIndex;
     [SerializeField] private GameObject cameraSwitherHandler;
+    [SerializeField] private bool canSwitchCamera = true;
 
     [SerializeField] private float mouseSensitivity;
     [SerializeField] private float minVerticalRotateClamp = -90f;
@@ -53,7 +54,7 @@ public class CameraConrtoller : MonoBehaviour
                 break;
         }
 
-        if (inputManager.GetIsTab)
+        if (inputManager.GetIsTab && canSwitchCamera)
             NextState();
     }
 
@@ -123,6 +124,7 @@ public class CameraConrtoller : MonoBehaviour
 
     private void PlayerFall()
     {
+        canSwitchCamera = false;
         stateOnUp = currentState;
         cameraSwitherHandler.SetActive(false);
         ChangeState(CameraState.Third);
@@ -130,6 +132,7 @@ public class CameraConrtoller : MonoBehaviour
 
     private void PlayerUp()
     {
+        canSwitchCamera = true;
         ChangeState(stateOnUp);
         cameraSwitherHandler.SetActive(true);
     }
