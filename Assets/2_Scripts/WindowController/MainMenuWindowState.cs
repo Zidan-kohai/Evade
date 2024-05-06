@@ -2,5 +2,6 @@
 {
     MainMenu,
     Modes,
-    Telegram
+    Telegram,
+    SimpleShop
 }

@@ -4,8 +4,10 @@ public class WindowHandler : MonoBehaviour
     [SerializeField] private GameObject mainWindow;
     [SerializeField] private GameObject ModesWindow;
     [SerializeField] private GameObject TelegramWindow;
+    [SerializeField] private GameObject SimpleShopWindow;
     [SerializeField] private MainMenuWindowState currentOpenedWindow;
 
+    #region MainMenu
     public void OpenMainMenuWindow()
     {
         mainWindow.SetActive(true);
@@ -18,7 +20,9 @@ public class WindowHandler : MonoBehaviour
     {
         mainWindow.SetActive(false);
     }
+    #endregion
 
+    #region Telegram
     public void OpenTelegramWindow()
     {
         TelegramWindow.SetActive(true);
@@ -30,7 +34,9 @@ public class WindowHandler : MonoBehaviour
     {
         TelegramWindow.SetActive(false);
     }
+    #endregion
 
+    #region ModesWindow
     public void OpenModesWindow()
     {
         ModesWindow.SetActive(true);
@@ -42,6 +48,21 @@ public class WindowHandler : MonoBehaviour
     {
         ModesWindow.SetActive(false);
     }
+    #endregion
+
+    #region SimpleShops
+    public void OpenSimpleShopWindow()
+    {
+        SimpleShopWindow.SetActive(true);
+        CloseCurrentWindow();
+        currentOpenedWindow = MainMenuWindowState.SimpleShop;
+    }
+
+    private void CloseSimpleShopWindow()
+    {
+        SimpleShopWindow.SetActive(false);
+    }
+    #endregion
 
     private void CloseCurrentWindow()
     {
@@ -57,6 +78,10 @@ public class WindowHandler : MonoBehaviour
 
             case MainMenuWindowState.Telegram:
                 CloseTelegramWindow();
+                break;
+
+            case MainMenuWindowState.SimpleShop:
+                CloseSimpleShopWindow();
                 break;
         }
     }
