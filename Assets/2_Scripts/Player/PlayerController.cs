@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     [SerializeField] private int speedScaleFactor = 3;
     [SerializeField] private int slowFactor = 3;
     [SerializeField] private float mouseSensitivity = 100f;
+    [SerializeField] private bool canJump = true;
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private Transform groundChekcRaycastOrigin; 
@@ -288,7 +289,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     private void Jump()
     {
-        if (inputManager.GetSpace && isOnGround)
+        if (inputManager.GetSpace && isOnGround && canJump)
         {
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y);
             velocity.y += jumpVelocity;
@@ -325,12 +326,15 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         switch(state)
         {
             case PlayerState.Idle:
+                canJump = true;
                 animationController.Up();
                 CameraConrtoller.PlayerUpST();
                 break;
             case PlayerState.Walk:
+                canJump = true;
                 break;
             case PlayerState.Fall:
+                canJump = false;
                 PlayerStateShower.ShowState(state);
                 CameraConrtoller.PlayerFallST();
                 animationController.Fall();
@@ -338,8 +342,10 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
                 lostedTimeFromFallToDeath = timeToDeathFromFall;
                 break;
             case PlayerState.Raising:
+                canJump = false;
                 break;
             case PlayerState.Death:
+                canJump = false;
                 Death();
                 break;
         }
