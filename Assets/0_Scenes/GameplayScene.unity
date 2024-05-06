@@ -2865,6 +2865,7 @@ MonoBehaviour:
   - {fileID: 239001905}
   currentAIPlayerCameraIndex: 0
   cameraSwitherHandler: {fileID: 492470159}
+  canSwitchCamera: 0
   mouseSensitivity: 100
   minVerticalRotateClamp: -90
   maxVerticalRotateClamp: 90
@@ -4169,6 +4170,7 @@ MonoBehaviour:
   endMenu: {fileID: 899512927}
   lookMenu: {fileID: 304568216}
   lastedtime: 50
+  gameOver: 0
 --- !u!1 &211553676
 GameObject:
   m_ObjectHideFlags: 0
@@ -16212,6 +16214,7 @@ MonoBehaviour:
     survivedTime: {fileID: 624804760}
     earnedMoney: {fileID: 624804759}
   chooseMap: {fileID: 955150530}
+  HeaderTextView: {fileID: 565060704}
   playerCount: 0
 --- !u!1001 &903644243
 PrefabInstance:
@@ -32568,6 +32571,10 @@ PrefabInstance:
       propertyPath: gamelpayController
       value: 
       objectReference: {fileID: 210689042}
+    - target: {fileID: 2861547996078224846, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: timeToDeathFromFall
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3867104080045918885, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_YawDamping
       value: 0
@@ -32590,11 +32597,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017054937
+      value: 0.000000017054946
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000002277831
+      value: -0.0000000022778321
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

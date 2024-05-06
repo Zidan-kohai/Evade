@@ -63,8 +63,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         characterController = GetComponent<CharacterController>();
         reachArea.SetISee(this);
         animationController.SetIMove(this);
-        GameplayController.AddPlayer(this);
-        //Cursor.lockState = CursorLockMode.Locked;
+        GameplayController.AddRealyPlayer(this);
     }
 
     private void Update()

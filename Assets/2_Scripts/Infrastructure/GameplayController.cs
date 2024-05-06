@@ -12,8 +12,9 @@ public class GameplayController : MonoBehaviour
     [SerializeField] private GameplayEndMenu endMenu;
     [SerializeField] private GameObject lookMenu;
     [SerializeField] private float lastedtime;
-    private bool gameOver = false;
-    [SerializeField] List<IPlayer> players = new List<IPlayer>();
+    [SerializeField] private bool gameOver = false;
+    [SerializeField] private IPlayer realyPlayer;
+    [SerializeField] private List<IPlayer> players  = new List<IPlayer>();
 
     private void Awake()
     {
@@ -37,6 +38,11 @@ public class GameplayController : MonoBehaviour
     public static void AddPlayer(IPlayer player)
     {
         instance.players.Add(player);
+    }
+
+    public static void AddRealyPlayer(IPlayer player)
+    {
+        instance.realyPlayer = player;
     }
 
     public void OnPlayerDeath(float livedTime)
@@ -67,7 +73,7 @@ public class GameplayController : MonoBehaviour
         mainMenu.Disable();
         loseMenu.Disable();
         lookMenu.SetActive(false);
-        endMenu.Initialize(players);
+        endMenu.Initialize(players, realyPlayer);
     }
 
 }
