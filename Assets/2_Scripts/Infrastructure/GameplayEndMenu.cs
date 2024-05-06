@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameplayWinMenu : MonoBehaviour
+public class GameplayEndMenu : MonoBehaviour
 {
     [SerializeField] private List<PlayerResult> playersResult;
     [SerializeField] private ChooseMap chooseMap;

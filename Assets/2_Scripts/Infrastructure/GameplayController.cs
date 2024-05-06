@@ -9,7 +9,7 @@ public class GameplayController : MonoBehaviour
 
     [SerializeField] private GameplayMainMenu mainMenu;
     [SerializeField] private GameplayLoseMenu loseMenu;
-    [SerializeField] private GameplayWinMenu winMenu;
+    [SerializeField] private GameplayEndMenu endMenu;
     [SerializeField] private GameObject lookMenu;
     [SerializeField] private float lastedtime;
     private bool gameOver = false;
@@ -30,7 +30,7 @@ public class GameplayController : MonoBehaviour
 
         if (lastedtime <= 0)
         {
-            Win();
+            End();
         }
     }
 
@@ -59,11 +59,15 @@ public class GameplayController : MonoBehaviour
         SceneManager.LoadScene(index);
     }
 
-    private void Win()
+    private void End()
     {
         gameOver = true;
         Time.timeScale = 0;
-        winMenu.Initialize(players);
+
+        mainMenu.Disable();
+        loseMenu.Disable();
+        lookMenu.SetActive(false);
+        endMenu.Initialize(players);
     }
 
 }

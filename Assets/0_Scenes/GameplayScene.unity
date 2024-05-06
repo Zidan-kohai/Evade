@@ -4166,7 +4166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 1781955126}
   loseMenu: {fileID: 473195531}
-  winMenu: {fileID: 899512927}
+  endMenu: {fileID: 899512927}
   lookMenu: {fileID: 304568216}
   lastedtime: 50
 --- !u!1 &211553676
@@ -16089,7 +16089,7 @@ GameObject:
   - component: {fileID: 899512925}
   - component: {fileID: 899512927}
   m_Layer: 5
-  m_Name: WinPanel
+  m_Name: EndPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32590,11 +32590,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017054946
+      value: -0.000000017054937
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000022778321
+      value: 0.000000002277831
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
