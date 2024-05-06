@@ -2861,8 +2861,8 @@ MonoBehaviour:
   camera: {fileID: 122790196}
   inputManager: {fileID: 442789067}
   firstPersonCamera: {fileID: 1552272844}
-  AIPlayersCamera:
-  - {fileID: 239001905}
+  thirdPlayer: {fileID: 239001905}
+  AIPlayersCamera: []
   currentAIPlayerCameraIndex: 0
   cameraSwitherHandler: {fileID: 492470159}
   canSwitchCamera: 0
@@ -32597,11 +32597,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017054946
+      value: -0.000000017054937
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000022778321
+      value: 0.000000002277831
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

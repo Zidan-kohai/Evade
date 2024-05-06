@@ -11,7 +11,8 @@ public class CameraConrtoller : MonoBehaviour
     [SerializeField] private Camera camera;
     [SerializeField] private InputManager inputManager;
     [SerializeField] private CinemachineVirtualCamera firstPersonCamera;
-    [SerializeField] private List<CinemachineVirtualCamera> AIPlayersCamera;
+    [SerializeField] private CinemachineVirtualCamera thirdPlayer;
+    [SerializeField] private List<IPlayerCamera> AIPlayersCamera;
     [SerializeField] private int currentAIPlayerCameraIndex;
     [SerializeField] private GameObject cameraSwitherHandler;
     [SerializeField] private bool canSwitchCamera = true;
@@ -32,11 +33,11 @@ public class CameraConrtoller : MonoBehaviour
         {
             case CameraState.First:
                 firstPersonCamera.Priority = 2;
-                AIPlayersCamera[0].Priority = 1;
+                thirdPlayer.Priority = 1;
                 break;
             case CameraState.Third:
                 firstPersonCamera.Priority = 1;
-                AIPlayersCamera[0].Priority = 2;
+                thirdPlayer.Priority = 2;
                 break;
         }
 
@@ -58,9 +59,9 @@ public class CameraConrtoller : MonoBehaviour
             NextState();
     }
 
-    public static void AddCameraST(CinemachineVirtualCamera virtualCamera)
+    public static void AddCameraST(AIPlayer player, CinemachineVirtualCamera virtualCamera)
     {
-        instance.AddCamera(virtualCamera);
+        instance.AddCamera(player, virtualCamera);
     }
 
     public static CameraState GetCameraStateST() => instance.currentState;
@@ -83,20 +84,37 @@ public class CameraConrtoller : MonoBehaviour
 
     public void NextCamera()
     {
-        AIPlayersCamera[currentAIPlayerCameraIndex].Priority = 1;
+        //Now if all player is die we catch StackOverflow
+        if (AIPlayersCamera[(currentAIPlayerCameraIndex + 1) % AIPlayersCamera.Count].iPlayer.IsDeath())
+        {
+            currentAIPlayerCameraIndex = (currentAIPlayerCameraIndex + 1) % AIPlayersCamera.Count;
+            NextCamera();
+            return;
+        }
+
+        AIPlayersCamera[currentAIPlayerCameraIndex].VirtualCamera.Priority = 1;
 
         currentAIPlayerCameraIndex = (currentAIPlayerCameraIndex + 1) % AIPlayersCamera.Count;
 
-        AIPlayersCamera[currentAIPlayerCameraIndex].Priority = 2;
+        AIPlayersCamera[currentAIPlayerCameraIndex].VirtualCamera.Priority = 2;
     }
 
     public void PreviousCamera()
     {
-        AIPlayersCamera[currentAIPlayerCameraIndex].Priority = 1;
+        //Now if all player is die we catch StackOverflow
+        if (AIPlayersCamera[currentAIPlayerCameraIndex - 1 < 0 ? AIPlayersCamera.Count - 1 : 
+            currentAIPlayerCameraIndex - 1].iPlayer.IsDeath())
+        {
+            currentAIPlayerCameraIndex = (currentAIPlayerCameraIndex - 1) < 0 ? AIPlayersCamera.Count - 1 : currentAIPlayerCameraIndex - 1;
+            NextCamera();
+            return;
+        }
+
+        AIPlayersCamera[currentAIPlayerCameraIndex].VirtualCamera.Priority = 1;
 
         currentAIPlayerCameraIndex = (currentAIPlayerCameraIndex - 1) < 0 ? AIPlayersCamera.Count - 1 : currentAIPlayerCameraIndex - 1;
 
-        AIPlayersCamera[currentAIPlayerCameraIndex].Priority = 2;
+        AIPlayersCamera[currentAIPlayerCameraIndex].VirtualCamera.Priority = 2;
     }
 
     public void NextState()
@@ -147,17 +165,21 @@ public class CameraConrtoller : MonoBehaviour
         {
             case CameraState.First:
                 firstPersonCamera.Priority = 2;
-                AIPlayersCamera[0].Priority = 1;
+                thirdPlayer.Priority = 1;
                 break;
             case CameraState.Third:
                 firstPersonCamera.Priority = 1;
-                AIPlayersCamera[0].Priority = 2;
+                thirdPlayer.Priority = 2;
                 break;
         }
     }
 
-    private void AddCamera(CinemachineVirtualCamera virtualCamera)
+    private void AddCamera(AIPlayer player, CinemachineVirtualCamera virtualCamera)
     {
-        AIPlayersCamera.Add(virtualCamera);
+        AIPlayersCamera.Add(new IPlayerCamera
+        {
+           iPlayer = player,
+           VirtualCamera = virtualCamera 
+        });
     }
 }

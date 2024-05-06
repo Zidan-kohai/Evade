@@ -103,7 +103,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
         pointsToWalk = Points;
 
-        CameraConrtoller.AddCameraST(virtualCamera);
+        CameraConrtoller.AddCameraST(this, virtualCamera);
 
         name = Helper.GetRandomName();
 
