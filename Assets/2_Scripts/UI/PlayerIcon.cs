@@ -3,20 +3,27 @@ using UnityEngine;
 
 public class PlayerIcon : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI id;
+    [SerializeField] private TextMeshProUGUI idView;
+    [SerializeField] private int id;
     [SerializeField] private RectTransform rect;
-    [SerializeField] private int mapId;
+    [SerializeField] private PlayerIconHandler handler;
 
-    public int GetMapID => mapId;
+    public int GetMapID => handler.MapId;
 
-    public void Initialize(string id)
+    public void Initialize(int id, string name)
     {
-        this.id.text = id;
+        this.id = id;
+        idView.text = id.ToString();
     }
 
-    public void SetMap(RectTransform mapRect, int mapId)
+    public void SetMap(PlayerIconHandler iconHandler)
     {
-        rect.parent = mapRect;
-        this.mapId = mapId;
+        handler?.RemovePlayer(id);
+
+        rect.parent = iconHandler.Handler;
+
+        handler = iconHandler;
+
+        handler.AddPlayer(id);
     }
 }

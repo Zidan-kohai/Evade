@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,10 +13,10 @@ public class ChooseMap : MonoBehaviour
     [SerializeField] private SceneLoader sceneLoader;
 
     [SerializeField] private PlayerIcon playerIconPrefab;
-    [SerializeField] private RectTransform easyMapPlayerHandler;
-    [SerializeField] private RectTransform middleMapPlayerHandler;
-    [SerializeField] private RectTransform hardMapPlayerHandler;
-    [SerializeField] private RectTransform exitMapPlayerHandler;
+    [SerializeField] private PlayerIconHandler easyMapPlayerHandler;
+    [SerializeField] private PlayerIconHandler middleMapPlayerHandler;
+    [SerializeField] private PlayerIconHandler hardMapPlayerHandler;
+    [SerializeField] private PlayerIconHandler exitMapPlayerHandler;
 
     [SerializeField] private Button easyMap;
     [SerializeField] private Button middleMap;
@@ -24,6 +25,9 @@ public class ChooseMap : MonoBehaviour
 
     [SerializeField] private PlayerIcon playerIcon;
     [SerializeField] private List<PlayerIcon> AIPlayersIcon;
+    [SerializeField] private int playersCount;
+
+    [SerializeField] private float minTime = 0.5f, maxTime = 2f;
 
     public void Initialize(int playerCount)
     {
@@ -36,7 +40,13 @@ public class ChooseMap : MonoBehaviour
 
         AddEventToButton();
 
-        StartCoroutine(Wait());
+        StartCoroutine(WaitToClose());
+        playersCount = playerCount;
+
+        for (int i = 0; i < AIPlayersIcon.Count; i++)
+        {
+            StartCoroutine(AIChooseMap(AIPlayersIcon[i]));
+        }
     }
 
     private void DecideWhichMapOpen()
@@ -55,22 +65,22 @@ public class ChooseMap : MonoBehaviour
     {
         easyMap.onClick.AddListener(() =>
         {
-            playerIcon.SetMap(easyMapPlayerHandler, 1);
+            playerIcon.SetMap(easyMapPlayerHandler);
         });
 
         middleMap.onClick.AddListener(() =>
         {
-            playerIcon.SetMap(middleMapPlayerHandler, 2);
+            playerIcon.SetMap(middleMapPlayerHandler);
         });
 
         hardMap.onClick.AddListener(() =>
         {
-            playerIcon.SetMap(hardMapPlayerHandler, 3);
+            playerIcon.SetMap(hardMapPlayerHandler);
         });
 
         exitMap.onClick.AddListener(() =>
         {
-            playerIcon.SetMap(exitMapPlayerHandler, 4);
+            playerIcon.SetMap(exitMapPlayerHandler);
         });
     }
 
@@ -78,21 +88,66 @@ public class ChooseMap : MonoBehaviour
     {
         for (int i = 0; i < playerCount; i++)
         {
-            PlayerIcon player = Instantiate(playerIconPrefab, easyMapPlayerHandler);
+            PlayerIcon player = Instantiate(playerIconPrefab);
+
+            player.SetMap(easyMapPlayerHandler);
+
             if (i == 0)
             {
                 playerIcon = player;
-                player.Initialize("Вы");
+                player.Initialize(i, "Вы");
             }
             else
             {
                 AIPlayersIcon.Add(player);
-                player.Initialize(i.ToString());
+                player.Initialize(i, i.ToString());
+            }
+        }
+    }
+    private void AIMove(PlayerIcon icon, int realyPlayerMapId, int playersCountAvarage)
+    {
+        if (easyMapPlayerHandler.MapId == realyPlayerMapId
+            && easyMapPlayerHandler.playersIndex.Count < playersCountAvarage)
+        {
+            icon.SetMap(easyMapPlayerHandler);
+        }
+        else if (middleMapPlayerHandler.MapId == realyPlayerMapId
+            && middleMapPlayerHandler.playersIndex.Count < playersCountAvarage)
+        {
+            icon.SetMap(middleMapPlayerHandler);
+        }
+        else if (hardMapPlayerHandler.MapId == realyPlayerMapId
+            && hardMapPlayerHandler.playersIndex.Count < playersCountAvarage)
+        {
+            icon.SetMap(hardMapPlayerHandler);
+        }
+        else if (exitMapPlayerHandler.MapId == realyPlayerMapId
+            && exitMapPlayerHandler.playersIndex.Count < playersCountAvarage)
+        {
+            icon.SetMap(exitMapPlayerHandler);
+        }
+        else
+        {
+            int mapId = UnityEngine.Random.Range(0, 4);
+            switch(mapId)
+            {
+                case 0:
+                    icon.SetMap(easyMapPlayerHandler);
+                    break;
+                case 1:
+                    icon.SetMap(middleMapPlayerHandler);
+                    break;
+                case 2:
+                    icon.SetMap(hardMapPlayerHandler);
+                    break;
+                case 3:
+                    icon.SetMap(exitMapPlayerHandler); 
+                    break;
             }
         }
     }
 
-    private IEnumerator Wait()
+    private IEnumerator WaitToClose()
     {
         while(timeToChooseMap > 0)
         {
@@ -104,4 +159,20 @@ public class ChooseMap : MonoBehaviour
 
         DecideWhichMapOpen();
     }
+
+    private IEnumerator AIChooseMap(PlayerIcon icon)
+    {
+        float time = UnityEngine.Random.Range(minTime, maxTime);
+        int playersCountAvarage = playersCount / 2;
+
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(time);
+
+            int realyPlayerMapId = playerIcon.GetMapID;
+
+            AIMove(icon, realyPlayerMapId, playersCountAvarage);
+        }
+    }
+
 }
