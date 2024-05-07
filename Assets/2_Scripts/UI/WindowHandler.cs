@@ -2,9 +2,10 @@ using UnityEngine;
 public class WindowHandler : MonoBehaviour
 {
     [SerializeField] private GameObject mainWindow;
-    [SerializeField] private GameObject ModesWindow;
-    [SerializeField] private GameObject TelegramWindow;
-    [SerializeField] private GameObject SimpleShopWindow;
+    [SerializeField] private GameObject modesWindow;
+    [SerializeField] private GameObject telegramWindow;
+    [SerializeField] private GameObject simpleShopWindow;
+    [SerializeField] private GameObject inAPphopWindow;
     [SerializeField] private MainMenuWindowState currentOpenedWindow;
 
     #region MainMenu
@@ -25,42 +26,56 @@ public class WindowHandler : MonoBehaviour
     #region Telegram
     public void OpenTelegramWindow()
     {
-        TelegramWindow.SetActive(true);
+        telegramWindow.SetActive(true);
         CloseCurrentWindow();
         currentOpenedWindow = MainMenuWindowState.Telegram;
     }
 
     private void CloseTelegramWindow()
     {
-        TelegramWindow.SetActive(false);
+        telegramWindow.SetActive(false);
     }
     #endregion
 
     #region ModesWindow
     public void OpenModesWindow()
     {
-        ModesWindow.SetActive(true);
+        modesWindow.SetActive(true);
         CloseCurrentWindow(); 
         currentOpenedWindow = MainMenuWindowState.Modes;
     }
 
     private void CloseModesWindow()
     {
-        ModesWindow.SetActive(false);
+        modesWindow.SetActive(false);
     }
     #endregion
 
     #region SimpleShops
     public void OpenSimpleShopWindow()
     {
-        SimpleShopWindow.SetActive(true);
+        simpleShopWindow.SetActive(true);
         CloseCurrentWindow();
         currentOpenedWindow = MainMenuWindowState.SimpleShop;
     }
 
     private void CloseSimpleShopWindow()
     {
-        SimpleShopWindow.SetActive(false);
+        simpleShopWindow.SetActive(false);
+    }
+    #endregion
+
+    #region InAppShop
+    public void OpenInAppShopShopWindow()
+    {
+        inAPphopWindow.SetActive(true);
+        CloseCurrentWindow();
+        currentOpenedWindow = MainMenuWindowState.InAppShop;
+    }
+
+    private void CloseInAppShopShopWindow()
+    {
+        inAPphopWindow.SetActive(false);
     }
     #endregion
 
@@ -82,6 +97,9 @@ public class WindowHandler : MonoBehaviour
 
             case MainMenuWindowState.SimpleShop:
                 CloseSimpleShopWindow();
+                break;
+            case MainMenuWindowState.InAppShop:
+                CloseInAppShopShopWindow();
                 break;
         }
     }

@@ -1,12 +1,8 @@
 using GeekplaySchool;
-using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class Shop : MonoBehaviour
 {

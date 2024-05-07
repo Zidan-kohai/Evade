@@ -3,5 +3,6 @@
     MainMenu,
     Modes,
     Telegram,
-    SimpleShop
+    SimpleShop,
+    InAppShop
 }
