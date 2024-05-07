@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [Serializable]
 public class PlayerData
 {
-    public int Gold = 10;
+    public int Gold = 1000;
     public string LastBuy;
     public bool Review;
     public bool IsVolumeOn = true;

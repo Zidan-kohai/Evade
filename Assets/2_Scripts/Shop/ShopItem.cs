@@ -3,13 +3,11 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.LightingExplorerTableColumn;
 
 public class ShopItem : MonoBehaviour
 {
     [SerializeField] private ShopItemData data;
     [SerializeField] private Button button;
-    [SerializeField] private int indexOnPlayer;
 
     [SerializeField] private GameObject closePanel;
     [SerializeField] private TextMeshProUGUI EquipedTextView;
@@ -24,10 +22,10 @@ public class ShopItem : MonoBehaviour
     {
         nameTextView.text = data.name;
 
-        //if(data.oneTimePurchase)
-        //{
-        //    if(CheckIsBuy())
-        //}
+        if (data.oneTimePurchase && CheckIsBuy())
+        {
+            EquipedTextView.gameObject.SetActive(false);
+        }
     }
 
     public bool CheckIsBuy()
@@ -38,7 +36,7 @@ public class ShopItem : MonoBehaviour
             case SubjectType.Accessory:
                 foreach (var item in Geekplay.Instance.PlayerData.BuyedAccessoryID)
                 {
-                    if(item.key == indexOnPlayer)
+                    if(item.key == data.indexOnPlayer)
                     {
                         return true;
                     }
@@ -47,7 +45,7 @@ public class ShopItem : MonoBehaviour
             case SubjectType.Item:
                 foreach (var item in Geekplay.Instance.PlayerData.BuyedItemID)
                 {
-                    if (item.key == indexOnPlayer)
+                    if (item.key == data.indexOnPlayer)
                     {
                         return true;
                     }
@@ -56,7 +54,7 @@ public class ShopItem : MonoBehaviour
             case SubjectType.Light:
                 foreach (var item in Geekplay.Instance.PlayerData.BuyedLightID)
                 {
-                    if (item.key == indexOnPlayer)
+                    if (item.key == data.indexOnPlayer)
                     {
                         return true;
                     }
@@ -65,7 +63,7 @@ public class ShopItem : MonoBehaviour
             case SubjectType.Booster:
                 foreach (var item in Geekplay.Instance.PlayerData.BuyedBoosterID)
                 {
-                    if (item.key == indexOnPlayer)
+                    if (item.key == data.indexOnPlayer)
                     {
                         return true;
                     }

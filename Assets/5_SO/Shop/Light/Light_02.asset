@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Light_02
   m_EditorClassIdentifier: 
   type: 2
+  indexOnPlayer: 0
   name: "\u041B\u0430\u043C\u043F\u0430"
   description: "\u0441\u0432\u0435\u0442\u0438\u0442 \u043F\u043E \u0448\u0430\u0440\u043E\u0432\u0438\u0434\u043D\u043E\u0439
     \u043E\u0431\u043B\u0430\u0441\u0442\u0438 \u0432\u043E\u043A\u0440\u0443\u0433
     \u0438\u0433\u0440\u043E\u043A\u0430"
   cost: 250
-  oneTimePurchase: 0
+  oneTimePurchase: 1

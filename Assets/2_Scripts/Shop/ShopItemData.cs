@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShopItemData : ScriptableObject
 {
     public SubjectType type;
+    public int indexOnPlayer;
     public string name;
     public string description;
     public string cost;
