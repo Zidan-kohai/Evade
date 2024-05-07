@@ -31,6 +31,17 @@ public class ShopItem : MonoBehaviour
         CheckIsEquiped();
         
     }
+
+    public void Equip()
+    {
+        EquipedTextView.gameObject.SetActive(true);
+    }
+
+    public void Dequip()
+    {
+        EquipedTextView.gameObject.SetActive(false);
+    }
+
     public void SubscribeEvent(Action action)
     {
         button.onClick.AddListener(() => action?.Invoke());
@@ -43,14 +54,14 @@ public class ShopItem : MonoBehaviour
             case SubjectType.Accessory:
                 if (data.oneTimePurchase && Geekplay.Instance.PlayerData.CurrentEquipedAccessoryID == data.indexOnPlayer)
                 {
-                    EquipedTextView.gameObject.SetActive(true);
+                    Equip();
                 }
             break;
 
             case SubjectType.Light:
                 if (data.oneTimePurchase && Geekplay.Instance.PlayerData.CurrentEquipedLightID == data.indexOnPlayer)
                 {
-                    EquipedTextView.gameObject.SetActive(true);
+                    Equip();
                 }
             break;
         }
@@ -96,5 +107,4 @@ public class ShopItem : MonoBehaviour
 
         return count;
     }
-
 }

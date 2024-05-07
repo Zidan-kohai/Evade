@@ -1,6 +1,7 @@
 using GeekplaySchool;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -143,16 +144,46 @@ public class Shop : MonoBehaviour
         switch(item.GetType)
         {
             case SubjectType.Accessory:
-                PlayerAccessory.ChangeCurrentSkineIndex(item.GetIndexOnPlayer);
+                EquipAccessory(item);
                 break;
             case SubjectType.Item:
                 break;
             case SubjectType.Light:
+                EquipLight(item);
                 break;
             case SubjectType.Booster:
                 break;
 
         }
+    }
+
+    private void EquipAccessory(ShopItem item)
+    {
+        PlayerAccessory.ChangeCurrentSkineIndex(item.GetIndexOnPlayer);
+
+        for(int i = 0; i < items.Count; i++)
+        {
+            if (items[i].GetType == SubjectType.Accessory)
+            {
+                items[i].Dequip();
+            }
+        }
+
+        item.Equip();
+    }
+
+    private void EquipLight(ShopItem item)
+    {
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].GetType == SubjectType.Light)
+            {
+                items[i].Dequip();
+            }
+        }
+
+        item.Equip();
     }
 
     private void ShowItemInfo(ShopItem item)
