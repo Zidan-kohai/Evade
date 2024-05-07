@@ -13,7 +13,18 @@ public class PlayerData
     public bool IsSlapBattleRewardTaked;
     public bool IsTwoPlayerGameRewardTaked;
 
-    public List<int> buyedSkineID = new List<int>();
+    public List<MyDictinary> BuyedAccessoryID = new List<MyDictinary>();
+    public List<MyDictinary> BuyedItemID = new List<MyDictinary>();
+    public List<MyDictinary> BuyedLightID = new List<MyDictinary>();
+    public List<MyDictinary> BuyedBoosterID = new List<MyDictinary>();
+
 
     public List<int> Codes = new List<int>();
+}
+
+[Serializable]
+public class MyDictinary
+{
+    public int key;
+    public int value;
 }
