@@ -80,11 +80,3 @@ public class Shop : MonoBehaviour
         }
     }
 }
-
-public enum ShowChapter
-{
-    Light,
-    Item,
-    Booster,
-    Accessory
-}
