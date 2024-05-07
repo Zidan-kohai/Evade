@@ -8,6 +8,6 @@ public class ShopItemData : ScriptableObject
     public int indexOnPlayer;
     public string name;
     public string description;
-    public string cost;
+    public int cost;
     public bool oneTimePurchase;
 }

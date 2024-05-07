@@ -13,10 +13,13 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI EquipedTextView;
     [SerializeField] private TextMeshProUGUI nameTextView;
     [SerializeField] private int buyedCount;
-    public string GetDataName => data.name;
+    public string GetName => data.name;
     public string GetDescription => data.description;
-    public string GetDataCost => data.cost;
+    public int GetCost => data.cost;
+    public int GetIndexOnPlayer => data.indexOnPlayer;
     public int GetBuyedCount => buyedCount;
+
+    public SubjectType GetType => data.type;
 
     private void Start()
     {
@@ -27,6 +30,10 @@ public class ShopItem : MonoBehaviour
 
         CheckIsEquiped();
         
+    }
+    public void SubscribeEvent(Action action)
+    {
+        button.onClick.AddListener(() => action?.Invoke());
     }
 
     private void CheckIsEquiped()
@@ -88,11 +95,6 @@ public class ShopItem : MonoBehaviour
         }
 
         return count;
-    }
-
-    public void SubscribeEvent(Action action)
-    {
-        button.onClick.AddListener(() => action?.Invoke());
     }
 
 }

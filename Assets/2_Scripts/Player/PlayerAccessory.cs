@@ -8,14 +8,15 @@ public class PlayerAccessory : MonoBehaviour
 
     [SerializeField] private List<Accessory> headphonesSkine;
 
-    public static void ChangeCurrentSkineIndex(int index)
-    {
-        skineIndex = index;
-    }
 
     private void Awake()
     {
         WearSkine();
+    }
+
+    public static void ChangeCurrentSkineIndex(int index)
+    {
+        skineIndex = index;
     }
 
     private void WearSkine()
