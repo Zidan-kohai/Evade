@@ -160,8 +160,9 @@ public class Shop : MonoBehaviour
     private void EquipAccessory(ShopItem item)
     {
         PlayerAccessory.ChangeCurrentSkineIndex(item.GetIndexOnPlayer);
+        Geekplay.Instance.PlayerData.CurrentEquipedAccessoryID = item.GetIndexOnPlayer;
 
-        for(int i = 0; i < items.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
             if (items[i].GetType == SubjectType.Accessory)
             {
@@ -170,10 +171,12 @@ public class Shop : MonoBehaviour
         }
 
         item.Equip();
+        Geekplay.Instance.Save();
     }
 
     private void EquipLight(ShopItem item)
     {
+        Geekplay.Instance.PlayerData.CurrentEquipedLightID = item.GetIndexOnPlayer;
 
         for (int i = 0; i < items.Count; i++)
         {
@@ -184,6 +187,7 @@ public class Shop : MonoBehaviour
         }
 
         item.Equip();
+        Geekplay.Instance.Save();
     }
 
     private void ShowItemInfo(ShopItem item)
