@@ -13,9 +13,11 @@ public class PlayerData
     public bool IsSlapBattleRewardTaked;
     public bool IsTwoPlayerGameRewardTaked;
 
-    public List<MyDictinary> BuyedAccessoryID = new List<MyDictinary>();
+    public List<int> BuyedAccessoryID = new List<int>() { 0 };
+    public int CurrentEquipedAccessoryID = 0;
+    public List<int> BuyedLightID = new List<int>(); 
+    public int CurrentEquipedLightID = 0;
     public List<MyDictinary> BuyedItemID = new List<MyDictinary>();
-    public List<MyDictinary> BuyedLightID = new List<MyDictinary>();
     public List<MyDictinary> BuyedBoosterID = new List<MyDictinary>();
 
 

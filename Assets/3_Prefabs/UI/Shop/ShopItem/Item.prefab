@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8909966101866400251
 RectTransform:
   m_ObjectHideFlags: 0
@@ -349,10 +349,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 19b072301c320f146b29fb92bc8fcb62, type: 2}
   button: {fileID: 5137520027119289727}
-  indexOnPlayer: 1
+  closePanel: {fileID: 1726954556808154679}
   EquipedTextView: {fileID: 8185518556811303195}
   nameTextView: {fileID: 1942821650641256799}
-  closePanel: {fileID: 1726954556808154679}
+  buyedCount: 0
 --- !u!1 &8318580142107093149
 GameObject:
   m_ObjectHideFlags: 0

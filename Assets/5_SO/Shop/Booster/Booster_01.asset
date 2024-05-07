@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Booster_01
   m_EditorClassIdentifier: 
   type: 3
+  indexOnPlayer: 1
   name: "\u041A\u043E\u043B\u0430"
   description: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442
     \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u043D\u0430 50% \u043D\u0430

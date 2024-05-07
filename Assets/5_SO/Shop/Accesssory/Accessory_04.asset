@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Accessory_04
   m_EditorClassIdentifier: 
   type: 0
-  indexOnPlayer: 0
+  indexOnPlayer: 4
   name: "\u0421\u0442\u0435\u0442\u043E\u0441\u043A\u043E\u043F"
   description: "\u043F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442 \u043F\u043E\u0434\u043D\u0438\u043C\u0430\u0442\u044C
     \u0442\u043E\u0432\u0430\u0440\u0438\u0449\u0435\u0439 \u0431\u044B\u0441\u0442\u0440\u0435\u0435

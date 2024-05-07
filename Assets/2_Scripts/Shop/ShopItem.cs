@@ -12,34 +12,53 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private GameObject closePanel;
     [SerializeField] private TextMeshProUGUI EquipedTextView;
     [SerializeField] private TextMeshProUGUI nameTextView;
-
+    [SerializeField] private int buyedCount;
     public string GetDataName => data.name;
     public string GetDescription => data.description;
     public string GetDataCost => data.cost;
+    public int GetBuyedCount => buyedCount;
 
-
-    private void Awake()
+    private void Start()
     {
+
         nameTextView.text = data.name;
 
-        if (data.oneTimePurchase && CheckIsBuy())
-        {
-            EquipedTextView.gameObject.SetActive(false);
-        }
+        buyedCount = CheckBuyedCount();
+
+        CheckIsEquiped();
+        
     }
 
-    public bool CheckIsBuy()
+    private void CheckIsEquiped()
     {
-
         switch(data.type)
         {
             case SubjectType.Accessory:
-                foreach (var item in Geekplay.Instance.PlayerData.BuyedAccessoryID)
+                if (data.oneTimePurchase && Geekplay.Instance.PlayerData.CurrentEquipedAccessoryID == data.indexOnPlayer)
                 {
-                    if(item.key == data.indexOnPlayer)
-                    {
-                        return true;
-                    }
+                    EquipedTextView.gameObject.SetActive(true);
+                }
+            break;
+
+            case SubjectType.Light:
+                if (data.oneTimePurchase && Geekplay.Instance.PlayerData.CurrentEquipedLightID == data.indexOnPlayer)
+                {
+                    EquipedTextView.gameObject.SetActive(true);
+                }
+            break;
+        }
+    }
+
+    private int CheckBuyedCount()
+    {
+        int count = 0;
+        switch(data.type)
+        {
+            case SubjectType.Accessory:
+
+                if(Geekplay.Instance.PlayerData.BuyedAccessoryID.Contains(data.indexOnPlayer))
+                {
+                    count = 1;
                 }
                 break;
             case SubjectType.Item:
@@ -47,17 +66,14 @@ public class ShopItem : MonoBehaviour
                 {
                     if (item.key == data.indexOnPlayer)
                     {
-                        return true;
+                        count = item.value;
                     }
                 }
                 break;
             case SubjectType.Light:
-                foreach (var item in Geekplay.Instance.PlayerData.BuyedLightID)
+                if(Geekplay.Instance.PlayerData.BuyedLightID.Contains(data.indexOnPlayer))
                 {
-                    if (item.key == data.indexOnPlayer)
-                    {
-                        return true;
-                    }
+                    count = 1;
                 }
                 break;
             case SubjectType.Booster:
@@ -65,13 +81,13 @@ public class ShopItem : MonoBehaviour
                 {
                     if (item.key == data.indexOnPlayer)
                     {
-                        return true;
+                        count = item.value;
                     }
                 }
                 break;
         }
 
-        return false;
+        return count;
     }
 
     public void SubscribeEvent(Action action)

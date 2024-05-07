@@ -56,7 +56,10 @@ MonoBehaviour:
     IsCloesChangeRewardTaked: 0
     IsSlapBattleRewardTaked: 0
     IsTwoPlayerGameRewardTaked: 0
-    buyedSkineID: 
+    BuyedAccessoryID: []
+    BuyedItemID: []
+    BuyedLightID: []
+    BuyedBoosterID: []
     Codes: 
   rewardsList:
   - rewardName: RandomSkine
@@ -252,20 +255,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  Platform: 1
+  Platform: 0
   gameArterPrefab: {fileID: 0}
   leaderboardBtn: {fileID: 0}
   adOpen: 0
   MultipleSpeedBuff: 1
   TimeToShowReward: 0
   TimePasedFromLastReward: 0
-  TournamentStatus: 0
   IsTournamentStart: 0
   pausePopup: {fileID: 0}
   canPause: 1
   isOnPause: 0
   isOnPromocodeZone: 0
-  ourGame: {fileID: 0}
   l:
   - 
   - 
