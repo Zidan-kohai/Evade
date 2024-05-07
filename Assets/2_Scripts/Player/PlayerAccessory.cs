@@ -1,3 +1,4 @@
+using GeekplaySchool;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ public class PlayerAccessory : MonoBehaviour
     public static void ChangeCurrentSkineIndex(int index)
     {
         skineIndex = index;
+        Geekplay.Instance.PlayerData.CurrentEquipedAccessoryID = skineIndex;
+        Geekplay.Instance.Save();
     }
 
     private void WearSkine()

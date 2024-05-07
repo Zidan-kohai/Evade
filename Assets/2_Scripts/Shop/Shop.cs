@@ -10,6 +10,7 @@ using static UnityEditor.Progress;
 public class Shop : MonoBehaviour
 {
     [SerializeField] private Button buyButton;
+    [SerializeField] private Button equipButton;
 
     [SerializeField] private TextMeshProUGUI nameView;
     [SerializeField] private TextMeshProUGUI descriptionView;
@@ -27,7 +28,7 @@ public class Shop : MonoBehaviour
 
     private void FirstSubscribe(ShopItem item)
     {
-        ShowInfo(firstItem);
+        ShowItemInfo(firstItem);
 
         Event(item);
     }
@@ -45,18 +46,116 @@ public class Shop : MonoBehaviour
 
     private void Event(ShopItem item)
     {
-        ShowInfo(item);
-
+        ShowItemInfo(item);
         buyButton.onClick.RemoveAllListeners();
+        equipButton.onClick.RemoveAllListeners();
+
+        switch(item.GetType)
+        {
+            case SubjectType.Accessory:
+                EventForAccessory(item);
+                break;
+            case SubjectType.Item:
+                EventForItem(item);
+                break;
+            case SubjectType.Light:
+                EventForLight(item);
+                break;
+            case SubjectType.Booster:
+                EventForBooster(item);
+                break;
+        }
+
+    }
+
+    private void EventForBooster(ShopItem item)
+    {
+        buyButton.gameObject.SetActive(true);
+        equipButton.gameObject.SetActive(false);
 
         buyButton.onClick.AddListener(() =>
         {
             Buy(item);
-
         });
     }
 
-    private void ShowInfo(ShopItem item)
+    private void EventForLight(ShopItem item)
+    {
+        if (!Geekplay.Instance.PlayerData.BuyedLightID.Contains(item.GetIndexOnPlayer))
+        {
+            buyButton.gameObject.SetActive(true);
+            equipButton.gameObject.SetActive(false);
+
+            buyButton.onClick.AddListener(() =>
+            {
+                Buy(item);
+            });
+        }
+        else
+        {
+            equipButton.gameObject.SetActive(true);
+            buyButton.gameObject.SetActive(false);
+
+            equipButton.onClick.AddListener(() =>
+            {
+                Equip(item);
+            });
+        }
+    }
+
+    private void EventForItem(ShopItem item)
+    {
+        buyButton.gameObject.SetActive(true);
+        equipButton.gameObject.SetActive(false);
+
+        buyButton.onClick.AddListener(() =>
+        {
+            Buy(item);
+        });
+    }
+
+    private void EventForAccessory(ShopItem item)
+    {
+        if (!Geekplay.Instance.PlayerData.BuyedAccessoryID.Contains(item.GetIndexOnPlayer))
+        {
+            buyButton.gameObject.SetActive(true);
+            equipButton.gameObject.SetActive(false); 
+
+            buyButton.onClick.AddListener(() =>
+            {
+                Buy(item);
+            });
+        }
+        else
+        {
+            equipButton.gameObject.SetActive(true);
+            buyButton.gameObject.SetActive(false);
+
+            equipButton.onClick.AddListener(() =>
+            {
+                Equip(item);
+            });
+        }
+    }
+
+    private void Equip(ShopItem item)
+    {
+        switch(item.GetType)
+        {
+            case SubjectType.Accessory:
+                PlayerAccessory.ChangeCurrentSkineIndex(item.GetIndexOnPlayer);
+                break;
+            case SubjectType.Item:
+                break;
+            case SubjectType.Light:
+                break;
+            case SubjectType.Booster:
+                break;
+
+        }
+    }
+
+    private void ShowItemInfo(ShopItem item)
     {
         nameView.text = item.GetName;
         descriptionView.text = item.GetDescription;
@@ -68,8 +167,10 @@ public class Shop : MonoBehaviour
         if (Wallet.TryBuyST(item.GetCost))
         {
             Wallet.BuyST(item.GetCost);
-            PlayerAccessory.ChangeCurrentSkineIndex(item.GetIndexOnPlayer);
+            Equip(item);
             SavePurcahse(item);
+
+            Event(item);
         }
         else
         {
