@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class PlayerData
 {
     public int Gold = 1000;
+    public int Diamond = 100;
     public string LastBuy;
     public bool Review;
     public bool IsVolumeOn = true;
