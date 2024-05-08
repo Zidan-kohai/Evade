@@ -8,7 +8,7 @@ public class PlayerIcon : MonoBehaviour
     [SerializeField] private RectTransform rect;
     [SerializeField] private PlayerIconHandler handler;
 
-    public int GetMapID => handler.MapId;
+    public int GetMapID => handler.GetMapID;
 
     public void Initialize(int id, string name)
     {
@@ -20,10 +20,8 @@ public class PlayerIcon : MonoBehaviour
     {
         handler?.RemovePlayer(id);
 
-        rect.parent = iconHandler.Handler;
-
         handler = iconHandler;
 
-        handler.AddPlayer(id);
+        handler.AddPlayer(rect, id);
     }
 }

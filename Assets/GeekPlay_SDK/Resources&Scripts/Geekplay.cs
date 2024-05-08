@@ -107,12 +107,16 @@ namespace GeekplaySchool
         [SerializeField] private float interstitialTime = 75;
         [SerializeField] private float pastedTimeFromLastInterstitial;
 
-        private GameObject curtain;
-        private Image curtainLoadVisual;
+        //private GameObject curtain;
+        //private Image curtainLoadVisual;
+
+        private SceneLoader sceneLoader;
 
         public void Awake()
         {
             AudioListener.volume = PlayerData.IsVolumeOn ? 1 : 0;
+
+            sceneLoader = new SceneLoader();
 
             isOnPause = false;
 
@@ -151,8 +155,12 @@ namespace GeekplaySchool
             TimePasedFromLastReward += Time.deltaTime;
 
             remainingTimeUntilUpdateLeaderboard -= Time.deltaTime;
-        }   
+        }
 
+        public void LoadScene(int sceneIndex)
+        {
+            sceneLoader.LoadScene(sceneIndex);
+        }
         //public void EnablePlayedGameToggle(int id)
         //{
         //    ourGame.EnabledGameToggle(id);
@@ -879,5 +887,6 @@ namespace GeekplaySchool
             if (Platform == Platform.Yandex)
                 Utils.GameReady();
         }
+
     }
 }

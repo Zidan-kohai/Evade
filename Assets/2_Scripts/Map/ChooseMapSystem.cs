@@ -1,16 +1,16 @@
+using GeekplaySchool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChooseMap : MonoBehaviour
+public class ChooseMapSystem : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timeView;
+    [SerializeField] private TextMeshProUGUI descriptionView;
     [SerializeField] private float timeToChooseMap;
-    [SerializeField] private SceneLoader sceneLoader;
 
     [SerializeField] private PlayerIcon playerIconPrefab;
     [SerializeField] private PlayerIconHandler easyMapPlayerHandler;
@@ -23,11 +23,12 @@ public class ChooseMap : MonoBehaviour
     [SerializeField] private Button hardMap;
     [SerializeField] private Button exitMap;
 
-    [SerializeField] private PlayerIcon playerIcon;
-    [SerializeField] private List<PlayerIcon> AIPlayersIcon;
-    [SerializeField] private int playersCount;
-
     [SerializeField] private float minTime = 0.5f, maxTime = 2f;
+
+    private PlayerIcon playerIcon;
+    private List<PlayerIcon> AIPlayersIcon = new List<PlayerIcon>();
+    private int playersCount;
+
 
     public void Initialize(int playerCount)
     {
@@ -41,24 +42,27 @@ public class ChooseMap : MonoBehaviour
         AddEventToButton();
 
         StartCoroutine(WaitToClose());
+
         playersCount = playerCount;
 
         for (int i = 0; i < AIPlayersIcon.Count; i++)
         {
             StartCoroutine(AIChooseMap(AIPlayersIcon[i]));
         }
+
+        descriptionView.text = easyMapPlayerHandler.GetDescription;
     }
 
     private void DecideWhichMapOpen()
     {
-        if(playerIcon.GetMapID == 4)
+        if(playerIcon.GetMapID == 0)
         {
-            sceneLoader.LoadScene(0);
+            Geekplay.Instance.LoadScene(playerIcon.GetMapID);
             return;
         }
-        //there should be a logic in deciding which card to launch
+        //there should be a logic for deciding which card to launch
 
-        sceneLoader.LoadScene(1);
+        Geekplay.Instance.LoadScene(1);
     }
 
     private void AddEventToButton()
@@ -66,21 +70,25 @@ public class ChooseMap : MonoBehaviour
         easyMap.onClick.AddListener(() =>
         {
             playerIcon.SetMap(easyMapPlayerHandler);
+            descriptionView.text = easyMapPlayerHandler.GetDescription;
         });
 
         middleMap.onClick.AddListener(() =>
         {
             playerIcon.SetMap(middleMapPlayerHandler);
+            descriptionView.text = middleMapPlayerHandler.GetDescription;
         });
 
         hardMap.onClick.AddListener(() =>
         {
             playerIcon.SetMap(hardMapPlayerHandler);
+            descriptionView.text = hardMapPlayerHandler.GetDescription;
         });
 
         exitMap.onClick.AddListener(() =>
         {
             playerIcon.SetMap(exitMapPlayerHandler);
+            descriptionView.text = exitMapPlayerHandler.GetDescription;
         });
     }
 
@@ -106,23 +114,23 @@ public class ChooseMap : MonoBehaviour
     }
     private void AIMove(PlayerIcon icon, int realyPlayerMapId, int playersCountAvarage)
     {
-        if (easyMapPlayerHandler.MapId == realyPlayerMapId
-            && easyMapPlayerHandler.playersIndex.Count < playersCountAvarage)
+        if (easyMapPlayerHandler.GetMapID == realyPlayerMapId
+            && easyMapPlayerHandler.GetVoiseCount < playersCountAvarage)
         {
             icon.SetMap(easyMapPlayerHandler);
         }
-        else if (middleMapPlayerHandler.MapId == realyPlayerMapId
-            && middleMapPlayerHandler.playersIndex.Count < playersCountAvarage)
+        else if (middleMapPlayerHandler.GetMapID == realyPlayerMapId
+            && middleMapPlayerHandler.GetVoiseCount < playersCountAvarage)
         {
             icon.SetMap(middleMapPlayerHandler);
         }
-        else if (hardMapPlayerHandler.MapId == realyPlayerMapId
-            && hardMapPlayerHandler.playersIndex.Count < playersCountAvarage)
+        else if (hardMapPlayerHandler.GetMapID == realyPlayerMapId
+            && hardMapPlayerHandler.GetVoiseCount < playersCountAvarage)
         {
             icon.SetMap(hardMapPlayerHandler);
         }
-        else if (exitMapPlayerHandler.MapId == realyPlayerMapId
-            && exitMapPlayerHandler.playersIndex.Count < playersCountAvarage)
+        else if (exitMapPlayerHandler.GetMapID == realyPlayerMapId
+            && exitMapPlayerHandler.GetVoiseCount < playersCountAvarage)
         {
             icon.SetMap(exitMapPlayerHandler);
         }

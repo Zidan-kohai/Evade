@@ -7,7 +7,7 @@ using UnityEngine;
 public class GameplayEndMenu : MonoBehaviour
 {
     [SerializeField] private List<PlayerResult> playersResult;
-    [SerializeField] private ChooseMap chooseMap;
+    [SerializeField] private ChooseMapSystem chooseMap;
     [SerializeField] private TextMeshProUGUI HeaderTextView;
     [SerializeField] private int playerCount = 0;
 
