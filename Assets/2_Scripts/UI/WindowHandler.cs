@@ -5,7 +5,8 @@ public class WindowHandler : MonoBehaviour
     [SerializeField] private GameObject modesWindow;
     [SerializeField] private GameObject telegramWindow;
     [SerializeField] private GameObject simpleShopWindow;
-    [SerializeField] private GameObject inAPphopWindow;
+    [SerializeField] private GameObject inAppShopWindow;
+    [SerializeField] private GameObject leadersWindow;
     [SerializeField] private MainMenuWindowState currentOpenedWindow;
 
     #region MainMenu
@@ -68,17 +69,31 @@ public class WindowHandler : MonoBehaviour
     #region InAppShop
     public void OpenInAppShopShopWindow()
     {
-        inAPphopWindow.SetActive(true);
+        inAppShopWindow.SetActive(true);
         CloseCurrentWindow();
         currentOpenedWindow = MainMenuWindowState.InAppShop;
     }
 
     private void CloseInAppShopShopWindow()
     {
-        inAPphopWindow.SetActive(false);
+        inAppShopWindow.SetActive(false);
     }
     #endregion
 
+    #region Leaders
+    public void OpenLeadersWindow()
+    {
+        leadersWindow.SetActive(true);
+        CloseCurrentWindow();
+        currentOpenedWindow = MainMenuWindowState.Leaders;
+    }
+
+    private void CloseLeadersWindow()
+    {
+        leadersWindow.SetActive(false);
+    }
+
+    #endregion
     private void CloseCurrentWindow()
     {
         switch(currentOpenedWindow)
@@ -100,6 +115,9 @@ public class WindowHandler : MonoBehaviour
                 break;
             case MainMenuWindowState.InAppShop:
                 CloseInAppShopShopWindow();
+                break;
+            case MainMenuWindowState.Leaders:
+                CloseLeadersWindow();
                 break;
         }
     }

@@ -4,5 +4,6 @@
     Modes,
     Telegram,
     SimpleShop,
-    InAppShop
+    InAppShop,
+    Leaders
 }

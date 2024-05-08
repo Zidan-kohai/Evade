@@ -2,7 +2,7 @@
 
 public static class Extension
 {
-    public static bool HasKey(this List<MyDictinary> collection, int key)
+    public static bool HasKey(this List<MyDictionary> collection, int key)
     {
         for (int i = 0; i < collection.Count; i++)
         {
@@ -15,7 +15,7 @@ public static class Extension
         return false;
     }
 
-    public static MyDictinary GetByKey(this List<MyDictinary> collection, int key)
+    public static MyDictionary GetByKey(this List<MyDictionary> collection, int key)
     {
         for (int i = 0; i < collection.Count; i++)
         {

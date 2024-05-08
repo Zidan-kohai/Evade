@@ -218,7 +218,7 @@ public class Shop : MonoBehaviour
                 break;
             case SubjectType.Item:
                 if (!Geekplay.Instance.PlayerData.BuyedItemID.HasKey(item.GetIndexOnPlayer)) 
-                    Geekplay.Instance.PlayerData.BuyedItemID.Add(new MyDictinary() { key = item.GetIndexOnPlayer });
+                    Geekplay.Instance.PlayerData.BuyedItemID.Add(new MyDictionary() { key = item.GetIndexOnPlayer });
                 Geekplay.Instance.PlayerData.BuyedItemID.GetByKey(item.GetIndexOnPlayer).value++;
                 break;
             case SubjectType.Light:
@@ -226,7 +226,7 @@ public class Shop : MonoBehaviour
                 break;
             case SubjectType.Booster:
                 if (!Geekplay.Instance.PlayerData.BuyedBoosterID.HasKey(item.GetIndexOnPlayer))
-                    Geekplay.Instance.PlayerData.BuyedBoosterID.Add(new MyDictinary() { key = item.GetIndexOnPlayer });
+                    Geekplay.Instance.PlayerData.BuyedBoosterID.Add(new MyDictionary() { key = item.GetIndexOnPlayer });
                 Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(item.GetIndexOnPlayer).value++;
                 break;
         }
