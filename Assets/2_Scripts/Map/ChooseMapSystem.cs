@@ -87,8 +87,7 @@ public class ChooseMapSystem : MonoBehaviour
 
         exitMap.onClick.AddListener(() =>
         {
-            playerIcon.SetMap(exitMapPlayerHandler);
-            descriptionView.text = exitMapPlayerHandler.GetDescription;
+            Geekplay.Instance.LoadScene(exitMapPlayerHandler.GetMapID);
         });
     }
 
