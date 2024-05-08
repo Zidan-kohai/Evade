@@ -4352,7 +4352,7 @@ MonoBehaviour:
   loseMenu: {fileID: 473195531}
   endMenu: {fileID: 899512927}
   lookMenu: {fileID: 304568216}
-  lastedtime: 50
+  lastedtime: 180
   gameOver: 0
 --- !u!1 &211553676
 GameObject:

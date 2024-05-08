@@ -120,6 +120,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     public void AddHumanoid(IHumanoid IHumanoid)
     {
+        if (state == PlayerState.Death) return;
+
         if (IHumanoid.gameObject.TryGetComponent(out IEnemy enemy))
         {
             enemies.Add(enemy);
@@ -133,6 +135,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     public void RemoveHumanoid(IHumanoid IHumanoid)
     {
+        if (state == PlayerState.Death) return;
+
         if (IHumanoid.gameObject.TryGetComponent(out IEnemy enemy))
         {
             enemies.Remove(enemy);
