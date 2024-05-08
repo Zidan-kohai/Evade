@@ -49,6 +49,7 @@ MonoBehaviour:
   SoundOn: 1
   PlayerData:
     Gold: 10
+    Diamond: 100
     LastBuy: 
     Review: 0
     IsVolumeOn: 1
@@ -56,205 +57,51 @@ MonoBehaviour:
     IsCloesChangeRewardTaked: 0
     IsSlapBattleRewardTaked: 0
     IsTwoPlayerGameRewardTaked: 0
-    BuyedAccessoryID: []
+    BuyedAccessoryID: 
+    CurrentEquipedAccessoryID: 0
+    BuyedLightID: 
+    CurrentEquipedLightID: 0
     BuyedItemID: []
-    BuyedLightID: []
     BuyedBoosterID: []
     Codes: 
-  rewardsList:
-  - rewardName: RandomSkine
-    rewardEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - rewardName: 30MoneyForReward
-    rewardEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - rewardName: OpenSkine
-    rewardEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - rewardName: DoubleReward
-    rewardEvent:
-      m_PersistentCalls:
-        m_Calls: []
+  rewardsList: []
   purchasesList:
-  - itemName: OpenAllSkine
+  - itemName: Big1
     purchaseEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: SkineShop, Assembly-CSharp
-          m_MethodName: OpenAllSkine
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   - itemName: Gold1
     purchaseEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: InAppShop, Assembly-CSharp
-          m_MethodName: Gold1
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   - itemName: Gold2
     purchaseEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: InAppShop, Assembly-CSharp
-          m_MethodName: Gold2
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   - itemName: Gold3
     purchaseEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: InAppShop, Assembly-CSharp
-          m_MethodName: Gold3
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   - itemName: Gold4
     purchaseEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: InAppShop, Assembly-CSharp
-          m_MethodName: Gold4
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - itemName: Gold5
+        m_Calls: []
+  - itemName: Diamond1
     purchaseEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: InAppShop, Assembly-CSharp
-          m_MethodName: Gold5
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - itemName: Gold6
+        m_Calls: []
+  - itemName: Diamond2
     purchaseEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: InAppShop, Assembly-CSharp
-          m_MethodName: Gold6
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - itemName: Gold7
+        m_Calls: []
+  - itemName: Diamond3
     purchaseEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: InAppShop, Assembly-CSharp
-          m_MethodName: Gold7
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - itemName: Gold8
+        m_Calls: []
+  - itemName: Diamond4
     purchaseEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: InAppShop, Assembly-CSharp
-          m_MethodName: Gold8
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - itemName: Gold9
-    purchaseEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: InAppShop, Assembly-CSharp
-          m_MethodName: Gold9
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - itemName: Gold10
-    purchaseEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: InAppShop, Assembly-CSharp
-          m_MethodName: Gold10
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
   Platform: 0
   gameArterPrefab: {fileID: 0}
   leaderboardBtn: {fileID: 0}

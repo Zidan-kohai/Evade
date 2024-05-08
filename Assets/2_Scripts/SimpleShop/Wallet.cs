@@ -26,6 +26,11 @@ public class Wallet : MonoBehaviour
         instance.Buy(cost);
     }
 
+    public static void AddMoneyST(int gold, int diamond)
+    {
+        instance.AddMoney(gold, diamond); 
+    }    
+
     private bool TryBuy(int cost)
     {
         if(Geekplay.Instance.PlayerData.Gold >= cost)
@@ -35,6 +40,7 @@ public class Wallet : MonoBehaviour
 
         return false;
     }
+
     private void Buy(int cost)
     {
         Geekplay.Instance.PlayerData.Gold -= cost;
@@ -42,6 +48,15 @@ public class Wallet : MonoBehaviour
         Geekplay.Instance.Save();
     }
     
+    private void AddMoney(int gold, int diamond)
+    {
+        Geekplay.Instance.PlayerData.Gold += gold;
+        Geekplay.Instance.PlayerData.Diamond += diamond;
+
+        Geekplay.Instance.Save();
+        ChangeView();
+    }
+
     private void ChangeView()
     {
         foreach (var item in goldsCountView)
