@@ -84,8 +84,10 @@ public class CameraConrtoller : MonoBehaviour
 
     public void NextCamera()
     {
-        //Now if all player is die we catch StackOverflow
-        if (AIPlayersCamera[(currentAIPlayerCameraIndex + 1) % AIPlayersCamera.Count].iPlayer.IsDeath())
+        
+        if(CheckIsAllPlayerDie()) return;
+
+        if (AIPlayersCamera[(currentAIPlayerCameraIndex + 1) % AIPlayersCamera.Count].IPlayer.IsDeath())
         {
             currentAIPlayerCameraIndex = (currentAIPlayerCameraIndex + 1) % AIPlayersCamera.Count;
             NextCamera();
@@ -101,9 +103,10 @@ public class CameraConrtoller : MonoBehaviour
 
     public void PreviousCamera()
     {
-        //Now if all player is die we catch StackOverflow
+        if (CheckIsAllPlayerDie()) return;
+
         if (AIPlayersCamera[currentAIPlayerCameraIndex - 1 < 0 ? AIPlayersCamera.Count - 1 : 
-            currentAIPlayerCameraIndex - 1].iPlayer.IsDeath())
+            currentAIPlayerCameraIndex - 1].IPlayer.IsDeath())
         {
             currentAIPlayerCameraIndex = (currentAIPlayerCameraIndex - 1) < 0 ? AIPlayersCamera.Count - 1 : currentAIPlayerCameraIndex - 1;
             NextCamera();
@@ -130,6 +133,21 @@ public class CameraConrtoller : MonoBehaviour
                 stateOnUp = currentState;
                 break;
         }
+    }
+
+    private bool CheckIsAllPlayerDie()
+    {
+        bool result = true;
+
+        foreach (var item in AIPlayersCamera)
+        {
+            if (!item.IPlayer.IsDeath())
+            {
+                result = false;
+            }
+        }
+
+        return result;
     }
 
     private void FirstPersonConrtoller()
@@ -178,7 +196,7 @@ public class CameraConrtoller : MonoBehaviour
     {
         AIPlayersCamera.Add(new IPlayerCamera
         {
-           iPlayer = player,
+           IPlayer = player,
            VirtualCamera = virtualCamera 
         });
     }
