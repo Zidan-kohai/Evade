@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class PlayerSpawner : Spawner
 {
+    [Space]
     [SerializeField] private List<AIPlayer> players;
-    [SerializeField] private List<Transform> Points;
-    [SerializeField] private int minSpawnCount;
-    [SerializeField] private int spawnedEnemyCount;
 
     private void Start()
     {
@@ -19,7 +17,8 @@ public class PlayerSpawner : Spawner
 
         for (int i = 0; i < enemyCountToSpawn; i++)
         {
-            players[i].Initialize(Points, Points[Random.Range(0, Points.Count)].transform.position);
+            Vector3 spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position;
+            players[i].Initialize(PatrollPoints, spawnPoint);
         }
 
         spawnedEnemyCount = enemyCountToSpawn;

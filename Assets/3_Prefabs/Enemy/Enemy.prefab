@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4762079538153053988
 Transform:
   m_ObjectHideFlags: 0
@@ -71,22 +71,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5682b406daeb52b4d919fa58369057b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 150
   currentPatrolPositionIndex: 0
   sawPlayer: 0
   state: 0
-  patrolTransform:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolTransform: []
   reachArea: {fileID: 4173423218352306102}
   biasOnThrowRaycast: {x: 0, y: 5, z: 0}
   fieldOfViewAngle: 90
-  viewDistance: 10
+  viewDistance: 100
   allLayers:
     serializedVersion: 2
     m_Bits: 119
@@ -94,7 +87,7 @@ MonoBehaviour:
   enemyVisual: {fileID: 14444786742572869}
   audiosource: {fileID: 1324352390537379765}
   lastedTimeFromStartIdleToRotate: 0
-  timeToChangeState: 5
+  timeToChangeState: 0
   currentTimeToChangeState: 0
   inverseRotateOnIdle: 1
   rotatingSpeedOnIdle: 5
@@ -397,7 +390,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 100, y: 10, z: 100}
+  m_Size: {x: 250, y: 10, z: 250}
   m_Center: {x: 0, y: 6, z: 0}
 --- !u!1 &8115940942660691883
 GameObject:

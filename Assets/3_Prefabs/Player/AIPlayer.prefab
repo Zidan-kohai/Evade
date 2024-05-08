@@ -1559,21 +1559,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeedOnPlayerUp: 70
-  maxSpeedOnPlayerUp: 130
+  maxSpeedOnPlayerUp: 200
   startSpeedOnPlayerFall: 3
   maxSpeedOnPlayerFall: 7
   currrentSpeed: 5
-  speedScaleFactor: 4
+  speedScaleFactor: 25
   currrentMinSpeed: 5
   currrentMaxSpeed: 15
-  pointsToWalk:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  pointsToWalk: []
   currnetWalkPointIndex: 0
   agent: {fileID: 3663144800095553858}
   reachArea: {fileID: 2861010759206526833}

@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class EnemySpawner : Spawner
 {
+    [Space]
     [SerializeField] private List<Enemy> enemies;
-    [SerializeField] private List<Transform> Points;
     [SerializeField] private EnemyDataHandler enemyDataHandler;
-    [SerializeField] private int minSpawnCount;
-    [SerializeField] private int spawnedEnemyCount;
     private void Awake()
     {
         SpawnUnits();
@@ -19,7 +17,9 @@ public class EnemySpawner : Spawner
 
         for (int i = 0; i < enemyCountToSpawn; i++)
         {
-            enemies[i].Initialize(enemyDataHandler.GetRandomEnemyData(), Points, Points[Random.Range(0, Points.Count)].transform.position);
+            Vector3 spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position;
+            EnemyData data = enemyDataHandler.GetRandomEnemyData();
+            enemies[i].Initialize(data, PatrollPoints, spawnPoint);
         }
 
         spawnedEnemyCount = enemyCountToSpawn;
