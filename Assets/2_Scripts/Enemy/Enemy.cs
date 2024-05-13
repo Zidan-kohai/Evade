@@ -121,12 +121,13 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     private void OnPatrol()
     {
         agent.SetDestination(patrolTransform[currentPatrolPositionIndex].position);
-
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        StartCoroutine(Wait(0.1f, () =>
         {
-            currentPatrolPositionIndex = (currentPatrolPositionIndex + 1) % patrolTransform.Count;
-        }
-
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                currentPatrolPositionIndex = (currentPatrolPositionIndex + 1) % patrolTransform.Count;
+            }
+        }));
     }
 
     private void OnChase()
@@ -205,7 +206,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
             if (Physics.Raycast(transform.position + biasOnThrowRaycast, (direcrtion + biasOnThrowRaycast).normalized, out hit, Mathf.Infinity, allLayers, QueryTriggerInteraction.Ignore))
             {
-                if (hit.transform.TryGetComponent(out IPlayer IPlayer))
+                if (hit.transform.TryGetComponent(out IPlayer IPlayer) && !IPlayer.IsFallOrDeath())
                 {
                     ChangeState(EnemyState.Chase);
 
@@ -274,6 +275,11 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         {
             Debug.Log("collision.transform.name: " + col.transform.name);
             player.Fall();
+
+            if (lastSeenPlayersWithPosition.ContainsKey(player))
+            {
+                lastSeenPlayersWithPosition.Remove(player);
+            }
         }
     }
 }
