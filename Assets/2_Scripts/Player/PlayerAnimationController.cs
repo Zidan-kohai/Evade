@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerAnimationController : MonoBehaviour
 {
@@ -11,11 +13,13 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] private Avatar fastRunAvatar;
     [SerializeField] private Avatar jumpAvatar;
     [SerializeField] private Avatar fallAvatar;
-    //[SerializeField] private Avatar deathAvatar;
     [SerializeField] private float speedOnFastRun;
 
     [SerializeField] private Avatar currentAvatar;
     [SerializeField] private bool isFall;
+    [SerializeField] private bool isCarried;
+    [SerializeField] private bool isCarry;
+
     public void SetIMove(IMove movement)
     {
         this.movement = movement;
@@ -23,6 +27,8 @@ public class PlayerAnimationController : MonoBehaviour
 
     public void Update()
     {
+        if (isCarried) return;
+
         float moveSpeed = movement.MoveSpeed();
 
         animator.SetFloat("RunSpeed", moveSpeed);
@@ -61,6 +67,29 @@ public class PlayerAnimationController : MonoBehaviour
         }
     }
 
+    public void Carry()
+    {
+        isCarry = true;
+        animator.SetBool("Carry", isCarry);
+    }
+
+    public void Carried()
+    {
+        isCarried = true;
+        animator.SetBool("Carried", isCarried);
+    }
+
+    public void PutPlayer()
+    {
+        isCarried = false;
+        isCarry = false;
+
+        animator.SetBool("Carried", isCarried);
+        animator.SetBool("Carried", isCarry);
+
+        animator.SetTrigger("PutPlayer");
+    }
+
     public void Fall()
     {
         isFall = true;
@@ -87,5 +116,4 @@ public class PlayerAnimationController : MonoBehaviour
 
         animator.avatar = newAvatar;
     }
-
 }

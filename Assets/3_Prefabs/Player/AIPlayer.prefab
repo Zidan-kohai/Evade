@@ -523,6 +523,8 @@ MonoBehaviour:
   speedOnFastRun: 70
   currentAvatar: {fileID: 0}
   isFall: 0
+  isCarried: 0
+  isCarry: 0
 --- !u!1 &2323177795797017898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,6 +1574,7 @@ MonoBehaviour:
   reachArea: {fileID: 2861010759206526833}
   animationController: {fileID: 14873245123960596}
   virtualCamera: {fileID: 6700030000169661991}
+  playerVisual: {fileID: 2941067104648093884}
   state: 0
   timeToUpFromFall: 2
   timeToDeathFromFall: 30
@@ -1588,6 +1591,8 @@ MonoBehaviour:
   safeDistance: 15
   helpDistance: 11
   helpCount: 0
+  moneyMultiplierFactor: 1
+  experienceMultiplierFactor: 1
   livedTime: 0
 --- !u!136 &2689890232233979099
 CapsuleCollider:

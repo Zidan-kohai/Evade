@@ -212,7 +212,10 @@ MonoBehaviour:
   actionUI: {fileID: 0}
   animationController: {fileID: 3072787035800879077}
   virtualCamera: {fileID: 5953735550957598145}
+  playerVisual: {fileID: 4347578350522250872}
   distanceToHelp: 10
+  isCarry: 0
+  carriedTransform: {fileID: 2755025758214090766}
   helpCount: 0
   moneyMultiplierFactor: 1
   experienceMultiplierFactor: 1
@@ -957,6 +960,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2063455247467957129}
+  - {fileID: 2755025758214090766}
   m_Father: {fileID: 8778479110394208362}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3932554829562276208
@@ -1733,6 +1737,8 @@ MonoBehaviour:
   speedOnFastRun: 70
   currentAvatar: {fileID: 0}
   isFall: 0
+  isCarried: 0
+  isCarry: 0
 --- !u!1 &6633020411424046989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,6 +2153,37 @@ Transform:
   m_Children:
   - {fileID: 7963699739570249859}
   m_Father: {fileID: 2805069585930584490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8764999320802350330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2755025758214090766}
+  m_Layer: 0
+  m_Name: CarriedTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2755025758214090766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764999320802350330}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 273237442366836478}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8787172197061352951
 GameObject:

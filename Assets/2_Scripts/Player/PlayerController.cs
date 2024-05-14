@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
     [SerializeField] private ActionHandler actionUI;
     [SerializeField] private PlayerAnimationController animationController;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private Transform playerVisual;
     private CharacterController characterController;
 
     [Header("Humanoids")]
@@ -52,6 +53,9 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
 
     [Header("Interactive")]
     [SerializeField] private float distanceToHelp;
+    [SerializeField] private bool isCarry = false;
+    [SerializeField] private Transform carriedTransform;
+    [SerializeField] private IPlayer carriedPlayer;
 
     [Header("General")]
     [SerializeField] private int helpCount;
@@ -72,7 +76,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
 
     private void Update()
     {
-        if (state == PlayerState.Death) return;
+        if (state == PlayerState.Death || state == PlayerState.Carried) return;
 
         livedTime += Time.deltaTime;
 
@@ -96,17 +100,34 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
         {
             case PlayerState.Idle:
                 break;
+
             case PlayerState.Walk:
                 break;
+
             case PlayerState.Fall:
                 OnFall();
                 break;
+
             case PlayerState.Death:
                 break;
         }
 
+
+        if (isCarry && inputManager.GetIsT)
+            PutPlayer();
+
         if (state != PlayerState.Fall && state != PlayerState.Death)
             Help();
+    }
+
+    public void Carried(Transform point)
+    {
+        ChangeState(PlayerState.Carried);
+    }
+
+    public void PutPlayerOnGround()
+    {
+        playerVisual.position = new Vector3(0, 1, 0);
     }
 
     public void SetTimeToUp(int deacreaseFactor)
@@ -378,6 +399,12 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
             case PlayerState.Raising:
                 canJump = false;
                 break;
+            case PlayerState.Carry:
+                animationController.Carry();
+                break;
+            case PlayerState.Carried:
+                animationController.Carried();
+                break;
             case PlayerState.Death:
                 canJump = false;
                 Death();
@@ -390,8 +417,13 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
         if (CanHelp(out IPlayer player))
         {
             actionUI.ShowHelpingUIManual();
+            actionUI.ShowCarryExplain();
 
-            if (inputManager.GetIsE)
+            if(inputManager.GetIsT && !isCarry)
+            {
+                Carry(player);
+            }
+            else if (inputManager.GetIsE)
             {
                 float helpPercent = player.Raising();
                 actionUI.FilHelpigUI(helpPercent);
@@ -408,6 +440,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
         else
         {
             actionUI.DisableHelpingUIHandler();
+            actionUI.DisableCarryExplain();
         }
     }
 
@@ -425,6 +458,21 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
 
         player = null;
         return false;
+    }
+
+    private void Carry(IPlayer player)
+    {
+        isCarry = true;
+        player.Carried(carriedTransform);
+        carriedPlayer = player;
+        ChangeState(PlayerState.Carry);
+    }
+
+    private void PutPlayer()
+    {
+        carriedPlayer.PutPlayerOnGround();
+        isCarry = false;
+        carriedPlayer = null;
     }
 
     private void Death()

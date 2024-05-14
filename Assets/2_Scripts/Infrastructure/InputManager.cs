@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     private float moveVertical;
     private bool space;
     private bool IsE;
+    private bool IsT;
     private bool IsTab;
     public float GetMouseDeltaX => mouseDeltaX;
     public float GetMouseDeltaY => mouseDeltaY;
@@ -16,6 +17,7 @@ public class InputManager : MonoBehaviour
     public bool GetSpace => space;
     public bool GetIsE => IsE;
     public bool GetIsTab => IsTab;
+    public bool GetIsT => IsT;
 
     void Update()
     {
@@ -31,5 +33,7 @@ public class InputManager : MonoBehaviour
         IsE = Input.GetKey(KeyCode.E);
 
         IsTab = Input.GetKeyDown(KeyCode.Tab);
+
+        IsT = Input.GetKeyDown(KeyCode.T);
     }
 }

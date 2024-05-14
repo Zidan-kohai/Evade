@@ -105,10 +105,35 @@ public class ActionHandler : MonoBehaviour
 
     #endregion
 
+
+    #region Carry
+    public void ShowCarryExplain()
+    {
+        carryExplain.SetActive(true);
+    }
+
+    public void DisableCarryExplain()
+    {
+        carryExplain.SetActive(false);
+    }
+
+    public void ShowPutExplain()
+    {
+        putExplain.SetActive(true);
+    }
+
+    public void DisablePutExplain()
+    {
+        putExplain.SetActive(false);
+    }
+
+
+    #endregion 
     private IEnumerator Wait(float waitTime, Action action)
     {
         yield return new WaitForSeconds(waitTime);
 
         action?.Invoke();
     }
+
 }

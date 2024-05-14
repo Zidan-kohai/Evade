@@ -16,6 +16,7 @@ public interface IPlayer
     public float Raising();
 
     public float GetPercentOfRaising();
+
     public string GetName();
 
     public int GetEarnedMoney();
@@ -27,6 +28,10 @@ public interface IPlayer
     public float GetSurvivedTime();
 
     public void SetTimeToUp(int deacreaseFactor);
+
+    public void Carried(Transform point);
+
+    public void PutPlayerOnGround();
 }
 
 public interface IRealyPlayer

@@ -2,8 +2,10 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 {
@@ -24,6 +26,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private ReachArea reachArea;
     [SerializeField] private PlayerAnimationController animationController;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private Transform playerVisual;
 
     [Header("Humanoids")]
     [SerializeField] private List<IEnemy> enemies = new List<IEnemy>();
@@ -58,6 +61,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [Header("General")]
     [SerializeField] private int moneyMultiplierFactor = 1;
     [SerializeField] private int experienceMultiplierFactor = 1;
+    [SerializeField] private Transform carriedTransform;
     [SerializeField] private float livedTime = 0;
     private Coroutine coroutine;
     private string name;
@@ -113,6 +117,13 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         BuffHandler.AddPlayerST(this);
     }
 
+    public void Carried(Transform point)
+    {
+        ChangeState(PlayerState.Carried);
+        playerVisual.transform.position = point.transform.position;
+        playerVisual.transform.parent = point.transform;
+    }
+
     public string GetName() => name;
 
     public void SetTimeToUp(int deacreaseFactor)
@@ -141,6 +152,14 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     public int GetHelpCount() => helpCount;
 
     public float GetSurvivedTime() => livedTime + 0.2f;
+
+    public void PutPlayerOnGround()
+    {
+        transform.position = playerVisual.transform.position;
+        agent.enabled = true;
+        playerVisual.parent = transform;
+        playerVisual.localPosition = new Vector3(0, 1, 0);
+    }
 
     public void AddHumanoid(IHumanoid IHumanoid)
     {
@@ -277,6 +296,15 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 currrentSpeed = currrentMinSpeed;
                 lostedTimeFromFallToUp = timeToUpFromFall;
                 lostedTimeFromFallToDeath = timeToDeathFromFall;
+                break;
+
+            case PlayerState.Carry:
+                animationController.Carry();
+                break;
+
+            case PlayerState.Carried:
+                animationController.Carried();
+                agent.enabled = false;
                 break;
 
             case PlayerState.Death:
