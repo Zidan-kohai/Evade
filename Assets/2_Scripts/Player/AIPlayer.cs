@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIPlayer : MonoBehaviour, IPlayerInfo, ISee, IHumanoid, IMove
+public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 {
     [Header("Movement")]
     [SerializeField] private float startSpeedOnPlayerUp = 50f;
@@ -27,7 +27,7 @@ public class AIPlayer : MonoBehaviour, IPlayerInfo, ISee, IHumanoid, IMove
 
     [Header("Humanoids")]
     [SerializeField] private List<IEnemy> enemies = new List<IEnemy>();
-    [SerializeField] private List<IPlayerInfo> players = new List<IPlayerInfo>();
+    [SerializeField] private List<IPlayer> players = new List<IPlayer>();
 
     [Header("State")]
     [SerializeField] private PlayerState state;
@@ -53,7 +53,7 @@ public class AIPlayer : MonoBehaviour, IPlayerInfo, ISee, IHumanoid, IMove
     [SerializeField] private float safeDistance;
     [SerializeField] private float helpDistance;
     [SerializeField] private int helpCount;
-    [SerializeField] private IPlayerInfo playerToHelp;
+    [SerializeField] private IPlayer playerToHelp;
 
     [Header("General")]
     [SerializeField] private int moneyMultiplierFactor = 1;
@@ -151,7 +151,7 @@ public class AIPlayer : MonoBehaviour, IPlayerInfo, ISee, IHumanoid, IMove
             enemies.Add(enemy);
             ChangeState(PlayerState.Escape);
         }
-        else if (IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player))
+        else if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
         {
             players.Add(player);
         }
@@ -180,7 +180,7 @@ public class AIPlayer : MonoBehaviour, IPlayerInfo, ISee, IHumanoid, IMove
                 }));
             }
         }
-        else if (IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player))
+        else if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
         {
             players.Remove(player);
         }
@@ -352,7 +352,7 @@ public class AIPlayer : MonoBehaviour, IPlayerInfo, ISee, IHumanoid, IMove
     {
         bool isHaveUpPlayer = false;
         float distanceToPlayer = float.PositiveInfinity;
-        IPlayerInfo nearnestPlayer = null;
+        IPlayer nearnestPlayer = null;
 
         for (int i = 0; i < players.Count; i++)
         {
@@ -447,7 +447,7 @@ public class AIPlayer : MonoBehaviour, IPlayerInfo, ISee, IHumanoid, IMove
         #region CheckPlayer
 
         float distanceToPlayer = float.PositiveInfinity;
-        IPlayerInfo nearnestPlayer = null;
+        IPlayer nearnestPlayer = null;
 
         for (int i = 0; i < players.Count; i++)
         {
@@ -492,7 +492,7 @@ public class AIPlayer : MonoBehaviour, IPlayerInfo, ISee, IHumanoid, IMove
         return true;
     }
 
-    private void TryHelp(IPlayerInfo player)
+    private void TryHelp(IPlayer player)
     {
         float distanceToPlayer = (player.GetTransform().position - transform.position).magnitude;
 

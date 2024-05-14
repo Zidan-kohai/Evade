@@ -14,7 +14,7 @@ public class GameplayEndMenu : MonoBehaviour
     [SerializeField] private int playerCount = 0;
 
 
-    public void Initialize(List<IPlayerInfo> players, IPlayerInfo realyPlayer)
+    public void Initialize(List<IPlayer> players, IPlayer realyPlayer)
     {
         gameObject.SetActive(true);
 

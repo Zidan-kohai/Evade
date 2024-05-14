@@ -5,5 +5,7 @@
     Escape,
     Fall,
     Death,
-    Raising
+    Raising,
+    Carry,
+    Carried,
 }

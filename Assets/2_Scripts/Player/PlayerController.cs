@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayerInfo, IRealyPlayer
+public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, IRealyPlayer
 {
     //I Refactoring it as soon as i can
     [Header("managers")]
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayerIn
 
     [Header("Humanoids")]
     private List<IEnemy> enemies = new List<IEnemy>();
-    private List<IPlayerInfo> players = new List<IPlayerInfo>();
+    private List<IPlayer> players = new List<IPlayer>();
 
     [Header("Interactive")]
     [SerializeField] private float distanceToHelp;
@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayerIn
         {
             enemies.Add(enemy);
         }
-        else if(IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player) && player != this)
+        else if(IHumanoid.gameObject.TryGetComponent(out IPlayer player) && player != this)
         {
             players.Add(player);
         }
@@ -224,7 +224,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayerIn
         {
             enemies.Remove(enemy);
         }
-        else if (IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player))
+        else if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
         {
             players.Remove(player);
         }
@@ -387,7 +387,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayerIn
 
     private void Help()
     {
-        if (CanHelp(out IPlayerInfo player))
+        if (CanHelp(out IPlayer player))
         {
             actionUI.ShowHelpingUIManual();
 
@@ -411,7 +411,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayerIn
         }
     }
 
-    private bool CanHelp(out IPlayerInfo player)
+    private bool CanHelp(out IPlayer player)
     {
         for(int i = 0; i < players.Count; i++)
         {

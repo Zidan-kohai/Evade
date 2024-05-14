@@ -37,8 +37,8 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     [Space]
     [Header("Chase")]
-    [SerializeField] private List<IPlayerInfo> playersOnReachArea = new List<IPlayerInfo>();
-    [SerializeField] private Dictionary<IPlayerInfo, Vector3> lastSeenPlayersWithPosition = new Dictionary<IPlayerInfo, Vector3>();
+    [SerializeField] private List<IPlayer> playersOnReachArea = new List<IPlayer>();
+    [SerializeField] private Dictionary<IPlayer, Vector3> lastSeenPlayersWithPosition = new Dictionary<IPlayer, Vector3>();
     [SerializeField] private float distanseToAttack = 1.5f;
 
     [Header("Voise")]
@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     public void AddHumanoid(IHumanoid IHumanoid)
     {
-        if (IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player))
+        if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
         {
             playersOnReachArea.Add(player);
         }
@@ -95,7 +95,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     public void RemoveHumanoid(IHumanoid IHumanoid)
     {
-        if (IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player))
+        if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
         {
             playersOnReachArea.Remove(player);
         }
@@ -151,11 +151,11 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     {
         float distanse = float.PositiveInfinity;
         Vector3 targetPosition = transform.position;
-        IPlayerInfo currentChasingPlayer = null;
+        IPlayer currentChasingPlayer = null;
 
         for (int i = 0; i < lastSeenPlayersWithPosition.Count; i++)
         {
-            IPlayerInfo player = lastSeenPlayersWithPosition.ElementAt(i).Key;
+            IPlayer player = lastSeenPlayersWithPosition.ElementAt(i).Key;
             Vector3 position = lastSeenPlayersWithPosition.ElementAt(i).Value;
 
             if (player.IsFallOrDeath())
@@ -198,7 +198,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         }
     }
 
-    private bool TryAttack(IPlayerInfo currentChasingPlayer)
+    private bool TryAttack(IPlayer currentChasingPlayer)
     {
         float distanceToPlayer = (currentChasingPlayer.GetTransform().position - transform.position).magnitude;
 
@@ -223,7 +223,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
             if (Physics.Raycast(transform.position + biasOnThrowRaycast, (direcrtion + biasOnThrowRaycast).normalized, out hit, Mathf.Infinity, allLayers, QueryTriggerInteraction.Ignore))
             {
-                if (hit.transform.TryGetComponent(out IPlayerInfo IPlayer) && !IPlayer.IsFallOrDeath())
+                if (hit.transform.TryGetComponent(out IPlayer IPlayer) && !IPlayer.IsFallOrDeath())
                 {
                     ChangeState(EnemyState.Chase);
 
@@ -297,7 +297,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     //Maybe i change this solution in future
     private void OnTriggerEnter(Collider col)
     {
-        if (col.transform.TryGetComponent(out IPlayerInfo player))
+        if (col.transform.TryGetComponent(out IPlayer player))
         {
             Debug.Log("collision.transform.name: " + col.transform.name);
             player.Fall();

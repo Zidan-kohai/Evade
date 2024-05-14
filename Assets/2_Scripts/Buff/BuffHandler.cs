@@ -6,7 +6,7 @@ public class BuffHandler : MonoBehaviour
     private static BuffHandler instance;
 
     [SerializeField] private List<Enemy> enemies = new List<Enemy>();
-    [SerializeField] private List<IPlayerInfo> players = new List<IPlayerInfo>();
+    [SerializeField] private List<IPlayer> players = new List<IPlayer>();
     [SerializeField] private IRealyPlayer realyPlayer;
 
     private void Awake()
@@ -25,12 +25,12 @@ public class BuffHandler : MonoBehaviour
         realyPlayer = player;
     }
 
-    public static void AddPlayerST(IPlayerInfo player)
+    public static void AddPlayerST(IPlayer player)
     {
         instance.AddPlayer(player);
     }
 
-    private void AddPlayer(IPlayerInfo player)
+    private void AddPlayer(IPlayer player)
     {
         players.Add(player);
     }

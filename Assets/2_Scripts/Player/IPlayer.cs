@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-public interface IPlayerInfo
+public interface IPlayer
 {
     public bool IsFall();
 

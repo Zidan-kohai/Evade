@@ -202,7 +202,6 @@ MonoBehaviour:
   isOnGround: 0
   velocity: {x: 0, y: 0, z: 0}
   visualHandler: {fileID: 7285955864922664786}
-  helpCount: 0
   state: 0
   timeToUpFromFall: 2
   timeToDeathFromFall: 30
@@ -214,6 +213,9 @@ MonoBehaviour:
   animationController: {fileID: 3072787035800879077}
   virtualCamera: {fileID: 5953735550957598145}
   distanceToHelp: 10
+  helpCount: 0
+  moneyMultiplierFactor: 1
+  experienceMultiplierFactor: 1
 --- !u!54 &1512673573069339496
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -262,6 +264,57 @@ MonoBehaviour:
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: BuffHandler, Assembly-CSharp
           m_MethodName: HeadphoneBuff
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - gameObject: {fileID: 1889294103300909768}
+    index: 2
+    Event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: BuffHandler, Assembly-CSharp
+          m_MethodName: BadgeBuff
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - gameObject: {fileID: 1889294103300909768}
+    index: 3
+    Event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: BuffHandler, Assembly-CSharp
+          m_MethodName: MoneyPortfolioBuff
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - gameObject: {fileID: 1889294103300909768}
+    index: 4
+    Event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: BuffHandler, Assembly-CSharp
+          m_MethodName: StethoscopeBuff
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
