@@ -36,6 +36,7 @@ public class PlayerData
         CurrentExperience = currentExperience;
         ExperienceToIncreaseLevel = experienceToIncreaseLevel;
         Level = level;
+        
     }
 }
 

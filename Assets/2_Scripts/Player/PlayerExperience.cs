@@ -54,4 +54,14 @@ public class PlayerExperience : MonoBehaviour
         Geekplay.Instance.PlayerData.SetExperience(currentExperience, experienceToIncreaseLevel, level);
         Geekplay.Instance.Save();
     }
+
+    public string GetLevel()
+    {
+        return level.ToString();
+    }
+
+    public float GetFillPercentage()
+    {
+        return currentExperience / experienceToIncreaseLevel;
+    }
 }
