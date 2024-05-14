@@ -110,9 +110,15 @@ public class AIPlayer : MonoBehaviour, IPlayerInfo, ISee, IHumanoid, IMove
         name = Helper.GetRandomName();
 
         GameplayController.AddPlayer(this);
+        BuffHandler.AddPlayerST(this);
     }
 
     public string GetName() => name;
+
+    public void SetTimeToUp(int deacreaseFactor)
+    {
+        timeToUpFromFall /= deacreaseFactor; 
+    }
 
     public int GetEarnedMoney()
     {
@@ -519,4 +525,5 @@ public class AIPlayer : MonoBehaviour, IPlayerInfo, ISee, IHumanoid, IMove
 
         action.Invoke();
     }
+
 }

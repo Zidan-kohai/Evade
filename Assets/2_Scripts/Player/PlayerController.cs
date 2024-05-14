@@ -109,6 +109,11 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayerIn
             Help();
     }
 
+    public void SetTimeToUp(int deacreaseFactor)
+    {
+        timeToUpFromFall /= deacreaseFactor;
+    }
+
     public string GetName() => name;
 
     public int GetEarnedMoney()
@@ -134,7 +139,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayerIn
         moneyMultiplierFactor = value;
     }
 
-    public void SetExperrienceMulltiplierFactor(int value)
+    public void SetExperienceMulltiplierFactor(int value)
     {
         experienceMultiplierFactor = value;
     }

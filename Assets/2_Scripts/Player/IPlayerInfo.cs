@@ -25,11 +25,13 @@ public interface IPlayerInfo
     public int GetHelpCount();
 
     public float GetSurvivedTime();
+
+    public void SetTimeToUp(int deacreaseFactor);
 }
 
 public interface IRealyPlayer
 {
     public void SetMoneyMulltiplierFactor(int value);
 
-    public void SetExperrienceMulltiplierFactor(int value);
+    public void SetExperienceMulltiplierFactor(int value);
 }

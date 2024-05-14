@@ -6,7 +6,7 @@ public class BuffHandler : MonoBehaviour
     private static BuffHandler instance;
 
     [SerializeField] private List<Enemy> enemies = new List<Enemy>();
-
+    [SerializeField] private List<IPlayerInfo> players = new List<IPlayerInfo>();
     [SerializeField] private IRealyPlayer realyPlayer;
 
     private void Awake()
@@ -25,6 +25,16 @@ public class BuffHandler : MonoBehaviour
         realyPlayer = player;
     }
 
+    public static void AddPlayerST(IPlayerInfo player)
+    {
+        instance.AddPlayer(player);
+    }
+
+    private void AddPlayer(IPlayerInfo player)
+    {
+        players.Add(player);
+    }
+
     #endregion
 
     public void HeadphoneBuff()
@@ -37,11 +47,19 @@ public class BuffHandler : MonoBehaviour
 
     public void BadgeBuff()
     {
-        realyPlayer.SetExperrienceMulltiplierFactor(2);
+        realyPlayer.SetExperienceMulltiplierFactor(2);
     }
 
     public void MoneyPortfolioBuff()
     {
         realyPlayer.SetMoneyMulltiplierFactor(2);
+    }
+
+    public void StethoscopeBuff()
+    {
+        foreach (var item in players)
+        {
+            item.SetTimeToUp(2);
+        }
     }
 }
