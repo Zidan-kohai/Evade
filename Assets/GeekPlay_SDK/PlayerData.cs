@@ -6,6 +6,10 @@ public class PlayerData
 {
     public int Gold = 1000;
     public int Diamond = 100;
+    public float currentExperience = 0;
+    public float ExperienceProgresion = 100;
+    public float ExperienceToIncreaseLevel = 100;
+    public float level = 1;
     public string LastBuy;
     public bool Review;
     public bool IsVolumeOn = true;

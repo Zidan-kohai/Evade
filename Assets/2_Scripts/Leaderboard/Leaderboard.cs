@@ -2,6 +2,7 @@
 using GeekplaySchool;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.UI;
 
 public class Leaderboard : MonoBehaviour
@@ -23,6 +24,8 @@ public class Leaderboard : MonoBehaviour
 
     public void Start()
     {
+        Geekplay.Instance.leaderboard = this;
+
         surviveChapterButton.onClick.AddListener(OpenSurviveChapter);
         helpChapterButton.onClick.AddListener(OpenHelpChapter);
         donatChapterButton.onClick.AddListener(OpenDonatChapter);
@@ -83,6 +86,11 @@ public class Leaderboard : MonoBehaviour
 
     private void SwitchLeaderboard(LeaderboardType type)
     {
+        if (Geekplay.Instance.Platform == Platform.Editor)
+        {
+            SetLeadersView(Geekplay.Instance.lN.ToArray(), Geekplay.Instance.l.ToArray(), Geekplay.Instance.lN.Count);
+            return;
+        }
         switch(type)
         {
             case LeaderboardType.Survive:
@@ -106,37 +114,46 @@ public class Leaderboard : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            switch(type)
+            Debug.Log("Name: " + name[i]);
+            Debug.Log("Value: " + value[i]);
+
+            switch (type)
             {
                 case LeaderboardType.Survive:
-                    SpawnLeaderboardItem(surviveLeaderboardItemPrefab, name[i], value[i]);
+                    SpawnLeaderboardItem(surviveLeaderboardItemPrefab, name[i], value[i], i);
                     break;
 
                 case LeaderboardType.Help:
-                    SpawnLeaderboardItem(helpLeaderboardItemPrefab, name[i], value[i]);
+                    SpawnLeaderboardItem(helpLeaderboardItemPrefab, name[i], value[i], i);
                     break;
 
                 case LeaderboardType.Donat:
-                    SpawnLeaderboardItem(donatLeaderboardItemPrefab, name[i], value[i]);
+                    SpawnLeaderboardItem(donatLeaderboardItemPrefab, name[i], value[i], i);
                     break;
 
             }
         }
     }
 
-    private void SpawnLeaderboardItem(LeaderboardItem prefab, string name, string value)
+    private void SpawnLeaderboardItem(LeaderboardItem prefab, string name, string value, int place)
     {
         LeaderboardItem item = Instantiate(prefab, leaderhandler);
-
+        item.Initialize(place, name, value);
         currentLeaders.Add(item);
     }
 
     private void DestroyLeaders()
     {
+        Geekplay.Instance.lN.Clear();
+        Geekplay.Instance.l.Clear();
+
         for (int i = 0; i < currentLeaders.Count;i++)
         {
-            Destroy(currentLeaders[i].gameObject);
+            LeaderboardItem leaderboardItem = currentLeaders[i];
+            Destroy(leaderboardItem.gameObject);
         }
+
+        currentLeaders.Clear();
     }
 
     private enum LeaderboardType

@@ -2,6 +2,7 @@ using CrazyGames;
 using GamePix;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -87,8 +88,8 @@ namespace GeekplaySchool
 
         #region Leaderboard
 
-        public string[] l;
-        public string[] lN;
+        public List<string> l = new List<string>();
+        public List<string> lN = new List<string>();
         public int leaderNumber;
         public int leaderNumberN;
         //public LeaderboardInGame leaderboardInGame;
@@ -111,7 +112,7 @@ namespace GeekplaySchool
         //private Image curtainLoadVisual;
 
         private SceneLoader sceneLoader;
-        private Leaderboard leaderboard;
+        public Leaderboard leaderboard;
 
         public void Awake()
         {
@@ -497,9 +498,13 @@ namespace GeekplaySchool
             }
         }
 
-        public void GetLeadersScore(string value, string leaderboardName)
+        public void GetLeadersScore(string valueAndName)
         {
-            l[leaderNumber] = value;
+            string[] parts = valueAndName.Split(',');
+            string value = parts[0];
+            string leaderboardName = parts[1];
+
+            l.Add(value);
 
             if (leaderNumber < 9)
             {
@@ -512,19 +517,26 @@ namespace GeekplaySchool
             }
         }
 
-        public void EndGetLeaderboardsValue()
+        public void GetLeadersName(string valueAndName)
         {
-            leaderboard.SetLeadersView(lN, l, l.Length);
-        }
-        public void GetLeadersName(string value, string leaderboardName)
-        {
-            lN[leaderNumberN] = value;
+            string[] parts = valueAndName.Split(',');
+            string value = parts[0];
+            string leaderboardName = parts[1];
+
+            lN.Add(value);
 
             if (leaderNumberN < 9)
             {
                 leaderNumberN += 1;
                 Utils.GetLeaderboard("name", leaderNumberN, leaderboardName);
             }
+        }
+
+        public void EndGetLeaderboardsValue()
+        {
+            if (leaderboard == null) Debug.Log("Leaderboard is null");
+
+            leaderboard.SetLeadersView(lN.ToArray(), l.ToArray(), l.Count);
         }
 
         //СОХАРЕНИЕ И ЗАГРУЗКА

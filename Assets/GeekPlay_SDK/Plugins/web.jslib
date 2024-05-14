@@ -179,6 +179,9 @@ var plugin = {
       type = UTF8ToString(type);
       console.log(type);
 
+      name = UTF8ToString(name);
+      console.log(type);
+
           ysdk.getLeaderboards()
       .then(lb => {
         // Получение 10 топов
@@ -195,14 +198,16 @@ var plugin = {
             {
               console.log("SCORE");              
               console.log(String(res.entries[number].score));
-              myGameInstance.SendMessage('Init', 'GetLeadersScore', [String(res.entries[number].score, name]));
+              var message = String(res.entries[number].score) + "," + String(name);
+              myGameInstance.SendMessage('Init', 'GetLeadersScore', message);
               //return String(res.entries[number].score);
             }
             else if (type == "name")
             {
               console.log("NAME");
               console.log(String(res.entries[number].player.publicName))
-              myGameInstance.SendMessage('Init', 'GetLeadersName', [String(res.entries[number].player.publicName, name]));
+              var message = String(res.entries[number].player.publicName) + "," + String(name);
+              myGameInstance.SendMessage('Init', 'GetLeadersName', message);
               //return UTF8ToString(res.entries[number].player.publicName);
             }
           });
