@@ -9,6 +9,9 @@ public class PlayerData
     public string LastBuy;
     public bool Review;
     public bool IsVolumeOn = true;
+    public int HelpCount;
+    public int SurviveCount;
+    public int DonatCount;
     public bool IsGeometryDashRewardTaked;
     public bool IsCloesChangeRewardTaked;
     public bool IsSlapBattleRewardTaked;

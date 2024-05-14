@@ -111,6 +111,7 @@ namespace GeekplaySchool
         //private Image curtainLoadVisual;
 
         private SceneLoader sceneLoader;
+        private Leaderboard leaderboard;
 
         public void Awake()
         {
@@ -418,7 +419,7 @@ namespace GeekplaySchool
             openReview = true;
         }
 
-        public void Leaderboard(string leaderboardName, int value) //ЗАНЕСТИ В ЛИДЕРБОРД
+        public void SetLeaderboard(string leaderboardName, int value) //ЗАНЕСТИ В ЛИДЕРБОРД
         {
             switch (Platform)
             {
@@ -496,29 +497,34 @@ namespace GeekplaySchool
             }
         }
 
-        public void GetLeaders(string value)
+        public void GetLeadersScore(string value, string leaderboardName)
         {
             l[leaderNumber] = value;
 
             if (leaderNumber < 9)
             {
                 leaderNumber += 1;
-                Utils.GetLeaderboard("score", leaderNumber);
+                Utils.GetLeaderboard("score", leaderNumber, leaderboardName);
+            }
+            else if(leaderNumber == 9)
+            {
+                EndGetLeaderboardsValue();
             }
         }
-        public void GetLeadersName(string value)
+
+        public void EndGetLeaderboardsValue()
         {
-            Debug.Log("GetLeadersName");
+            leaderboard.SetLeadersView(lN, l, l.Length);
+        }
+        public void GetLeadersName(string value, string leaderboardName)
+        {
             lN[leaderNumberN] = value;
 
             if (leaderNumberN < 9)
             {
                 leaderNumberN += 1;
-                Utils.GetLeaderboard("name", leaderNumberN);
+                Utils.GetLeaderboard("name", leaderNumberN, leaderboardName);
             }
-
-            //leaderboardInGame.SetText();
-            Debug.Log("GetLeadersName");
         }
 
         //СОХАРЕНИЕ И ЗАГРУЗКА
@@ -851,7 +857,7 @@ namespace GeekplaySchool
         //ФОКУС И ЗВУК
         void OnApplicationFocus(bool hasFocus)
         {
-            Silence(!hasFocus);
+            //Silence(!hasFocus);
         }
 
         void OnApplicationPause(bool isPaused)

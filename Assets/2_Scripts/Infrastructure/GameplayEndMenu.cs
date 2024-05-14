@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeekplaySchool;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,6 +26,11 @@ public class GameplayEndMenu : MonoBehaviour
         else
         {
             HeaderTextView.text = "Вы выжили";
+
+            Geekplay.Instance.PlayerData.SurviveCount++;
+            Geekplay.Instance.SetLeaderboard(Helper.SurviveLeaderboardName, Geekplay.Instance.PlayerData.SurviveCount);
+            Geekplay.Instance.Save();
+
         }
 
 

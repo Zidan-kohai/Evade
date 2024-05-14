@@ -62,7 +62,31 @@ public class ChooseMapSystem : MonoBehaviour
         }
         //there should be a logic for deciding which card to launch
 
-        Geekplay.Instance.LoadScene(1);
+        int mapIndex = 0;
+        int voiseCount = 0;
+
+        if(voiseCount < easyMapPlayerHandler.GetVoiseCount)
+        {
+            mapIndex = easyMapPlayerHandler.GetMapID;
+            voiseCount = easyMapPlayerHandler.GetVoiseCount;
+        }
+        if (voiseCount < middleMapPlayerHandler.GetVoiseCount)
+        {
+            mapIndex = middleMapPlayerHandler.GetMapID;
+            voiseCount = middleMapPlayerHandler.GetVoiseCount;
+        }
+        if (voiseCount < hardMapPlayerHandler.GetVoiseCount)
+        {
+            mapIndex = hardMapPlayerHandler.GetMapID;
+            voiseCount = hardMapPlayerHandler.GetVoiseCount;
+        }
+
+
+        Debug.Log("mapIndex: " + mapIndex);
+        Debug.Log("voiseCount: " + voiseCount);
+
+
+        Geekplay.Instance.LoadScene(mapIndex);
     }
 
     private void AddEventToButton()
@@ -97,8 +121,6 @@ public class ChooseMapSystem : MonoBehaviour
         {
             PlayerIcon player = Instantiate(playerIconPrefab);
 
-            player.SetMap(easyMapPlayerHandler);
-
             if (i == 0)
             {
                 playerIcon = player;
@@ -109,6 +131,9 @@ public class ChooseMapSystem : MonoBehaviour
                 AIPlayersIcon.Add(player);
                 player.Initialize(i, i.ToString());
             }
+
+            player.SetMap(easyMapPlayerHandler);
+
         }
     }
     private void AIMove(PlayerIcon icon, int realyPlayerMapId, int playersCountAvarage)
@@ -146,9 +171,6 @@ public class ChooseMapSystem : MonoBehaviour
                     break;
                 case 2:
                     icon.SetMap(hardMapPlayerHandler);
-                    break;
-                case 3:
-                    icon.SetMap(exitMapPlayerHandler); 
                     break;
             }
         }

@@ -37,6 +37,9 @@ public class PlayerIconHandler : MonoBehaviour
 
     public void RemovePlayer(int index)
     {
-        playersIndex.Remove(index);
+        if (playersIndex.Remove(index))
+        {
+
+        }
     }
 }

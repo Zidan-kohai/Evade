@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Helper
 {
+    public static string SurviveLeaderboardName = "Survive";
+    public static string HelpLeaderboardName = "Help";
+    public static string DonatLeaderboardName = "Donat";
+
+
     public static List<string> ruPlayerName = new List<string>()
     {   
             "Anton",

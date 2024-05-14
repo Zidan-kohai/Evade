@@ -46,6 +46,10 @@ public class InAppShopItem : MonoBehaviour
     private void Reward()
     {
         Wallet.AddMoneyST(data.Goldcount, data.DiamondCount);
+
+        Geekplay.Instance.PlayerData.DonatCount += data.Cost;
+        Geekplay.Instance.SetLeaderboard(Helper.DonatLeaderboardName, Geekplay.Instance.PlayerData.DonatCount);
+        Geekplay.Instance.Save();
     }
 
     private void PurchaseEvent()

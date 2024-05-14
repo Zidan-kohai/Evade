@@ -1,4 +1,5 @@
 using Cinemachine;
+using GeekplaySchool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -364,6 +365,9 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
                 if(helpPercent >= 1)
                 {
                     helpCount++;
+                    Geekplay.Instance.PlayerData.HelpCount++;
+                    Geekplay.Instance.SetLeaderboard(Helper.HelpLeaderboardName, Geekplay.Instance.PlayerData.HelpCount);
+                    Geekplay.Instance.Save();
                 }
             }
         }
