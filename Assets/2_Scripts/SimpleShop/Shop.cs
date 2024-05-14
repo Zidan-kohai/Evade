@@ -155,7 +155,6 @@ public class Shop : MonoBehaviour
 
     private void EquipAccessory(ShopItem item)
     {
-        PlayerAccessory.ChangeCurrentSkineIndex(item.GetIndexOnPlayer);
         Geekplay.Instance.PlayerData.CurrentEquipedAccessoryID = item.GetIndexOnPlayer;
 
         for (int i = 0; i < items.Count; i++)

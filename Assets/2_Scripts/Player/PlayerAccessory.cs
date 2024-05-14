@@ -4,29 +4,23 @@ using UnityEngine;
 
 public class PlayerAccessory : MonoBehaviour
 {
-    private static int skineIndex;
-
 
     [SerializeField] private List<Accessory> headphonesSkine;
 
 
-    private void Awake()
+    private void Start()
     {
         WearSkine();
-    }
-
-    public static void ChangeCurrentSkineIndex(int index)
-    {
-        skineIndex = index;
     }
 
     private void WearSkine()
     {
         foreach (var item in headphonesSkine)
         {
-            if(item.index == skineIndex)
+            if(item.index == Geekplay.Instance.PlayerData.CurrentEquipedAccessoryID)
             {
                 item.gameObject.SetActive(true);
+                item.Event?.Invoke();
             }
             else
             {

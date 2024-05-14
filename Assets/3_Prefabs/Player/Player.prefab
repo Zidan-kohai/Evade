@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 2861547996078224846}
   - component: {fileID: 1512673573069339496}
   - component: {fileID: 2727070378565412836}
+  - component: {fileID: 1626719977090493698}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -255,6 +256,37 @@ MonoBehaviour:
   headphonesSkine:
   - gameObject: {fileID: 1889294103300909768}
     index: 1
+    Event:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: BuffHandler, Assembly-CSharp
+          m_MethodName: HeadphoneBuff
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1626719977090493698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569462121483549870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b603da8be7e8093408db940a8b932311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentExperience: 0
+  experienceProgresion: 100
+  experienceToIncreaseLevel: 100
+  level: 1
 --- !u!1 &817575997565210850
 GameObject:
   m_ObjectHideFlags: 0
