@@ -1,4 +1,5 @@
 ﻿using GeekplaySchool;
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,12 +14,15 @@ public class GameplayEndMenu : MonoBehaviour
     [SerializeField] private int playerCount = 0;
 
 
-    public void Initialize(List<IPlayer> players, IPlayer realyPlayer)
+    public void Initialize(List<IPlayerInfo> players, IPlayerInfo realyPlayer)
     {
         gameObject.SetActive(true);
 
-        AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney());
-        
+        AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney(), realyPlayer.GetEarnedExperrience());
+
+        Wallet.AddMoneyST(realyPlayer.GetEarnedMoney(), 0);
+        PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience());
+
         if(realyPlayer.IsDeath())
         {
             HeaderTextView.text = "Вы мертвы";
@@ -36,7 +40,7 @@ public class GameplayEndMenu : MonoBehaviour
 
         foreach (var player in players)
         {
-            AddPlayer(player.GetName(), player.GetHelpCount(), player.GetSurvivedTime(), player.GetEarnedMoney());
+            AddPlayer(player.GetName(), player.GetHelpCount(), player.GetSurvivedTime(), player.GetEarnedMoney(), player.GetEarnedExperrience());
         }
 
         Close();
@@ -44,13 +48,13 @@ public class GameplayEndMenu : MonoBehaviour
     }
 
 
-    public void AddPlayer(string name, int helpedCount, float survivedCount, int earnedMoney)
+    public void AddPlayer(string name, int helpedCount, float survivedCount, int earnedMoney, int experience)
     {
         foreach(PlayerResult player in playersResult)
         {
             if(!player.handler.activeSelf)
             {
-                player.Show(name, helpedCount, survivedCount, earnedMoney);
+                player.Show(name, helpedCount, survivedCount, earnedMoney, experience);
                 playerCount++;
                 return;
             }

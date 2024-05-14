@@ -37,10 +37,13 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     [Space]
     [Header("Chase")]
-    [SerializeField] private List<IPlayer> playersOnReachArea = new List<IPlayer>();
-    [SerializeField] private Dictionary<IPlayer, Vector3> lastSeenPlayersWithPosition = new Dictionary<IPlayer, Vector3>();
+    [SerializeField] private List<IPlayerInfo> playersOnReachArea = new List<IPlayerInfo>();
+    [SerializeField] private Dictionary<IPlayerInfo, Vector3> lastSeenPlayersWithPosition = new Dictionary<IPlayerInfo, Vector3>();
     [SerializeField] private float distanseToAttack = 1.5f;
 
+    [Header("Voise")]
+    [SerializeField] private float minVoiseTime;
+    [SerializeField] private float maxVoiseTime;
 
     private void Update()
     {
@@ -73,7 +76,10 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
         patrolTransform = PatrolPoint;
         currentPatrolPositionIndex = UnityEngine.Random.Range(0, patrolTransform.Count);
+
+        PlaySound();
     }
+
     public void IncreaseSoundZone()
     {
         audiosource.maxDistance *= 2; 
@@ -81,7 +87,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     public void AddHumanoid(IHumanoid IHumanoid)
     {
-        if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        if (IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player))
         {
             playersOnReachArea.Add(player);
         }
@@ -89,7 +95,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     public void RemoveHumanoid(IHumanoid IHumanoid)
     {
-        if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        if (IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player))
         {
             playersOnReachArea.Remove(player);
         }
@@ -98,6 +104,13 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     public Transform GetTransform()
     {
         return transform;
+    }
+
+    private void PlaySound()
+    {
+        audiosource.Play();
+
+        StartCoroutine(Wait(minVoiseTime, maxVoiseTime, PlaySound));
     }
 
     private void OnIdle()
@@ -138,11 +151,11 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     {
         float distanse = float.PositiveInfinity;
         Vector3 targetPosition = transform.position;
-        IPlayer currentChasingPlayer = null;
+        IPlayerInfo currentChasingPlayer = null;
 
         for (int i = 0; i < lastSeenPlayersWithPosition.Count; i++)
         {
-            IPlayer player = lastSeenPlayersWithPosition.ElementAt(i).Key;
+            IPlayerInfo player = lastSeenPlayersWithPosition.ElementAt(i).Key;
             Vector3 position = lastSeenPlayersWithPosition.ElementAt(i).Value;
 
             if (player.IsFallOrDeath())
@@ -185,7 +198,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         }
     }
 
-    private bool TryAttack(IPlayer currentChasingPlayer)
+    private bool TryAttack(IPlayerInfo currentChasingPlayer)
     {
         float distanceToPlayer = (currentChasingPlayer.GetTransform().position - transform.position).magnitude;
 
@@ -210,7 +223,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
             if (Physics.Raycast(transform.position + biasOnThrowRaycast, (direcrtion + biasOnThrowRaycast).normalized, out hit, Mathf.Infinity, allLayers, QueryTriggerInteraction.Ignore))
             {
-                if (hit.transform.TryGetComponent(out IPlayer IPlayer) && !IPlayer.IsFallOrDeath())
+                if (hit.transform.TryGetComponent(out IPlayerInfo IPlayer) && !IPlayer.IsFallOrDeath())
                 {
                     ChangeState(EnemyState.Chase);
 
@@ -254,6 +267,15 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         action.Invoke();
     }
 
+    private IEnumerator Wait(float minVoiseTime, float maxVoiseTime, Action action)
+    {
+        float RandomTime = UnityEngine.Random.Range(minVoiseTime, maxVoiseTime);
+
+        yield return new WaitForSeconds(RandomTime);
+
+        action?.Invoke();
+    }
+
     private void OnDrawGizmos()
     {
         // Drawing Field of View
@@ -275,7 +297,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     //Maybe i change this solution in future
     private void OnTriggerEnter(Collider col)
     {
-        if (col.transform.TryGetComponent(out IPlayer player))
+        if (col.transform.TryGetComponent(out IPlayerInfo player))
         {
             Debug.Log("collision.transform.name: " + col.transform.name);
             player.Fall();

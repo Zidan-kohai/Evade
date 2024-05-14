@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
+public class AIPlayer : MonoBehaviour, IPlayerInfo, ISee, IHumanoid, IMove
 {
     [Header("Movement")]
     [SerializeField] private float startSpeedOnPlayerUp = 50f;
@@ -27,7 +27,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     [Header("Humanoids")]
     [SerializeField] private List<IEnemy> enemies = new List<IEnemy>();
-    [SerializeField] private List<IPlayer> players = new List<IPlayer>();
+    [SerializeField] private List<IPlayerInfo> players = new List<IPlayerInfo>();
 
     [Header("State")]
     [SerializeField] private PlayerState state;
@@ -53,9 +53,11 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private float safeDistance;
     [SerializeField] private float helpDistance;
     [SerializeField] private int helpCount;
-    [SerializeField] private IPlayer playerToHelp;
+    [SerializeField] private IPlayerInfo playerToHelp;
 
     [Header("General")]
+    [SerializeField] private int moneyMultiplierFactor = 1;
+    [SerializeField] private int experienceMultiplierFactor = 1;
     [SerializeField] private float livedTime = 0;
     private Coroutine coroutine;
     private string name;
@@ -112,7 +114,23 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     public string GetName() => name;
 
-    public int GetEarnedMoney() => 0;
+    public int GetEarnedMoney()
+    {
+        int earnedMoney = (helpCount * 10) + 25;
+
+        earnedMoney *= moneyMultiplierFactor;
+
+        return earnedMoney;
+    }
+
+    public int GetEarnedExperrience()
+    {
+        int earnedExperience = (helpCount * 10) + 10;
+
+        earnedExperience *= experienceMultiplierFactor;
+
+        return earnedExperience;
+    }
 
     public int GetHelpCount() => helpCount;
 
@@ -127,7 +145,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
             enemies.Add(enemy);
             ChangeState(PlayerState.Escape);
         }
-        else if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        else if (IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player))
         {
             players.Add(player);
         }
@@ -156,7 +174,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 }));
             }
         }
-        else if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        else if (IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player))
         {
             players.Remove(player);
         }
@@ -328,7 +346,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     {
         bool isHaveUpPlayer = false;
         float distanceToPlayer = float.PositiveInfinity;
-        IPlayer nearnestPlayer = null;
+        IPlayerInfo nearnestPlayer = null;
 
         for (int i = 0; i < players.Count; i++)
         {
@@ -423,7 +441,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         #region CheckPlayer
 
         float distanceToPlayer = float.PositiveInfinity;
-        IPlayer nearnestPlayer = null;
+        IPlayerInfo nearnestPlayer = null;
 
         for (int i = 0; i < players.Count; i++)
         {
@@ -468,7 +486,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         return true;
     }
 
-    private void TryHelp(IPlayer player)
+    private void TryHelp(IPlayerInfo player)
     {
         float distanceToPlayer = (player.GetTransform().position - transform.position).magnitude;
 
@@ -501,5 +519,4 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
         action.Invoke();
     }
-
 }

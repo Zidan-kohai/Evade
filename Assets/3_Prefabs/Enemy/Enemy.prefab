@@ -93,6 +93,8 @@ MonoBehaviour:
   rotatingSpeedOnIdle: 5
   chanseToChangeState: 1
   distanseToAttack: 7
+  minVoiseTime: 1
+  maxVoiseTime: 5
 --- !u!65 &1996905498317043747
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -157,7 +159,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

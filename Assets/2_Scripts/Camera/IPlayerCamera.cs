@@ -4,6 +4,6 @@ using System;
 [Serializable]
 public struct IPlayerCamera
 {
-    public IPlayer IPlayer;
+    public IPlayerInfo IPlayer;
     public CinemachineVirtualCamera VirtualCamera;
 }

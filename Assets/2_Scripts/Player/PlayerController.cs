@@ -1,12 +1,12 @@
 using Cinemachine;
 using GeekplaySchool;
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
+public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayerInfo, IRealyPlayer
 {
     //I Refactoring it as soon as i can
     [Header("managers")]
@@ -24,13 +24,12 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
     [SerializeField] private bool canJump = true;
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private float gravity = -9.81f;
-    [SerializeField] private Transform groundChekcRaycastOrigin; 
-    [SerializeField] private float groundChekcRaycastHeight; 
-    [SerializeField] private LayerMask groundLayer; 
+    [SerializeField] private Transform groundChekcRaycastOrigin;
+    [SerializeField] private float groundChekcRaycastHeight;
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private bool isOnGround;
     [SerializeField] private Vector3 velocity;
     [SerializeField] private GameObject visualHandler;
-    [SerializeField] private int helpCount;
 
     [Header("State")]
     [SerializeField] private PlayerState state;
@@ -49,12 +48,15 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     [Header("Humanoids")]
     private List<IEnemy> enemies = new List<IEnemy>();
-    private List<IPlayer> players = new List<IPlayer>();
+    private List<IPlayerInfo> players = new List<IPlayerInfo>();
 
     [Header("Interactive")]
     [SerializeField] private float distanceToHelp;
 
     [Header("General")]
+    [SerializeField] private int helpCount;
+    [SerializeField] private int moneyMultiplierFactor = 1;
+    [SerializeField] private int experienceMultiplierFactor = 1;
     private string name = "Вы";
     private float livedTime = 0;
     private Coroutine coroutine;
@@ -65,6 +67,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         reachArea.SetISee(this);
         animationController.SetIMove(this);
         GameplayController.AddRealyPlayer(this);
+        BuffHandler.AddRealyPlayerST(this);
     }
 
     private void Update()
@@ -82,7 +85,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         CheckGround();
 
         Jump();
-        
+
         ApplyGravity();
 
         characterController.Move(velocity * Time.deltaTime);
@@ -102,13 +105,39 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
                 break;
         }
 
-        if(state != PlayerState.Fall && state != PlayerState.Death)
+        if (state != PlayerState.Fall && state != PlayerState.Death)
             Help();
     }
 
     public string GetName() => name;
 
-    public int GetEarnedMoney() => 0;
+    public int GetEarnedMoney()
+    {
+        int earnedMoney = (helpCount * 10) + 25;
+
+        earnedMoney *= moneyMultiplierFactor;
+
+        return earnedMoney;
+    }
+
+    public int GetEarnedExperrience()
+    {
+        int earnedExperience = (helpCount * 10) + 10;
+
+        earnedExperience *= experienceMultiplierFactor;
+
+        return earnedExperience;
+    }
+
+    public void SetMoneyMulltiplierFactor(int value)
+    {
+        moneyMultiplierFactor = value;
+    }
+
+    public void SetExperrienceMulltiplierFactor(int value)
+    {
+        experienceMultiplierFactor = value;
+    }
 
     public Transform GetTransform()
     {
@@ -178,7 +207,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         {
             enemies.Add(enemy);
         }
-        else if(IHumanoid.gameObject.TryGetComponent(out IPlayer player) && player != this)
+        else if(IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player) && player != this)
         {
             players.Add(player);
         }
@@ -190,7 +219,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         {
             enemies.Remove(enemy);
         }
-        else if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        else if (IHumanoid.gameObject.TryGetComponent(out IPlayerInfo player))
         {
             players.Remove(player);
         }
@@ -353,7 +382,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
 
     private void Help()
     {
-        if (CanHelp(out IPlayer player))
+        if (CanHelp(out IPlayerInfo player))
         {
             actionUI.ShowHelpingUIManual();
 
@@ -377,7 +406,7 @@ public class PlayerController : MonoBehaviour, IPlayer, IHumanoid, ISee, IMove
         }
     }
 
-    private bool CanHelp(out IPlayer player)
+    private bool CanHelp(out IPlayerInfo player)
     {
         for(int i = 0; i < players.Count; i++)
         {

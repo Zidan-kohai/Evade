@@ -1,9 +1,8 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
-public interface IPlayer
+public interface IPlayerInfo
 {
-    public string GetName();
-
     public bool IsFall();
 
     public bool IsDeath();
@@ -17,10 +16,20 @@ public interface IPlayer
     public float Raising();
 
     public float GetPercentOfRaising();
+    public string GetName();
+
+    public int GetEarnedMoney();
+
+    public int GetEarnedExperrience();
 
     public int GetHelpCount();
 
     public float GetSurvivedTime();
+}
 
-    public int GetEarnedMoney();
+public interface IRealyPlayer
+{
+    public void SetMoneyMulltiplierFactor(int value);
+
+    public void SetExperrienceMulltiplierFactor(int value);
 }

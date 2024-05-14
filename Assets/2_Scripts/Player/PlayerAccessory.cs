@@ -1,4 +1,6 @@
 using GeekplaySchool;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +12,7 @@ public class PlayerAccessory : MonoBehaviour
 
     private void Start()
     {
-        WearSkine();
+        StartCoroutine(Wait(0.3f, WearSkine));
     }
 
     private void WearSkine()
@@ -27,6 +29,14 @@ public class PlayerAccessory : MonoBehaviour
                 item.gameObject.SetActive(false);
             }
         }
+    }
+
+
+    private IEnumerator Wait(float time, Action action)
+    {
+        yield return new WaitForSeconds(time);
+
+        action?.Invoke();
     }
 
 }
