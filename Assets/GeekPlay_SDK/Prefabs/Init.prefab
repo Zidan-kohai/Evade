@@ -50,9 +50,16 @@ MonoBehaviour:
   PlayerData:
     Gold: 10
     Diamond: 100
+    currentExperience: 0
+    ExperienceProgresion: 100
+    ExperienceToIncreaseLevel: 100
+    level: 1
     LastBuy: 
     Review: 0
     IsVolumeOn: 1
+    HelpCount: 0
+    SurviveCount: 0
+    DonatCount: 0
     IsGeometryDashRewardTaked: 0
     IsCloesChangeRewardTaked: 0
     IsSlapBattleRewardTaked: 0
@@ -114,28 +121,8 @@ MonoBehaviour:
   canPause: 1
   isOnPause: 0
   isOnPromocodeZone: 0
-  l:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  lN:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  l: []
+  lN: []
   leaderNumber: 0
   leaderNumberN: 0
   remainingTimeUntilUpdateLeaderboard: 0
@@ -145,3 +132,4 @@ MonoBehaviour:
   interstitialRemainingText: {fileID: 0}
   interstitialTime: 75
   pastedTimeFromLastInterstitial: 0
+  leaderboard: {fileID: 0}
