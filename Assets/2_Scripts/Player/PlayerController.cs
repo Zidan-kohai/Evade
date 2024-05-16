@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
         ChangeState(PlayerState.Carried);
     }
 
-    public void PutPlayerOnGround()
+    public void GetDownOnGround()
     {
         playerVisual.position = new Vector3(0, 1, 0);
     }
@@ -192,6 +192,12 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
     public void Fall()
     {
         if (state == PlayerState.Death) return;
+
+        if(isCarry)
+        {
+            PutPlayer();
+        }
+
         ChangeState(PlayerState.Fall);
     }
 
@@ -472,7 +478,9 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
     private void PutPlayer()
     {
         actionUI.DisablePutExplain();
-        carriedPlayer.PutPlayerOnGround();
+        actionUI.DisableCarryExplain();
+        animationController.PutPlayer();
+        carriedPlayer.GetDownOnGround();
         isCarry = false;
         carriedPlayer = null;
     }

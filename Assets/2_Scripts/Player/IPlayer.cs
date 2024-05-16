@@ -31,7 +31,7 @@ public interface IPlayer
 
     public void Carried(Transform point);
 
-    public void PutPlayerOnGround();
+    public void GetDownOnGround();
 }
 
 public interface IRealyPlayer

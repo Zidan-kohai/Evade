@@ -15,7 +15,7 @@ public class PlayerSpawner : Spawner
     {
         int enemyCountToSpawn = Random.Range(minSpawnCount, players.Count);
 
-        for (int i = 0; i < enemyCountToSpawn; i++)
+        for (int i = 0; i < 1; i++)
         {
             Vector3 spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position;
             players[i].Initialize(PatrollPoints, spawnPoint);

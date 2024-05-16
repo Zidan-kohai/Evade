@@ -153,12 +153,15 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     public float GetSurvivedTime() => livedTime + 0.2f;
 
-    public void PutPlayerOnGround()
+    public void GetDownOnGround()
     {
         transform.position = playerVisual.transform.position;
         agent.enabled = true;
         playerVisual.parent = transform;
-        playerVisual.localPosition = new Vector3(0, 1, 0);
+        playerVisual.localPosition = new Vector3(0, 1, 0); ;
+        animationController.PutPlayer();
+
+        ChangeState(PlayerState.Fall);
     }
 
     public void AddHumanoid(IHumanoid IHumanoid)
@@ -205,6 +208,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         }
     }
 
+    [ContextMenu("Fall")]
     public void Fall()
     {
         if (state == PlayerState.Death) return;
@@ -272,8 +276,23 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     private void ChangeState(PlayerState newState)
     {
-        if (state == newState ||
-            ((state == PlayerState.Fall) && (lostedTimeFromFallToUp > 0) && (newState != PlayerState.Death)) || state == PlayerState.Death) return;
+        //if state and newState are equal we don`t do anythink
+        //if current state is fall we can switch only to the idle, death or carried state
+        //if current state is carried we can switch only to the fall
+        //if current state is death we don`t do anythink
+        if (state == newState 
+            ||
+
+            ((state == PlayerState.Fall)
+            && (newState != PlayerState.Idle)
+            && (newState != PlayerState.Death))
+            && (newState != PlayerState.Carried)
+
+            ||
+            (state == PlayerState.Carried)
+            && newState != PlayerState.Fall
+            
+            || state == PlayerState.Death) return;
 
         state = newState;
 
@@ -354,7 +373,6 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
             currnetWalkPointIndex = (currnetWalkPointIndex + 1) % pointsToWalk.Count;
-            ChangeState(PlayerState.Idle);
         }
     }
 
