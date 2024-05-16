@@ -273,7 +273,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     private void ChangeState(PlayerState newState)
     {
         if (state == newState ||
-            ((state == PlayerState.Fall) && (lostedTimeFromFallToUp > 0) && (newState != PlayerState.Death))) return;
+            ((state == PlayerState.Fall) && (lostedTimeFromFallToUp > 0) && (newState != PlayerState.Death)) || state == PlayerState.Death) return;
 
         state = newState;
 
