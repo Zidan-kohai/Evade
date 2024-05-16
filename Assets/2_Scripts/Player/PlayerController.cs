@@ -462,6 +462,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
 
     private void Carry(IPlayer player)
     {
+        actionUI.ShowPutExplain();
         isCarry = true;
         player.Carried(carriedTransform);
         carriedPlayer = player;
@@ -470,6 +471,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
 
     private void PutPlayer()
     {
+        actionUI.DisablePutExplain();
         carriedPlayer.PutPlayerOnGround();
         isCarry = false;
         carriedPlayer = null;

@@ -1,18 +1,18 @@
-using DG.Tweening;
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerAnimationController : MonoBehaviour
 {
+    private const string RunSpeedKey = "RunSpeed";
+    private const string JumpingKey = "Jumping";
+    private const string DeathKey = "Death";
+    private const string CarryKey = "Carry";
+    private const string CarriedKey = "Carried";
+    private const string PutPlayerKey = "PutPlayer";
+    private const string CrawlKey = "Crawl";
+    private const string UpKey = "Up";
+
     [SerializeField] private IMove movement;
     [SerializeField] private Animator animator;
-    [SerializeField] private Avatar idleAvatar;
-    [SerializeField] private Avatar slowRunAvatar;
-    [SerializeField] private Avatar fastRunAvatar;
-    [SerializeField] private Avatar jumpAvatar;
-    [SerializeField] private Avatar fallAvatar;
     [SerializeField] private float speedOnFastRun;
 
     [SerializeField] private Avatar currentAvatar;
@@ -31,52 +31,31 @@ public class PlayerAnimationController : MonoBehaviour
 
         float moveSpeed = movement.MoveSpeed();
 
-        animator.SetFloat("RunSpeed", moveSpeed);
+        animator.SetFloat(RunSpeedKey, moveSpeed);
 
         
         bool jumped = movement.IsJump();
 
         if (jumped)
         {
-            animator.SetBool("Jumping", true);
+            animator.SetBool(JumpingKey, true);
         }
         else
         {
-            animator.SetBool("Jumping", false);
-        }
-
-        if(isFall)
-        {
-            ChangeAvatar(fallAvatar);
-        }
-        else if(jumped)
-        {
-            ChangeAvatar(jumpAvatar);
-        }
-        else if (moveSpeed > speedOnFastRun)
-        {
-            ChangeAvatar(fastRunAvatar);
-        }
-        else if (moveSpeed < speedOnFastRun && moveSpeed > 0.01)
-        {
-            ChangeAvatar(slowRunAvatar);
-        }
-        else
-        {
-            ChangeAvatar(idleAvatar);
+            animator.SetBool(JumpingKey, false);
         }
     }
 
     public void Carry()
     {
         isCarry = true;
-        animator.SetBool("Carry", isCarry);
+        animator.SetBool(CarryKey, isCarry);
     }
 
     public void Carried()
     {
         isCarried = true;
-        animator.SetBool("Carried", isCarried);
+        animator.SetBool(CarriedKey, isCarried);
     }
 
     public void PutPlayer()
@@ -84,36 +63,25 @@ public class PlayerAnimationController : MonoBehaviour
         isCarried = false;
         isCarry = false;
 
-        animator.SetBool("Carried", isCarried);
-        animator.SetBool("Carried", isCarry);
+        animator.SetBool(CarriedKey, isCarried);
+        animator.SetBool(CarryKey, isCarry);
 
-        animator.SetTrigger("PutPlayer");
+        animator.SetTrigger(PutPlayerKey);
     }
 
     public void Fall()
     {
         isFall = true;
-        ChangeAvatar(fallAvatar);
-        animator.SetTrigger("Crawl");
+        animator.SetTrigger(CrawlKey);
     }
 
     public void Up()
     {
         isFall = false;
-        ChangeAvatar(idleAvatar);
-        animator.SetTrigger("Up");
+        animator.SetTrigger(UpKey);
     }
     public void Death()
     {
-        animator.SetTrigger("Death");
-    }
-
-    public void ChangeAvatar(Avatar newAvatar)
-    {
-        if (currentAvatar == newAvatar) return;
-
-        currentAvatar = newAvatar;
-
-        animator.avatar = newAvatar;
+        animator.SetTrigger(DeathKey);
     }
 }
