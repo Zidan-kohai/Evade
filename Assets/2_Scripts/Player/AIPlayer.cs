@@ -276,10 +276,10 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     private void ChangeState(PlayerState newState)
     {
-        //if state and newState are equal we don`t do anythink
+        //if state and newState are equal we don`t do anything
         //if current state is fall we can switch only to the idle, death or carried state
         //if current state is carried we can switch only to the fall
-        //if current state is death we don`t do anythink
+        //if current state is death we don`t do anything
         if (state == newState 
             ||
 
