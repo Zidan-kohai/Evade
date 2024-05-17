@@ -37,6 +37,11 @@ public class PlayerData
         ExperienceToIncreaseLevel = experienceToIncreaseLevel;
         Level = level;
     }
+
+    public void SetCurrentBoosterKey(int key, int cellIndex)
+    {
+        CurrentBoosterKey[cellIndex] = key;
+    }
 }
 
 [Serializable]
