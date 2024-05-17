@@ -1584,7 +1584,7 @@ MonoBehaviour:
   chanseToChangeState: 5
   minEscapeTime: 3
   maxEscapeTime: 5
-  carryDistance: 40
+  carryDistance: 55
   safeDistance: 25
   helpDistance: 11
   helpCount: 0

@@ -15,7 +15,7 @@ public class EnemySpawner : Spawner
     {
         int enemyCountToSpawn = Random.Range(minSpawnCount, enemies.Count);
 
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 2; i++)
         {
             Vector3 spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position;
             EnemyData data = enemyDataHandler.GetRandomEnemyData();

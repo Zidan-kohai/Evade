@@ -468,6 +468,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         else if(enemies.Count == 0 && state == PlayerState.Carry)
         {
             PutPlayer();
+            ChangeState(PlayerState.Idle);
         }
 
         return transform.forward;
@@ -583,7 +584,6 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     {
         animationController.PutPlayer();
         carriedPlayer.GetDownOnGround();
-        ChangeState(PlayerState.Idle);
         carriedPlayer = null;
     }
 
