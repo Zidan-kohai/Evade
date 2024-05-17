@@ -27,7 +27,7 @@ public class PlayerData
     public int CurrentEquipedLightID = 0;
     public List<MyDictionary> BuyedItemID = new List<MyDictionary>();
     public List<MyDictionary> BuyedBoosterID = new List<MyDictionary>();
-    
+    public List<int> CurrentBoosterKey = new List<int>();
 
     public List<int> Codes = new List<int>();
 
@@ -36,7 +36,6 @@ public class PlayerData
         CurrentExperience = currentExperience;
         ExperienceToIncreaseLevel = experienceToIncreaseLevel;
         Level = level;
-        
     }
 }
 

@@ -5,6 +5,8 @@ using UnityEngine;
 public class ShopItemData : ScriptableObject
 {
     public SubjectType type;
+    public Sprite mainIcon;
+    public Sprite secondIcon;
     public int openOnLevel;
     public int indexOnPlayer;
     public string name;
