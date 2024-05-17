@@ -7,6 +7,7 @@ public class WindowHandler : MonoBehaviour
     [SerializeField] private GameObject simpleShopWindow;
     [SerializeField] private GameObject inAppShopWindow;
     [SerializeField] private GameObject leadersWindow;
+    [SerializeField] private GameObject ourGameWindow;
     [SerializeField] private MainMenuWindowState currentOpenedWindow;
 
     #region MainMenu
@@ -94,6 +95,21 @@ public class WindowHandler : MonoBehaviour
     }
 
     #endregion
+
+    #region OurGame
+    public void OpenOurGameWindow()
+    {
+        ourGameWindow.SetActive(true);
+        CloseCurrentWindow();
+        currentOpenedWindow = MainMenuWindowState.OurGame;
+    }
+
+    private void CloseOurGameWindow()
+    {
+        ourGameWindow.SetActive(false);
+    }
+    #endregion
+
     private void CloseCurrentWindow()
     {
         switch(currentOpenedWindow)
@@ -118,6 +134,9 @@ public class WindowHandler : MonoBehaviour
                 break;
             case MainMenuWindowState.Leaders:
                 CloseLeadersWindow();
+                break;
+            case MainMenuWindowState.OurGame:
+                CloseOurGameWindow();
                 break;
         }
     }

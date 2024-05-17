@@ -127,7 +127,13 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
 
     public void GetDownOnGround()
     {
-        playerVisual.position = new Vector3(0, 1, 0);
+        transform.position = playerVisual.transform.position;
+        playerVisual.parent = transform;
+        playerVisual.localPosition = new Vector3(0, 1, 0);
+        playerVisual.localEulerAngles = Vector3.zero;
+        animationController.PutPlayer();
+
+        ChangeState(PlayerState.Fall);
     }
 
     public void SetTimeToUp(int deacreaseFactor)

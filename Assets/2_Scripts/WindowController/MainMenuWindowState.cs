@@ -5,5 +5,6 @@
     Telegram,
     SimpleShop,
     InAppShop,
-    Leaders
+    Leaders,
+    OurGame
 }

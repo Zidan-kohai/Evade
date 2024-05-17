@@ -32440,6 +32440,18 @@ PrefabInstance:
       propertyPath: headphonesSkine.Array.data[3].Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2755025758214090766, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 40.592
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755025758214090766, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -133.428
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755025758214090766, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -85.434
+      objectReference: {fileID: 0}
     - target: {fileID: 2861547996078224846, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: actionUI
       value: 
@@ -32474,11 +32486,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017054946
+      value: -0.000000017054937
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000022778321
+      value: 0.000000002277831
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -120,8 +120,9 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     public void Carried(Transform point)
     {
         ChangeState(PlayerState.Carried);
-        playerVisual.transform.position = point.transform.position;
-        playerVisual.transform.parent = point.transform;
+        playerVisual.position = point.transform.position;
+        playerVisual.parent = point.transform;
+        playerVisual.localEulerAngles = Vector3.zero;
     }
 
     public string GetName() => name;
@@ -158,7 +159,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         transform.position = playerVisual.transform.position;
         agent.enabled = true;
         playerVisual.parent = transform;
-        playerVisual.localPosition = new Vector3(0, 1, 0); ;
+        playerVisual.localPosition = new Vector3(0, 1, 0);
+        playerVisual.localEulerAngles = Vector3.zero;
         animationController.PutPlayer();
 
         ChangeState(PlayerState.Fall);

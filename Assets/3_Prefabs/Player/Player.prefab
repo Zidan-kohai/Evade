@@ -1729,11 +1729,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6452385235044809338}
-  idleAvatar: {fileID: 9000000, guid: ec6428c4458456540a3170a9ad7387b0, type: 2}
-  slowRunAvatar: {fileID: 9000000, guid: 31359df397345584eb7de047254ffa10, type: 2}
-  fastRunAvatar: {fileID: 9000000, guid: 6bc0a947497f93d41b2267d8bf6ef9bf, type: 2}
-  jumpAvatar: {fileID: 9000000, guid: 3ca6a767ec55f5c42af69a082d3b1cfb, type: 2}
-  fallAvatar: {fileID: 9000000, guid: ac94bc34ebedaec4eb60ccaadd06a053, type: 2}
   speedOnFastRun: 70
   currentAvatar: {fileID: 0}
   isFall: 0
@@ -2178,8 +2173,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8764999320802350330}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 1.5}
+  m_LocalRotation: {x: 0.6851778, y: -0.53994715, z: -0.017435422, w: 0.48855346}
+  m_LocalPosition: {x: 0.51, y: -0.58, z: 0.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
