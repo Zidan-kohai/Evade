@@ -123,7 +123,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         BuffHandler.AddPlayerST(this);
     }
 
-    public void Carried(Transform point)
+    public void Carried(Transform point, CinemachineVirtualCamera virtualCamera)
     {
         ChangeState(PlayerState.Carried);
         playerVisual.position = point.transform.position;
@@ -575,7 +575,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     private void Carry(IPlayer player)
     {
-        player.Carried(carriedTransform);
+        player.Carried(carriedTransform, virtualCamera);
         ChangeState(PlayerState.Carry);
         carriedPlayer = player;
     }

@@ -1,3 +1,4 @@
+using Cinemachine;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ public interface IPlayer
 
     public void SetTimeToUp(int deacreaseFactor);
 
-    public void Carried(Transform point);
+    public void Carried(Transform point, CinemachineVirtualCamera virtualCamera);
 
     public void GetDownOnGround();
 }

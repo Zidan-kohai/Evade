@@ -4,6 +4,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, IRealyPlayer
@@ -120,13 +121,15 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
             Help();
     }
 
-    public void Carried(Transform point)
+    public void Carried(Transform point, CinemachineVirtualCamera virtualCamera)
     {
         ChangeState(PlayerState.Carried);
         playerVisual.position = point.transform.position;
         playerVisual.parent = point.transform;
         playerVisual.localEulerAngles = Vector3.zero;
         animationController.Carried();
+
+        CameraConrtoller.PlayerCarriedST(virtualCamera);
     }
 
     public void GetDownOnGround()
@@ -500,7 +503,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
     {
         actionUI.ShowPutExplain();
         isCarry = true;
-        player.Carried(carriedTransform);
+        player.Carried(carriedTransform, virtualCamera);
         carriedPlayer = player;
         ChangeState(PlayerState.Carry);
     }

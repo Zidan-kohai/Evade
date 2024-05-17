@@ -23,6 +23,7 @@ public class CameraConrtoller : MonoBehaviour
     [SerializeField] private float verticalRotation = 0f;
     [SerializeField] private CameraState currentState;
     [SerializeField] private CameraState stateOnUp;
+    [SerializeField] private CinemachineVirtualCamera carryPlayerCamera;
 
     private void Awake()
     {
@@ -80,6 +81,12 @@ public class CameraConrtoller : MonoBehaviour
     public static void PlayerUpST()
     {
         instance.PlayerUp();
+    }
+
+    public static void PlayerCarriedST(CinemachineVirtualCamera virtualCamera)
+    {
+        instance.PlayerCarried(virtualCamera);
+        Debug.Log("Virtual camera Change");
     }
 
     public void NextCamera()
@@ -158,8 +165,20 @@ public class CameraConrtoller : MonoBehaviour
         firstPersonCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
     }
 
+    private void PlayerCarried(CinemachineVirtualCamera virtualCamera)
+    {
+        carryPlayerCamera = virtualCamera;
+        carryPlayerCamera.Priority = 3;
+    }
+
     private void PlayerFall()
     {
+        if (carryPlayerCamera != null)
+        {
+            carryPlayerCamera.Priority = 1;
+            carryPlayerCamera = null;
+        }
+
         canSwitchCamera = false;
         stateOnUp = currentState;
         cameraSwitherHandler.SetActive(false);
