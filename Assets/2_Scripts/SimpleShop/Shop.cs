@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] private Button buyButton;
     [SerializeField] private Button equipButton;
+    [SerializeField] private RectTransform closeButton;
 
     [SerializeField] private TextMeshProUGUI nameView;
     [SerializeField] private TextMeshProUGUI descriptionView;
@@ -46,6 +47,20 @@ public class Shop : MonoBehaviour
         ShowItemInfo(item);
         buyButton.onClick.RemoveAllListeners();
         equipButton.onClick.RemoveAllListeners();
+
+        if(item.IsClose)
+        {
+            buyButton.gameObject.SetActive(false); 
+            equipButton.gameObject.SetActive(false);
+            closeButton.gameObject.SetActive(true);
+            return;
+        }
+        else
+        {
+            buyButton.gameObject.SetActive(true);
+            equipButton.gameObject.SetActive(true);
+            closeButton.gameObject.SetActive(false);
+        }
 
         switch(item.GetType)
         {
@@ -218,7 +233,9 @@ public class Shop : MonoBehaviour
             case SubjectType.Item:
                 if (!Geekplay.Instance.PlayerData.BuyedItemID.HasKey(item.GetIndexOnPlayer)) 
                     Geekplay.Instance.PlayerData.BuyedItemID.Add(new MyDictionary() { key = item.GetIndexOnPlayer });
+
                 Geekplay.Instance.PlayerData.BuyedItemID.GetByKey(item.GetIndexOnPlayer).value++;
+                item.ChangeBuyedInfoText(Geekplay.Instance.PlayerData.BuyedItemID.GetByKey(item.GetIndexOnPlayer).value);
                 break;
             case SubjectType.Light:
                 Geekplay.Instance.PlayerData.BuyedLightID.Add(item.GetIndexOnPlayer);
@@ -226,9 +243,12 @@ public class Shop : MonoBehaviour
             case SubjectType.Booster:
                 if (!Geekplay.Instance.PlayerData.BuyedBoosterID.HasKey(item.GetIndexOnPlayer))
                     Geekplay.Instance.PlayerData.BuyedBoosterID.Add(new MyDictionary() { key = item.GetIndexOnPlayer });
+
                 Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(item.GetIndexOnPlayer).value++;
+                item.ChangeBuyedInfoText(Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(item.GetIndexOnPlayer).value);
                 break;
         }
+
 
         Geekplay.Instance.Save();
     }

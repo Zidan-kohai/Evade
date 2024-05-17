@@ -10,36 +10,54 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private Button button;
 
     [SerializeField] private GameObject closePanel;
-    [SerializeField] private TextMeshProUGUI EquipedTextView;
+    [SerializeField] private TextMeshProUGUI closeText;
+    [SerializeField] private TextMeshProUGUI equipedTextView;
+    [SerializeField] private TextMeshProUGUI buyedCountTextView;
     [SerializeField] private TextMeshProUGUI nameTextView;
     [SerializeField] private int buyedCount;
+    [SerializeField] private bool isClose;
+
     public string GetName => data.name;
     public string GetDescription => data.description;
     public int GetCost => data.cost;
     public int GetIndexOnPlayer => data.indexOnPlayer;
     public int GetBuyedCount => buyedCount;
-
+    public bool IsClose => isClose;
     public SubjectType GetType => data.type;
+
 
     private void Start()
     {
-
         nameTextView.text = data.name;
+
+        isClose = CompareLevel();
+
+        if (IsClose) return;
 
         buyedCount = CheckBuyedCount();
 
+        ChangeBuyedInfoText(buyedCount);
+
         CheckIsEquiped();
-        
+
+    }
+
+    public void ChangeBuyedInfoText(int value)
+    {
+        if (value == 0 || data.type == SubjectType.Accessory || data.type == SubjectType.Light) return;
+
+        buyedCountTextView.text = value.ToString();
+        buyedCount = value;
     }
 
     public void Equip()
     {
-        EquipedTextView.gameObject.SetActive(true);
+        equipedTextView.gameObject.SetActive(true);
     }
 
     public void Dequip()
     {
-        EquipedTextView.gameObject.SetActive(false);
+        equipedTextView.gameObject.SetActive(false);
     }
 
     public void SubscribeEvent(Action action)
@@ -106,5 +124,16 @@ public class ShopItem : MonoBehaviour
         }
 
         return count;
+    }
+
+    private bool CompareLevel()
+    {
+        if(data.openOnLevel >= Geekplay.Instance.PlayerData.Level)
+        {
+            closeText.text = $"откроется на {data.openOnLevel} уровне";
+            closePanel.SetActive(true);
+            return true;
+        }
+        return false;
     }
 }

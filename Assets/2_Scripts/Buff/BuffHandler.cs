@@ -62,4 +62,19 @@ public class BuffHandler : MonoBehaviour
             item.SetTimeToUp(2);
         }
     }
+
+    public void HelthKitBuff()
+    {
+        realyPlayer.SetMaxSpeedOnFall(30);
+    }
+
+    public void StiltsKitBuff()
+    {
+        realyPlayer.SetMaxSpeedOnUp(10);
+    }
+
+    public void HermesShoes()
+    {
+        realyPlayer.SetMaxSpeedOnUp(80);
+    }
 }

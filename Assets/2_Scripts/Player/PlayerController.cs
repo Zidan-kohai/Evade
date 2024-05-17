@@ -178,6 +178,18 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
         experienceMultiplierFactor = value;
     }
 
+    public void SetMaxSpeedOnFall(int increaseFactor)
+    {
+        //increase maximum Fall speed by percentage(increaseFactor)
+        maxSpeedOnPlayerFall = maxSpeedOnPlayerFall + (maxSpeedOnPlayerFall * increaseFactor) / 100;
+    }
+
+    public void SetMaxSpeedOnUp(int increaseFactor)
+    {
+        //increase maximum Up speed by percentage(increaseFactor)
+        maxSpeedOnPlayerUp = maxSpeedOnPlayerFall + (maxSpeedOnPlayerFall * increaseFactor) / 100;
+    }
+
     public Transform GetTransform()
     {
         return transform;
@@ -544,5 +556,4 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
         Gizmos.color = Color.yellow;
         Gizmos.DrawRay(groundChekcRaycastOrigin.position, Vector3.down * groundChekcRaycastHeight);
     }
-
 }

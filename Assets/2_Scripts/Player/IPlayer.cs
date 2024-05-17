@@ -1,5 +1,4 @@
 using Cinemachine;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public interface IPlayer
@@ -40,4 +39,8 @@ public interface IRealyPlayer
     public void SetMoneyMulltiplierFactor(int value);
 
     public void SetExperienceMulltiplierFactor(int value);
+
+    public void SetMaxSpeedOnFall(int increaseFactor);
+
+    public void SetMaxSpeedOnUp(int increaseFacctor);
 }
