@@ -123,6 +123,10 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
     public void Carried(Transform point)
     {
         ChangeState(PlayerState.Carried);
+        playerVisual.position = point.transform.position;
+        playerVisual.parent = point.transform;
+        playerVisual.localEulerAngles = Vector3.zero;
+        animationController.Carried();
     }
 
     public void GetDownOnGround()
@@ -195,6 +199,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
         return state == PlayerState.Death;
     }
 
+    [ContextMenu("Fall")]
     public void Fall()
     {
         if (state == PlayerState.Death) return;
@@ -342,13 +347,17 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
         if(moveHorizontal == 0 && moveVertical == 0)
         {
             currrentSpeed = 0;
-            ChangeState(PlayerState.Idle);
+
+            if(state != PlayerState.Fall && state != PlayerState.Carried)
+                ChangeState(PlayerState.Idle);
         }
         else
         {
             currrentSpeed += Time.deltaTime * speedScaleFactor;
             currrentSpeed = Mathf.Clamp(currrentSpeed, startSpeed, maxSpeed);
-            ChangeState(PlayerState.Walk);
+
+            if (state != PlayerState.Fall && state != PlayerState.Carried)
+                ChangeState(PlayerState.Walk);
         }
 
         actionUI.ChangeSpeed(currrentSpeed);
@@ -385,8 +394,23 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
 
     private void ChangeState(PlayerState newState)
     {
-        if (state == newState ||
-            ((state == PlayerState.Fall) && (lostedTimeFromFallToUp > 0) && newState != PlayerState.Death)) return;
+        //if state and newState are equal we don`t do anything
+        //if current state is fall we can switch only to the idle, death or carried state
+        //if current state is carried we can switch only to the fall
+        //if current state is death we don`t do anything
+        if (state == newState
+            ||
+
+            ((state == PlayerState.Fall)
+            && (newState != PlayerState.Idle) && (lostedTimeFromFallToUp > 0)
+            && (newState != PlayerState.Death))
+            && (newState != PlayerState.Carried)
+
+            ||
+            (state == PlayerState.Carried)
+            && newState != PlayerState.Fall
+
+            || state == PlayerState.Death) return;
 
         state = newState;
 

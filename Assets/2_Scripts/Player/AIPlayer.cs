@@ -53,10 +53,12 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private Coroutine stopEscapeCoroutine;
 
     [Header("Help")]
+    [SerializeField] private float carryDistance;
     [SerializeField] private float safeDistance;
     [SerializeField] private float helpDistance;
     [SerializeField] private int helpCount;
     [SerializeField] private IPlayer playerToHelp;
+    [SerializeField] private IPlayer carriedPlayer;
 
     [Header("General")]
     [SerializeField] private int moneyMultiplierFactor = 1;
@@ -83,6 +85,10 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                     OnWalk();
                 break;
             case PlayerState.Escape:
+                if(!CheckPlayerAndEnemyToHelp())
+                    MoveAwayFromEnemies();
+                break;
+            case PlayerState.Carry:
                 MoveAwayFromEnemies();
                 break;
             case PlayerState.Fall:
@@ -94,7 +100,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 break;
         }
 
-        CheckPlayerAndEnemyToHelp();
+        //CheckPlayerAndEnemyToHelp();
     }
 
     public void Initialize(List<Transform> Points, Vector3 spawnPoint)
@@ -214,6 +220,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     public void Fall()
     {
         if (state == PlayerState.Death) return;
+
+        if (state == PlayerState.Carry) PutPlayer();
 
         ChangeState(PlayerState.Fall);
     }
@@ -457,6 +465,10 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
             averageApproachDirection /= enemies.Count;
             return -averageApproachDirection.normalized;
         }
+        else if(enemies.Count == 0 && state == PlayerState.Carry)
+        {
+            PutPlayer();
+        }
 
         return transform.forward;
     }
@@ -490,11 +502,12 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     private bool CheckPlayerAndEnemyToHelp()
     {
-        if (state != PlayerState.Idle && state != PlayerState.Walk || players.Count == 0) return false;
+        if (//state != PlayerState.Idle && state != PlayerState.Walk || 
+            players.Count == 0) return false;
 
         #region CheckPlayer
 
-        float distanceToPlayer = float.PositiveInfinity;
+        float distanceNeanestToPlayer = float.PositiveInfinity;
         IPlayer nearnestPlayer = null;
 
         for (int i = 0; i < players.Count; i++)
@@ -504,9 +517,9 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
             float distance = (players[i].GetTransform().position - transform.position).magnitude;
             bool isPlayerFail = players[i].IsFall();
 
-            if(isPlayerFail && distance < distanceToPlayer)
+            if(isPlayerFail && distance < distanceNeanestToPlayer)
             {
-                distanceToPlayer = distance;
+                distanceNeanestToPlayer = distance;
                 nearnestPlayer = players[i];
             }
         }
@@ -518,35 +531,37 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         float distanceToNeanestEnemy = float.PositiveInfinity;
         IEnemy nearnestEnemy = null;
 
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            float distance = (enemies[i].GetTransform().position - transform.position).magnitude;
+        if (nearnestPlayer == null) return false;
 
-            if (distance < distanceToNeanestEnemy)
-            {
-                distanceToNeanestEnemy = distance;
-                nearnestEnemy = enemies[i];
-            }
-        }
+        CheckEnemyDistanceBetweenPlayerToHelpAndEnemy(ref distanceToNeanestEnemy, ref nearnestEnemy, nearnestPlayer);
+        
+        if(HasEnemyBetweenPlayerToHelpAndThisPlayer(ref nearnestPlayer, distanceNeanestToPlayer)) return false;
+        
 
+        Debug.Log("nearnestPlayer: " + distanceNeanestToPlayer);
+        Debug.Log("distanceToNeanestEnemy: " + distanceToNeanestEnemy);
         #endregion
 
-        if (nearnestPlayer == null || distanceToNeanestEnemy < safeDistance) return false;
+        if (distanceToNeanestEnemy < safeDistance) return false;
 
         playerToHelp = nearnestPlayer;
 
-        TryHelp(nearnestPlayer);
+        TryHelp(nearnestPlayer, distanceToNeanestEnemy);
 
         return true;
     }
 
-    private void TryHelp(IPlayer player)
+    private void TryHelp(IPlayer player, float distanceToNeanestEnemy)
     {
         float distanceToPlayer = (player.GetTransform().position - transform.position).magnitude;
 
         if(distanceToPlayer < helpDistance)
         {
-            if(player.Raising() >= 1)
+            if(distanceToNeanestEnemy < carryDistance && state != PlayerState.Carry)
+            {
+                Carry(player);
+            }
+            else if(player.Raising() >= 1)
             {
                 helpCount++;
             }
@@ -555,6 +570,64 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         {
             SetDestination(player.GetTransform().position);
         }
+    }
+
+    private void Carry(IPlayer player)
+    {
+        player.Carried(carriedTransform);
+        ChangeState(PlayerState.Carry);
+        carriedPlayer = player;
+    }
+
+    private void PutPlayer()
+    {
+        animationController.PutPlayer();
+        carriedPlayer.GetDownOnGround();
+        ChangeState(PlayerState.Idle);
+        carriedPlayer = null;
+    }
+
+    private void CheckEnemyDistanceBetweenPlayerToHelpAndEnemy(ref float distanceToNeanestEnemy, ref IEnemy nearnestEnemy, IPlayer nearnestPlayer)
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            float distance = (enemies[i].GetTransform().position - nearnestPlayer.GetTransform().position).magnitude;
+
+            if (distance < distanceToNeanestEnemy)
+            {
+                distanceToNeanestEnemy = distance;
+                nearnestEnemy = enemies[i];
+            }
+        }
+    }
+
+    private bool HasEnemyBetweenPlayerToHelpAndThisPlayer(ref IPlayer nearnestPlayer, float distanceToNearnestPlayer)
+    {
+        bool result = false;
+
+        Vector3 directionToTarget = nearnestPlayer.GetTransform().position - transform.position;
+
+        foreach (IEnemy enemy in enemies)
+        {
+            float distnaceBetweenThisPlayerAndEnemy = (enemy.GetTransform().position - transform.position).magnitude;
+
+            if(distnaceBetweenThisPlayerAndEnemy < distanceToNearnestPlayer)
+            {
+                Vector3 directionToEnemyFromThisPlayer = enemy.GetTransform().position - transform.position;
+
+                float angleBetweenEnemyAndPlayerToHelp = Vector3.Angle(directionToEnemyFromThisPlayer, directionToTarget);
+                Debug.Log("AngleBetweenEnemyAndPlayerToHelp: " + angleBetweenEnemyAndPlayerToHelp);
+
+                if(angleBetweenEnemyAndPlayerToHelp < 45)
+                {
+                    result = true;
+                }
+
+            }
+
+        }
+
+        return result;
     }
 
     private void SetDestination(Vector3 target)

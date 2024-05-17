@@ -411,6 +411,7 @@ Transform:
   m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1480581437031601522}
   - {fileID: 1806838142200438027}
   m_Father: {fileID: 4916776445776562908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -515,11 +516,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3513101415509886250}
-  idleAvatar: {fileID: 9000000, guid: ec6428c4458456540a3170a9ad7387b0, type: 2}
-  slowRunAvatar: {fileID: 9000000, guid: 31359df397345584eb7de047254ffa10, type: 2}
-  fastRunAvatar: {fileID: 9000000, guid: 6bc0a947497f93d41b2267d8bf6ef9bf, type: 2}
-  jumpAvatar: {fileID: 9000000, guid: 3ca6a767ec55f5c42af69a082d3b1cfb, type: 2}
-  fallAvatar: {fileID: 9000000, guid: ac94bc34ebedaec4eb60ccaadd06a053, type: 2}
   speedOnFastRun: 70
   currentAvatar: {fileID: 0}
   isFall: 0
@@ -1410,8 +1406,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5739097173162697040}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.028196517, y: 0.97097975, z: -0.18699361, w: -0.14641275}
-  m_LocalPosition: {x: 7.3718185, y: 25, z: 23.888412}
+  m_LocalRotation: {x: -0.028196525, y: 0.97097975, z: -0.18699358, w: -0.1464128}
+  m_LocalPosition: {x: 7.3718214, y: 25, z: 23.888414}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1566,8 +1562,8 @@ MonoBehaviour:
   maxSpeedOnPlayerFall: 7
   currrentSpeed: 5
   speedScaleFactor: 25
-  currrentMinSpeed: 5
-  currrentMaxSpeed: 15
+  currrentMinSpeed: 70
+  currrentMaxSpeed: 200
   pointsToWalk: []
   currnetWalkPointIndex: 0
   agent: {fileID: 3663144800095553858}
@@ -1588,11 +1584,13 @@ MonoBehaviour:
   chanseToChangeState: 5
   minEscapeTime: 3
   maxEscapeTime: 5
-  safeDistance: 15
+  carryDistance: 40
+  safeDistance: 25
   helpDistance: 11
   helpCount: 0
   moneyMultiplierFactor: 1
   experienceMultiplierFactor: 1
+  carriedTransform: {fileID: 1480581437031601522}
   livedTime: 0
 --- !u!136 &2689890232233979099
 CapsuleCollider:
@@ -1834,6 +1832,37 @@ Transform:
   - {fileID: 1060579076401107408}
   m_Father: {fileID: 6734197752132777946}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7244386080909665512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1480581437031601522}
+  m_Layer: 0
+  m_Name: CarriedTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1480581437031601522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7244386080909665512}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6851778, y: -0.53994715, z: -0.017435422, w: 0.48855346}
+  m_LocalPosition: {x: 0.51, y: -0.58, z: 0.59}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 408133971361190444}
+  m_LocalEulerAnglesHint: {x: 40.592, y: -133.428, z: -85.434}
 --- !u!1 &7722274378239421639
 GameObject:
   m_ObjectHideFlags: 0

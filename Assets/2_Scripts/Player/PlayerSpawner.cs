@@ -13,7 +13,7 @@ public class PlayerSpawner : Spawner
 
     protected override void SpawnUnits()
     {
-        int enemyCountToSpawn = Random.Range(minSpawnCount, players.Count);
+        int playerCountToSpawn = Random.Range(minSpawnCount, players.Count);
 
         for (int i = 0; i < 1; i++)
         {
@@ -21,7 +21,7 @@ public class PlayerSpawner : Spawner
             players[i].Initialize(PatrollPoints, spawnPoint);
         }
 
-        spawnedEnemyCount = enemyCountToSpawn;
+        spawnedEnemyCount = playerCountToSpawn;
     }
 
     protected override void SpawnUnit()
