@@ -25,6 +25,7 @@ public class ShopItem : MonoBehaviour
     public bool IsClose => isClose;
     public SubjectType GetType => data.type;
 
+    public Sprite GetMainIcn => data.mainIcon;
 
     private void Start()
     {

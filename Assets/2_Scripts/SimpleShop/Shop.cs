@@ -17,9 +17,11 @@ public class Shop : MonoBehaviour
     [SerializeField] private List<ShopItem> items;
     [SerializeField] private ShopItem firstItem;
 
+    [SerializeField] private BoosterSwitcher boosterSwitcher;
+
     private void Start()
     {
-        FirstSubscribe(firstItem);
+        FirstSubscribe(firstItem);  
 
         SubscribeEventOnItemsClick();
     }
@@ -84,6 +86,15 @@ public class Shop : MonoBehaviour
     {
         buyButton.gameObject.SetActive(true);
         equipButton.gameObject.SetActive(false);
+
+        if (item.GetBuyedCount > 0)
+        {
+            equipButton.gameObject.SetActive(true);
+            equipButton.onClick.AddListener(() =>
+            {
+                boosterSwitcher.Initialize(item);
+            });
+        }
 
         buyButton.onClick.AddListener(() =>
         {

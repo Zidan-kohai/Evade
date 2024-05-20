@@ -6,6 +6,10 @@ public class ShopChapterSwithcer : MonoBehaviour
     [SerializeField] private RectTransform itemSubjectHandler;
     [SerializeField] private RectTransform boosterSubjectHandler;
     [SerializeField] private RectTransform accessorySubjectHandler;
+
+    [SerializeField] private RectTransform equipButton;
+    [SerializeField] private Vector3 equipButtonOpenPosition = new Vector3(0, 200, 0);
+    [SerializeField] private Vector3 equipButtonClosePosition = new Vector3(0, 15, 0);
     [SerializeField] private ShowChapter openedChapter;
 
     #region Light
@@ -39,10 +43,12 @@ public class ShopChapterSwithcer : MonoBehaviour
     {
         CloseCurrentOpenChapter();
         boosterSubjectHandler.gameObject.SetActive(true);
+        equipButton.anchoredPosition = equipButtonOpenPosition;
         openedChapter = ShowChapter.Booster;
     }
     private void CloseBoosterChapter()
     {
+        equipButton.anchoredPosition = equipButtonClosePosition;
         boosterSubjectHandler.gameObject.SetActive(false);
     }
     #endregion

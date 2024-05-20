@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Booster_02
   m_EditorClassIdentifier: 
   type: 3
+  mainIcon: {fileID: -1290214551, guid: d6c29f9b9abb22a40b0511deb04f4f14, type: 3}
+  secondIcon: {fileID: 0}
   openOnLevel: 1
   indexOnPlayer: 2
   name: "\u041F\u0430\u043B\u043E\u0447\u043A\u0430 \u0441\u0432\u0435\u0442\u0430"
