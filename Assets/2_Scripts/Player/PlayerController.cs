@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
         animationController.SetIMove(this);
         GameplayController.AddRealyPlayer(this);
         BuffHandler.AddRealyPlayerST(this);
+        BoosterController.AddRealyPlayerST(this);
     }
 
     private void Update()
@@ -178,16 +179,40 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, 
         experienceMultiplierFactor = value;
     }
 
-    public void SetMaxSpeedOnFall(int increaseFactor)
+    public float SetMaxSpeedOnFall(int value, bool isFactor = true)
     {
         //increase maximum Fall speed by percentage(increaseFactor)
-        maxSpeedOnPlayerFall = maxSpeedOnPlayerFall + (maxSpeedOnPlayerFall * increaseFactor) / 100;
+        float result;
+        if(isFactor)
+        {
+            result = (maxSpeedOnPlayerFall * value) / 100;
+            maxSpeedOnPlayerFall = maxSpeedOnPlayerFall + result;
+        }
+        else
+        {
+            result = value;
+            maxSpeedOnPlayerFall = maxSpeedOnPlayerFall + result;
+        }
+
+        return result;
     }
 
-    public void SetMaxSpeedOnUp(int increaseFactor)
+    public float SetMaxSpeedOnUp(int value, bool isFactor = true)
     {
         //increase maximum Up speed by percentage(increaseFactor)
-        maxSpeedOnPlayerUp = maxSpeedOnPlayerFall + (maxSpeedOnPlayerFall * increaseFactor) / 100;
+        float result;
+        if(isFactor)
+        {
+            result = (maxSpeedOnPlayerUp * value) / 100;
+            maxSpeedOnPlayerUp = maxSpeedOnPlayerUp + result;
+        }
+        else
+        {
+            result = value;
+            maxSpeedOnPlayerUp = maxSpeedOnPlayerUp + result;
+        }
+
+        return result;
     }
 
     public Transform GetTransform()

@@ -40,7 +40,7 @@ public interface IRealyPlayer
 
     public void SetExperienceMulltiplierFactor(int value);
 
-    public void SetMaxSpeedOnFall(int increaseFactor);
+    public float SetMaxSpeedOnFall(int value, bool isFactor = true);
 
-    public void SetMaxSpeedOnUp(int increaseFacctor);
+    public float SetMaxSpeedOnUp(int value, bool isFactor = true);
 }

@@ -82,7 +82,7 @@ MonoBehaviour:
   viewDistance: 100
   allLayers:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 375
   agent: {fileID: 7129009690107177239}
   enemyVisual: {fileID: 14444786742572869}
   audiosource: {fileID: 1324352390537379765}

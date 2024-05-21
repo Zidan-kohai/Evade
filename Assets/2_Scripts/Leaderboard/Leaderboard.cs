@@ -2,7 +2,6 @@
 using GeekplaySchool;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
 using UnityEngine.UI;
 
 public class Leaderboard : MonoBehaviour

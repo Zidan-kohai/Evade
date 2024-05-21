@@ -46,10 +46,10 @@ public class InputManager : MonoBehaviour
 
         IsF = Input.GetKeyDown(KeyCode.F);
 
-        Is1 = Input.GetKey(KeyCode.Alpha1);
+        Is1 = Input.GetKeyDown(KeyCode.Alpha1);
 
-        Is2 = Input.GetKey(KeyCode.Alpha2);
+        Is2 = Input.GetKeyDown(KeyCode.Alpha2);
 
-        Is3 = Input.GetKey(KeyCode.Alpha2);
+        Is3 = Input.GetKeyDown(KeyCode.Alpha3);
     }
 }
