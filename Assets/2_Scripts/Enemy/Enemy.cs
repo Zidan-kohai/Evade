@@ -87,14 +87,16 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     public void EnableAgent()
     {
-        agent.isStopped = true;
-        agent.enabled = false;
+        speed = 170;
+        agent.speed = speed;
     }
 
     public void DisableAgent()
     {
-        agent.isStopped = false;
-        agent.enabled = true;
+        speed = 0;
+        agent.speed = speed;
+
+        StartCoroutine(Wait(20, EnableAgent));
     }
 
     public void AddHumanoid(IHumanoid IHumanoid)

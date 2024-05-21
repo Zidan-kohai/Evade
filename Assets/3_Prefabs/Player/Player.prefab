@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 2727070378565412836}
   - component: {fileID: 1626719977090493698}
   - component: {fileID: 1283358513287290756}
+  - component: {fileID: 584000485050038201}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -507,6 +508,29 @@ MonoBehaviour:
   pointLight: {fileID: 135572651349159914}
   nightVisionGoggles: {fileID: 0}
   currentLight: {fileID: 0}
+--- !u!136 &584000485050038201
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569462121483549870}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Height: 15
+  m_Direction: 1
+  m_Center: {x: 0, y: 7.5, z: 0}
 --- !u!1 &817575997565210850
 GameObject:
   m_ObjectHideFlags: 0

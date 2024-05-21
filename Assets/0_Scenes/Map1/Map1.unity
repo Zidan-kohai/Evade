@@ -15137,6 +15137,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - data: {fileID: 11400000, guid: c14819fc176ab2948bb525ee5368c9d1, type: 2}
+    boosterEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 827318695}
+          m_TargetAssemblyTypeName: BoosterController, Assembly-CSharp
+          m_MethodName: Mine
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   realyPlayerTransform: {fileID: 7418738573951536420}
   mainCamera: {fileID: 122790196}
   colaDiactivateTime: 6
@@ -15148,6 +15164,8 @@ MonoBehaviour:
     m_Bits: 65
   sensorPrefab: {fileID: 6073065526690199634, guid: c676305298048b9499f30ba5f12d87c1, type: 3}
   diactivateSensorTime: 150
+  minePrefab: {fileID: 6742085414725502431, guid: 91877a2868eb9a64d99c717bcc46c25a, type: 3}
+  diactivateMineTime: 150
 --- !u!1001 &830223120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33346,11 +33364,11 @@ PrefabInstance:
       objectReference: {fileID: 210689042}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017054946
+      value: -0.000000017054937
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000022778321
+      value: 0.000000002277831
       objectReference: {fileID: 0}
     - target: {fileID: 6633020411424046989, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_Layer

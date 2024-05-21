@@ -40,6 +40,10 @@ public class BoosterController : MonoBehaviour
     [SerializeField] private GameObject sensorPrefab;
     [SerializeField] private float diactivateSensorTime;
 
+    [Header("Mine")]
+    [SerializeField] private GameObject minePrefab;
+    [SerializeField] private float diactivateMineTime;
+
 
     private void Awake()
     {
@@ -181,7 +185,28 @@ public class BoosterController : MonoBehaviour
     {
         Destroy(sensor);
     }
-    
+
+    #endregion
+
+    #region Mine
+    public void Mine()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        RaycastHit hit;
+
+        Physics.Raycast(ray.origin, ray.direction, out hit, 100, barrierSpawnable, QueryTriggerInteraction.Ignore);
+        GameObject barrierInstance = Instantiate(minePrefab, hit.point, realyPlayerTransform.rotation, null);
+
+        DOTween.Sequence()
+            .AppendInterval(diactivateMineTime)
+            .AppendCallback(() => DiactivateMine(minePrefab));
+    }
+
+    private void DiactivateMine(GameObject mine)
+    {
+        if(mine != null)
+            Destroy(mine);
+    }
     #endregion
 
     [Serializable]
