@@ -36,6 +36,10 @@ public class BoosterController : MonoBehaviour
     [SerializeField] private float barrierDiactivateTime;
     [SerializeField] private LayerMask barrierSpawnable;
 
+    [Header("Sensor")]
+    [SerializeField] private GameObject sensorPrefab;
+    [SerializeField] private float diactivateSensorTime;
+
 
     private void Awake()
     {
@@ -159,6 +163,26 @@ public class BoosterController : MonoBehaviour
 
     #endregion
 
+    #region Sensor
+    public void Sensor()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        RaycastHit hit;
+
+        Physics.Raycast(ray.origin, ray.direction, out hit, 100, barrierSpawnable, QueryTriggerInteraction.Ignore);
+        GameObject barrierInstance = Instantiate(sensorPrefab, hit.point, realyPlayerTransform.rotation, null);
+
+        DOTween.Sequence()
+            .AppendInterval(diactivateSensorTime)
+            .AppendCallback(() => DiactivateSensor(sensorPrefab));
+    }
+
+    private void DiactivateSensor(GameObject sensor)
+    {
+        Destroy(sensor);
+    }
+    
+    #endregion
 
     [Serializable]
     public class MyDictionary

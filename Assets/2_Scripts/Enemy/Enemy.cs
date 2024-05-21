@@ -85,6 +85,18 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         audiosource.maxDistance *= 2; 
     }
 
+    public void EnableAgent()
+    {
+        agent.isStopped = true;
+        agent.enabled = false;
+    }
+
+    public void DisableAgent()
+    {
+        agent.isStopped = false;
+        agent.enabled = true;
+    }
+
     public void AddHumanoid(IHumanoid IHumanoid)
     {
         if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
