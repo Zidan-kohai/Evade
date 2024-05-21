@@ -41,9 +41,28 @@ public class PlayerData
         Geekplay.Instance.Save();
     }
 
-    public void SetCurrentBoosterKey(int key, int cellIndex)
+    public void SetCurrentBoosterKey(int key, ref int cellIndex)
     {
-        CurrentBoosterKeys[cellIndex] = key;
+        int index = cellIndex;
+
+        if (CurrentBoosterKeys.Contains(key))
+        {
+            for (int i = 0; i < CurrentBoosterKeys.Count; i++)
+            {
+                if (CurrentBoosterKeys[i] == key)
+                {
+                    CurrentBoosterKeys[i] = -1;
+                    cellIndex = i;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            cellIndex = -1;
+        }
+
+        CurrentBoosterKeys[index] = key;
 
         Geekplay.Instance.Save();
     }
