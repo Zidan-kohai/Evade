@@ -33364,11 +33364,11 @@ PrefabInstance:
       objectReference: {fileID: 210689042}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017054937
+      value: 0.000000017054946
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000002277831
+      value: -0.0000000022778321
       objectReference: {fileID: 0}
     - target: {fileID: 6633020411424046989, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_Layer
