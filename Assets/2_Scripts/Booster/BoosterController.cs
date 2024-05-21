@@ -77,7 +77,9 @@ public class BoosterController : MonoBehaviour
 
     private void Update()
     {
-        if(inputManager.GetIs1 && boosterItem[0].gameObject.activeSelf)
+        if (realyPlayer.IsFallOrDeath()) return;
+
+        if (inputManager.GetIs1 && boosterItem[0].gameObject.activeSelf)
         {
             boosterItem[0].boostEvent?.Invoke();
         }
@@ -102,6 +104,7 @@ public class BoosterController : MonoBehaviour
     {
         this.realyPlayer = realyPlayer;
     }
+
     #region Cola
 
     public void ColaBoost()
@@ -141,7 +144,7 @@ public class BoosterController : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
 
-        Physics.Raycast(ray.origin, ray.direction, out hit, 100, barrierSpawnable);
+        Physics.Raycast(ray.origin, ray.direction, out hit, 100, barrierSpawnable, QueryTriggerInteraction.Ignore);
         GameObject barrierInstance = Instantiate(barrierPrefab, hit.point, realyPlayerTransform.rotation, null);
 
         DOTween.Sequence()
@@ -155,6 +158,7 @@ public class BoosterController : MonoBehaviour
     }
 
     #endregion
+
 
     [Serializable]
     public class MyDictionary

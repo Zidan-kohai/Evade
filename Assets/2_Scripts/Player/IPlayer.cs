@@ -34,7 +34,7 @@ public interface IPlayer
     public void GetDownOnGround();
 }
 
-public interface IRealyPlayer
+public interface IRealyPlayer : IPlayer
 {
     public void SetMoneyMulltiplierFactor(int value);
 

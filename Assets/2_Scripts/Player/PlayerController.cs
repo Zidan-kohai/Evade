@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using TMPro.Examples;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IPlayer, IRealyPlayer
+public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPlayer
 {
     //I Refactoring it as soon as i can
     [Header("managers")]
