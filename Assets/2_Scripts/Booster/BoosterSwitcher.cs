@@ -35,8 +35,7 @@ public class BoosterSwitcher : MonoBehaviour
             });
         }
 
-
-        //need fix logic bag
+        //Need refactoring
         for(int i = 0; i < Geekplay.Instance.PlayerData.CurrentBoosterKeys.Count; i++)
         {
             for (int j = i; j < cells.Count; j++)
