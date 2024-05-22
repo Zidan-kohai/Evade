@@ -8,7 +8,6 @@ public class GameplayMainMenu : MonoBehaviour
     [SerializeField] private GameObject exerciseHandler;
     [SerializeField] private TextMeshProUGUI lostTimeView;
 
-
     private void Start()
     {
         if (Geekplay.Instance.PlayerData.CurrentEquipedItemID == 1)

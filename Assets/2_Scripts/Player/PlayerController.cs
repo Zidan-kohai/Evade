@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     private void Update()
     {
+
         if (state == PlayerState.Death || state == PlayerState.Carried) return;
 
         livedTime += Time.deltaTime;
