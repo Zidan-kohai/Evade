@@ -11,6 +11,10 @@ public interface IPlayer
 
     public Transform GetTransform();
 
+    public bool GetIsTeleport();
+
+    public void Teleport(Vector3 teleportPosition);
+
     public void Fall();
 
     public float Raising();

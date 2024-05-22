@@ -3,18 +3,14 @@ using UnityEngine;
 
 public class TeleportPoint : MonoBehaviour
 {
-    public event Action<int, IPlayer> enterAction;
-    private int index;
-    public void Initizlize(int index)
-    {
-        this.index = index;
-    }
-
+    public event Action<TeleportPoint, IPlayer> enterAction;
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out IPlayer player))
         {
-            enterAction?.Invoke(index, player);
+            if (player.GetIsTeleport()) return;
+
+            enterAction?.Invoke(this, player);
         }
     }
 }

@@ -1,4 +1,5 @@
 using Cinemachine;
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private float currrentMaxSpeed = 1f;
     [SerializeField] private List<Transform> pointsToWalk;
     [SerializeField] private int currnetWalkPointIndex;
+    [SerializeField] private bool isTeleport;
 
     [Space, Header("Components")]
     [SerializeField] private NavMeshAgent agent;
@@ -214,6 +216,20 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         {
             players.Remove(player);
         }
+    }
+
+    public bool GetIsTeleport()
+    {
+        return isTeleport;
+    }
+
+    public void Teleport(Vector3 teleportPosition)
+    {
+        isTeleport = true;
+        transform.position = teleportPosition;
+        DOTween.Sequence()
+            .AppendInterval(0.3f)
+            .AppendCallback(() => isTeleport = false);
     }
 
     [ContextMenu("Fall")]
@@ -646,5 +662,4 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
         action.Invoke();
     }
-
 }

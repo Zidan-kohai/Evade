@@ -1,4 +1,5 @@
 using Cinemachine;
+using DG.Tweening;
 using GeekplaySchool;
 using JetBrains.Annotations;
 using System;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     [SerializeField] private bool isOnGround;
     [SerializeField] private Vector3 velocity;
     [SerializeField] private GameObject visualHandler;
+    [SerializeField] private bool isTeleport;
 
     [Header("State")]
     [SerializeField] private PlayerState state;
@@ -142,6 +144,26 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         animationController.PutPlayer();
 
         ChangeState(PlayerState.Fall);
+    }
+
+    public bool GetIsTeleport()
+    {
+        return isTeleport;
+    }
+
+    public void Teleport(Vector3 teleportPosition)
+    {
+        isTeleport = true;
+        characterController.enabled = false;
+        transform.position = teleportPosition;
+
+        DOTween.Sequence()
+            .AppendInterval(0.3f)
+            .AppendCallback(() => 
+            {
+                characterController.enabled = true;
+                isTeleport = false;
+            });  
     }
 
     public void SetTimeToUp(int deacreaseFactor)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15153,6 +15153,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - data: {fileID: 11400000, guid: abcf409529b3933418554065d35437fe, type: 2}
+    boosterEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 827318695}
+          m_TargetAssemblyTypeName: BoosterController, Assembly-CSharp
+          m_MethodName: TeleportActivate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   realyPlayerTransform: {fileID: 7418738573951536420}
   mainCamera: {fileID: 122790196}
   colaDiactivateTime: 6
@@ -15166,6 +15182,8 @@ MonoBehaviour:
   diactivateSensorTime: 150
   minePrefab: {fileID: 6742085414725502431, guid: 91877a2868eb9a64d99c717bcc46c25a, type: 3}
   diactivateMineTime: 150
+  teleportPrefab: {fileID: 8101250319899581318, guid: 005f39b66498ff64688c0c768e7ccadd, type: 3}
+  teleportsInstance: []
 --- !u!1001 &830223120
 PrefabInstance:
   m_ObjectHideFlags: 0

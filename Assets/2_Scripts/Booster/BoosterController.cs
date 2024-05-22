@@ -44,6 +44,10 @@ public class BoosterController : MonoBehaviour
     [SerializeField] private GameObject minePrefab;
     [SerializeField] private float diactivateMineTime;
 
+    [Header("Teleport")]
+    [SerializeField] private TeleportPoint teleportPrefab;
+    [SerializeField] private List<TeleportPoint> teleportsInstance = new();
+
 
     private void Awake()
     {
@@ -208,6 +212,31 @@ public class BoosterController : MonoBehaviour
             Destroy(mine);
     }
     #endregion
+
+    #region Teleport
+    public void TeleportActivate()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        RaycastHit hit;
+
+        Physics.Raycast(ray.origin, ray.direction, out hit, 100, barrierSpawnable, QueryTriggerInteraction.Ignore);
+        TeleportPoint teleport = Instantiate(teleportPrefab, hit.point, realyPlayerTransform.rotation, null);
+        teleport.enterAction += Teleport;
+        teleportsInstance.Add(teleport);
+    }
+
+    public void Teleport(TeleportPoint point, IPlayer player)
+    {
+        int rand = UnityEngine.Random.Range(0, teleportsInstance.Count);
+        if(point == teleportsInstance[rand])
+        {
+            Teleport(point, player);
+            return;
+        }
+
+        player.Teleport(teleportsInstance[rand].transform.position);
+    }
+    #endregion 
 
     [Serializable]
     public class MyDictionary
