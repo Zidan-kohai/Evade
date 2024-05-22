@@ -1,4 +1,5 @@
 using GeekplaySchool;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -181,6 +182,7 @@ public class Shop : MonoBehaviour
                 EquipAccessory(item);
                 break;
             case SubjectType.Item:
+                EquipItem(item);
                 break;
             case SubjectType.Light:
                 EquipLight(item);
@@ -189,6 +191,22 @@ public class Shop : MonoBehaviour
                 break;
 
         }
+    }
+
+    private void EquipItem(ShopItem item)
+    {
+        Geekplay.Instance.PlayerData.CurrentEquipedItemID = item.GetIndexOnPlayer;
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].GetType == SubjectType.Item)
+            {
+                items[i].Dequip();
+            }
+        }
+
+        item.Equip();
+        Geekplay.Instance.Save();
     }
 
     private void EquipAccessory(ShopItem item)
