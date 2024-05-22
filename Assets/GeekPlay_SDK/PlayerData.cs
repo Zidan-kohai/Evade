@@ -28,7 +28,7 @@ public class PlayerData
     public int CurrentEquipedLightID = 0;
     public List<MyDictionary> BuyedItemID = new List<MyDictionary>();
     public List<MyDictionary> BuyedBoosterID = new List<MyDictionary>();
-    public List<int> CurrentBoosterKeys = new List<int>() { -1, -1, -1};
+    public List<int> CurrentBoosterKeys = new List<int>() { -1, -1, -1, -1, -1};
 
     public List<int> Codes = new List<int>();
 

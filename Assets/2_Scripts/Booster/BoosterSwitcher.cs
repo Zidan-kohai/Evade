@@ -39,21 +39,48 @@ public class BoosterSwitcher : MonoBehaviour
         }
 
         //Need refactoring
-        for(int i = 0; i < Geekplay.Instance.PlayerData.CurrentBoosterKeys.Count; i++)
+        if (Geekplay.Instance.PlayerData.CurrentEquipedAccessoryID == 7)
         {
-            for (int j = i; j < cells.Count; j++)
+            for (int i = 0; i < Geekplay.Instance.PlayerData.CurrentBoosterKeys.Count; i++)
             {
-                bool result = false;
-                foreach (ShopItemData booster in Boosters)
+                cells[i].mainObject.SetActive(true);
+
+                for (int j = i; j < cells.Count; j++)
                 {
-                    if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == booster.indexOnPlayer)
+                    bool result = false;
+                    foreach (ShopItemData booster in Boosters)
                     {
-                        cells[j].cellIcon.sprite = booster.mainIcon;
-                        result = true;
-                        break;
+                        if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == booster.indexOnPlayer)
+                        {
+                            cells[j].cellIcon.sprite = booster.mainIcon;
+                            result = true;
+                            break;
+                        }
                     }
+                    if (result) break;
                 }
-                if (result) break;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                cells[i].mainObject.SetActive(true);
+
+                for (int j = i; j < cells.Count; j++)
+                {
+                    bool result = false;
+                    foreach (ShopItemData booster in Boosters)
+                    {
+                        if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == booster.indexOnPlayer)
+                        {
+                            cells[j].cellIcon.sprite = booster.mainIcon;
+                            result = true;
+                            break;
+                        }
+                    }
+                    if (result) break;
+                }
             }
         }
     }
@@ -62,6 +89,7 @@ public class BoosterSwitcher : MonoBehaviour
 [Serializable]
 public class Cell
 {
+    public GameObject mainObject;
     public Image cellIcon;
     public Button buttonSelf;
     public int index;

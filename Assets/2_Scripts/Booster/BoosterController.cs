@@ -73,7 +73,6 @@ public class BoosterController : MonoBehaviour
                 {
                     if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == booster.data.indexOnPlayer)
                     {
-
                         boosterItem[j].gameObject.SetActive(true);
                         boosterItem[j].image.sprite = booster.data.mainIcon;
                         boosterItem[j].boostEvent.AddListener(() => booster.boosterEvent?.Invoke());
@@ -104,6 +103,16 @@ public class BoosterController : MonoBehaviour
         if (inputManager.GetIs3 && boosterItem[2].gameObject.activeSelf)
         {
             boosterItem[2].boostEvent?.Invoke();
+        }
+
+        if (inputManager.GetIs4 && boosterItem[3].gameObject.activeSelf)
+        {
+            boosterItem[3].boostEvent?.Invoke();
+        }
+
+        if (inputManager.GetIs5 && boosterItem[4].gameObject.activeSelf)
+        {
+            boosterItem[4].boostEvent?.Invoke();
         }
     }
 

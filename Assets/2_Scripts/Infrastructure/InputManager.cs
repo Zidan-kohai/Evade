@@ -7,25 +7,29 @@ public class InputManager : MonoBehaviour
     private float moveHorizontal;
     private float moveVertical;
     private bool space;
-    private bool IsE;
-    private bool IsT;
-    private bool IsTab;
-    private bool IsF;
-    private bool Is1;
-    private bool Is2;
-    private bool Is3;
+    private bool isE;
+    private bool isT;
+    private bool isTab;
+    private bool isF;
+    private bool is1;
+    private bool is2;
+    private bool is3;
+    private bool is4;
+    private bool is5;
     public float GetMouseDeltaX => mouseDeltaX;
     public float GetMouseDeltaY => mouseDeltaY;
     public float GetMoveHorizontal => moveHorizontal;
     public float GetMoveVertical => moveVertical;
     public bool GetSpace => space;
-    public bool GetIsE => IsE;
-    public bool GetIsTab => IsTab;
-    public bool GetIsT => IsT;
-    public bool GetIsF => IsF;
-    public bool GetIs1 => Is1;
-    public bool GetIs2 => Is2;
-    public bool GetIs3 => Is3;
+    public bool GetIsE => isE;
+    public bool GetIsTab => isTab;
+    public bool GetIsT => isT;
+    public bool GetIsF => isF;
+    public bool GetIs1 => is1;
+    public bool GetIs2 => is2;
+    public bool GetIs3 => is3;
+    public bool GetIs4 => is4;
+    public bool GetIs5 => is5;
 
     void Update()
     {
@@ -38,18 +42,22 @@ public class InputManager : MonoBehaviour
 
         space = Input.GetButtonDown("Jump");
 
-        IsE = Input.GetKey(KeyCode.E);
+        isE = Input.GetKey(KeyCode.E);
 
-        IsTab = Input.GetKeyDown(KeyCode.Tab);
+        isTab = Input.GetKeyDown(KeyCode.Tab);
 
-        IsT = Input.GetKeyDown(KeyCode.T);
+        isT = Input.GetKeyDown(KeyCode.T);
 
-        IsF = Input.GetKeyDown(KeyCode.F);
+        isF = Input.GetKeyDown(KeyCode.F);
 
-        Is1 = Input.GetKeyDown(KeyCode.Alpha1);
+        is1 = Input.GetKeyDown(KeyCode.Alpha1);
 
-        Is2 = Input.GetKeyDown(KeyCode.Alpha2);
+        is2 = Input.GetKeyDown(KeyCode.Alpha2);
 
-        Is3 = Input.GetKeyDown(KeyCode.Alpha3);
+        is3 = Input.GetKeyDown(KeyCode.Alpha3);
+
+        is4 = Input.GetKeyDown(KeyCode.Alpha4);
+
+        is5 = Input.GetKeyDown(KeyCode.Alpha5);
     }
 }
