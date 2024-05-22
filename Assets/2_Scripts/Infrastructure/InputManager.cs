@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private Joystick joystick;
+    [SerializeField] private SwipeDetector swipeDetector;
     [SerializeField] private MyButton spaceButton;
     [SerializeField] private MyButton isEButton;
     [SerializeField] private MyButton isTabButton;
@@ -74,9 +75,9 @@ public class InputManager : MonoBehaviour
 
     private void MobileInput()
     {
-        mouseDeltaX = Input.GetAxis("Mouse X");
+        mouseDeltaX = swipeDetector.swipeDelta.x;
 
-        mouseDeltaY = Input.GetAxis("Mouse Y");
+        mouseDeltaY = swipeDetector.swipeDelta.y;
 
         moveHorizontal = joystick.Horizontal;
 
