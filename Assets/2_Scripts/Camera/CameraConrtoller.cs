@@ -1,4 +1,5 @@
 using Cinemachine;
+using GeekplaySchool;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,8 +28,11 @@ public class CameraConrtoller : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        if (!Geekplay.Instance.mobile)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
         switch (currentState)
         {

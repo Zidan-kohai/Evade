@@ -48,6 +48,7 @@ public class GameplayController : MonoBehaviour
     public void OnPlayerDeath(float livedTime)
     {
         //I know this is a shit
+        
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 

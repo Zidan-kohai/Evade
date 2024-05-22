@@ -394,7 +394,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     private void OnWalk()
     {
-        SetDestination(pointsToWalk[currnetWalkPointIndex].position);
+        SetDestination(pointsToWalk[currnetWalkPointIndex].position);   
 
         if (agent.remainingDistance <= agent.stoppingDistance)
         {

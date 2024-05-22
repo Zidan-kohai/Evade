@@ -8,11 +8,18 @@ public class GameplayMainMenu : MonoBehaviour
     [SerializeField] private GameObject exerciseHandler;
     [SerializeField] private TextMeshProUGUI lostTimeView;
 
+    [SerializeField] private GameObject mobilePanel;
+
     private void Start()
     {
         if (Geekplay.Instance.PlayerData.CurrentEquipedItemID == 1)
         {
             exerciseHandler.SetActive(true);
+        }
+
+        if(Geekplay.Instance.mobile)
+        {
+            mobilePanel.SetActive(true);
         }
     }
 
