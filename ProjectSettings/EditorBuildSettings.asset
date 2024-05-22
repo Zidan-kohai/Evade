@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/0_Scenes/MainMenu.unity
     guid: 078b8dd5ca93fe148bbbcc5434a1f0e8
   - enabled: 1
-    path: Assets/0_Scenes/Map1/Map1.unity
+    path: Assets/0_Scenes/Desert/Desert.unity
     guid: 8cafc815fa3769748b5c148831835495
+  - enabled: 1
+    path: Assets/0_Scenes/Building/Building.unity
+    guid: a7d47c190e91f3642934029500a6983c
+  - enabled: 1
+    path: Assets/0_Scenes/Map3/Map3.unity
+    guid: b673cc7870754724ca459e58edef93a7
   m_configObjects: {}

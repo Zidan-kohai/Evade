@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd17473c63599ca4c9f1e8ba73c7d59b, type: 3}
   m_Name: Enemy 2
   m_EditorClassIdentifier: 
-  enemyVisual: {fileID: -508492805, guid: d6c29f9b9abb22a40b0511deb04f4f14, type: 3}
+  enemyVisual: {fileID: -1290214551, guid: d6c29f9b9abb22a40b0511deb04f4f14, type: 3}
   voise: {fileID: 8300000, guid: 26817e31b49eb414cbb7250c02d2c588, type: 3}
