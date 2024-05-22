@@ -8,7 +8,7 @@ public class Radar : MonoBehaviour
     [SerializeField] private float maxDistance;
     [SerializeField] private float minDistance;
 
-    private List<Transform> enemies;
+    private List<Transform> enemies = new();
 
     private void Start()
     {
