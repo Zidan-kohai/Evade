@@ -31,6 +31,7 @@ public class GameplayMainMenu : MonoBehaviour
 
     public void Disable() 
     {
+        mobilePanel.SetActive(false);
         gameObject.SetActive(false);
     }
 

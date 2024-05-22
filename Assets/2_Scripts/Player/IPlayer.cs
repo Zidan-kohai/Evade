@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using UnityEngine;
 
 public interface IPlayer
@@ -36,6 +37,7 @@ public interface IPlayer
     public void Carried(Transform point, CinemachineVirtualCamera virtualCamera);
 
     public void GetDownOnGround();
+    public void SubscribeOnDeath(Action<IPlayer> onPlayerDeath);
 }
 
 public interface IRealyPlayer : IPlayer

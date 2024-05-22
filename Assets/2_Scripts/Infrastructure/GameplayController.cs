@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +16,7 @@ public class GameplayController : MonoBehaviour
     [SerializeField] private bool gameOver = false;
     [SerializeField] private IPlayer realyPlayer;
     [SerializeField] private List<IPlayer> players  = new List<IPlayer>();
-
+    private int playerCount = 0;
     private void Awake()
     {
         instance = this;
@@ -38,11 +39,26 @@ public class GameplayController : MonoBehaviour
     public static void AddPlayer(IPlayer player)
     {
         instance.players.Add(player);
+        instance.playerCount++;
+
+        player.SubscribeOnDeath(instance.PlayerDeath);
+    }
+
+    private void PlayerDeath(IPlayer player)
+    {
+        playerCount--;
+
+        if(playerCount <= 0)
+        {
+            End();
+        }
     }
 
     public static void AddRealyPlayer(IPlayer player)
     {
         instance.realyPlayer = player;
+        player.SubscribeOnDeath(instance.PlayerDeath);
+        instance.playerCount++;
     }
 
     public void OnPlayerDeath(float livedTime)
@@ -57,6 +73,7 @@ public class GameplayController : MonoBehaviour
 
     public void ShowLookPanel()
     {
+        mainMenu.Disable();
         loseMenu.Disable();
         lookMenu.SetActive(true);
     }

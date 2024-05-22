@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     [SerializeField] private IPlayer carriedPlayer;
 
     [Header("General")]
+    private Action<IPlayer> playerDeathEvent;
     [SerializeField] private int helpCount;
     [SerializeField] private int moneyMultiplierFactor = 1;
     [SerializeField] private int experienceMultiplierFactor = 1;
@@ -195,6 +196,11 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     public void SetMoneyMulltiplierFactor(int value)
     {
         moneyMultiplierFactor = value;
+    }
+
+    public void SubscribeOnDeath(Action<IPlayer> onPlayerDeath)
+    {
+        playerDeathEvent += onPlayerDeath;
     }
 
     public void SetExperienceMulltiplierFactor(int value)
@@ -581,6 +587,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     private void Death()
     {
         PlayerStateShower.ShowState(state);
+        playerDeathEvent?.Invoke(this);
         gamelpayController.OnPlayerDeath(livedTime);
         animationController.Death();
     }

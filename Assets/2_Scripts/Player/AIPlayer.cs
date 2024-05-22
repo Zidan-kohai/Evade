@@ -3,10 +3,8 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 {
@@ -67,6 +65,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private int experienceMultiplierFactor = 1;
     [SerializeField] private Transform carriedTransform;
     [SerializeField] private float livedTime = 0;
+    private Action<IPlayer> playerDeathEvent;
     private Coroutine coroutine;
     private string name;
 
@@ -174,6 +173,11 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         ChangeState(PlayerState.Fall);
     }
 
+    public void SubscribeOnDeath(Action<IPlayer> onPlayerDeath)
+    {
+        playerDeathEvent += onPlayerDeath;
+    }
+
     public void AddHumanoid(IHumanoid IHumanoid)
     {
         if (state == PlayerState.Death) return;
@@ -208,7 +212,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
                 stopEscapeCoroutine = StartCoroutine(Wait(escapeTime, () =>
                 {
-                    if (enemies.Count == 0 && !IsFallOrDeath()) ChangeState(PlayerState.Idle);
+                    if (enemies.Count == 0 && !IsFallOrDeath() && state != PlayerState.Carried) ChangeState(PlayerState.Idle);
                 }));
             }
         }
@@ -362,6 +366,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     {
         if(coroutine != null) StopCoroutine(coroutine);
 
+        playerDeathEvent?.Invoke(this);
         PlayerStateShower.ShowAIState(name, state);
         agent.SetDestination(transform.position);
         animationController.Death();
