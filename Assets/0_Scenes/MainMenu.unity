@@ -866,6 +866,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
       propertyPath: mobile
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
+      propertyPath: SoundOn
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
@@ -3316,7 +3320,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 885}
+  m_SizeDelta: {x: 800, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &561134676
 MonoBehaviour:
@@ -17283,6 +17287,76 @@ RectTransform:
   m_AnchoredPosition: {x: -575, y: 0}
   m_SizeDelta: {x: 300, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2096936361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2096936362}
+  - component: {fileID: 2096936363}
+  m_Layer: 0
+  m_Name: Localization
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2096936362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096936361}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2096936363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096936361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee685dfe449d644b843406f0be1d954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chooseModeTextView: {fileID: 1836363349}
+  simpleShopTextView: {fileID: 1949114988}
+  inAppShopTextView: {fileID: 185245534}
+  dailyExerciseTextView: {fileID: 1834608022}
+  lidersTextView: {fileID: 1480833791}
+  telergamBonusTextView: {fileID: 732710732}
+  ourGameTextView: {fileID: 631386861}
+  playGameTextView: {fileID: 1537936546}
+  chooseModeOpenMainMenuTextView: {fileID: 1187700306}
+  descriptionTextView: {fileID: 1451838925}
+  telegramTextView: {fileID: 1980317930}
+  claimTextView: {fileID: 239749896}
+  telegramOpenMainMenuTextView: {fileID: 1258386807}
+  ourGameOpenMainMenuTextView: {fileID: 1925423811}
+  survivalTextView: {fileID: 704123814}
+  savedTextView: {fileID: 1110749141}
+  donatTextView: {fileID: 272191464}
+  lidersOpenMainMenuTextView: {fileID: 1317617072}
+  simpleShopOpenMainMenuTextView: {fileID: 1769708459}
+  lightChapterTextView: {fileID: 1020605808}
+  itemTextView: {fileID: 882434394}
+  boosterTextView: {fileID: 404967411}
+  accessoryTextView: {fileID: 1778749464}
+  buyTextView: {fileID: 187579781}
+  closeTextView: {fileID: 733341124}
+  inAppShopOpenMainMenuTextView: {fileID: 1009781370}
 --- !u!224 &2105831424 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1418266225116392480, guid: 608624564208067438578d441b12f0ee, type: 3}
@@ -19034,3 +19108,4 @@ SceneRoots:
   - {fileID: 851719561}
   - {fileID: 1162868355}
   - {fileID: 145675763}
+  - {fileID: 2096936362}
