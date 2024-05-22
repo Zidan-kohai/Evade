@@ -1,6 +1,7 @@
 using GeekplaySchool;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ public class BoosterSwitcher : MonoBehaviour
     [SerializeField] private Sprite defaultSprite;
 
     //Need refactoring
-    public void Initialize(ShopItem currentHandItem)
+    public void Initialize(ShopItem currentHandItem, TextMeshProUGUI equipButtonTextView)
     {
         gameObject.SetActive(true);
 
@@ -21,6 +22,8 @@ public class BoosterSwitcher : MonoBehaviour
 
             cell.buttonSelf.onClick.AddListener(() =>
             {
+                equipButtonTextView.text = "Ёкипировано";
+
                 Debug.Log("cell");
                 int cellIndex = cell.index;
                 Geekplay.Instance.PlayerData.SetCurrentBoosterKey(currentHandItem.GetIndexOnPlayer, ref cellIndex);

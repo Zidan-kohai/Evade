@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] private Button buyButton;
     [SerializeField] private Button equipButton;
+    [SerializeField] private TextMeshProUGUI equipTextView;
     [SerializeField] private RectTransform closeButton;
 
     [SerializeField] private TextMeshProUGUI nameView;
@@ -86,14 +87,25 @@ public class Shop : MonoBehaviour
     {
         buyButton.gameObject.SetActive(true);
         equipButton.gameObject.SetActive(false);
+        
 
         if (item.GetBuyedCount > 0)
         {
             equipButton.gameObject.SetActive(true);
-            equipButton.onClick.AddListener(() =>
+
+            if (Geekplay.Instance.PlayerData.CurrentBoosterKeys.Contains(item.GetIndexOnPlayer))
             {
-                boosterSwitcher.Initialize(item);
-            });
+                equipTextView.text = "Ёкипировано";
+            }
+            else
+            {
+                equipTextView.text = "Ёкипировать";
+
+                equipButton.onClick.AddListener(() =>
+                {
+                    boosterSwitcher.Initialize(item, equipTextView);
+                });
+            }
         }
 
         buyButton.onClick.AddListener(() =>
