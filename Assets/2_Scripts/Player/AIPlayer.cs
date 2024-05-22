@@ -208,7 +208,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
                 stopEscapeCoroutine = StartCoroutine(Wait(escapeTime, () =>
                 {
-                    if (enemies.Count == 0) ChangeState(PlayerState.Idle);
+                    if (enemies.Count == 0 && !IsFallOrDeath()) ChangeState(PlayerState.Idle);
                 }));
             }
         }

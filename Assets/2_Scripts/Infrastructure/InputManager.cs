@@ -91,14 +91,18 @@ public class InputManager : MonoBehaviour
         isEButton.OnHandDown += () => isE = true;
         isEButton.OnHandUp += () => isE = false;
 
-        isTabButton.OnHandDown += () => isTab = true;
-        isTabButton.OnHandUp += () => isTab = false;
+        isT2Button.OnHandDown += () => isT = true;
+        isT2Button.OnHandUp += () => isT = false;
 
         isTButton.OnHandDown += () => isT = true;
         isTButton.OnHandUp += () => isT = false;
 
-        isT2Button.OnHandDown += () => isT = true;
-        isT2Button.OnHandUp += () => isT = false;
+        isTabButton.onClick.AddListener(() =>
+        {
+            isTab = true;
+            StartCoroutine(WaitFrame(() => isTab = false));
+        });
+
 
         isFButton.onClick.AddListener(() =>
         {
@@ -106,20 +110,35 @@ public class InputManager : MonoBehaviour
             StartCoroutine(WaitFrame(() => isFClick = false));
         });
 
-        is1Button.OnHandDown += () => is1 = true;
-        is1Button.OnHandUp += () => is1 = false;
+        is1Button.onClick.AddListener(() =>
+        {
+            is1 = true;
+            StartCoroutine(WaitFrame(() => is1 = false));
+        });
 
-        is2Button.OnHandDown += () => is2 = true;
-        is2Button.OnHandUp += () => is2 = false;
+        is2Button.onClick.AddListener(() =>
+        {
+            is2 = true;
+            StartCoroutine(WaitFrame(() => is2 = false));
+        });
 
-        is3Button.OnHandDown += () => is3 = true;
-        is3Button.OnHandUp += () => is3 = false;
+        is3Button.onClick.AddListener(() =>
+        {
+            is3 = true;
+            StartCoroutine(WaitFrame(() => is3 = false));
+        });
 
-        is4Button.OnHandDown += () => is4 = true;
-        is4Button.OnHandUp += () => is4 = false;
+        is4Button.onClick.AddListener(() =>
+        {
+            is4 = true;
+            StartCoroutine(WaitFrame(() => is4 = false));
+        });
 
-        is5Button.OnHandDown += () => is5 = true;
-        is5Button.OnHandUp += () => is5 = false;
+        is5Button.onClick.AddListener(() =>
+        {
+            is5 = true;
+            StartCoroutine(WaitFrame(() => is5 = false));
+        });
     }
 
     private void DeskInput()
