@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5023734575896185686}
   - component: {fileID: 5023734575896185641}
+  - component: {fileID: 6488650318921528209}
   m_Layer: 0
   m_Name: Init
   m_TagString: Untagged
@@ -68,7 +69,7 @@ MonoBehaviour:
     CurrentEquipedAccessoryID: 0
     BuyedLightID: 
     CurrentEquipedLightID: 0
-    BuyedItemID: []
+    BuyedItemID: 
     CurrentEquipedItemID: 0
     BuyedBoosterID: []
     CurrentBoosterKeys: ffffffffffffffffffffffffffffffffffffffff
@@ -135,3 +136,19 @@ MonoBehaviour:
   interstitialTime: 75
   pastedTimeFromLastInterstitial: 0
   leaderboard: {fileID: 0}
+--- !u!114 &6488650318921528209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5023734575896185640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d6536a1fbb3a241b1d41c46605e29e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dailyExerciseProviders:
+  - dailyExercise:
+      exercises: []
+    dailyExerciseData: {fileID: 0}

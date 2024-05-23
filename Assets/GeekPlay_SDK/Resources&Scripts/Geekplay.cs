@@ -99,18 +99,6 @@ namespace GeekplaySchool
 
         #endregion
 
-        #region DailyExercise
-
-        [SerializeField] private DailyExerciseController dailyExerciseConnector;
-
-        public void SetProggress(int day, int exerciseNumber)
-        {
-            dailyExerciseConnector.SetProgress(day, exerciseNumber);
-        }
-
-
-        #endregion
-
 
         public GameObject reviewPanel;
         private bool openReview;

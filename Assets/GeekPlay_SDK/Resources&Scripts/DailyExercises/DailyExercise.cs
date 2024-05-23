@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 [Serializable]
 public class DailyExercise
 {
-    List<Exercise> exercises = new List<Exercise>();
+    [SerializeField] private List<Exercise> exercises = new List<Exercise>();
 
     public void IsDone()
     {

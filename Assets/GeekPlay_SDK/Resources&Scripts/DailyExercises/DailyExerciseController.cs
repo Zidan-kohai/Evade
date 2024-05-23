@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 [Serializable]
-public class DailyExerciseController
+public class DailyExerciseController : MonoBehaviour
 {
-    List<DailyExerciseProvider> dailyExerciseProviders = new List<DailyExerciseProvider>();
+    [SerializeField] private List<DailyExerciseProvider> dailyExerciseProviders = new List<DailyExerciseProvider>();
 
 
     public void SetProgress(int day, int exerciseNumber)
