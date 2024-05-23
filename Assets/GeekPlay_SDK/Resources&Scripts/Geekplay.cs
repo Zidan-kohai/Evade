@@ -74,6 +74,7 @@ namespace GeekplaySchool
         public Action OnShowBuffs;
 
         public bool IsTournamentStart;
+
         #region Pause
         public GameObject pausePopup;
         public bool canPause = true;
@@ -95,6 +96,18 @@ namespace GeekplaySchool
         public float remainingTimeUntilUpdateLeaderboard;
         public float timeToUpdateLeaderboard = 60;
         public string lastLeaderText;
+
+        #endregion
+
+        #region DailyExercise
+
+        [SerializeField] private DailyExerciseController dailyExerciseConnector;
+
+        public void SetProggress(int day, int exerciseNumber)
+        {
+            dailyExerciseConnector.SetProgress(day, exerciseNumber);
+        }
+
 
         #endregion
 
