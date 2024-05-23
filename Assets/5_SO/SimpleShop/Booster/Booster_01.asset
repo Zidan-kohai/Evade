@@ -17,9 +17,13 @@ MonoBehaviour:
   secondIcon: {fileID: 0}
   openOnLevel: 0
   indexOnPlayer: 1
-  name: "\u041A\u043E\u043B\u0430"
-  description: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442
+  nameRu: "\u041A\u043E\u043B\u0430"
+  nameEn: Cola
+  nameTr: Kola
+  descriptionRu: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442
     \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u043D\u0430 50% \u043D\u0430
-    6 \u0441\u0435\u043A\u0443\u043D\u0434."
+    6 \u0441\u0435\u043A\u0443\u043D\u0434"
+  descriptionEn: Increases speed by 50% for 6 seconds
+  descriptionTr: "H\u0131z\u0131 6 saniyeli\u011Fine %50 art\u0131r\u0131r"
   cost: 150
   oneTimePurchase: 0

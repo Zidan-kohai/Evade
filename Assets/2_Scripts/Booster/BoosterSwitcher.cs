@@ -22,7 +22,18 @@ public class BoosterSwitcher : MonoBehaviour
 
             cell.buttonSelf.onClick.AddListener(() =>
             {
-                equipButtonTextView.text = "Ёкипировано";
+                if (Geekplay.Instance.language == "ru")
+                {
+                    equipButtonTextView.text = "Ёкипировано";
+                }
+                else if (Geekplay.Instance.language == "en")
+                {
+                    equipButtonTextView.text = "Equipped";
+                }
+                else if (Geekplay.Instance.language == "tr")
+                {
+                    equipButtonTextView.text = "Donanimli";
+                }
 
                 Debug.Log("cell");
                 int cellIndex = cell.index;

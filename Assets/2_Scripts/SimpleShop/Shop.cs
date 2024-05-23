@@ -96,11 +96,11 @@ public class Shop : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.CurrentBoosterKeys.Contains(item.GetIndexOnPlayer))
             {
-                equipTextView.text = "Экипировано";
+                ChangeTextEquipped();
             }
             else
             {
-                equipTextView.text = "Экипировать";
+                ChangeTextEquip();
 
                 equipButton.onClick.AddListener(() =>
                 {
@@ -132,17 +132,17 @@ public class Shop : MonoBehaviour
             equipButton.gameObject.SetActive(true);
             buyButton.gameObject.SetActive(false);
 
-            equipTextView.text = "Экипировать";
+            ChangeTextEquip();
 
             equipButton.onClick.AddListener(() =>
             {
                 Equip(item);
-                equipTextView.text = "Экипирован";
+                ChangeTextEquipped();
             });
         }
         else
         {
-            equipTextView.text = "Экипирован";
+            ChangeTextEquipped();
         }
     }
 
@@ -163,17 +163,18 @@ public class Shop : MonoBehaviour
             equipButton.gameObject.SetActive(true);
             buyButton.gameObject.SetActive(false);
 
-            equipTextView.text = "Экипировать";
+            ChangeTextEquip();
 
             equipButton.onClick.AddListener(() =>
             {
                 Equip(item);
-                equipTextView.text = "Экипирован";
+
+                ChangeTextEquipped();
             });
         }
         else
         {
-            equipTextView.text = "Экипирован";
+            ChangeTextEquipped();
         }
     }
 
@@ -194,17 +195,17 @@ public class Shop : MonoBehaviour
             equipButton.gameObject.SetActive(true);
             buyButton.gameObject.SetActive(false);
 
-            equipTextView.text = "Экипировать";
+            ChangeTextEquip();
 
             equipButton.onClick.AddListener(() =>
             {
                 Equip(item);
-                equipTextView.text = "Экипирован";
+                ChangeTextEquipped();
             });
         }
         else
         {
-            equipTextView.text = "Экипирован";
+            ChangeTextEquipped();
         }
     }
 
@@ -324,4 +325,36 @@ public class Shop : MonoBehaviour
         Geekplay.Instance.Save();
     }
 
+
+    private void ChangeTextEquipped()
+    {
+        if(Geekplay.Instance.language == "ru")
+        {
+            equipTextView.text = "Экипирован";
+        }
+        else if (Geekplay.Instance.language == "en")
+        {
+            equipTextView.text = "Equipped";
+        }
+        else if (Geekplay.Instance.language == "tr")
+        {
+            equipTextView.text = "Donanimli";
+        }
+    }
+
+    private void ChangeTextEquip()
+    {
+        if (Geekplay.Instance.language == "ru")
+        {
+            equipTextView.text = "Экипировать";
+        }
+        else if (Geekplay.Instance.language == "en")
+        {
+            equipTextView.text = "Equip";
+        }
+        else if (Geekplay.Instance.language == "tr")
+        {
+            equipTextView.text = "Donatmak";
+        }
+    }
 }

@@ -13,9 +13,18 @@ MonoBehaviour:
   m_Name: Light_01
   m_EditorClassIdentifier: 
   type: 2
+  mainIcon: {fileID: 0}
+  secondIcon: {fileID: 0}
+  openOnLevel: 0
   indexOnPlayer: 1
-  name: "\u0424\u043E\u043D\u0430\u0440\u0438\u043A"
-  description: "\u041E\u0441\u0432\u0435\u0449\u0430\u0439\u0442\u0435 \u0441\u0435\u0431\u0435
-    \u043F\u0443\u0442\u044C"
+  nameRu: "\u0424\u043E\u043D\u0430\u0440\u0438\u043A"
+  nameEn: Flashlight
+  nameTr: El feneri
+  descriptionRu: "\u0441\u0432\u0435\u0442\u0438\u0442 \u043F\u0440\u043E\u0441\u0442\u044B\u043C
+    \u0441\u043F\u043E\u0442\u043B\u0430\u0439\u0442\u043E\u043C \u0432\u043F\u0435\u0440\u0435\u0434,
+    \u0441\u0440\u0435\u0434\u043D\u0435\u0439 \u043C\u043E\u0449\u043D\u043E\u0441\u0442\u0438"
+  descriptionEn: shines with a simple forward spotlight, medium power
+  descriptionTr: "basit ileri spot \u0131\u015F\u0131\u011F\u0131yla parl\u0131yor,
+    orta g\xFC\xE7te"
   cost: 250
   oneTimePurchase: 1

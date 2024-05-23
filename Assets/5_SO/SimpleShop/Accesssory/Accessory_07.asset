@@ -17,9 +17,14 @@ MonoBehaviour:
   secondIcon: {fileID: 0}
   openOnLevel: 0
   indexOnPlayer: 7
-  name: "\u0412\u043E\u0435\u043D\u043D\u044B\u0439 \u043F\u0430\u043A\u0435\u0442"
-  description: "\u043F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442 \u043D\u043E\u0441\u0438\u0442\u044C
+  nameRu: "\u0412\u043E\u0435\u043D\u043D\u044B\u0439 \u043F\u0430\u043A\u0435\u0442"
+  nameEn: Military package
+  nameTr: Askeri paket
+  descriptionRu: "\u043F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442 \u043D\u043E\u0441\u0438\u0442\u044C
     \u0441 \u0441\u043E\u0431\u043E\u0439 \u0431\u043E\u043B\u044C\u0448\u0435 \u0431\u0443\u0441\u0442\u0435\u0440\u043E\u0432
     - 5 \u043C\u0430\u043A\u0441\u0438\u043C\u0443\u043C"
+  descriptionEn: allows you to carry more boosters - 5 maximum
+  descriptionTr: "daha fazla g\xFC\xE7lendirici ta\u015F\u0131man\u0131za olanak
+    tan\u0131r - maksimum 5"
   cost: 200
   oneTimePurchase: 1

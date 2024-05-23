@@ -5722,6 +5722,7 @@ MonoBehaviour:
   is3Button: {fileID: 284525900}
   is4Button: {fileID: 151878182}
   is5Button: {fileID: 192719726}
+  image: {fileID: 1289687687}
 --- !u!1001 &458155899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14121,6 +14122,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1699236964}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1289687687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3519060060798266324, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 5759701419978455603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1317074509
 PrefabInstance:
   m_ObjectHideFlags: 0

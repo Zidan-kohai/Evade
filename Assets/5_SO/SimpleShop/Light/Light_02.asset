@@ -13,10 +13,18 @@ MonoBehaviour:
   m_Name: Light_02
   m_EditorClassIdentifier: 
   type: 2
+  mainIcon: {fileID: 0}
+  secondIcon: {fileID: 0}
+  openOnLevel: 0
   indexOnPlayer: 2
-  name: "\u041B\u0430\u043C\u043F\u0430"
-  description: "\u0441\u0432\u0435\u0442\u0438\u0442 \u043F\u043E \u0448\u0430\u0440\u043E\u0432\u0438\u0434\u043D\u043E\u0439
+  nameRu: "\u041B\u0430\u043C\u043F\u0430"
+  nameEn: Lamp
+  nameTr: Lamba
+  descriptionRu: "\u0441\u0432\u0435\u0442\u0438\u0442 \u043F\u043E \u0448\u0430\u0440\u043E\u0432\u0438\u0434\u043D\u043E\u0439
     \u043E\u0431\u043B\u0430\u0441\u0442\u0438 \u0432\u043E\u043A\u0440\u0443\u0433
     \u0438\u0433\u0440\u043E\u043A\u0430"
+  descriptionEn: shines in a spherical area around the player
+  descriptionTr: "oynat\u0131c\u0131n\u0131n etraf\u0131ndaki k\xFCresel bir alanda
+    parl\u0131yor"
   cost: 250
   oneTimePurchase: 1

@@ -17,8 +17,8 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private int buyedCount;
     [SerializeField] private bool isClose;
 
-    public string GetName => data.name;
-    public string GetDescription => data.description;
+    public string GetName => data.Name();
+    public string GetDescription => data.Description();
     public int GetCost => data.cost;
     public int GetIndexOnPlayer => data.indexOnPlayer;
     public int GetBuyedCount => buyedCount;
@@ -29,7 +29,7 @@ public class ShopItem : MonoBehaviour
 
     private void Start()
     {
-        nameTextView.text = data.name;
+        nameTextView.text = data.Name();
 
         isClose = CompareLevel();
 
@@ -53,6 +53,19 @@ public class ShopItem : MonoBehaviour
 
     public void Equip()
     {
+        if (Geekplay.Instance.language == "ru")
+        {
+            equipedTextView.text = "Ёкипировано";
+        }
+        else if (Geekplay.Instance.language == "en")
+        {
+            equipedTextView.text = "Equipped";
+        }
+        else
+        {
+            equipedTextView.text = "Equipped";
+        }
+
         equipedTextView.gameObject.SetActive(true);
     }
 
@@ -134,7 +147,19 @@ public class ShopItem : MonoBehaviour
     {
         if(data.openOnLevel >= Geekplay.Instance.PlayerData.Level)
         {
-            closeText.text = $"откроетс€ на {data.openOnLevel} уровне";
+            if(Geekplay.Instance.language == "ru")
+            {
+                closeText.text = $"ќткроетс€ на {data.openOnLevel} уровне";
+            }
+            else if(Geekplay.Instance.language == "en")
+            {
+                closeText.text = $"Open on {data.openOnLevel} level";
+            }
+            else
+            {
+                closeText.text = $"{data.openOnLevel} seviyede ac";
+            }
+
             closePanel.SetActive(true);
             return true;
         }
