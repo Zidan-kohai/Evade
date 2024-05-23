@@ -22,8 +22,6 @@ public class InputManager : MonoBehaviour
     [SerializeField] private MyButton is4Button;
     [SerializeField] private MyButton is5Button;
 
-    [SerializeField] private GameObject image;
-
     private float mouseDeltaX;
     private float mouseDeltaY;
     private float moveHorizontal;
@@ -102,8 +100,6 @@ public class InputManager : MonoBehaviour
         isTabButton.onClick.AddListener(() =>
         {
             isTab = true;
-            image.gameObject.SetActive(true);
-            StartCoroutine(Wait(2, () => image.gameObject.SetActive(false)));
             StartCoroutine(WaitFrame(() => isTab = false));
         });
 
@@ -111,8 +107,6 @@ public class InputManager : MonoBehaviour
         isFButton.onClick.AddListener(() =>
         {
             isFClick = true;
-            image.gameObject.SetActive(true);
-            StartCoroutine(Wait(2, () => image.gameObject.SetActive(false)));
             StartCoroutine(WaitFrame(() => isFClick = false));
         });
 
