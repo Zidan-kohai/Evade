@@ -1,3 +1,4 @@
+using GeekplaySchool;
 using System;
 using System.Collections;
 using TMPro;
@@ -80,7 +81,18 @@ public class ActionHandler : MonoBehaviour
 
     public void ChangeSpeed(float value)
     {
-        speedValueView.text = value.ToString("F0");
+        if(Geekplay.Instance.language == "ru")
+        {
+            speedValueView.text = $"Cкорость: {value.ToString("F0")}";
+        }
+        else if (Geekplay.Instance.language == "en")
+        {
+            speedValueView.text = $"Speed: {value.ToString("F0")}";
+        }
+        else if (Geekplay.Instance.language == "ru")
+        {
+            speedValueView.text = $"Hiz: {value.ToString("F0")}";
+        }
     }
 
     #endregion
