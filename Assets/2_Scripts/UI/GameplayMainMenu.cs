@@ -12,7 +12,7 @@ public class GameplayMainMenu : MonoBehaviour
 
     private void Start()
     {
-        if (Geekplay.Instance.PlayerData.CurrentEquipedItemID == 1)
+        if (Geekplay.Instance.PlayerData.CurrentEquipedItemID == 2)
         {
             exerciseHandler.SetActive(true);
         }

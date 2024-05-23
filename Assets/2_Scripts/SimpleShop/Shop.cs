@@ -127,27 +127,54 @@ public class Shop : MonoBehaviour
                 Buy(item);
             });
         }
-        else
+        else if(Geekplay.Instance.PlayerData.CurrentEquipedLightID != item.GetIndexOnPlayer)
         {
             equipButton.gameObject.SetActive(true);
             buyButton.gameObject.SetActive(false);
 
+            equipTextView.text = "Ёкипировать";
+
             equipButton.onClick.AddListener(() =>
             {
                 Equip(item);
+                equipTextView.text = "Ёкипирован";
             });
+        }
+        else
+        {
+            equipTextView.text = "Ёкипирован";
         }
     }
 
     private void EventForItem(ShopItem item)
     {
-        buyButton.gameObject.SetActive(true);
-        equipButton.gameObject.SetActive(false);
-
-        buyButton.onClick.AddListener(() =>
+        if (!Geekplay.Instance.PlayerData.BuyedItemID.Contains(item.GetIndexOnPlayer))
         {
-            Buy(item);
-        });
+            buyButton.gameObject.SetActive(true);
+            equipButton.gameObject.SetActive(false);
+
+            buyButton.onClick.AddListener(() =>
+            {
+                Buy(item);
+            });
+        }
+        else if(Geekplay.Instance.PlayerData.CurrentEquipedItemID != item.GetIndexOnPlayer)
+        {
+            equipButton.gameObject.SetActive(true);
+            buyButton.gameObject.SetActive(false);
+
+            equipTextView.text = "Ёкипировать";
+
+            equipButton.onClick.AddListener(() =>
+            {
+                Equip(item);
+                equipTextView.text = "Ёкипирован";
+            });
+        }
+        else
+        {
+            equipTextView.text = "Ёкипирован";
+        }
     }
 
     private void EventForAccessory(ShopItem item)
@@ -162,15 +189,22 @@ public class Shop : MonoBehaviour
                 Buy(item);
             });
         }
-        else
+        else if(Geekplay.Instance.PlayerData.CurrentEquipedAccessoryID != item.GetIndexOnPlayer)
         {
             equipButton.gameObject.SetActive(true);
             buyButton.gameObject.SetActive(false);
 
+            equipTextView.text = "Ёкипировать";
+
             equipButton.onClick.AddListener(() =>
             {
                 Equip(item);
+                equipTextView.text = "Ёкипирован";
             });
+        }
+        else
+        {
+            equipTextView.text = "Ёкипирован";
         }
     }
 
@@ -272,11 +306,7 @@ public class Shop : MonoBehaviour
                 Geekplay.Instance.PlayerData.BuyedAccessoryID.Add(item.GetIndexOnPlayer);
                 break;
             case SubjectType.Item:
-                if (!Geekplay.Instance.PlayerData.BuyedItemID.HasKey(item.GetIndexOnPlayer)) 
-                    Geekplay.Instance.PlayerData.BuyedItemID.Add(new MyDictionary() { key = item.GetIndexOnPlayer });
-
-                Geekplay.Instance.PlayerData.BuyedItemID.GetByKey(item.GetIndexOnPlayer).value++;
-                item.ChangeBuyedInfoText(Geekplay.Instance.PlayerData.BuyedItemID.GetByKey(item.GetIndexOnPlayer).value);
+                Geekplay.Instance.PlayerData.BuyedItemID.Add(item.GetIndexOnPlayer);
                 break;
             case SubjectType.Light:
                 Geekplay.Instance.PlayerData.BuyedLightID.Add(item.GetIndexOnPlayer);

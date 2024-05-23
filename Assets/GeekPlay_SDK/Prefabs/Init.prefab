@@ -50,10 +50,10 @@ MonoBehaviour:
   PlayerData:
     Gold: 10
     Diamond: 100
-    currentExperience: 0
+    CurrentExperience: 0
     ExperienceProgresion: 100
     ExperienceToIncreaseLevel: 100
-    level: 1
+    Level: 1
     LastBuy: 
     Review: 0
     IsVolumeOn: 1
@@ -69,7 +69,9 @@ MonoBehaviour:
     BuyedLightID: 
     CurrentEquipedLightID: 0
     BuyedItemID: []
+    CurrentEquipedItemID: 0
     BuyedBoosterID: []
+    CurrentBoosterKeys: ffffffffffffffffffffffffffffffffffffffff
     Codes: 
   rewardsList: []
   purchasesList:

@@ -82,7 +82,13 @@ public class ShopItem : MonoBehaviour
                 {
                     Equip();
                 }
-            break;
+                break;
+            case SubjectType.Item:
+                if (data.oneTimePurchase && Geekplay.Instance.PlayerData.CurrentEquipedItemID == data.indexOnPlayer)
+                {
+                    Equip();
+                }
+                break;
         }
     }
 
@@ -99,12 +105,9 @@ public class ShopItem : MonoBehaviour
                 }
                 break;
             case SubjectType.Item:
-                foreach (var item in Geekplay.Instance.PlayerData.BuyedItemID)
+                if (Geekplay.Instance.PlayerData.BuyedItemID.Contains(data.indexOnPlayer))
                 {
-                    if (item.key == data.indexOnPlayer)
-                    {
-                        count = item.value;
-                    }
+                    count = 1;
                 }
                 break;
             case SubjectType.Light:
