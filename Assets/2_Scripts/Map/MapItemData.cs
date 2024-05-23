@@ -57,9 +57,9 @@ public class MapItemData : ScriptableObject
         }
         else if (Geekplay.Instance.language == "tr")
         {
-            return hardnestRu;
+            return hardnestTr;
         }
 
-        return hardnestTr;
+        return hardnestRu;
     }
 }

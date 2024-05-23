@@ -1834,6 +1834,7 @@ MonoBehaviour:
   inputManager: {fileID: 442789067}
   firstPersonCamera: {fileID: 1552272844}
   thirdPlayer: {fileID: 239001905}
+  thirdPlayerOrbitalTransposer: {fileID: 0}
   AIPlayersCamera: []
   currentAIPlayerCameraIndex: 0
   cameraSwitherHandler: {fileID: 1018388905}
@@ -1842,9 +1843,12 @@ MonoBehaviour:
   minVerticalRotateClamp: -90
   maxVerticalRotateClamp: 90
   verticalRotation: 0
+  currentVerticalAngle: 0
   currentState: 0
   stateOnUp: 0
   carryPlayerCamera: {fileID: 0}
+  timeToCanSwitchState: 0.1
+  canSwitchCostill: 1
 --- !u!1 &125277291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,11 +2300,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1699236964}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &158245337 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3519060060798266324, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
-  m_PrefabInstance: {fileID: 1234144572}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &164634006
 GameObject:
   m_ObjectHideFlags: 0
@@ -5128,7 +5127,6 @@ MonoBehaviour:
   is3Button: {fileID: 848229358}
   is4Button: {fileID: 848229357}
   is5Button: {fileID: 848229356}
-  image: {fileID: 158245337}
 --- !u!1 &461251828
 GameObject:
   m_ObjectHideFlags: 0
@@ -13683,7 +13681,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 91ae8547828145443a5af7ed67f8f496, type: 2}
+  - {fileID: 2100000, guid: 87a7117ec35f4534d9b2b1c6891f7a0e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

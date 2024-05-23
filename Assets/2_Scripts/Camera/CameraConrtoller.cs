@@ -1,6 +1,7 @@
 using Cinemachine;
 using GeekplaySchool;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class CameraConrtoller : MonoBehaviour
     [SerializeField] private InputManager inputManager;
     [SerializeField] private CinemachineVirtualCamera firstPersonCamera;
     [SerializeField] private CinemachineVirtualCamera thirdPlayer;
+    [SerializeField] private CinemachineOrbitalTransposer thirdPlayerOrbitalTransposer;
     [SerializeField] private List<IPlayerCamera> AIPlayersCamera;
     [SerializeField] private int currentAIPlayerCameraIndex;
     [SerializeField] private GameObject cameraSwitherHandler;
@@ -21,10 +23,15 @@ public class CameraConrtoller : MonoBehaviour
     [SerializeField] private float mouseSensitivity;
     [SerializeField] private float minVerticalRotateClamp = -90f;
     [SerializeField] private float maxVerticalRotateClamp = 90f;
-    [SerializeField] private float verticalRotation = 0f;
+    [SerializeField] private float verticalRotation = 0f; 
+    [SerializeField] private float currentVerticalAngle = 0f;
     [SerializeField] private CameraState currentState;
     [SerializeField] private CameraState stateOnUp;
     [SerializeField] private CinemachineVirtualCamera carryPlayerCamera;
+
+    [Header("Some costil")]
+    [SerializeField] private float timeToCanSwitchState = 0.1f;
+    [SerializeField] private bool canSwitchCostill = true;
 
     private void Awake()
     {
@@ -33,6 +40,8 @@ public class CameraConrtoller : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+
+        thirdPlayerOrbitalTransposer = thirdPlayer.GetCinemachineComponent<CinemachineOrbitalTransposer>();
 
         switch (currentState)
         {
@@ -57,10 +66,11 @@ public class CameraConrtoller : MonoBehaviour
                 FirstPersonConrtoller();
                 break;
             case CameraState.Third:
+                ThirdPersonController();
                 break;
         }
 
-        if (inputManager.GetIsTab && canSwitchCamera)
+        if (inputManager.GetIsTab && canSwitchCamera && canSwitchCostill)
             NextState();
     }
 
@@ -161,6 +171,21 @@ public class CameraConrtoller : MonoBehaviour
         return result;
     }
 
+
+    private void ThirdPersonController()
+    {
+        currentVerticalAngle -= inputManager.GetMouseDeltaY * mouseSensitivity * Time.deltaTime;
+
+
+        currentVerticalAngle = Mathf.Clamp(currentVerticalAngle, -45.0f, 45.0f);
+
+        thirdPlayerOrbitalTransposer.m_XAxis.Value += inputManager.GetMouseDeltaX * mouseSensitivity * Time.deltaTime;
+
+        Vector3 offset = Quaternion.Euler(currentVerticalAngle, thirdPlayerOrbitalTransposer.m_XAxis.Value, 0.0f) * new Vector3(0.0f, 0.0f, -10.0f);
+        thirdPlayer.transform.position = thirdPlayer.Follow.position + offset;
+        thirdPlayer.transform.LookAt(thirdPlayer.Follow);
+    }
+
     private void FirstPersonConrtoller()
     {
         float mouseY = inputManager.GetMouseDeltaY * mouseSensitivity * Time.deltaTime;
@@ -202,6 +227,9 @@ public class CameraConrtoller : MonoBehaviour
 
         currentState = newState;
 
+        canSwitchCostill = false;
+        StartCoroutine(Wait(timeToCanSwitchState, () => canSwitchCostill = true));
+
         switch (currentState)
         {
             case CameraState.First:
@@ -222,5 +250,12 @@ public class CameraConrtoller : MonoBehaviour
            IPlayer = player,
            VirtualCamera = virtualCamera 
         });
+    }
+
+
+    private IEnumerator Wait(float time, Action action)
+    {
+        yield return time;
+        action?.Invoke();
     }
 }

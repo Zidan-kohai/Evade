@@ -102,6 +102,7 @@ public class WindowHandler : MonoBehaviour
         ourGameWindow.SetActive(true);
         CloseCurrentWindow();
         currentOpenedWindow = MainMenuWindowState.OurGame;
+        
     }
 
     private void CloseOurGameWindow()

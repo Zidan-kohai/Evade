@@ -1309,6 +1309,7 @@ MonoBehaviour:
   inputManager: {fileID: 442789067}
   firstPersonCamera: {fileID: 1552272844}
   thirdPlayer: {fileID: 239001905}
+  thirdPlayerOrbitalTransposer: {fileID: 0}
   AIPlayersCamera: []
   currentAIPlayerCameraIndex: 0
   cameraSwitherHandler: {fileID: 1020071678}
@@ -1317,9 +1318,12 @@ MonoBehaviour:
   minVerticalRotateClamp: -90
   maxVerticalRotateClamp: 90
   verticalRotation: 0
+  currentVerticalAngle: 0
   currentState: 0
   stateOnUp: 0
   carryPlayerCamera: {fileID: 0}
+  timeToCanSwitchState: 0.1
+  canSwitchCostill: 1
 --- !u!1001 &139619153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1425,11 +1429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5682b406daeb52b4d919fa58369057b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &140572776 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3519060060798266324, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
-  m_PrefabInstance: {fileID: 218587383}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &154852529
 GameObject:
   m_ObjectHideFlags: 0
@@ -3471,7 +3470,6 @@ MonoBehaviour:
   is3Button: {fileID: 937886411}
   is4Button: {fileID: 937886410}
   is5Button: {fileID: 937886409}
-  image: {fileID: 140572776}
 --- !u!1 &461251828
 GameObject:
   m_ObjectHideFlags: 0
@@ -16762,15 +16760,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.4902421
+      value: 0.49024215
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000082141085
+      value: -2.223643e-14
       objectReference: {fileID: 0}
     - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000046201986
+      value: 1.12206565e-14
       objectReference: {fileID: 0}
     - target: {fileID: 6633020411424046989, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_Layer
