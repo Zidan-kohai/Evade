@@ -13,7 +13,7 @@ public class PlayerIconHandler : MonoBehaviour
 
     public int GetMapID => data.SceneIndex;
 
-    public string GetDescription => data.Description;
+    public string GetDescription => data.GetDescription();
 
     public int GetVoiseCount => playersIndex.Count;
 
@@ -25,8 +25,8 @@ public class PlayerIconHandler : MonoBehaviour
 
     private void ShowInfo()
     {
-        nameView.text = data.Name;
-        hardNestView.text = data.Hardnest;
+        nameView.text = data.GetName();
+        hardNestView.text = data.GetHardnest();
     }
 
     public void AddPlayer(RectTransform rect, int index)

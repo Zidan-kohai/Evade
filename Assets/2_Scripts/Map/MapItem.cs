@@ -10,7 +10,7 @@ public class MapItem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI name;
     [SerializeField] private TextMeshProUGUI hardnest;
 
-    public string GetDescription => data.Description;
+    public string GetDescription => data.GetDescription();
 
     public int GetSceneIndex => data.SceneIndex;
 
@@ -26,7 +26,7 @@ public class MapItem : MonoBehaviour
 
     private void ShowInfo()
     {
-        name.text = data.Name;
-        hardnest.text = data.Hardnest;
+        name.text = data.GetName();
+        hardnest.text = data.GetHardnest();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeekplaySchool;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -16,10 +17,32 @@ public class StateShower
         switch (state)
         {
             case PlayerState.Fall:
-                text.text = $"<color=yellow> {name}, упал</color>";
+                if (Geekplay.Instance.language == "ru")
+                {
+                    text.text = $"<color=yellow> {name}, упал</color>";
+                }
+                else if(Geekplay.Instance.language == "en")
+                {
+                    text.text = $"<color=yellow> {name}, Fall</color>";
+                }
+                else
+                {
+                    text.text = $"<color=yellow> {name}, Dusmek</color>";
+                }
                 break;
             case PlayerState.Death:
-                text.text = $"<color=red> {name}, умер</color>";
+                if (Geekplay.Instance.language == "ru")
+                {
+                    text.text = $"<color=red> {name}, умер</color>";
+                }
+                else if (Geekplay.Instance.language == "en")
+                {
+                    text.text = $"<color=yellow> {name}, Die</color>";
+                }
+                else
+                {
+                    text.text = $"<color=yellow> {name}, Olmek</color>";
+                }
                 break;
         }
 
@@ -37,10 +60,32 @@ public class StateShower
         switch (state)
         {
             case PlayerState.Fall:
-                text.text = $"<color=yellow> вы, упали</color>";
+                if (Geekplay.Instance.language == "ru")
+                {
+                    text.text = $"<color=yellow> вы, упали</color>";
+                }
+                else if (Geekplay.Instance.language == "en")
+                {
+                    text.text = $"<color=yellow> You, fall</color>";
+                }
+                else
+                {
+                    text.text = $"<color=yellow> Sen, Dusmek</color>";
+                }
                 break;
             case PlayerState.Death:
-                text.text = $"<color=red> вы, умерли</color>";
+                if (Geekplay.Instance.language == "ru")
+                {
+                    text.text = $"<color=red> Вы, умерли</color>";
+                }
+                else if (Geekplay.Instance.language == "en")
+                {
+                    text.text = $"<color=yellow> You, die</color>";
+                }
+                else
+                {
+                    text.text = $"<color=yellow> Sen, Olmek</color>";
+                }
                 break;
         }
 

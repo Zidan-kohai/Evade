@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c86c360fa3a96f47b0f47a605e91a30, type: 3}
   m_Name: Map_03
   m_EditorClassIdentifier: 
-  Name: 
-  Hardnest: "\u0412\u044B\u0439\u0442\u0438"
-  Description: "\u0444\u044B\u0432\u0444\u044B\u0432\u0432\u044B\u0444"
+  nameRu: "\u0412\u044B\u0445\u043E\u0434"
+  nameEn: Exit
+  nameTr: "\xE7\u0131k\u0131\u015F"
+  descriptionRu: "\u0413\u043B\u0430\u0432\u043D\u043E\u0435 \u043C\u0435\u043D\u044E"
+  descriptionEn: Main menu
+  descriptionTr: Ana menu
+  hardnestRu: "\u041D\u0435\u0442"
+  hardnestEn: None
+  hardnestTr: Hicbiri
   SceneIndex: 0

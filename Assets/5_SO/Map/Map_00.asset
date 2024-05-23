@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c86c360fa3a96f47b0f47a605e91a30, type: 3}
   m_Name: Map_00
   m_EditorClassIdentifier: 
-  Name: "\u0410\u043B\u0435\u043B\u0443\u044F"
-  Hardnest: "\u041B\u0451\u0433\u043A\u0438\u0439"
-  Description: "\u043B\u0451\u0433\u043A\u0438\u0439 \u0440\u0435\u0436\u0438\u043C "
+  nameRu: "\u041F\u0443\u0441\u0442\u044B\u043D\u044F"
+  nameEn: Desert
+  nameTr: Col
+  descriptionRu: "\u041F\u0443\u0441\u0442\u044B\u043D\u044F \u0441\u0430\u0445\u0430\u0440\u0430
+    \u0431\u043B\u0430 \u0431\u043B\u0430 \u0431\u043B\u0430"
+  descriptionEn: Sahara desert blah blah blah
+  descriptionTr: "Sahra \xE7\xF6l\xFC falan filan"
+  hardnestRu: "\u041B\u0435\u0433\u043A\u0430\u044F"
+  hardnestEn: Easy
+  hardnestTr: Hafif
   SceneIndex: 1
