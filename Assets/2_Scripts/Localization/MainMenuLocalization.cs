@@ -14,9 +14,7 @@ public class MainMenuLocalization : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ourGameTextView;
 
     [Header("Choose Mode")]
-    [SerializeField] private TextMeshProUGUI playGameTextView;
     [SerializeField] private TextMeshProUGUI chooseModeOpenMainMenuTextView;
-    [SerializeField] private TextMeshProUGUI descriptionTextView;
 
     [Header("Telegram")]
     [SerializeField] private TextMeshProUGUI telegramTextView;
@@ -57,10 +55,7 @@ public class MainMenuLocalization : MonoBehaviour
             telergamBonusTextView.text = "Промокод";
             ourGameTextView.text = "Бонусы";
 
-
-            playGameTextView.text = "Играть";
             chooseModeOpenMainMenuTextView.text = "Главное меню";
-            descriptionTextView.text = "Описание карты";
 
 
             telegramTextView.text = "Наш канал";
@@ -98,10 +93,7 @@ public class MainMenuLocalization : MonoBehaviour
             telergamBonusTextView.text = "Promotional code";
             ourGameTextView.text = "Bonuses";
 
-
-            playGameTextView.text = "Play";
             chooseModeOpenMainMenuTextView.text = "Main Menu";
-            descriptionTextView.text = "Map Description";
 
 
             telegramTextView.text = "Our channel";
@@ -138,10 +130,7 @@ public class MainMenuLocalization : MonoBehaviour
             telergamBonusTextView.text = "Promosyon kodu";
             ourGameTextView.text = "Bonuslar";
 
-
-            playGameTextView.text = "Oynat";
             chooseModeOpenMainMenuTextView.text = "Ana Menu";
-            descriptionTextView.text = "Harita Aciklamasi";
 
 
             telegramTextView.text = "Kanalimiz";

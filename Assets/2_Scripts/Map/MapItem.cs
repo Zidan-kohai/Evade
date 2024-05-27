@@ -1,3 +1,4 @@
+using GeekplaySchool;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class MapItem : MonoBehaviour
     [SerializeField] private ChooseModeWindow chooseModeWindow;
     [SerializeField] private TextMeshProUGUI name;
     [SerializeField] private TextMeshProUGUI hardnest;
+    [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private Image iconImage;
 
     public string GetDescription => data.GetDescription();
@@ -22,7 +24,7 @@ public class MapItem : MonoBehaviour
 
         button.onClick.AddListener(() =>
         {
-            chooseModeWindow.ChangeSelectedMode(this);
+            Geekplay.Instance.LoadScene(data.SceneIndex);
         });
     }
 
@@ -32,5 +34,6 @@ public class MapItem : MonoBehaviour
 
         name.text = data.GetName();
         hardnest.text = data.GetHardnest();
+        description.text = data.GetDescription();
     }
 }
