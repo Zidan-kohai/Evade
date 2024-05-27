@@ -19,6 +19,9 @@ public class MainMenuLocalization : MonoBehaviour
     [Header("Telegram")]
     [SerializeField] private TextMeshProUGUI telegramTextView;
     [SerializeField] private TextMeshProUGUI claimTextView;
+    [SerializeField] private TextMeshProUGUI promocodeSuccessTextView;
+    [SerializeField] private TextMeshProUGUI promocodeAlreadyUseTextView;
+    [SerializeField] private TextMeshProUGUI promocodeUndefinedTextView;
     [SerializeField] private TextMeshProUGUI telegramOpenMainMenuTextView;
 
     [Header("Our Game")]
@@ -61,6 +64,9 @@ public class MainMenuLocalization : MonoBehaviour
             telegramTextView.text = "Наш канал";
             claimTextView.text = "Забрать";
             telegramOpenMainMenuTextView.text = "Главное меню";
+            promocodeSuccessTextView.text = "Промокод успешно использован";
+            promocodeAlreadyUseTextView.text = "Промокод уже использован";
+            promocodeUndefinedTextView.text = "Такого промокода нет";
 
 
             ourGameOpenMainMenuTextView.text = "Главное меню";
@@ -99,7 +105,9 @@ public class MainMenuLocalization : MonoBehaviour
             telegramTextView.text = "Our channel";
             claimTextView.text = "Pick up";
             telegramOpenMainMenuTextView.text = "Main Menu";
-
+            promocodeSuccessTextView.text = "Promo code successfully used";
+            promocodeAlreadyUseTextView.text = "Promo code has already been used";
+            promocodeUndefinedTextView.text = "There is no such promotional code";
 
             ourGameOpenMainMenuTextView.text = "Main Menu";
 
@@ -136,7 +144,9 @@ public class MainMenuLocalization : MonoBehaviour
             telegramTextView.text = "Kanalimiz";
             claimTextView.text = "Al";
             telegramOpenMainMenuTextView.text = "Ana Menu";
-
+            promocodeSuccessTextView.text = "Promosyon kodu basariyla kullanildi";
+            promocodeAlreadyUseTextView.text = "Promosyon kodu zaten kullanildi";
+            promocodeUndefinedTextView.text = "Boyle bir promosyon kodu yoktur";
 
             ourGameOpenMainMenuTextView.text = "Ana Menu";
 
