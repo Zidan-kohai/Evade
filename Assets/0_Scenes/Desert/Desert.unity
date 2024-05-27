@@ -2134,6 +2134,8 @@ MonoBehaviour:
   currentState: 0
   stateOnUp: 0
   carryPlayerCamera: {fileID: 0}
+  timeToCanSwitchState: 0.1
+  canSwitchCostill: 1
 --- !u!1001 &131719712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23008,6 +23010,10 @@ PrefabInstance:
     - target: {fileID: 107336494121003613, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 107336494121003613, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 560489925635206484, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

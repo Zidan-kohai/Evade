@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item Data", menuName = "Map/Item Data")]
 public class MapItemData : ScriptableObject
 {
+    public Sprite Icon;
+
     [Header("Name")]
     [SerializeField] private string nameRu;
     [SerializeField] private string nameEn;

@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class MapItem : MonoBehaviour
     [SerializeField] private ChooseModeWindow chooseModeWindow;
     [SerializeField] private TextMeshProUGUI name;
     [SerializeField] private TextMeshProUGUI hardnest;
+    [SerializeField] private Image iconImage;
 
     public string GetDescription => data.GetDescription();
 
@@ -26,6 +28,8 @@ public class MapItem : MonoBehaviour
 
     private void ShowInfo()
     {
+        iconImage.sprite = data.Icon;
+
         name.text = data.GetName();
         hardnest.text = data.GetHardnest();
     }
