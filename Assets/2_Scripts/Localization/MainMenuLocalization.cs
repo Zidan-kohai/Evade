@@ -26,8 +26,12 @@ public class MainMenuLocalization : MonoBehaviour
 
     [Header("Our Game")]
     [SerializeField] private TextMeshProUGUI ourGameOpenMainMenuTextView;
+    [SerializeField] private TextMeshProUGUI geomertyDashNameTextView;
+    [SerializeField] private TextMeshProUGUI dressGameNameTextView;
+    [SerializeField] private TextMeshProUGUI slapBattlesTextView;
+    [SerializeField] private TextMeshProUGUI twoPlayerTextView;
 
-    [Header("Liaders")]
+    [Header("Leaders")]
     [SerializeField] private TextMeshProUGUI survivalTextView;
     [SerializeField] private TextMeshProUGUI savedTextView;
     [SerializeField] private TextMeshProUGUI donatTextView;
@@ -70,7 +74,10 @@ public class MainMenuLocalization : MonoBehaviour
 
 
             ourGameOpenMainMenuTextView.text = "Главное меню";
-
+            geomertyDashNameTextView.text = "Геомметри деш";
+            dressGameNameTextView.text = "Одевалка";
+            slapBattlesTextView.text = "Битва пощёчин";
+            twoPlayerTextView.text = "Два игрока";
 
             survivalTextView.text = "Пережитые игры";
             savedTextView.text = "Спасенные";
@@ -110,7 +117,10 @@ public class MainMenuLocalization : MonoBehaviour
             promocodeUndefinedTextView.text = "There is no such promotional code";
 
             ourGameOpenMainMenuTextView.text = "Main Menu";
-
+            geomertyDashNameTextView.text = "Geomerty Dash";
+            dressGameNameTextView.text = "Dress Up";
+            slapBattlesTextView.text = "Slap Battle";
+            twoPlayerTextView.text = "Two Players";
 
             survivalTextView.text = "Survived Games";
             savedTextView.text = "Saved";
@@ -149,7 +159,10 @@ public class MainMenuLocalization : MonoBehaviour
             promocodeUndefinedTextView.text = "Boyle bir promosyon kodu yoktur";
 
             ourGameOpenMainMenuTextView.text = "Ana Menu";
-
+            geomertyDashNameTextView.text = "Geomerty Dash";
+            dressGameNameTextView.text = "Giydirme";
+            slapBattlesTextView.text = "Tokat Savasi";
+            twoPlayerTextView.text = "Iki Oyuncu";
 
             survivalTextView.text = "Hayatta Kalan Oyunlar";
             savedTextView.text = "Kaydedildi";
