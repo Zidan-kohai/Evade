@@ -74,6 +74,7 @@ MonoBehaviour:
     BuyedBoosterID: []
     CurrentBoosterKeys: ffffffffffffffffffffffffffffffffffffffff
     Codes: 
+    exercises: []
   rewardsList: []
   purchasesList:
   - itemName: Big1
@@ -148,7 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d6536a1fbb3a241b1d41c46605e29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dailyExerciseProviders:
-  - dailyExercise:
-      exercises: []
-    dailyExerciseData: {fileID: 0}
+  dailyExercises:
+  - day: 0
+    dailyExercise:
+      data: {fileID: 11400000, guid: 9b3b70c8a18bf234c978ca317be892fd, type: 2}
+  - day: 1
+    dailyExercise:
+      data: {fileID: 11400000, guid: 5ae3fef5a56fdc8499a11ff200b058a0, type: 2}

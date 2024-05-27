@@ -1,4 +1,4 @@
-﻿public enum Day
+﻿public enum Days
 {
     Day1,
     Day2,

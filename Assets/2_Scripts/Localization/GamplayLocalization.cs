@@ -26,8 +26,6 @@ public class GamplayLocalization : MonoBehaviour
     [SerializeField] private TextMeshProUGUI EndPanelWindowExperienceTextView;
 
     [Header("Look Panel")]
-    [SerializeField] private TextMeshProUGUI LookPanelPreviosTextView;
-    [SerializeField] private TextMeshProUGUI LookPanelNextTextView;
 
     [Header("Choose Map")]
     [SerializeField] private TextMeshProUGUI chooseMapVoiseTextView;
@@ -63,8 +61,6 @@ public class GamplayLocalization : MonoBehaviour
             EndPanelWindowMoneyTextView.text = "Деньги";
             EndPanelWindowExperienceTextView.text = "Опыт";
 
-            LookPanelPreviosTextView.text = "Предыдущий";
-            LookPanelNextTextView.text = "Следующий";
 
 
             chooseMapVoiseTextView.text = "Проголосуйте за карту";
@@ -99,10 +95,6 @@ public class GamplayLocalization : MonoBehaviour
             EndPanelWindowMoneyTextView.text = "Money";
             EndPanelWindowExperienceTextView.text = "Experience";
 
-            LookPanelPreviosTextView.text = "Previous";
-            LookPanelNextTextView.text = "Next";
-
-
             chooseMapVoiseTextView.text = "Vote for a map";
         }
         else if (Geekplay.Instance.language == "tr")
@@ -134,8 +126,6 @@ public class GamplayLocalization : MonoBehaviour
             EndPanelWindowMoneyTextView.text = "Para";
             EndPanelWindowExperienceTextView.text = "Deneyim";
 
-            LookPanelPreviosTextView.text = "Onceki";
-            LookPanelNextTextView.text = "Sonraki";
 
 
             chooseMapVoiseTextView.text = "Haritaya oy verin";

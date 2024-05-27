@@ -1,43 +1,19 @@
-﻿using GeekplaySchool;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "Daily Exercise/Exercise Data")]
 public class DailyExerciseData : ScriptableObject
 {
-    [SerializeField] private string nameRu;
-    [SerializeField] private string nameEn;
-    [SerializeField] private string nameTr;
-
-    [SerializeField] private string descriptionRu;
-    [SerializeField] private string descriptionEn;
-    [SerializeField] private string descriptionTr;
+    [SerializeField] private List<ExerciseInfo> exercises = new List<ExerciseInfo>();
 
 
-    public string GetName()
+    public int ExerciseCount()
     {
-        if(Geekplay.Instance.language == "en")
-        {
-            return nameEn;
-        }
-        else if(Geekplay.Instance.language == "tr")
-        {
-            return nameTr;
-        }
-
-        return nameRu;
+        return exercises.Count;
     }
 
-    public string GetDescription()
+    public ExerciseInfo GetExerciseInfo(int index)
     {
-        if (Geekplay.Instance.language == "en")
-        {
-            return descriptionEn;
-        }
-        else if (Geekplay.Instance.language == "tr")
-        {
-            return descriptionTr;
-        }
-
-        return descriptionRu;
+        return exercises[index];
     }
 }

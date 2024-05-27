@@ -5,22 +5,40 @@ using UnityEngine;
 [Serializable]
 public class DailyExercise
 {
-    [SerializeField] private List<Exercise> exercises = new List<Exercise>();
+    [SerializeField] private DailyExerciseData data;
+    private List<ExerciseProgress> exercises = new List<ExerciseProgress>();
+    
+    public void Init()
+    {
+        int exerciseCount = data.ExerciseCount();
+
+        for (int i = 0; i < exerciseCount; i++)
+        {
+            ExerciseInfo exerciseInfo = data.GetExerciseInfo(i);
+
+            ExerciseProgress exercise = new ExerciseProgress();
+
+            exercise.SetMaxProgress = exerciseInfo.MaxProgress;
+            exercise.Description = exerciseInfo.GetDescription();
+            exercise.Reward = exerciseInfo.RewardCount;
+
+            exercises.Add(exercise);
+        }
+    }
+
+    public int SetProgress(int exerciseNumber, int progress = 1)
+    {
+        return exercises[exerciseNumber].SetProggres(progress);
+        
+    }
 
     public void IsDone()
     {
 
     }
 
-
-    //Метод возвраащает от 0 до 1
-    public float GetProgress()
+    public ExerciseProgress GetExercise(int exerciseNumber)
     {
-        return 0;
-    }
-
-    public void SetPrograss(int exerciseNumber)
-    {
-        exercises[exerciseNumber].SetProggres();
+        return exercises[exerciseNumber];
     }
 }

@@ -6,5 +6,6 @@
     SimpleShop,
     InAppShop,
     Leaders,
-    OurGame
+    OurGame,
+    DailyReward
 }

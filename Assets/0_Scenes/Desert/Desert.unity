@@ -23011,10 +23011,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 107336494121003613, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 560489925635206484, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -23023,6 +23019,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 122790199}
+    - target: {fileID: 2664293172969589588, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+      propertyPath: LookPanelNextTextView
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2664293172969589588, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+      propertyPath: LookPanelPreviosTextView
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4097776692577611386, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -23107,6 +23111,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 122790199}
+    - target: {fileID: 6293892203611300229, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6877280203344532210, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

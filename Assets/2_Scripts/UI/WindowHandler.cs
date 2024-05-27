@@ -8,6 +8,7 @@ public class WindowHandler : MonoBehaviour
     [SerializeField] private GameObject inAppShopWindow;
     [SerializeField] private GameObject leadersWindow;
     [SerializeField] private GameObject ourGameWindow;
+    [SerializeField] private GameObject dailyRewardWindow;
     [SerializeField] private MainMenuWindowState currentOpenedWindow;
 
     #region MainMenu
@@ -111,6 +112,20 @@ public class WindowHandler : MonoBehaviour
     }
     #endregion
 
+    #region DailyReward
+    public void OpenDailyRewardWindow()
+    {
+        dailyRewardWindow.SetActive(true);
+        CloseCurrentWindow();
+        currentOpenedWindow = MainMenuWindowState.DailyReward;
+    }
+
+    private void CloseDailyRewardWindow()
+    {
+        dailyRewardWindow.SetActive(false);
+    }
+    #endregion
+
     private void CloseCurrentWindow()
     {
         switch(currentOpenedWindow)
@@ -138,6 +153,9 @@ public class WindowHandler : MonoBehaviour
                 break;
             case MainMenuWindowState.OurGame:
                 CloseOurGameWindow();
+                break;
+            case MainMenuWindowState.DailyReward:
+                CloseDailyRewardWindow();
                 break;
         }
     }

@@ -32,6 +32,11 @@ public class PlayerData
     public List<int> CurrentBoosterKeys = new List<int>() { -1, -1, -1, -1, -1};
 
     public List<int> Codes = new List<int>();
+    #region Exercise Day
+
+    public List<DayExerciseSaveData> exercises = new List<DayExerciseSaveData>();
+
+    #endregion
 
     public void SetExperience(float currentExperience, float experienceToIncreaseLevel, int level)
     {
@@ -67,6 +72,55 @@ public class PlayerData
 
         Geekplay.Instance.Save();
     }
+
+    public void SetExerciseProgress(Days day, int exerciseNumber, int progress)
+    {
+        DayExerciseSaveData exerciseSaveData = null;
+
+        foreach (var item in exercises)
+        {
+            if(item.day == day)
+            {
+                exerciseSaveData = item;
+                break;
+            }
+        }
+
+        if (exerciseSaveData != null)
+        {
+            exerciseSaveData.SetExerciseProgress(exerciseNumber, progress);
+        }
+        else
+        {
+            exerciseSaveData = new DayExerciseSaveData();
+            exerciseSaveData.day = day;
+            exerciseSaveData.SetExerciseProgress(exerciseNumber, progress);
+            
+        }
+
+        exercises.Add(exerciseSaveData);
+        Geekplay.Instance.Save();
+    }
+
+    
+}
+
+[Serializable]
+public class DayExerciseSaveData
+{
+    public Days day;
+    public List<ExerciseSaveData> exerciseSaveData;
+
+    public void SetExerciseProgress(int exercise, int progress)
+    {
+        exerciseSaveData[exercise].exerciseProgress = progress;
+    }
+}
+
+[Serializable]
+public class ExerciseSaveData
+{
+    public int exerciseProgress;
 }
 
 [Serializable]
