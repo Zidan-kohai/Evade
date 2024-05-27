@@ -18,6 +18,8 @@ public class OurGameWindow : MonoBehaviour
 
     void Start()
     {
+        Geekplay.Instance.OurGame = this;
+
         if (Geekplay.Instance.Platform == Platform.Yandex)
         {
             Utils.CheckPlayGame(284619);

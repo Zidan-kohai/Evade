@@ -114,6 +114,8 @@ namespace GeekplaySchool
         private SceneLoader sceneLoader;
         public Leaderboard leaderboard;
 
+        public OurGameWindow OurGame;
+
         public void Awake()
         {
             AudioListener.volume = PlayerData.IsVolumeOn ? 1 : 0;
@@ -140,16 +142,8 @@ namespace GeekplaySchool
 
         private void Start()
         {
+            EnterTreker();
             pastedTimeFromLastInterstitial = interstitialTime;
-
-
-            //if (Platform == Platform.Yandex)
-            //{
-            //    Utils.CheckPlayGame(284619);
-            //    Utils.CheckPlayGame(295391);
-            //    Utils.CheckPlayGame(289951);
-            //    Utils.CheckPlayGame(227711);
-            //}
         }
         private void Update()
         {
@@ -159,19 +153,47 @@ namespace GeekplaySchool
             remainingTimeUntilUpdateLeaderboard -= Time.deltaTime;
         }
 
+        private void EnterTreker()
+        {
+            if(string.IsNullOrEmpty(PlayerData.lastEnterDate))
+            {
+                PlayerData.EnterCount++;
+                PlayerData.lastEnterDate = DateTime.UtcNow.Date.ToString();
+                Debug.Log(DateTime.UtcNow.Date.ToString());
+                Save();
+                return;
+            }
+
+            DateTime lastLogin = DateTime.Parse(PlayerData.lastEnterDate);
+            DateTime currentTime = DateTime.Now;
+
+            TimeSpan timeDifference = currentTime - lastLogin;
+
+            int daysPassed = timeDifference.Days;
+
+            bool moreThanADay = timeDifference.TotalDays >= 1;
+
+            if(moreThanADay)
+            {
+                PlayerData.EnterCount++;
+            }
+
+            Save();
+        }
+
         public void LoadScene(int sceneIndex)
         {
             sceneLoader.LoadScene(sceneIndex);
         }
-        //public void EnablePlayedGameToggle(int id)
-        //{
-        //    ourGame.EnabledGameToggle(id);
-        //}
+        public void EnablePlayedGameToggle(int id)
+        {
+            OurGame.EnabledGameToggle(id);
+        }
 
-        //public void DisablePlayedGameToggle(int id)
-        //{
-        //    ourGame.DisableGameToggle(id);
-        //}
+        public void DisablePlayedGameToggle(int id)
+        {
+            OurGame.DisableGameToggle(id);
+        }
 
         public void SubscribeOnPurshace(string tag, UnityAction action)
         {

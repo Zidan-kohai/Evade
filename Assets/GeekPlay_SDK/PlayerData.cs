@@ -21,6 +21,8 @@ public class PlayerData
     public bool IsCloesChangeRewardTaked;
     public bool IsSlapBattleRewardTaked;
     public bool IsTwoPlayerGameRewardTaked;
+    public string lastEnterDate;
+    public int EnterCount;
 
     public List<int> BuyedAccessoryID = new List<int>() { 0 };
     public int CurrentEquipedAccessoryID = 0;
