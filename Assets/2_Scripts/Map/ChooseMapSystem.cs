@@ -182,8 +182,7 @@ public class ChooseMapSystem : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(1f);
             timeToChooseMap -= 1f;
-            TimeSpan time = TimeSpan.FromSeconds(timeToChooseMap);
-            timeView.text = $"{time.Minutes} : {time.Seconds}";
+            timeView.text = $"{timeToChooseMap}";
         }
 
         DecideWhichMapOpen();
