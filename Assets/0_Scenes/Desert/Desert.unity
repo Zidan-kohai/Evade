@@ -13042,7 +13042,7 @@ MonoBehaviour:
   - {fileID: 808393989}
   - {fileID: 856855272}
   minSpawnCount: 3
-  spawnedEnemyCount: 0
+  spawnedEnemyCount: 2
   enemies:
   - {fileID: 24990209}
   - {fileID: 510046679}
@@ -13052,6 +13052,7 @@ MonoBehaviour:
   - {fileID: 2031888116}
   - {fileID: 2033389084}
   enemyDataHandler: {fileID: 11400000, guid: d6f1da1a49b342c4983a2b9350038916, type: 2}
+  spawnCount: 0
 --- !u!1 &1148924076
 GameObject:
   m_ObjectHideFlags: 0

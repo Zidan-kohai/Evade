@@ -6,6 +6,7 @@ public class EnemySpawner : Spawner
     [Space]
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private EnemyDataHandler enemyDataHandler;
+    [SerializeField] private int spawnCount;
     private void Awake()
     {
         SpawnUnits();
@@ -13,16 +14,14 @@ public class EnemySpawner : Spawner
 
     protected override void SpawnUnits()
     {
-        int enemyCountToSpawn = Random.Range(minSpawnCount, enemies.Count);
-
-        for (int i = 0; i < enemyCountToSpawn; i++)
+        for (int i = 0; i < spawnCount; i++)
         {
             Vector3 spawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count)].transform.position;
             EnemyData data = enemyDataHandler.GetRandomEnemyData();
             enemies[i].Initialize(data, PatrollPoints, spawnPoint);
         }
 
-        spawnedEnemyCount = enemyCountToSpawn;
+        spawnedEnemyCount = spawnCount;
     }
 
     protected override void SpawnUnit()
