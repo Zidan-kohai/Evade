@@ -47,7 +47,10 @@ public class PlayerData
         ExperienceToIncreaseLevel = experienceToIncreaseLevel;
         Level = level;
 
-        DailyExerciseController.Instance.SetProgress(Days.Day4, 0);
+        if (level == 10)
+        {
+            DailyExerciseController.Instance.SetProgress(Days.Day4, 0);
+        }
 
         Geekplay.Instance.Save();
     }
