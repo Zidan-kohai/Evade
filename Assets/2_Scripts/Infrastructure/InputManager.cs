@@ -21,6 +21,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private MyButton is3Button;
     [SerializeField] private MyButton is4Button;
     [SerializeField] private MyButton is5Button;
+    [SerializeField] private MyButton is6Button;
 
     private float mouseDeltaX;
     private float mouseDeltaY;
@@ -36,6 +37,7 @@ public class InputManager : MonoBehaviour
     private bool is3;
     private bool is4;
     private bool is5;
+    private bool is6;
     public float GetMouseDeltaX => mouseDeltaX;
     public float GetMouseDeltaY => mouseDeltaY;
     public float GetMoveHorizontal => moveHorizontal;
@@ -50,6 +52,7 @@ public class InputManager : MonoBehaviour
     public bool GetIs3 => is3;
     public bool GetIs4 => is4;
     public bool GetIs5 => is5;
+    public bool GetIs6 => is6;
 
     private void Start()
     {
@@ -139,6 +142,12 @@ public class InputManager : MonoBehaviour
             is5 = true;
             StartCoroutine(WaitFrame(() => is5 = false));
         });
+
+        is6Button.onClick.AddListener(() =>
+        {
+            is6 = true;
+            StartCoroutine(WaitFrame(() => is6 = false));
+        });
     }
 
     private void DeskInput()
@@ -169,6 +178,8 @@ public class InputManager : MonoBehaviour
         is4 = Input.GetKeyDown(KeyCode.Alpha4);
 
         is5 = Input.GetKeyDown(KeyCode.Alpha5);
+
+        is6 = Input.GetKeyDown(KeyCode.Alpha6);
     }
 
     private IEnumerator WaitFrame(Action action)

@@ -187,7 +187,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
             enemies.Add(enemy);
             ChangeState(PlayerState.Escape);
         }
-        else if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        else if (IHumanoid.gameObject.TryGetComponent(out IPlayer player) && !IHumanoid.gameObject.TryGetComponent(out Bait bait))
         {
             players.Add(player);
         }

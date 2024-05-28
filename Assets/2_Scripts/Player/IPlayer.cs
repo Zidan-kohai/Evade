@@ -49,4 +49,5 @@ public interface IRealyPlayer : IPlayer
     public float SetMaxSpeedOnFall(int value, bool isFactor = true);
 
     public float SetMaxSpeedOnUp(int value, bool isFactor = true);
+
 }

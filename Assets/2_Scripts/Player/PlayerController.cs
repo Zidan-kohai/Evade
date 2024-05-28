@@ -61,10 +61,11 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     [SerializeField] private IPlayer carriedPlayer;
 
     [Header("General")]
-    private Action<IPlayer> playerDeathEvent;
     [SerializeField] private int helpCount;
     [SerializeField] private int moneyMultiplierFactor = 1;
     [SerializeField] private int experienceMultiplierFactor = 1;
+    [SerializeField] private Bait baitPrefab;
+    private Action<IPlayer> playerDeathEvent;
     private string name = "Вы";
     private float livedTime = 0;
     private Coroutine coroutine;
@@ -126,6 +127,10 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
             Help();
     }
 
+    public void CreateBait()
+    {
+        Instantiate(baitPrefab, transform.position + visualHandler.transform.forward * 5 + new Vector3(0, 15, 0), Quaternion.Euler(transform.eulerAngles), null);
+    }
     public void Carried(Transform point, CinemachineVirtualCamera virtualCamera)
     {
         ChangeState(PlayerState.Carried);
@@ -319,7 +324,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         {
             enemies.Add(enemy);
         }
-        else if(IHumanoid.gameObject.TryGetComponent(out IPlayer player) && player != this)
+        else if(IHumanoid.gameObject.TryGetComponent(out IPlayer player) && player != this && !IHumanoid.gameObject.TryGetComponent(out Bait bait))
         {
             players.Add(player);
         }

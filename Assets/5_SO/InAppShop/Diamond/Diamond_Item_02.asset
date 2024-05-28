@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Diamond_Item_02
   m_EditorClassIdentifier: 
   RewardType: 1
-  BuyType: 0
   PurchaseTag: Diamond3
-  Goldcount: 0
+  Goldcount: 35
   DiamondCount: 35
   Cost: 25

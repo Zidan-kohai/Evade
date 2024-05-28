@@ -13,7 +13,8 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     [SerializeField] private int currentPatrolPositionIndex;
     [SerializeField] private bool sawPlayer;
     [SerializeField] private EnemyState state;
-    [SerializeField] private List<Transform> patrolTransform;
+    [SerializeField] private List<Transform> patrolTransform = new();
+    [SerializeField] private Bait bait;
 
     [Header("Field of View")]
     [SerializeField] private ReachArea reachArea;
@@ -103,7 +104,11 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     public void AddHumanoid(IHumanoid IHumanoid)
     {
-        if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        if (IHumanoid.gameObject.TryGetComponent(out Bait bait))
+        {
+            this.bait = bait;
+        }
+        else if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
         {
             playersOnReachArea.Add(player);
         }
@@ -111,7 +116,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
     public void RemoveHumanoid(IHumanoid IHumanoid)
     {
-        if (IHumanoid.gameObject.TryGetComponent(out IPlayer player))
+        if (IHumanoid.gameObject.TryGetComponent(out IPlayer player) && playersOnReachArea.Contains(player))
         {
             playersOnReachArea.Remove(player);
         }
@@ -169,39 +174,58 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         Vector3 targetPosition = transform.position;
         IPlayer currentChasingPlayer = null;
 
-        for (int i = 0; i < lastSeenPlayersWithPosition.Count; i++)
+        if (bait == null)
         {
-            IPlayer player = lastSeenPlayersWithPosition.ElementAt(i).Key;
-            Vector3 position = lastSeenPlayersWithPosition.ElementAt(i).Value;
-
-            if (player.IsFallOrDeath())
+            for (int i = 0; i < lastSeenPlayersWithPosition.Count; i++)
             {
-                lastSeenPlayersWithPosition.Remove(player);
-                playersOnReachArea.Remove(player);
-                continue;
+                IPlayer player = lastSeenPlayersWithPosition.ElementAt(i).Key;
+                Vector3 position = lastSeenPlayersWithPosition.ElementAt(i).Value;
+
+                if (player.IsFallOrDeath())
+                {
+                    lastSeenPlayersWithPosition.Remove(player);
+                    playersOnReachArea.Remove(player);
+                    continue;
+                }
+
+                float distanceFlag = (player.GetTransform().position - transform.position).magnitude;
+                if (distanceFlag < distanse)
+                {
+                    distanse = distanceFlag;
+                    targetPosition = position;
+                    currentChasingPlayer = player;
+                }
             }
 
-            float distanceFlag = (player.GetTransform().position - transform.position).magnitude;
-            if (distanceFlag < distanse)
+            if (currentChasingPlayer != null)
             {
-                distanse = distanceFlag;
-                targetPosition = position;
-                currentChasingPlayer = player;
+                agent.SetDestination(targetPosition);
+
+                bool isAttaked = TryAttack(currentChasingPlayer);
+
+                if (isAttaked)
+                {
+                    lastSeenPlayersWithPosition.Remove(currentChasingPlayer);
+                    return;
+                }
             }
         }
-
-        if (currentChasingPlayer != null)
+        else
         {
+            targetPosition = bait.transform.position;
+            currentChasingPlayer = bait;
+
             agent.SetDestination(targetPosition);
 
-            bool isAttaked = TryAttack(currentChasingPlayer);
+            bool tryAttack = TryAttack(currentChasingPlayer);
 
-            if (isAttaked)
+            if(tryAttack)
             {
-                lastSeenPlayersWithPosition.Remove(currentChasingPlayer);
-                return;
+                bait = null;
             }
         }
+
+        
 
         if (agent.remainingDistance <= agent.stoppingDistance && currentChasingPlayer != null)
         {
@@ -239,7 +263,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
             if (Physics.Raycast(transform.position + biasOnThrowRaycast, (direcrtion + biasOnThrowRaycast).normalized, out hit, Mathf.Infinity, allLayers, QueryTriggerInteraction.Ignore))
             {
-                if (hit.transform.TryGetComponent(out IPlayer IPlayer) && !IPlayer.IsFallOrDeath())
+                if (hit.transform.TryGetComponent(out IPlayer IPlayer) && !IPlayer.IsFallOrDeath() && !hit.transform.TryGetComponent(out Bait bait))
                 {
                     ChangeState(EnemyState.Chase);
 

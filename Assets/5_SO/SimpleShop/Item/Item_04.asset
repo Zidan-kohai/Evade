@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 1
   mainIcon: {fileID: 0}
   secondIcon: {fileID: 0}
-  openOnLevel: 3
+  openOnLevel: 0
   indexOnPlayer: 4
   nameRu: "\u041F\u0440\u0438\u043C\u0430\u043D\u043A\u0430"
   nameEn: Bait

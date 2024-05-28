@@ -1561,11 +1561,12 @@ MonoBehaviour:
   startSpeedOnPlayerFall: 3
   maxSpeedOnPlayerFall: 7
   currrentSpeed: 5
-  speedScaleFactor: 25
+  speedScaleFactor: 50
   currrentMinSpeed: 70
   currrentMaxSpeed: 200
   pointsToWalk: []
   currnetWalkPointIndex: 0
+  isTeleport: 0
   agent: {fileID: 3663144800095553858}
   reachArea: {fileID: 2861010759206526833}
   animationController: {fileID: 14873245123960596}

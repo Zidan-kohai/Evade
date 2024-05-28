@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5682b406daeb52b4d919fa58369057b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 170
+  speed: 150
   currentPatrolPositionIndex: 0
   sawPlayer: 0
   state: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   reachArea: {fileID: 4173423218352306102}
   biasOnThrowRaycast: {x: 0, y: 5, z: 0}
   fieldOfViewAngle: 90
-  viewDistance: 100
+  viewDistance: 70
   allLayers:
     serializedVersion: 2
     m_Bits: 375

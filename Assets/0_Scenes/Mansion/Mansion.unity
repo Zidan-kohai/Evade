@@ -259,6 +259,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3082375}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11430987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4133763465592108308, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dedccdf85c8940e4fabc421ee162143d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &20348439
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,6 +2460,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252890409}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &270541658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2419265470018522159, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &270541659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1949863406336599800, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &284119840 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5858638184833764952, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
@@ -3565,6 +3592,7 @@ MonoBehaviour:
   is3Button: {fileID: 937886411}
   is4Button: {fileID: 937886410}
   is5Button: {fileID: 937886409}
+  is6Button: {fileID: 11430987}
 --- !u!1 &461251828
 GameObject:
   m_ObjectHideFlags: 0
@@ -6442,6 +6470,11 @@ MonoBehaviour:
     boostEvent:
       m_PersistentCalls:
         m_Calls: []
+  - gameObject: {fileID: 270541659}
+    image: {fileID: 270541658}
+    boostEvent:
+      m_PersistentCalls:
+        m_Calls: []
   Boosters:
   - data: {fileID: 11400000, guid: 88e3256d9fdff1344a8b71124657f182, type: 2}
     boosterEvent:
@@ -6530,6 +6563,22 @@ MonoBehaviour:
         - m_Target: {fileID: 827318695}
           m_TargetAssemblyTypeName: BoosterController, Assembly-CSharp
           m_MethodName: TeleportActivate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - data: {fileID: 11400000, guid: 30c793f997de572448451403651adb80, type: 2}
+    boosterEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7418738573951536421}
+          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+          m_MethodName: CreateBait
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -17424,6 +17473,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 836883443137320651, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
   m_PrefabInstance: {fileID: 7418738573951536419}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7418738573951536421 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2861547996078224846, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+  m_PrefabInstance: {fileID: 7418738573951536419}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5729a20f8d0fbb4c80f6cf5dc2883c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8385680890943930510
 GameObject:
   m_ObjectHideFlags: 0

@@ -319,6 +319,7 @@ MonoBehaviour:
   helpCount: 0
   moneyMultiplierFactor: 1
   experienceMultiplierFactor: 1
+  baitPrefab: {fileID: 6907293851248378957, guid: 77ba66a61fbfe964ab9c78cde087c46c, type: 3}
 --- !u!54 &1512673573069339496
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -549,6 +550,7 @@ MonoBehaviour:
   _playerTransform: {fileID: 836883443137320651}
   _camera: {fileID: 0}
   _pointerParent: {fileID: 0}
+  isActive: 0
 --- !u!1 &817575997565210850
 GameObject:
   m_ObjectHideFlags: 0

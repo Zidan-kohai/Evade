@@ -4,7 +4,6 @@ using UnityEngine;
 public class InAppShopItemData : ScriptableObject
 {
     public RewardType RewardType;
-    public BuyType BuyType;
     public string PurchaseTag;
     public int Goldcount;
     public int DiamondCount;
@@ -17,9 +16,4 @@ public enum RewardType
     Gold,
     Diamond,
     Both
-}
-public enum BuyType
-{
-    InApp,
-    Video
 }

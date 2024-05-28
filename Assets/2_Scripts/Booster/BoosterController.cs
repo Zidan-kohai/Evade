@@ -1,7 +1,6 @@
 using DG.Tweening;
 using GeekplaySchool;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -60,6 +59,8 @@ public class BoosterController : MonoBehaviour
         instance = this;
 
         //Need refactoring
+
+
         for (int i = 0; i < Geekplay.Instance.PlayerData.CurrentBoosterKeys.Count; i++)
         {
             if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == -1)
@@ -76,7 +77,7 @@ public class BoosterController : MonoBehaviour
                     {
                         boosterItem[j].gameObject.SetActive(true);
                         boosterItem[j].image.sprite = booster.data.mainIcon;
-                        boosterItem[j].boostEvent.AddListener(() => 
+                        boosterItem[j].boostEvent.AddListener(() =>
                         {
                             booster.boosterEvent?.Invoke();
                             DailyExerciseController.Instance.SetProgress(Days.Day3, 2);
@@ -87,6 +88,20 @@ public class BoosterController : MonoBehaviour
                     }
                 }
                 if (result) break;
+            }
+        }
+
+        foreach (MyDictionary booster in Boosters)
+        {
+            if (Geekplay.Instance.PlayerData.CurrentEquipedItemID == booster.data.indexOnPlayer && booster.data.type == SubjectType.Item)
+            {
+                boosterItem[5].gameObject.SetActive(true);
+                boosterItem[5].image.sprite = booster.data.mainIcon;
+                boosterItem[5].boostEvent.AddListener(() =>
+                {
+                    booster.boosterEvent?.Invoke();
+                });
+                break;
             }
         }
     }
@@ -118,6 +133,11 @@ public class BoosterController : MonoBehaviour
         if (inputManager.GetIs5 && boosterItem[4].gameObject.activeSelf)
         {
             boosterItem[4].boostEvent?.Invoke();
+        }
+
+        if (inputManager.GetIs6 && boosterItem[5].gameObject.activeSelf)
+        {
+            boosterItem[5].boostEvent?.Invoke();
         }
     }
 
