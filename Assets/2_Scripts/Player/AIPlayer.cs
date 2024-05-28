@@ -120,7 +120,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
         name = Helper.GetRandomName();
 
-        GameplayController.AddPlayer(this);
+        GameplayController.AddPlayerST(this);
         BuffHandler.AddPlayerST(this);
     }
 

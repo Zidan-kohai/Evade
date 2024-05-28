@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         characterController = GetComponent<CharacterController>();
         reachArea.SetISee(this);
         animationController.SetIMove(this);
-        GameplayController.AddRealyPlayer(this);
+        GameplayController.AddRealyPlayerST(this);
         BuffHandler.AddRealyPlayerST(this);
         BoosterController.AddRealyPlayerST(this);
     }

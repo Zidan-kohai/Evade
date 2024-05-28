@@ -78,6 +78,8 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
         currentPatrolPositionIndex = UnityEngine.Random.Range(0, patrolTransform.Count);
 
         PlaySound();
+
+        GameplayController.AddEnemyST(this);
     }
 
     public void IncreaseSoundZone()

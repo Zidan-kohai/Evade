@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +15,9 @@ public class GameplayController : MonoBehaviour
     [SerializeField] private bool gameOver = false;
     [SerializeField] private IPlayer realyPlayer;
     [SerializeField] private List<IPlayer> players  = new List<IPlayer>();
+    [SerializeField] private List<IEnemy> enemies = new List<IEnemy>();
     private int playerCount = 0;
+
     private void Awake()
     {
         instance = this;
@@ -34,14 +35,52 @@ public class GameplayController : MonoBehaviour
         {
             End();
         }
+
+        IEnemy nearnestEnemy = GetNearnestEnemyToRealyPlayer();
+
+        if (nearnestEnemy != null)
+        {
+            PointerManager.Instance.AddToList(nearnestEnemy);
+        }
     }
 
-    public static void AddPlayer(IPlayer player)
+    private IEnemy GetNearnestEnemyToRealyPlayer()
+    {
+        float minDistance = Mathf.Infinity;
+        IEnemy nearnestEnemy = null;
+
+        foreach (IEnemy enemy in enemies)
+        {
+            float distance = Vector2.Distance(enemy.GetTransform().position, realyPlayer.GetTransform().position);
+
+            if(distance < minDistance)
+            {
+                minDistance = distance;
+                nearnestEnemy = enemy;
+            }
+        }
+
+        return nearnestEnemy;
+    }
+
+    public static void AddPlayerST(IPlayer player)
     {
         instance.players.Add(player);
         instance.playerCount++;
 
         player.SubscribeOnDeath(instance.PlayerDeath);
+    }
+
+    public static void AddRealyPlayerST(IPlayer player)
+    {
+        instance.realyPlayer = player;
+        player.SubscribeOnDeath(instance.PlayerDeath);
+        instance.playerCount++;
+    }
+
+    public static void AddEnemyST(IEnemy enemy)
+    {
+        instance.enemies.Add(enemy);
     }
 
     private void PlayerDeath(IPlayer player)
@@ -54,12 +93,6 @@ public class GameplayController : MonoBehaviour
         }
     }
 
-    public static void AddRealyPlayer(IPlayer player)
-    {
-        instance.realyPlayer = player;
-        player.SubscribeOnDeath(instance.PlayerDeath);
-        instance.playerCount++;
-    }
 
     public void OnPlayerDeath(float livedTime)
     {

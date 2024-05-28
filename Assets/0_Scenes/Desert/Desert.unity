@@ -13052,7 +13052,7 @@ MonoBehaviour:
   - {fileID: 2031888116}
   - {fileID: 2033389084}
   enemyDataHandler: {fileID: 11400000, guid: d6f1da1a49b342c4983a2b9350038916, type: 2}
-  spawnCount: 0
+  spawnCount: 2
 --- !u!1 &1148924076
 GameObject:
   m_ObjectHideFlags: 0
@@ -23044,6 +23044,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -325
       objectReference: {fileID: 0}
+    - target: {fileID: 743090780318431350, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 122790196}
+    - target: {fileID: 743090780318431350, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 743090780318431350, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2664293172969589588, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
       propertyPath: LookPanelNextTextView
       value: 
@@ -23328,6 +23340,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497476675c4d28948a65effda920620a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5759701419978455605 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 185167667421751933, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 5759701419978455603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5894999512680399640
 Transform:
   m_ObjectHideFlags: 0
@@ -23885,6 +23902,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 14.65
       objectReference: {fileID: 0}
+    - target: {fileID: 7005582488443753406, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 122790196}
+    - target: {fileID: 7005582488443753406, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: _pointerParent
+      value: 
+      objectReference: {fileID: 5759701419978455605}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

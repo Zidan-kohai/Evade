@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 1626719977090493698}
   - component: {fileID: 1283358513287290756}
   - component: {fileID: 584000485050038201}
+  - component: {fileID: 7005582488443753406}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -532,6 +533,22 @@ CapsuleCollider:
   m_Height: 15
   m_Direction: 1
   m_Center: {x: 0, y: 7.5, z: 0}
+--- !u!114 &7005582488443753406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569462121483549870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654f3b02c4ae714438f90512406fa051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointerPrefab: {fileID: 475852734613081093, guid: 6675d8c381d78a74782f1f39dcdc6804, type: 3}
+  _playerTransform: {fileID: 836883443137320651}
+  _camera: {fileID: 0}
+  _pointerParent: {fileID: 0}
 --- !u!1 &817575997565210850
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +575,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817575997565210850}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13238296, y: 0.000000017054946, z: -0.0000000022778321, w: 0.99119866}
+  m_LocalRotation: {x: 0.13238299, y: 0.000000017054953, z: -0.000000002277834, w: 0.99119866}
   m_LocalPosition: {x: 0, y: 25, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
