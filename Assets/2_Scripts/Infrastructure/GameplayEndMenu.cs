@@ -21,9 +21,6 @@ public class GameplayEndMenu : MonoBehaviour
 
         AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney(), realyPlayer.GetEarnedExperrience());
 
-        Wallet.AddMoneyST(realyPlayer.GetEarnedMoney());
-        PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience());
-
         if(realyPlayer.IsDeath())
         {
             HeaderTextView.text = "Вы мертвы";

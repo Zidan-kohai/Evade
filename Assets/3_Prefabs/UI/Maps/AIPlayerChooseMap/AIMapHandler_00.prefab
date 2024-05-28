@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 6792258682599097585, guid: 25dd99536e1d0bc4aae2aaad06f2c657, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 275
+      objectReference: {fileID: 0}
     - target: {fileID: 8027513558829723189, guid: 25dd99536e1d0bc4aae2aaad06f2c657, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -175,7 +179,21 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8232616744025864200, guid: 25dd99536e1d0bc4aae2aaad06f2c657, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3032625274265296471}
+    - targetCorrespondingSourceObject: {fileID: 8232616744025864200, guid: 25dd99536e1d0bc4aae2aaad06f2c657, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7674765919403008397}
   m_SourcePrefab: {fileID: 100100000, guid: 25dd99536e1d0bc4aae2aaad06f2c657, type: 3}
+--- !u!114 &114495263554394253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1957968365737878085, guid: 25dd99536e1d0bc4aae2aaad06f2c657, type: 3}
+  m_PrefabInstance: {fileID: 1926094847985187528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &331487606982752816 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2171706128947953912, guid: 25dd99536e1d0bc4aae2aaad06f2c657, type: 3}
@@ -219,6 +237,21 @@ MonoBehaviour:
   Handler: {fileID: 1238404193434970360}
   nameView: {fileID: 6677672303906651769}
   hardNestView: {fileID: 331487606982752816}
+  mapIcon: {fileID: 114495263554394253}
+--- !u!114 &7674765919403008397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564635877109252800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!224 &8493129206995129597 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8027513558829723189, guid: 25dd99536e1d0bc4aae2aaad06f2c657, type: 3}
