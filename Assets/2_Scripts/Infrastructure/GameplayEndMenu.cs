@@ -20,7 +20,7 @@ public class GameplayEndMenu : MonoBehaviour
 
         AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney(), realyPlayer.GetEarnedExperrience());
 
-        Wallet.AddMoneyST(realyPlayer.GetEarnedMoney(), 0);
+        Wallet.AddMoneyST(realyPlayer.GetEarnedMoney());
         PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience());
 
         if(realyPlayer.IsDeath())

@@ -309,7 +309,7 @@ public class OurGameWindow : MonoBehaviour
 
     public void TakeReward(int id, Button button, TextMeshProUGUI text)
     {
-        Wallet.AddMoneyST(100, 0);
+        Wallet.AddMoneyST(100);
 
         DisableTakePossibility(button, text);
     }

@@ -65,6 +65,8 @@ MonoBehaviour:
     IsCloesChangeRewardTaked: 0
     IsSlapBattleRewardTaked: 0
     IsTwoPlayerGameRewardTaked: 0
+    lastEnterDate: 
+    EnterCount: 0
     BuyedAccessoryID: 
     CurrentEquipedAccessoryID: 0
     BuyedLightID: 
@@ -137,6 +139,7 @@ MonoBehaviour:
   interstitialTime: 75
   pastedTimeFromLastInterstitial: 0
   leaderboard: {fileID: 0}
+  OurGame: {fileID: 0}
 --- !u!114 &6488650318921528209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,3 +159,12 @@ MonoBehaviour:
   - day: 1
     dailyExercise:
       data: {fileID: 11400000, guid: 5ae3fef5a56fdc8499a11ff200b058a0, type: 2}
+  - day: 2
+    dailyExercise:
+      data: {fileID: 11400000, guid: ee31dac63b4a19248bd6c2d14efe6589, type: 2}
+  - day: 3
+    dailyExercise:
+      data: {fileID: 11400000, guid: be95642a10836fa488a1caa998cfa1c3, type: 2}
+  - day: 4
+    dailyExercise:
+      data: {fileID: 11400000, guid: 8714dade0ddd9cc40ab5372e3c775126, type: 2}

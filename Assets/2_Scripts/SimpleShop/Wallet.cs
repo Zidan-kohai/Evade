@@ -8,7 +8,6 @@ public class Wallet : MonoBehaviour
     private static Wallet instance;
 
     [SerializeField] private List<TextMeshProUGUI> goldsCountView;
-    [SerializeField] private List<TextMeshProUGUI> diamondsCountView;
 
     private void Start()
     {
@@ -26,9 +25,9 @@ public class Wallet : MonoBehaviour
         instance.Buy(cost);
     }
 
-    public static void AddMoneyST(int gold, int diamond)
+    public static void AddMoneyST(int gold)
     {
-        instance.AddMoney(gold, diamond); 
+        instance.AddMoney(gold); 
     }    
 
     private bool TryBuy(int cost)
@@ -48,10 +47,9 @@ public class Wallet : MonoBehaviour
         Geekplay.Instance.Save();
     }
     
-    private void AddMoney(int gold, int diamond)
+    private void AddMoney(int gold)
     {
         Geekplay.Instance.PlayerData.Gold += gold;
-        Geekplay.Instance.PlayerData.Diamond += diamond;
 
         Geekplay.Instance.Save();
         ChangeView();
@@ -62,11 +60,6 @@ public class Wallet : MonoBehaviour
         foreach (var item in goldsCountView)
         {
             item.text = Geekplay.Instance.PlayerData.Gold.ToString();
-        }
-
-        foreach (var item in diamondsCountView)
-        {
-            item.text = Geekplay.Instance.PlayerData.Diamond.ToString();
         }
     }
 }

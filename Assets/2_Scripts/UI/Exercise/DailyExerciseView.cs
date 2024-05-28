@@ -90,7 +90,7 @@ public class DailyExerciseView : MonoBehaviour
 
                 dailyClaimButton.onClick.AddListener(() =>
                 {
-                    Wallet.AddMoneyST(dates[day].RewardMoney, 0);
+                    Wallet.AddMoneyST(dates[day].RewardMoney);
                     Geekplay.Instance.PlayerData.SetDayExerciseRewardClaim((Days)day);
                     dailyClaimButton.onClick.RemoveAllListeners();
                     dailyClaimButtonText.text = "Забрали";

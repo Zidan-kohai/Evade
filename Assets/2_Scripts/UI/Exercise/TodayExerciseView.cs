@@ -11,7 +11,9 @@ public class TodayExerciseView : MonoBehaviour
     [SerializeField] private TodayExerciseItem itemPrefab;
     [SerializeField] private Transform itemParent;
 
-    private void Start()
+    [SerializeField] private List<TodayExerciseItem> todayExerciseItems = new List<TodayExerciseItem>();
+
+    private void OnEnable()
     {
         StartCoroutine(Wait(0.3f, ShowMainExercise));
     }
@@ -25,6 +27,8 @@ public class TodayExerciseView : MonoBehaviour
 
     public void ShowMainExercise()
     {
+        Destroy();
+
         int todayIndex = Geekplay.Instance.PlayerData.EnterCount >=7 ? dates.Count -1 : Geekplay.Instance.PlayerData.EnterCount - 1;
 
         for (int j = 0; j < dates[todayIndex].ExerciseCount(); j++)
@@ -34,6 +38,21 @@ public class TodayExerciseView : MonoBehaviour
             TodayExerciseItem exerciseView = Instantiate(itemPrefab, itemParent);
 
             exerciseView.Initialize(exercise.Description, exercise.Reward, exercise.GetProgress, exercise.GetMaxProgress);
+
+            todayExerciseItems.Add(exerciseView);
+        }
+
+        StartCoroutine(Wait(5f, ShowMainExercise));
+    }
+
+
+    private void Destroy()
+    {
+        while(todayExerciseItems.Count > 0)
+        {
+            GameObject gObject = todayExerciseItems[0].gameObject;
+            todayExerciseItems.RemoveAt(0);
+            Destroy(gObject);
         }
     }
 }

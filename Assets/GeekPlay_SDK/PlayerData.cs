@@ -218,7 +218,6 @@ public class DayExerciseSaveData
             new ExerciseSaveData(),
             new ExerciseSaveData(),
             new ExerciseSaveData(),
-            new ExerciseSaveData(),
         };
     }
 

@@ -13,30 +13,35 @@ MonoBehaviour:
   m_Name: Exercise_00
   m_EditorClassIdentifier: 
   exercises:
-  - DescriptionRu: "\u0412\u044B\u0436\u0438\u0432\u0438\u0442\u0435 1 \u0440\u0430\u0437"
-    DescriptionEn: Survive 1 times
-    DescriptionTr: Survive 1 times
-    MaxProgress: 1
+  - DescriptionRu: "\u041F\u043E\u0431\u0443\u0434\u044C \u0432 \u0438\u0433\u0440\u0435
+      8 \u043C\u0438\u043D\u0443\u0442"
+    DescriptionEn: Stay in the game for 8 minutes
+    DescriptionTr: "Ba\u015Flang\u0131\xE7 8 dakika"
+    MaxProgress: 8
     RewardType: 0
     RewardCount: 100
-  - DescriptionRu: "\u041F\u043E\u0434\u043D\u0438\u043C\u0438\u0442\u0435 1 \u0447\u0435\u043B\u043E\u0432\u0435\u043A\u0430"
-    DescriptionEn: Put up 1 people
-    DescriptionTr: Put up 1 people
+  - DescriptionRu: "\u0421\u044B\u0433\u0440\u0430\u0439 3 \u0440\u0430\u0437\u0430"
+    DescriptionEn: Play 3 times
+    DescriptionTr: 3 kez oyna
+    MaxProgress: 3
+    RewardType: 0
+    RewardCount: 150
+  - DescriptionRu: "\u041E\u0441\u0442\u0430\u0432\u044C \u043E\u0442\u0437\u044B\u0432"
+    DescriptionEn: Leave a review
+    DescriptionTr: "\u0130nceleme b\u0131rak"
     MaxProgress: 1
     RewardType: 0
     RewardCount: 150
-  - DescriptionRu: "\u041F\u0440\u043E\u0432\u0435\u0434\u0438\u0442\u0435 \u0432
-      \u0438\u0433\u0440\u0435 5 \u043C\u0438\u043D\u0443\u0442"
-    DescriptionEn: Spend 5 minutes in the game
-    DescriptionTr: "Oyunda 5 dakika ge\xE7irin"
-    MaxProgress: 5
+  - DescriptionRu: "\u041F\u043E\u0434\u043D\u0438\u043C\u0438 3 \u0447\u0435\u043B\u043E\u0432\u0435\u043A"
+    DescriptionEn: Lift 3 people
+    DescriptionTr: "3 ki\u015Fiyi kald\u0131r\u0131n"
+    MaxProgress: 3
     RewardType: 0
-    RewardCount: 150
-  - DescriptionRu: "\u041F\u0440\u043E\u0432\u0435\u0434\u0438\u0442\u0435 \u0432
-      \u0438\u0433\u0440\u0435 10 \u043C\u0438\u043D\u0443\u0442"
-    DescriptionEn: Spend 10 minutes in the game
-    DescriptionTr: "Oyunda 10 dakika ge\xE7irin"
-    MaxProgress: 10
+    RewardCount: 200
+  - DescriptionRu: "\u041A\u0443\u043F\u0438 \u0444\u043E\u043D\u0430\u0440\u0438\u043A"
+    DescriptionEn: Buy a flashlight
+    DescriptionTr: "Bir el feneri sat\u0131n al"
+    MaxProgress: 1
     RewardType: 0
     RewardCount: 200
   RewardMoney: 150

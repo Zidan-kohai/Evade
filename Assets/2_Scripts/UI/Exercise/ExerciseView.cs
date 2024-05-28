@@ -29,7 +29,7 @@ public class ExerciseView : MonoBehaviour
 
             claimButton.onClick.AddListener(() =>
             {
-                Wallet.AddMoneyST(reward, 0);
+                Wallet.AddMoneyST(reward);
                 claimButton.gameObject.SetActive(false);
                 Geekplay.Instance.PlayerData.SetExerciseClaim(day, exerciseNumber);
             });
