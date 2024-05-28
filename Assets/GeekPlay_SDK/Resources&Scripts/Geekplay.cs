@@ -63,14 +63,9 @@ namespace GeekplaySchool
 
         public int MultipleSpeedBuff = 1;
 
-        public bool BuffIncreaseHP { get; internal set; }
-        public bool BuffAcceleration { get; internal set; }
-        public bool BuffDoubleSlap { get; internal set; }
-        public bool BuffIncreasePower { get; internal set; }
-
-        public float TimeToShowReward;
-        public float TimePasedFromLastReward;
-        public bool CanShowReward => TimePasedFromLastReward > TimeToShowReward && !BuffAcceleration && !BuffDoubleSlap && !BuffIncreasePower && !BuffIncreaseHP;
+        public float TimeToShowReward = 90;
+        public float RemainingTimeUntilRewardADV;
+        public bool CanShowReward => RemainingTimeUntilRewardADV < 0;
         public Action OnShowBuffs;
 
         public bool IsTournamentStart;
@@ -151,7 +146,8 @@ namespace GeekplaySchool
         private void Update()
         {
             pastedTimeFromLastInterstitial -= Time.deltaTime;
-            TimePasedFromLastReward += Time.deltaTime;
+
+            RemainingTimeUntilRewardADV -= Time.deltaTime;
 
             remainingTimeUntilUpdateLeaderboard -= Time.deltaTime;
         }

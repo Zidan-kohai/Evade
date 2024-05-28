@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c6e031c2555524e80d68b9ce326c3c, type: 3}
   m_Name: Diamond_Item_00
   m_EditorClassIdentifier: 
-  Type: 1
+  RewardType: 1
+  BuyType: 1
   PurchaseTag: Diamond1
   Goldcount: 0
   DiamondCount: 15

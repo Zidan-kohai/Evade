@@ -59,8 +59,8 @@ public class MainMenuLocalization : MonoBehaviour
             inAppShopTextView.text = "Премиум магазин";
             dailyExerciseTextView.text = "Ежедневные задание";
             lidersTextView.text = "Лидеры";
-            telergamBonusTextView.text = "Промокод";
-            ourGameTextView.text = "Бонусы";
+            telergamBonusTextView.text = "Бонусы";
+            ourGameTextView.text = "Наши игры";
 
             chooseModeOpenMainMenuTextView.text = "Главное меню";
 
@@ -103,8 +103,8 @@ public class MainMenuLocalization : MonoBehaviour
             inAppShopTextView.text = "Premium Store";
             dailyExerciseTextView.text = "Daily Task";
             lidersTextView.text = "Leaders";
-            telergamBonusTextView.text = "Promotional code";
-            ourGameTextView.text = "Bonuses";
+            telergamBonusTextView.text = "Bonuses";
+            ourGameTextView.text = "Our game";
 
             chooseModeOpenMainMenuTextView.text = "Main Menu";
 
@@ -145,8 +145,8 @@ public class MainMenuLocalization : MonoBehaviour
             inAppShopTextView.text = "Premium Magaza";
             dailyExerciseTextView.text = "Gunluk Gorev";
             lidersTextView.text = "Liderler";
-            telergamBonusTextView.text = "Promosyon kodu";
-            ourGameTextView.text = "Bonuslar";
+            telergamBonusTextView.text = "Bonuslar";
+            ourGameTextView.text = "Oyunlarimiz";
 
             chooseModeOpenMainMenuTextView.text = "Ana Menu";
 
