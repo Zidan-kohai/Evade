@@ -49,7 +49,10 @@ public class DailyExerciseView : MonoBehaviour
         for(int i = 0; i < dates.Count; i++)
         {
             int dayIndex = i;
-            daysButton[i].closePanel.gameObject.SetActive(false);
+
+            if(dayIndex < Geekplay.Instance.PlayerData.EnterCount)
+                daysButton[i].closePanel.gameObject.SetActive(false);
+
             daysButton[i].button.onClick.AddListener(() =>
             {
                 DestroyCurrnentExercices();
