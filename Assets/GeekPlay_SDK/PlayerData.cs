@@ -97,32 +97,166 @@ public class PlayerData
             exerciseSaveData = new DayExerciseSaveData();
             exerciseSaveData.day = day;
             exerciseSaveData.SetExerciseProgress(exerciseNumber, progress);
-            
+            exercises.Add(exerciseSaveData);
         }
 
-        exercises.Add(exerciseSaveData);
         Geekplay.Instance.Save();
     }
 
-    
+    public void SetExerciseClaim(Days day, int exerciseNumber)
+    {
+        DayExerciseSaveData exerciseSaveData = null;
+
+        foreach (var item in exercises)
+        {
+            if (item.day == day)
+            {
+                exerciseSaveData = item;
+                break;
+            }
+        }
+
+        if (exerciseSaveData != null)
+        {
+            exerciseSaveData.SetExerciseClaim(exerciseNumber);
+        }
+        else
+        {
+            exerciseSaveData = new DayExerciseSaveData();
+            exerciseSaveData.day = day;
+            exerciseSaveData.SetExerciseClaim(exerciseNumber);
+            exercises.Add(exerciseSaveData);
+        }
+
+        Geekplay.Instance.Save();
+    }
+
+    public bool IsExerciseClaim(Days day, int exerciseNumber)
+    {
+        DayExerciseSaveData exerciseSaveData = null;
+
+        foreach (var item in exercises)
+        {
+            if (item.day == day)
+            {
+                exerciseSaveData = item;
+                break;
+            }
+        }
+
+        if (exerciseSaveData != null)
+        {
+            return exerciseSaveData.IsExerciseClaim(exerciseNumber);
+        }
+
+        return false;
+    }
+
+    public void SetDayExerciseRewardClaim(Days day)
+    {
+        DayExerciseSaveData exerciseSaveData = null;
+
+        foreach (var item in exercises)
+        {
+            if (item.day == day)
+            {
+                exerciseSaveData = item;
+                break;
+            }
+        }
+
+        if (exerciseSaveData != null)
+        {
+            exerciseSaveData.SetClaim();
+        }
+        else
+        {
+            exerciseSaveData = new DayExerciseSaveData();
+            exerciseSaveData.day = day;
+            exerciseSaveData.SetClaim();
+            exercises.Add(exerciseSaveData);
+        }
+
+        Geekplay.Instance.Save();
+    }
+
+    public bool IsDayExerciseRewardClaim(Days day)
+    {
+        DayExerciseSaveData exerciseSaveData = null;
+
+        foreach (var item in exercises)
+        {
+            if (item.day == day)
+            {
+                exerciseSaveData = item;
+                break;
+            }
+        }
+
+        if (exerciseSaveData != null)
+        {
+            return exerciseSaveData.IsClaim();
+        }
+
+        return false;
+    }
 }
 
 [Serializable]
 public class DayExerciseSaveData
 {
     public Days day;
-    public List<ExerciseSaveData> exerciseSaveData;
+    public List<ExerciseSaveData> exerciseSaveData = new List<ExerciseSaveData>(15);
+    public bool isClaim;
+
+    public DayExerciseSaveData()
+    {
+        exerciseSaveData = new List<ExerciseSaveData>(15)
+        {
+            new ExerciseSaveData(),
+            new ExerciseSaveData(),
+            new ExerciseSaveData(),
+            new ExerciseSaveData(),
+            new ExerciseSaveData(),
+            new ExerciseSaveData(),
+            new ExerciseSaveData(),
+            new ExerciseSaveData(),
+            new ExerciseSaveData(),
+            new ExerciseSaveData(),
+        };
+    }
 
     public void SetExerciseProgress(int exercise, int progress)
     {
-        exerciseSaveData[exercise].exerciseProgress = progress;
+        exerciseSaveData[exercise].ExerciseProgress = progress;
+    }
+
+    public void SetExerciseClaim(int exerciseNumber)
+    {
+        exerciseSaveData[exerciseNumber].IsClaim = true;
+    }
+
+    public bool IsExerciseClaim(int exerciseNumber)
+    {
+        return exerciseSaveData[exerciseNumber].IsClaim; 
+    }
+
+    public void SetClaim()
+    {
+        isClaim = true;
+    }
+
+    public bool IsClaim()
+    {
+        return isClaim;
     }
 }
 
 [Serializable]
 public class ExerciseSaveData
 {
-    public int exerciseProgress;
+    public int ExerciseProgress;
+    public bool IsClaim;
 }
 
 [Serializable]

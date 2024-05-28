@@ -12,18 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2780709d282ad346afdc86b01a8057e, type: 3}
   m_Name: Exercise_00
   m_EditorClassIdentifier: 
-  day: 0
   exercises:
-  - DescriptionRu: "\u0421\u043F\u0430\u0441\u0438\u0442\u0435 5 \u0447\u0435\u043B\u043E\u0432\u0435\u043A"
-    DescriptionEn: Save 5 people
-    DescriptionTr: "5 ki\u015Fiyi kurtar"
-    MaxProgress: 5
+  - DescriptionRu: "\u0412\u044B\u0436\u0438\u0432\u0438\u0442\u0435 1 \u0440\u0430\u0437"
+    DescriptionEn: Survive 1 times
+    DescriptionTr: Survive 1 times
+    MaxProgress: 1
     RewardType: 0
     RewardCount: 100
-  - DescriptionRu: "\u0412\u044B\u0436\u0438\u0432\u0438\u0442\u0435 3 \u0440\u0430\u0437\u0430"
-    DescriptionEn: Survive 3 times
-    DescriptionTr: 3 kez hayatta kal
-    MaxProgress: 3
+  - DescriptionRu: "\u041F\u043E\u0434\u043D\u0438\u043C\u0438\u0442\u0435 1 \u0447\u0435\u043B\u043E\u0432\u0435\u043A\u0430"
+    DescriptionEn: Put up 1 people
+    DescriptionTr: Put up 1 people
+    MaxProgress: 1
     RewardType: 0
     RewardCount: 150
   - DescriptionRu: "\u041F\u0440\u043E\u0432\u0435\u0434\u0438\u0442\u0435 \u0432
@@ -40,3 +39,4 @@ MonoBehaviour:
     MaxProgress: 10
     RewardType: 0
     RewardCount: 200
+  RewardMoney: 150

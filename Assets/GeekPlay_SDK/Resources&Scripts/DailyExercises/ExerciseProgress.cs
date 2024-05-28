@@ -3,27 +3,30 @@
 [Serializable]
 public class ExerciseProgress
 {
-    private int Progress = 0;
-    private int MaxProggress = 5;
-    private bool IsDone = false;
+    private int progress = 0;
+    private int maxProggress = 5;
+    private bool isDone = false;
     public string Description;
     public int Reward;
-    public int GetProgress => Progress;
+    public int GetProgress => progress;
 
-    public int GetMaxProgress => MaxProggress;
+    public int GetMaxProgress => maxProggress;
 
-    public int SetMaxProgress { set { MaxProggress = value; } }
+    public int SetMaxProgress { set { maxProggress = value; } }
 
-
+    public bool IsDone => isDone;
+        
     public int SetProggres(int value)
     {
-        Progress += value;
+        if (isDone) return progress;
 
-        if(Progress >= MaxProggress)
+        progress += value;
+
+        if(progress >= maxProggress)
         {
-            IsDone = true;
+            isDone = true;
         }
 
-        return Progress;
+        return progress;
     }
 }

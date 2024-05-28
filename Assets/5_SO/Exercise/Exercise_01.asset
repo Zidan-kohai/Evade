@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2780709d282ad346afdc86b01a8057e, type: 3}
   m_Name: Exercise_01
   m_EditorClassIdentifier: 
-  day: 0
   exercises:
   - DescriptionRu: "\u0421\u043F\u0430\u0441\u0438\u0442\u0435 7 \u0447\u0435\u043B\u043E\u0432\u0435\u043A"
     DescriptionEn: Save 7 people
@@ -40,3 +39,4 @@ MonoBehaviour:
     MaxProgress: 10
     RewardType: 0
     RewardCount: 200
+  RewardMoney: 250

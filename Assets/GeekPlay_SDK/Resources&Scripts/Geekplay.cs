@@ -144,6 +144,7 @@ namespace GeekplaySchool
         {
             EnterTreker();
             pastedTimeFromLastInterstitial = interstitialTime;
+
         }
         private void Update()
         {

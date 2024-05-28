@@ -29,12 +29,22 @@ public class DailyExercise
     public int SetProgress(int exerciseNumber, int progress = 1)
     {
         return exercises[exerciseNumber].SetProggres(progress);
-        
     }
 
-    public void IsDone()
+    public bool IsDone()
     {
+        bool result = true;
 
+        foreach (ExerciseProgress exercise in exercises)
+        {
+            if(exercise.IsDone == false)
+            {
+                result = false; 
+                break;
+            }
+        }
+
+        return result;
     }
 
     public ExerciseProgress GetExercise(int exerciseNumber)

@@ -6,7 +6,8 @@ public class DailyExerciseData : ScriptableObject
 {
     [SerializeField] private List<ExerciseInfo> exercises = new List<ExerciseInfo>();
 
-
+    public int RewardMoney;
+    
     public int ExerciseCount()
     {
         return exercises.Count;
