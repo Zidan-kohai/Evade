@@ -28,6 +28,15 @@ public class DailyExerciseView : MonoBehaviour
         DailyExerciseController.Instance.SetProgress(Days.Day1, 2);
         DailyExerciseController.Instance.SetProgress(Days.Day1, 3);
         DailyExerciseController.Instance.SetProgress(Days.Day1, 0);
+        DailyExerciseController.Instance.SetProgress(Days.Day2, 2);
+        DailyExerciseController.Instance.SetProgress(Days.Day2, 3);
+        DailyExerciseController.Instance.SetProgress(Days.Day2, 0);
+        DailyExerciseController.Instance.SetProgress(Days.Day2, 2);
+        DailyExerciseController.Instance.SetProgress(Days.Day2, 3);
+        DailyExerciseController.Instance.SetProgress(Days.Day2, 0);
+        DailyExerciseController.Instance.SetProgress(Days.Day2, 2);
+        DailyExerciseController.Instance.SetProgress(Days.Day2, 3);
+        DailyExerciseController.Instance.SetProgress(Days.Day2, 0);
 
         ActivateButton();
 
@@ -37,18 +46,15 @@ public class DailyExerciseView : MonoBehaviour
 
     private void ActivateButton()
     {
-        for(int i = 0; i < Geekplay.Instance.PlayerData.EnterCount; i++)
+        for(int i = 0; i < dates.Count; i++)
         {
-            if(i < dates.Count)
+            int dayIndex = i;
+            daysButton[i].closePanel.gameObject.SetActive(false);
+            daysButton[i].button.onClick.AddListener(() =>
             {
-                int dayIndex = i;
-                daysButton[i].closePanel.gameObject.SetActive(false);
-                daysButton[i].button.onClick.AddListener(() => 
-                {
-                    DestroyCurrnentExercices();
-                    SpawnDaysExercise(dayIndex);
-                });
-            }
+                DestroyCurrnentExercices();
+                SpawnDaysExercise(dayIndex);
+            });
         }
     }
 

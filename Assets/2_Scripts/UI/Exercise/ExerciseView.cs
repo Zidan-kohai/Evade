@@ -23,7 +23,7 @@ public class ExerciseView : MonoBehaviour
 
         this.reward.text = reward.ToString();
 
-        if(currentProgress == maxProgress && !isClaimed)
+        if(currentProgress == maxProgress && !isClaimed && Geekplay.Instance.PlayerData.EnterCount > (int)day)
         {
             claimButton.gameObject.SetActive(true);
 
