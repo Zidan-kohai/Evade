@@ -7,5 +7,11 @@ public class SceneLoader
     {
         SceneManager.LoadScene(sceneIndex);
         Time.timeScale = 1.0f;
+
+        //if we will run from boot we need || sceneIndex != 1
+        if (sceneIndex != 0)
+        {
+            DailyExerciseController.Instance.SetProgress(Days.Day1, 1);
+        }
     }
 }

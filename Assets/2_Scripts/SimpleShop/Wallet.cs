@@ -27,8 +27,10 @@ public class Wallet : MonoBehaviour
 
     public static void AddMoneyST(int gold)
     {
+        DailyExerciseController.Instance.SetProgress(Days.Day2, 3, gold);
+
         instance.AddMoney(gold); 
-    }    
+    }
 
     private bool TryBuy(int cost)
     {
@@ -44,6 +46,8 @@ public class Wallet : MonoBehaviour
     {
         Geekplay.Instance.PlayerData.Gold -= cost;
         ChangeView();
+        DailyExerciseController.Instance.SetProgress(Days.Day3, 3,cost);
+
         Geekplay.Instance.Save();
     }
     

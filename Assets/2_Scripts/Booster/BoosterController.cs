@@ -35,6 +35,7 @@ public class BoosterController : MonoBehaviour
     [SerializeField] private GameObject barrierPrefab;
     [SerializeField] private float barrierDiactivateTime;
     [SerializeField] private LayerMask barrierSpawnable;
+    private int barrierUsedCount;
 
     [Header("Sensor")]
     [SerializeField] private GameObject sensorPrefab;
@@ -75,7 +76,11 @@ public class BoosterController : MonoBehaviour
                     {
                         boosterItem[j].gameObject.SetActive(true);
                         boosterItem[j].image.sprite = booster.data.mainIcon;
-                        boosterItem[j].boostEvent.AddListener(() => booster.boosterEvent?.Invoke());
+                        boosterItem[j].boostEvent.AddListener(() => 
+                        {
+                            booster.boosterEvent?.Invoke();
+                            DailyExerciseController.Instance.SetProgress(Days.Day3, 2);
+                        });
 
                         result = true;
                         break;
@@ -158,7 +163,7 @@ public class BoosterController : MonoBehaviour
 
     #endregion
 
-    #region BarrierDiactivate
+    #region Barrier
 
     public void Barrier()
     {
@@ -171,6 +176,15 @@ public class BoosterController : MonoBehaviour
         DOTween.Sequence()
             .AppendInterval(barrierDiactivateTime)
             .AppendCallback(() => DiactivateBarrier(barrierInstance));
+
+        DailyExerciseController.Instance.SetProgress(Days.Day3, 3);
+
+        barrierUsedCount++;
+
+        if(barrierUsedCount >= 10)
+        {
+            DailyExerciseController.Instance.SetProgress(Days.Day5, 3);
+        }
     }
 
     private void DiactivateBarrier(GameObject barrierInstance)

@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameplayEndMenu : MonoBehaviour
 {
@@ -32,6 +33,18 @@ public class GameplayEndMenu : MonoBehaviour
             HeaderTextView.text = "Вы выжили";
 
             Geekplay.Instance.PlayerData.SurviveCount++;
+
+            DailyExerciseController.Instance.SetProgress(Days.Day3, 1);
+            DailyExerciseController.Instance.SetProgress(Days.Day5, 0);
+
+            if (SceneManager.GetActiveScene().name == "Building")
+            {
+                DailyExerciseController.Instance.SetProgress(Days.Day2, 0);
+            }
+            if (SceneManager.GetActiveScene().name == "Mansion")
+            {
+                DailyExerciseController.Instance.SetProgress(Days.Day4, 1);
+            }
             Geekplay.Instance.SetLeaderboard(Helper.SurviveLeaderboardName, Geekplay.Instance.PlayerData.SurviveCount);
             Geekplay.Instance.Save();
 

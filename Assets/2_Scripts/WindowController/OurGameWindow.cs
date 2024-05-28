@@ -35,6 +35,8 @@ public class OurGameWindow : MonoBehaviour
         {
             if (!Geekplay.Instance.PlayerData.IsGeometryDashRewardTaked)
             {
+                DailyExerciseController.Instance.SetProgress(Days.Day5, 4);
+
                 geometryDashButton.interactable = true;
                 geometryDashButton.onClick.AddListener(() =>
                 {
@@ -78,6 +80,8 @@ public class OurGameWindow : MonoBehaviour
         {
             if (!Geekplay.Instance.PlayerData.IsCloesChangeRewardTaked)
             {
+                DailyExerciseController.Instance.SetProgress(Days.Day5, 4);
+
                 cloesChangeRewardButton.interactable = true;
                 cloesChangeRewardButton.onClick.AddListener(() =>
                 {
@@ -121,6 +125,7 @@ public class OurGameWindow : MonoBehaviour
         {
             if (!Geekplay.Instance.PlayerData.IsSlapBattleRewardTaked)
             {
+                DailyExerciseController.Instance.SetProgress(Days.Day5, 4);
                 slapBattleRewardButton.interactable = true;
                 slapBattleRewardButton.onClick.AddListener(() =>
                 {
@@ -164,6 +169,7 @@ public class OurGameWindow : MonoBehaviour
         {
             if (!Geekplay.Instance.PlayerData.IsTwoPlayerGameRewardTaked)
             {
+                DailyExerciseController.Instance.SetProgress(Days.Day5, 4);
                 twoPlayerGameRewardButton.interactable = true;
                 twoPlayerGameRewardButton.onClick.AddListener(() =>
                 {

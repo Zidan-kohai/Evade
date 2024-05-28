@@ -27,7 +27,7 @@ public class DailyExercise
         }
     }
 
-    public int SetProgress(int exerciseNumber, int progress = 1)
+    public int SetProgress(int exerciseNumber, int progress)
     {
         return exercises[exerciseNumber].SetProggres(progress);
     }

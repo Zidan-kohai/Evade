@@ -138,6 +138,8 @@ namespace GeekplaySchool
             {
                 AfterPlatformChange();
             }
+
+            StartCoroutine(TimeTreker());
         }
 
         private void Start()
@@ -152,6 +154,21 @@ namespace GeekplaySchool
             TimePasedFromLastReward += Time.deltaTime;
 
             remainingTimeUntilUpdateLeaderboard -= Time.deltaTime;
+        }
+
+
+        public IEnumerator TimeTreker()
+        {
+            yield return new WaitForSeconds(60);
+            PlayerData.GameTime++;
+
+            DailyExerciseController.Instance.SetProgress(Days.Day1, 0);
+            DailyExerciseController.Instance.SetProgress(Days.Day2, 1);
+            DailyExerciseController.Instance.SetProgress(Days.Day3, 0);
+            DailyExerciseController.Instance.SetProgress(Days.Day5, 1);
+
+            Save();
+
         }
 
         private void EnterTreker()
@@ -181,6 +198,7 @@ namespace GeekplaySchool
 
             Save();
         }
+
 
         public void LoadScene(int sceneIndex)
         {

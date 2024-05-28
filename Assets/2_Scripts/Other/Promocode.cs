@@ -44,10 +44,13 @@ public class Promocode : MonoBehaviour
             {
                 codes[i].rewardEvent.Invoke();
                 Geekplay.Instance.PlayerData.Codes.Add(codes[i].codeNumber);
-                Geekplay.Instance.Save();
                 promocodeUsedNowTextVeiwHandler.SetActive(true);
                 promocodeUsedTextVeiwHandler.SetActive(false);
                 promocodeDontExistTextVeiwHandler.SetActive(false);
+
+                DailyExerciseController.Instance.SetProgress(Days.Day2, 4);
+
+                Geekplay.Instance.Save();
                 return;
             }
             else if(inputText.text == codes[i].code && Geekplay.Instance.PlayerData.Codes.Contains(codes[i].codeNumber))

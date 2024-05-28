@@ -124,6 +124,14 @@ public class Shop : MonoBehaviour
 
             buyButton.onClick.AddListener(() =>
             {
+                if(item.GetIndexOnPlayer == 2)
+                {
+                    DailyExerciseController.Instance.SetProgress(Days.Day3, 4);
+                }
+                if (item.GetIndexOnPlayer == 1)
+                {
+                    DailyExerciseController.Instance.SetProgress(Days.Day1, 4);
+                }
                 Buy(item);
             });
         }
@@ -155,6 +163,10 @@ public class Shop : MonoBehaviour
 
             buyButton.onClick.AddListener(() =>
             {
+                if (item.GetIndexOnPlayer == 1)
+                {
+                    DailyExerciseController.Instance.SetProgress(Days.Day2, 2);
+                }
                 Buy(item);
             });
         }
@@ -187,6 +199,7 @@ public class Shop : MonoBehaviour
 
             buyButton.onClick.AddListener(() =>
             {
+
                 Buy(item);
             });
         }
@@ -199,6 +212,8 @@ public class Shop : MonoBehaviour
 
             equipButton.onClick.AddListener(() =>
             {
+                DailyExerciseController.Instance.SetProgress(Days.Day3, 4);
+
                 Equip(item);
                 ChangeTextEquipped();
             });

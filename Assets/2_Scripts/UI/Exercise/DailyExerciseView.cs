@@ -24,20 +24,6 @@ public class DailyExerciseView : MonoBehaviour
 
     private void OnEnable()
     {
-        DailyExerciseController.Instance.SetProgress(Days.Day1, 1);
-        DailyExerciseController.Instance.SetProgress(Days.Day1, 2);
-        DailyExerciseController.Instance.SetProgress(Days.Day1, 3);
-        DailyExerciseController.Instance.SetProgress(Days.Day1, 0);
-        DailyExerciseController.Instance.SetProgress(Days.Day2, 2);
-        DailyExerciseController.Instance.SetProgress(Days.Day2, 3);
-        DailyExerciseController.Instance.SetProgress(Days.Day2, 0);
-        DailyExerciseController.Instance.SetProgress(Days.Day2, 2);
-        DailyExerciseController.Instance.SetProgress(Days.Day2, 3);
-        DailyExerciseController.Instance.SetProgress(Days.Day2, 0);
-        DailyExerciseController.Instance.SetProgress(Days.Day2, 2);
-        DailyExerciseController.Instance.SetProgress(Days.Day2, 3);
-        DailyExerciseController.Instance.SetProgress(Days.Day2, 0);
-
         ActivateButton();
 
         SpawnDaysExercise((int)Days.Day1);

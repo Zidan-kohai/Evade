@@ -536,6 +536,11 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
                 if(helpPercent >= 1)
                 {
                     helpCount++;
+
+                    DailyExerciseController.Instance.SetProgress(Days.Day1, 3);
+                    DailyExerciseController.Instance.SetProgress(Days.Day4, 2);
+                    DailyExerciseController.Instance.SetProgress(Days.Day5, 2);
+
                     Geekplay.Instance.PlayerData.HelpCount++;
                     Geekplay.Instance.SetLeaderboard(Helper.HelpLeaderboardName, Geekplay.Instance.PlayerData.HelpCount);
                     Geekplay.Instance.Save();

@@ -23,6 +23,7 @@ public class PlayerData
     public bool IsTwoPlayerGameRewardTaked;
     public string lastEnterDate;
     public int EnterCount;
+    public int GameTime;
 
     public List<int> BuyedAccessoryID = new List<int>() { 0 };
     public int CurrentEquipedAccessoryID = 0;
@@ -45,6 +46,8 @@ public class PlayerData
         CurrentExperience = currentExperience;
         ExperienceToIncreaseLevel = experienceToIncreaseLevel;
         Level = level;
+
+        DailyExerciseController.Instance.SetProgress(Days.Day4, 0);
 
         Geekplay.Instance.Save();
     }

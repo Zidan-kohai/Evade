@@ -20,6 +20,8 @@ public class DailyExerciseController : MonoBehaviour
 
         Instance = this;
 
+        DontDestroyOnLoad(Instance);
+
         //Fill exercise with default Data
         foreach (var item in dailyExercises)
         {
@@ -42,10 +44,10 @@ public class DailyExerciseController : MonoBehaviour
         }
     }
 
-    public void SetProgress(Days day, int exerciseNumber)
+    public void SetProgress(Days day, int exerciseNumber, int progressStep = 1)
     {
         DailyExercise dailyExercise = dailyExercises.GetValueByKey(day);
-        int progress = dailyExercise.SetProgress(exerciseNumber);
+        int progress = dailyExercise.SetProgress(exerciseNumber, progressStep);
 
         Geekplay.Instance.PlayerData.SetExerciseProgress(day, exerciseNumber, progress);
     }
