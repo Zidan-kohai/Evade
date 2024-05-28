@@ -159,13 +159,14 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     private void OnPatrol()
     {
         agent.SetDestination(patrolTransform[currentPatrolPositionIndex].position);
-        StartCoroutine(Wait(0.1f, () =>
-        {
+
+        //StartCoroutine(Wait(0.1f, () =>
+        //{
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 currentPatrolPositionIndex = (currentPatrolPositionIndex + 1) % patrolTransform.Count;
             }
-        }));
+        //}));
     }
 
     private void OnChase()

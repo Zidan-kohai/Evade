@@ -48,7 +48,9 @@ public class BoosterController : MonoBehaviour
     [SerializeField] private TeleportPoint teleportPrefab;
     [SerializeField] private List<TeleportPoint> teleportsInstance = new();
 
-
+    [Header("Meat")]
+    [SerializeField] private int meatMaxUseCount = 3;
+    [SerializeField] private int meatUsedCount = 0;
     private void Awake()
     {
         if(instance != null)
@@ -77,8 +79,16 @@ public class BoosterController : MonoBehaviour
                     {
                         boosterItem[j].gameObject.SetActive(true);
                         boosterItem[j].image.sprite = booster.data.mainIcon;
+                        int index = i;
                         boosterItem[j].boostEvent.AddListener(() =>
                         {
+                            if(Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(booster.data.indexOnPlayer).value == 0)
+                            {
+                                return;
+                            }
+
+                            Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(booster.data.indexOnPlayer).value--;
+
                             booster.boosterEvent?.Invoke();
                             DailyExerciseController.Instance.SetProgress(Days.Day3, 2);
                         });
@@ -95,10 +105,14 @@ public class BoosterController : MonoBehaviour
         {
             if (Geekplay.Instance.PlayerData.CurrentEquipedItemID == booster.data.indexOnPlayer && booster.data.type == SubjectType.Item)
             {
+
                 boosterItem[5].gameObject.SetActive(true);
                 boosterItem[5].image.sprite = booster.data.mainIcon;
                 boosterItem[5].boostEvent.AddListener(() =>
                 {
+                    if (meatUsedCount >= meatMaxUseCount) return;
+
+                    meatUsedCount++;
                     booster.boosterEvent?.Invoke();
                 });
                 break;

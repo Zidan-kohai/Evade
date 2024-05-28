@@ -283,6 +283,10 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
             PutPlayer();
         }
 
+        actionUI.DisableCarryExplain();
+        actionUI.DisablePutExplain();
+        actionUI.DisableHelpingUIHandler();
+
         ChangeState(PlayerState.Fall);
     }
 
