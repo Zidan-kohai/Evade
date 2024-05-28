@@ -159,7 +159,7 @@ namespace GeekplaySchool
 
         public IEnumerator TimeTreker()
         {
-            yield return new WaitForSeconds(60);
+            yield return new WaitForSecondsRealtime(60);
             PlayerData.GameTime++;
 
             DailyExerciseController.Instance.SetProgress(Days.Day1, 0);
