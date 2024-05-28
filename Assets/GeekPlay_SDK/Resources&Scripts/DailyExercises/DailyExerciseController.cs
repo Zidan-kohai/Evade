@@ -3,7 +3,6 @@ using System;
 using UnityEngine;
 using Exercise;
 using System.Collections.Generic;
-using static UnityEditor.Progress;
 
 [Serializable]
 public class DailyExerciseController : MonoBehaviour
@@ -64,19 +63,27 @@ public class DailyExerciseController : MonoBehaviour
         return false;
     }
 
-    public void GetPercentOfDoneExercise(out int currentProgress, out int maxProgress)
+    public void GetPercentOfDoneExercise(Days day, out int currentProgress, out int maxProgress)
     {
-        maxProgress = dailyExercises.Count;
-
+        maxProgress = 0;
         currentProgress = 0;
 
-        for (int i = 0; i < maxProgress; i++)
+        foreach (var item in dailyExercises)
         {
-            if(dailyExercises[i].dailyExercise.IsDone())
+            if (item.day == day)
             {
-                currentProgress++;
+                maxProgress = item.dailyExercise.ExerciseCount;
+
+                for (int i = 0; i < maxProgress; i++)
+                {
+                    if (item.dailyExercise.GetExercise(i).IsDone)
+                    {
+                        currentProgress++;
+                    }
+                }
             }
         }
+
     }
 
     public ExerciseProgress GetExerciseInfo(Days day, int exerciseNumber)

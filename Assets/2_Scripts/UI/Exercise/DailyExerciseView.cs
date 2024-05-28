@@ -25,6 +25,9 @@ public class DailyExerciseView : MonoBehaviour
     private void OnEnable()
     {
         DailyExerciseController.Instance.SetProgress(Days.Day1, 1);
+        DailyExerciseController.Instance.SetProgress(Days.Day1, 2);
+        DailyExerciseController.Instance.SetProgress(Days.Day1, 3);
+        DailyExerciseController.Instance.SetProgress(Days.Day1, 0);
 
         ActivateButton();
 
@@ -44,41 +47,6 @@ public class DailyExerciseView : MonoBehaviour
                 {
                     DestroyCurrnentExercices();
                     SpawnDaysExercise(dayIndex);
-
-                    dailyRewardText.text = dates[dayIndex].RewardMoney.ToString();
-
-
-                    DailyExerciseController.Instance.GetPercentOfDoneExercise(out int currentProgress, out int maxProgress);
-
-                    dailyClaimSlider.minValue = 0;
-                    dailyClaimSlider.maxValue = maxProgress;
-                    dailyClaimSlider.value = currentProgress;
-
-                    if(DailyExerciseController.Instance.GetIsDayDone((Days)dayIndex))
-                    {
-                        dailyClaimButton.gameObject.SetActive(true);
-
-                        if (Geekplay.Instance.PlayerData.IsDayExerciseRewardClaim((Days)dayIndex))
-                        {
-                            dailyClaimButtonText.text = "Забрали";
-                        }
-                        else
-                        {
-                            dailyClaimButtonText.text = "Забрать";
-
-                            dailyClaimButton.onClick.AddListener(() =>
-                            {
-                                Wallet.AddMoneyST(dates[dayIndex].RewardMoney, 0);
-                                Geekplay.Instance.PlayerData.SetDayExerciseRewardClaim((Days)dayIndex);
-                                dailyClaimButton.onClick.RemoveAllListeners();
-                                dailyClaimButtonText.text = "Забрали";
-                            });
-                        }
-                    }
-                    else
-                    {
-                        dailyClaimButton.gameObject.SetActive(false);
-                    }
                 });
             }
         }
@@ -97,6 +65,41 @@ public class DailyExerciseView : MonoBehaviour
             exerciseView.Initialize((Days)day, j, exercise.Description, exercise.GetMaxProgress, exercise.GetProgress, exercise.Reward, isClaimed);
 
             exerciseViewHandler.Add(exerciseView);
+        }
+
+        dailyRewardText.text = dates[day].RewardMoney.ToString();
+
+
+        DailyExerciseController.Instance.GetPercentOfDoneExercise((Days)day, out int currentProgress, out int maxProgress);
+
+        dailyClaimSlider.minValue = 0;
+        dailyClaimSlider.maxValue = maxProgress;
+        dailyClaimSlider.value = currentProgress;
+
+        if (DailyExerciseController.Instance.GetIsDayDone((Days)day))
+        {
+            dailyClaimButton.gameObject.SetActive(true);
+
+            if (Geekplay.Instance.PlayerData.IsDayExerciseRewardClaim((Days)day))
+            {
+                dailyClaimButtonText.text = "Забрали";
+            }
+            else
+            {
+                dailyClaimButtonText.text = "Забрать";
+
+                dailyClaimButton.onClick.AddListener(() =>
+                {
+                    Wallet.AddMoneyST(dates[day].RewardMoney, 0);
+                    Geekplay.Instance.PlayerData.SetDayExerciseRewardClaim((Days)day);
+                    dailyClaimButton.onClick.RemoveAllListeners();
+                    dailyClaimButtonText.text = "Забрали";
+                });
+            }
+        }
+        else
+        {
+            dailyClaimButton.gameObject.SetActive(false);
         }
     }
 

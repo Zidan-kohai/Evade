@@ -7,7 +7,8 @@ public class DailyExercise
 {
     [SerializeField] private DailyExerciseData data;
     private List<ExerciseProgress> exercises = new List<ExerciseProgress>();
-    
+
+    public int ExerciseCount => exercises.Count;
     public void Init()
     {
         int exerciseCount = data.ExerciseCount();
