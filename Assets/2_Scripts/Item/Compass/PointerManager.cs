@@ -1,3 +1,4 @@
+using GeekplaySchool;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,15 +12,23 @@ public class PointerManager : MonoBehaviour {
     private Dictionary<IEnemy, PointerIcon> _dictionary = new Dictionary<IEnemy, PointerIcon>();
 
     public static PointerManager Instance;
+
+    public bool isActive = false;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
+            if (Geekplay.Instance.PlayerData.CurrentEquipedItemID == 1)
+            {
+                isActive = true;
+            }
         } else {
             Destroy(this);
         }
     }
 
     public void AddToList(IEnemy enemyPointer) {
+        if (!isActive) return;
+
 
         if (_dictionary.Count > 0 && !_dictionary.ContainsKey(enemyPointer))
         {
@@ -55,6 +64,8 @@ public class PointerManager : MonoBehaviour {
 
     void LateUpdate()
     {
+        if (!isActive) return;
+
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(_camera);
 
         foreach (var kvp in _dictionary)
