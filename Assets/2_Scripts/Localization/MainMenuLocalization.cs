@@ -23,6 +23,7 @@ public class MainMenuLocalization : MonoBehaviour
     [SerializeField] private TextMeshProUGUI promocodeAlreadyUseTextView;
     [SerializeField] private TextMeshProUGUI promocodeUndefinedTextView;
     [SerializeField] private TextMeshProUGUI telegramOpenMainMenuTextView;
+    [SerializeField] private TextMeshProUGUI bonusDescriptionTextView;
 
     [Header("Our Game")]
     [SerializeField] private TextMeshProUGUI ourGameOpenMainMenuTextView;
@@ -51,6 +52,11 @@ public class MainMenuLocalization : MonoBehaviour
     [SerializeField] private TextMeshProUGUI headerNameTextView;
 
 
+    [Header("Dayli Quest")]
+    [SerializeField] private TextMeshProUGUI dailyСonditionText;
+    [SerializeField] private TextMeshProUGUI dailyHeaderText;
+    [SerializeField] private TextMeshProUGUI rewardText;
+
     private void Start()
     {
         if(Geekplay.Instance.language == "ru")
@@ -72,7 +78,7 @@ public class MainMenuLocalization : MonoBehaviour
             promocodeSuccessTextView.text = "Промокод успешно использован";
             promocodeAlreadyUseTextView.text = "Промокод уже использован";
             promocodeUndefinedTextView.text = "Такого промокода нет";
-
+            bonusDescriptionTextView.text = "Подпишись на наш канал и введи промокод который найдёшь там";
 
             ourGameOpenMainMenuTextView.text = "Меню";
             geomertyDashNameTextView.text = "Геомметри деш";
@@ -97,6 +103,11 @@ public class MainMenuLocalization : MonoBehaviour
 
             inAppShopOpenMainMenuTextView.text = "Меню";
             headerNameTextView.text = "Премиум Магазин";
+
+
+            dailyСonditionText.text = "Выполните все условия чтобы получить награду";
+            dailyHeaderText.text = "Ежедневные задания";
+            rewardText.text = "Награда:";
         }
         else if(Geekplay.Instance.language == "en")
         {
@@ -117,6 +128,8 @@ public class MainMenuLocalization : MonoBehaviour
             promocodeSuccessTextView.text = "Promo code successfully used";
             promocodeAlreadyUseTextView.text = "Promo code has already been used";
             promocodeUndefinedTextView.text = "There is no such promotional code";
+            bonusDescriptionTextView.text = "Subscribe to our channel and enter the promotional code you find there";
+
 
             ourGameOpenMainMenuTextView.text = "Menu";
             geomertyDashNameTextView.text = "Geomerty Dash";
@@ -140,6 +153,10 @@ public class MainMenuLocalization : MonoBehaviour
 
             inAppShopOpenMainMenuTextView.text = "Menu";
             headerNameTextView.text = "Premium Shop";
+
+            dailyСonditionText.text = "Meet all conditions to receive the reward";
+            dailyHeaderText.text = "Daily Tasks";
+            rewardText.text = "Reward:";
         }
         else if(Geekplay.Instance.language == "tr")
         {
@@ -160,6 +177,8 @@ public class MainMenuLocalization : MonoBehaviour
             promocodeSuccessTextView.text = "Promosyon kodu basariyla kullanildi";
             promocodeAlreadyUseTextView.text = "Promosyon kodu zaten kullanildi";
             promocodeUndefinedTextView.text = "Boyle bir promosyon kodu yoktur";
+            bonusDescriptionTextView.text = "Kanalimiza abone olun ve orada buldugunuz promosyon kodunu girin";
+
 
             ourGameOpenMainMenuTextView.text = "Menu";
             geomertyDashNameTextView.text = "Geomerty Dash";
@@ -183,6 +202,10 @@ public class MainMenuLocalization : MonoBehaviour
 
             inAppShopOpenMainMenuTextView.text = "Menu";
             headerNameTextView.text = "Premium Magaza";
+
+            dailyСonditionText.text = "Odulu almak icin tum kosullari karsilayin";
+            dailyHeaderText.text = "Gunluk Gorevler";
+            rewardText.text = "Odul:";
         }
     }
 }

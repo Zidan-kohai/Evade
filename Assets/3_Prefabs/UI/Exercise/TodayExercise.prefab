@@ -390,6 +390,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8714dade0ddd9cc40ab5372e3c775126, type: 2}
   itemPrefab: {fileID: 6952303391411249317, guid: 46e5210aa541eec498d7bd784e08fbfb, type: 3}
   itemParent: {fileID: 6739361351614463874}
+  headerText: {fileID: 2984651320583568696}
+  todayExerciseItems: []
 --- !u!1 &6331717156788632691
 GameObject:
   m_ObjectHideFlags: 0

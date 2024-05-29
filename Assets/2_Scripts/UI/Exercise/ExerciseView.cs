@@ -11,6 +11,7 @@ public class ExerciseView : MonoBehaviour
 
     [SerializeField] private Slider progressSlider;
     [SerializeField] private Button claimButton;
+    [SerializeField] private TextMeshProUGUI claimButtonText;
 
     public void Initialize(Days day, int exerciseNumber, string description, int maxProgress, int currentProgress, int reward, bool isClaimed)
     {
@@ -26,6 +27,19 @@ public class ExerciseView : MonoBehaviour
         if(currentProgress == maxProgress && !isClaimed && Geekplay.Instance.PlayerData.EnterCount > (int)day)
         {
             claimButton.gameObject.SetActive(true);
+
+            if(Geekplay.Instance.language == "ru")
+            {
+                claimButtonText.text = "Забрать";
+            }
+            else if (Geekplay.Instance.language == "en")
+            {
+                claimButtonText.text = "Claim";
+            }
+            else if (Geekplay.Instance.language == "tr")
+            {
+                claimButtonText.text = "Iddia";
+            }
 
             claimButton.onClick.AddListener(() =>
             {

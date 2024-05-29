@@ -10,10 +10,12 @@ public class DailyExerciseView : MonoBehaviour
     [Header("Button")]
     [SerializeField] private List<ExerciseDayButton> daysButton;
 
+    [SerializeField] private TextMeshProUGUI dailyHeaderText;
     [SerializeField] private TextMeshProUGUI dailyRewardText;
     [SerializeField] private Button dailyClaimButton;
     [SerializeField] private TextMeshProUGUI dailyClaimButtonText;
     [SerializeField] private Slider dailyClaimSlider;
+    [SerializeField] private TextMeshProUGUI dailySliderValue;
 
     [SerializeField] private ExerciseView exerciseViewPrefab;
     [SerializeField] private Transform exerciseViewParent;
@@ -21,6 +23,10 @@ public class DailyExerciseView : MonoBehaviour
     [SerializeField] private List<DailyExerciseData> dates = new List<DailyExerciseData>();
 
     private List<ExerciseView> exerciseViewHandler = new List<ExerciseView>();
+
+    private void Start()
+    {
+    }
 
     private void OnEnable()
     {
@@ -62,6 +68,19 @@ public class DailyExerciseView : MonoBehaviour
             exerciseViewHandler.Add(exerciseView);
         }
 
+        if (Geekplay.Instance.language == "ru")
+        {
+            dailyHeaderText.text = $"Специальный приз \n день {day + 1}";
+        }
+        else if (Geekplay.Instance.language == "en")
+        {
+            dailyHeaderText.text = $"Special Prize \n day {day + 1}";
+        }
+        else if (Geekplay.Instance.language == "tr")
+        {
+            dailyHeaderText.text = $"Ozel odul \n gun {day + 1}";
+        }
+
         dailyRewardText.text = dates[day].RewardMoney.ToString();
 
 
@@ -70,6 +89,7 @@ public class DailyExerciseView : MonoBehaviour
         dailyClaimSlider.minValue = 0;
         dailyClaimSlider.maxValue = maxProgress;
         dailyClaimSlider.value = currentProgress;
+        dailySliderValue.text = $"{currentProgress}/{maxProgress}";
 
         if (DailyExerciseController.Instance.GetIsDayDone((Days)day))
         {
@@ -77,18 +97,52 @@ public class DailyExerciseView : MonoBehaviour
 
             if (Geekplay.Instance.PlayerData.IsDayExerciseRewardClaim((Days)day))
             {
-                dailyClaimButtonText.text = "Забрали";
+                
+                if (Geekplay.Instance.language == "ru")
+                {
+                    dailyClaimButtonText.text = "Забрали";
+                }
+                else if (Geekplay.Instance.language == "en")
+                {
+                    dailyClaimButtonText.text = "Claimed";
+                }
+                else if (Geekplay.Instance.language == "tr")
+                {
+                    dailyClaimButtonText.text = "Aldi";
+                }
             }
             else
             {
-                dailyClaimButtonText.text = "Забрать";
+                if (Geekplay.Instance.language == "ru")
+                {
+                    dailyClaimButtonText.text = "Забрать";
+                }
+                else if (Geekplay.Instance.language == "en")
+                {
+                    dailyClaimButtonText.text = "Claim";
+                }
+                else if (Geekplay.Instance.language == "tr")
+                {
+                    dailyClaimButtonText.text = "Iddia";
+                }
 
                 dailyClaimButton.onClick.AddListener(() =>
                 {
                     Wallet.AddMoneyST(dates[day].RewardMoney);
                     Geekplay.Instance.PlayerData.SetDayExerciseRewardClaim((Days)day);
                     dailyClaimButton.onClick.RemoveAllListeners();
-                    dailyClaimButtonText.text = "Забрали";
+                    if (Geekplay.Instance.language == "ru")
+                    {
+                        dailyClaimButtonText.text = "Забрали";
+                    }
+                    else if (Geekplay.Instance.language == "en")
+                    {
+                        dailyClaimButtonText.text = "Claimed";
+                    }
+                    else if (Geekplay.Instance.language == "tr")
+                    {
+                        dailyClaimButtonText.text = "Aldi";
+                    }
                 });
             }
         }

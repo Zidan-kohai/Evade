@@ -2,6 +2,7 @@ using GeekplaySchool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TodayExerciseView : MonoBehaviour
@@ -10,8 +11,25 @@ public class TodayExerciseView : MonoBehaviour
 
     [SerializeField] private TodayExerciseItem itemPrefab;
     [SerializeField] private Transform itemParent;
+    [SerializeField] private TextMeshProUGUI headerText;
 
     [SerializeField] private List<TodayExerciseItem> todayExerciseItems = new List<TodayExerciseItem>();
+
+    private void Start()
+    {
+        if (Geekplay.Instance.language == "ru")
+        {
+            headerText.text = "≈жедневные награды";
+        }
+        else if (Geekplay.Instance.language == "en")
+        {
+            headerText.text = "Dayli Exercise";
+        }
+        else if (Geekplay.Instance.language == "tr")
+        {
+            headerText.text = "Gunluk Oduller";
+        }
+    }
 
     private void OnEnable()
     {

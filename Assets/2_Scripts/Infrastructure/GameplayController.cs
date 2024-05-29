@@ -101,7 +101,7 @@ public class GameplayController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        loseMenu.Show(livedTime);
+        loseMenu.Show(livedTime, realyPlayer.GetEarnedMoney());
 
         Wallet.AddMoneyST(realyPlayer.GetEarnedMoney());
         PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience());
