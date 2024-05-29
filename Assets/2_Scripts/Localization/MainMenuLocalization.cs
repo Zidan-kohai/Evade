@@ -48,6 +48,7 @@ public class MainMenuLocalization : MonoBehaviour
 
     [Header("InApp Shop")]
     [SerializeField] private TextMeshProUGUI inAppShopOpenMainMenuTextView;
+    [SerializeField] private TextMeshProUGUI headerNameTextView;
 
 
     private void Start()
@@ -95,6 +96,7 @@ public class MainMenuLocalization : MonoBehaviour
 
 
             inAppShopOpenMainMenuTextView.text = "Меню";
+            headerNameTextView.text = "Премиум Магазин";
         }
         else if(Geekplay.Instance.language == "en")
         {
@@ -137,6 +139,7 @@ public class MainMenuLocalization : MonoBehaviour
 
 
             inAppShopOpenMainMenuTextView.text = "Menu";
+            headerNameTextView.text = "Premium Shop";
         }
         else if(Geekplay.Instance.language == "tr")
         {
@@ -179,6 +182,7 @@ public class MainMenuLocalization : MonoBehaviour
 
 
             inAppShopOpenMainMenuTextView.text = "Menu";
+            headerNameTextView.text = "Premium Magaza";
         }
     }
 }

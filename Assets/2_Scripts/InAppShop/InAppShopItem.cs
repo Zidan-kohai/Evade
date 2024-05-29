@@ -38,12 +38,20 @@ public class InAppShopItem : MonoBehaviour
                 diamondRewardView.text = data.DiamondCount.ToString();
                 break;
         }
+
+        if(Geekplay.Instance.language == "ru")
+        {
+            costView.text = $"{data.Cost} ян";
+        }
+        else if(Geekplay.Instance.language == "en" || Geekplay.Instance.language == "tr")
+        {
+            costView.text = $"{data.Cost} Yan";
+        }
     }
 
     private void Reward()
     {
         Wallet.AddMoneyST(data.Goldcount);
-        Geekplay.Instance.RemainingTimeUntilRewardADV = Geekplay.Instance.TimeToShowReward;
 
         Geekplay.Instance.PlayerData.DonatCount += data.Cost;
         Geekplay.Instance.SetLeaderboard(Helper.DonatLeaderboardName, Geekplay.Instance.PlayerData.DonatCount);

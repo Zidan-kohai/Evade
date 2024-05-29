@@ -88,13 +88,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3576164999601163133, guid: 526e2bd1d4e51ff47b422cef7985c551, type: 3}
-      propertyPath: data
-      value: 
-      objectReference: {fileID: 11400000, guid: c52028a521f8d8447a506bd6a5bbd1dd, type: 2}
     - target: {fileID: 5365758287293943009, guid: 526e2bd1d4e51ff47b422cef7985c551, type: 3}
       propertyPath: m_Name
-      value: Item_02 Variant
+      value: Diamond_Item_02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
