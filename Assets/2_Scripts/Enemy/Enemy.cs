@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using static Unity.Burst.Intrinsics.X86;
+//using static Unity.Burst.Intrinsics.X86;
 
 public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 {
