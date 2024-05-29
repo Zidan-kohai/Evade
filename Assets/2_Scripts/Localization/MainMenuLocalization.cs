@@ -62,18 +62,18 @@ public class MainMenuLocalization : MonoBehaviour
             telergamBonusTextView.text = "Бонусы";
             ourGameTextView.text = "Наши игры";
 
-            chooseModeOpenMainMenuTextView.text = "Главное меню";
+            chooseModeOpenMainMenuTextView.text = "Меню";
 
 
             telegramTextView.text = "Наш канал";
             claimTextView.text = "Забрать";
-            telegramOpenMainMenuTextView.text = "Главное меню";
+            telegramOpenMainMenuTextView.text = "Меню";
             promocodeSuccessTextView.text = "Промокод успешно использован";
             promocodeAlreadyUseTextView.text = "Промокод уже использован";
             promocodeUndefinedTextView.text = "Такого промокода нет";
 
 
-            ourGameOpenMainMenuTextView.text = "Главное меню";
+            ourGameOpenMainMenuTextView.text = "Меню";
             geomertyDashNameTextView.text = "Геомметри деш";
             dressGameNameTextView.text = "Одевалка";
             slapBattlesTextView.text = "Битва пощёчин";
@@ -82,10 +82,10 @@ public class MainMenuLocalization : MonoBehaviour
             survivalTextView.text = "Пережитые игры";
             savedTextView.text = "Спасенные";
             donatTextView.text = "Донаты";
-            lidersOpenMainMenuTextView.text = "Главное меню";
+            lidersOpenMainMenuTextView.text = "Меню";
 
 
-            simpleShopOpenMainMenuTextView.text = "Главное меню";
+            simpleShopOpenMainMenuTextView.text = "Меню";
             lightChapterTextView.text = "Свет";
             itemTextView.text = "Предметы";
             boosterTextView.text = "Бустеры";
@@ -94,7 +94,7 @@ public class MainMenuLocalization : MonoBehaviour
             closeTextView.text = "Закрыть";
 
 
-            inAppShopOpenMainMenuTextView.text = "Главное меню";
+            inAppShopOpenMainMenuTextView.text = "Меню";
         }
         else if(Geekplay.Instance.language == "en")
         {
@@ -106,17 +106,17 @@ public class MainMenuLocalization : MonoBehaviour
             telergamBonusTextView.text = "Bonuses";
             ourGameTextView.text = "Our game";
 
-            chooseModeOpenMainMenuTextView.text = "Main Menu";
+            chooseModeOpenMainMenuTextView.text = "Menu";
 
 
             telegramTextView.text = "Our channel";
             claimTextView.text = "Pick up";
-            telegramOpenMainMenuTextView.text = "Main Menu";
+            telegramOpenMainMenuTextView.text = "Menu";
             promocodeSuccessTextView.text = "Promo code successfully used";
             promocodeAlreadyUseTextView.text = "Promo code has already been used";
             promocodeUndefinedTextView.text = "There is no such promotional code";
 
-            ourGameOpenMainMenuTextView.text = "Main Menu";
+            ourGameOpenMainMenuTextView.text = "Menu";
             geomertyDashNameTextView.text = "Geomerty Dash";
             dressGameNameTextView.text = "Dress Up";
             slapBattlesTextView.text = "Slap Battle";
@@ -125,9 +125,9 @@ public class MainMenuLocalization : MonoBehaviour
             survivalTextView.text = "Survived Games";
             savedTextView.text = "Saved";
             donatTextView.text = "Donations";
-            lidersOpenMainMenuTextView.text = "Main Menu";
+            lidersOpenMainMenuTextView.text = "Menu";
 
-            simpleShopOpenMainMenuTextView.text = "Main Menu";
+            simpleShopOpenMainMenuTextView.text = "Menu";
             lightChapterTextView.text = "Light";
             itemTextView.text = "Items";
             boosterTextView.text = "Boosters";
@@ -136,7 +136,7 @@ public class MainMenuLocalization : MonoBehaviour
             closeTextView.text = "Close";
 
 
-            inAppShopOpenMainMenuTextView.text = "Main Menu";
+            inAppShopOpenMainMenuTextView.text = "Menu";
         }
         else if(Geekplay.Instance.language == "tr")
         {
@@ -148,17 +148,17 @@ public class MainMenuLocalization : MonoBehaviour
             telergamBonusTextView.text = "Bonuslar";
             ourGameTextView.text = "Oyunlarimiz";
 
-            chooseModeOpenMainMenuTextView.text = "Ana Menu";
+            chooseModeOpenMainMenuTextView.text = "Menu";
 
 
             telegramTextView.text = "Kanalimiz";
             claimTextView.text = "Al";
-            telegramOpenMainMenuTextView.text = "Ana Menu";
+            telegramOpenMainMenuTextView.text = "Menu";
             promocodeSuccessTextView.text = "Promosyon kodu basariyla kullanildi";
             promocodeAlreadyUseTextView.text = "Promosyon kodu zaten kullanildi";
             promocodeUndefinedTextView.text = "Boyle bir promosyon kodu yoktur";
 
-            ourGameOpenMainMenuTextView.text = "Ana Menu";
+            ourGameOpenMainMenuTextView.text = "Menu";
             geomertyDashNameTextView.text = "Geomerty Dash";
             dressGameNameTextView.text = "Giydirme";
             slapBattlesTextView.text = "Tokat Savasi";
@@ -167,9 +167,9 @@ public class MainMenuLocalization : MonoBehaviour
             survivalTextView.text = "Hayatta Kalan Oyunlar";
             savedTextView.text = "Kaydedildi";
             donatTextView.text = "Bagislar";
-            lidersOpenMainMenuTextView.text = "Ana Menu";
+            lidersOpenMainMenuTextView.text = "Menu";
 
-            simpleShopOpenMainMenuTextView.text = "Ana Menu";
+            simpleShopOpenMainMenuTextView.text = "Menu";
             lightChapterTextView.text = "Isik";
             itemTextView.text = "Ogeler";
             boosterTextView.text = "Arttiricilar";
@@ -178,7 +178,7 @@ public class MainMenuLocalization : MonoBehaviour
             closeTextView.text = "Kapat";
 
 
-            inAppShopOpenMainMenuTextView.text = "Ana Menu";
+            inAppShopOpenMainMenuTextView.text = "Menu";
         }
     }
 }

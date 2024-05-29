@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using GeekplaySchool;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,13 +14,19 @@ public class Leaderboard : MonoBehaviour
     [SerializeField] private RectTransform leaderhandler;
 
     [SerializeField] private Button surviveChapterButton;
+    [SerializeField] private Image surviveChapterButtonImage;
     [SerializeField] private Button helpChapterButton;
+    [SerializeField] private Image helpChapterButtonImage;
     [SerializeField] private Button donatChapterButton;
+    [SerializeField] private Image donatChapterButtonImage;
     [SerializeField] private Vector2 selectedSizeDelta;
     [SerializeField] private Vector2 normalSizeDelta;
     private Sequence buttonAnimation;
 
     [SerializeField] private List<LeaderboardItem> currentLeaders = new List<LeaderboardItem>();
+
+    [SerializeField] private Sprite openSprite;
+    [SerializeField] private Sprite closeSprite;
 
     public void Start()
     {
@@ -35,6 +42,10 @@ public class Leaderboard : MonoBehaviour
     private void OpenSurviveChapter()
     {
         if (type == LeaderboardType.Survive) return;
+
+        surviveChapterButtonImage.sprite = openSprite;
+        helpChapterButtonImage.sprite = closeSprite;
+        donatChapterButtonImage.sprite = closeSprite;
 
         RectTransform rect = surviveChapterButton.GetComponent<RectTransform>();
         
@@ -53,6 +64,10 @@ public class Leaderboard : MonoBehaviour
     {
         if (type == LeaderboardType.Help) return;
 
+        surviveChapterButtonImage.sprite = closeSprite;
+        helpChapterButtonImage.sprite = openSprite;
+        donatChapterButtonImage.sprite = closeSprite;
+
         RectTransform rect = helpChapterButton.GetComponent<RectTransform>();
 
         buttonAnimation.Kill();
@@ -69,6 +84,10 @@ public class Leaderboard : MonoBehaviour
     private void OpenDonatChapter()
     {
         if (type == LeaderboardType.Donat) return;
+
+        surviveChapterButtonImage.sprite = closeSprite;
+        helpChapterButtonImage.sprite = closeSprite;
+        donatChapterButtonImage.sprite = openSprite;
 
         RectTransform rect = donatChapterButton.GetComponent<RectTransform>();
 
