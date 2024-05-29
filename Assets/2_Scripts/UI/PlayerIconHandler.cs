@@ -10,6 +10,7 @@ public class PlayerIconHandler : MonoBehaviour
     [SerializeField] private RectTransform Handler;
     [SerializeField] private TextMeshProUGUI nameView;
     [SerializeField] private TextMeshProUGUI hardNestView;
+    [SerializeField] private TextMeshProUGUI descriptionView;
     [SerializeField] private Image mapIcon;
     private List<int> playersIndex = new List<int>();
 
@@ -29,6 +30,7 @@ public class PlayerIconHandler : MonoBehaviour
     {
         nameView.text = data.GetName();
         hardNestView.text = data.GetHardnest();
+        descriptionView.text = data.GetDescription();
         mapIcon.sprite = data.Icon;
     }
 

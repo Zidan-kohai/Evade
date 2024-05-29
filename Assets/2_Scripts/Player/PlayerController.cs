@@ -616,6 +616,8 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     //maybe i refactoring it in future
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if (hit.gameObject.layer == 6) return;
+
         currrentSpeed -= Time.deltaTime * slowFactor;
         currrentSpeed = Mathf.Clamp(currrentSpeed, 0, 1000);
     }
