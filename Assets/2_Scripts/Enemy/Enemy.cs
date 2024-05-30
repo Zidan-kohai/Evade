@@ -174,14 +174,14 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
         if (bait == null)
         {
-            for (int i = 0; i < lastSeenPlayersWithPosition.Count; i++)
+            for (int i = 0; i < playersOnReachArea.Count; i++)
             {
-                IPlayer player = lastSeenPlayersWithPosition.ElementAt(i).Key;
-                Vector3 position = lastSeenPlayersWithPosition.ElementAt(i).Value;
+                IPlayer player = playersOnReachArea[i];
+                Vector3 position = playersOnReachArea[i].GetTransform().position;
 
                 if (player.IsFallOrDeath())
                 {
-                    lastSeenPlayersWithPosition.Remove(player);
+                    //lastSeenPlayersWithPosition.Remove(player);
                     playersOnReachArea.Remove(player);
                     continue;
                 }
@@ -202,7 +202,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
                 bool isAttaked = TryAttack(currentChasingPlayer);
 
                 if (isAttaked)
-                {
+                {   
                     lastSeenPlayersWithPosition.Remove(currentChasingPlayer);
                     return;
                 }
@@ -225,12 +225,12 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
         
 
-        if (agent.remainingDistance <= agent.stoppingDistance && currentChasingPlayer != null)
-        {
-            lastSeenPlayersWithPosition.Remove(currentChasingPlayer);
-        }
+        //if (agent.remainingDistance <= agent.stoppingDistance && currentChasingPlayer != null)
+        //{
+        //    lastSeenPlayersWithPosition.Remove(currentChasingPlayer);
+        //}
 
-        if (lastSeenPlayersWithPosition.Count == 0)
+        if (playersOnReachArea.Count == 0)
         {
             ChangeState(EnemyState.Idle);
         }
