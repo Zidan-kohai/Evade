@@ -103,7 +103,7 @@ public class Bait : MonoBehaviour, IPlayer, IHumanoid
     {
     }
 
-    public void SubscribeOnDeath(Action<IPlayer> onPlayerDeath)
+    public void SubscribeOnFall(Action<IPlayer> onPlayerDeath)
     {
     }
 

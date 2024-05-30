@@ -66,7 +66,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private int experienceMultiplierFactor = 1;
     [SerializeField] private Transform carriedTransform;
     [SerializeField] private float livedTime = 0;
-    private Action<IPlayer> playerDeathEvent;
+    private Action<IPlayer> playerFallEvent;
     private Coroutine coroutine;
     private string name;
 
@@ -172,9 +172,9 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         ChangeState(PlayerState.Fall);
     }
 
-    public void SubscribeOnDeath(Action<IPlayer> onPlayerDeath)
+    public void SubscribeOnFall(Action<IPlayer> onPlayerDeath)
     {
-        playerDeathEvent += onPlayerDeath;
+        playerFallEvent += onPlayerDeath;
     }
 
     public void AddHumanoid(IHumanoid IHumanoid)
@@ -252,7 +252,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     public bool IsFallOrDeath()
     {
-        return state == PlayerState.Fall || state == PlayerState.Death;
+        return state == PlayerState.Fall || state == PlayerState.Death || state == PlayerState.Carried;
     }
 
     public bool IsFall()
@@ -344,6 +344,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 currrentSpeed = currrentMinSpeed;
                 lostedTimeFromFallToUp = timeToUpFromFall;
                 lostedTimeFromFallToDeath = timeToDeathFromFall;
+                playerFallEvent?.Invoke(this);
                 break;
 
             case PlayerState.Carry:
@@ -365,7 +366,6 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     {
         if(coroutine != null) StopCoroutine(coroutine);
 
-        playerDeathEvent?.Invoke(this);
         PlayerStateShower.ShowAIState(name, state);
         agent.SetDestination(transform.position);
         animationController.Death();

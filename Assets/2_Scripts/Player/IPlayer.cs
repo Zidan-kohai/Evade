@@ -37,7 +37,8 @@ public interface IPlayer
     public void Carried(Transform point, CinemachineVirtualCamera virtualCamera);
 
     public void GetDownOnGround();
-    public void SubscribeOnDeath(Action<IPlayer> onPlayerDeath);
+
+    public void SubscribeOnFall(Action<IPlayer> onPlayerDeath);
 }
 
 public interface IRealyPlayer : IPlayer

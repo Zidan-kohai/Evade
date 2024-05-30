@@ -16,7 +16,6 @@ public class GameplayController : MonoBehaviour
     [SerializeField] private IPlayer realyPlayer;
     [SerializeField] private List<IPlayer> players  = new List<IPlayer>();
     [SerializeField] private List<IEnemy> enemies = new List<IEnemy>();
-    private int playerCount = 0;
 
     private void Awake()
     {
@@ -66,16 +65,14 @@ public class GameplayController : MonoBehaviour
     public static void AddPlayerST(IPlayer player)
     {
         instance.players.Add(player);
-        instance.playerCount++;
 
-        player.SubscribeOnDeath(instance.PlayerDeath);
+        player.SubscribeOnFall(instance.OnPlayerFall);
     }
 
     public static void AddRealyPlayerST(IPlayer player)
     {
         instance.realyPlayer = player;
-        player.SubscribeOnDeath(instance.PlayerDeath);
-        instance.playerCount++;
+        player.SubscribeOnFall(instance.OnPlayerFall);
     }
 
     public static void AddEnemyST(IEnemy enemy)
@@ -83,14 +80,19 @@ public class GameplayController : MonoBehaviour
         instance.enemies.Add(enemy);
     }
 
-    private void PlayerDeath(IPlayer player)
+    private void OnPlayerFall(IPlayer player)
     {
-        playerCount--;
-
-        if(playerCount <= 0)
+        foreach (var item in players)
         {
-            End();
+            if(!item.IsFallOrDeath())
+            {
+                return;
+            }
         }
+
+        if (!realyPlayer.IsFallOrDeath()) return;
+
+        End();
     }
 
 

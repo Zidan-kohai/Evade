@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     [SerializeField] private int moneyMultiplierFactor = 1;
     [SerializeField] private int experienceMultiplierFactor = 1;
     [SerializeField] private Bait baitPrefab;
-    private Action<IPlayer> playerDeathEvent;
+    private Action<IPlayer> playerFallEvent;
     private string name = "Вы";
     private float livedTime = 0;
     private Coroutine coroutine;
@@ -203,9 +203,9 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         moneyMultiplierFactor = value;
     }
 
-    public void SubscribeOnDeath(Action<IPlayer> onPlayerDeath)
+    public void SubscribeOnFall(Action<IPlayer> onPlayerDeath)
     {
-        playerDeathEvent += onPlayerDeath;
+        playerFallEvent += onPlayerDeath;
     }
 
     public void SetExperienceMulltiplierFactor(int value)
@@ -260,7 +260,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     public bool IsFallOrDeath()
     {
-        return state == PlayerState.Fall || state == PlayerState.Death;
+        return state == PlayerState.Fall || state == PlayerState.Death || state == PlayerState.Carried;
     }
 
     public bool IsFall()
@@ -509,6 +509,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
                 animationController.Fall();
                 lostedTimeFromFallToUp = timeToUpFromFall;
                 lostedTimeFromFallToDeath = timeToDeathFromFall;
+                playerFallEvent?.Invoke(this);
                 break;
             case PlayerState.Raising:
                 canJump = false;
@@ -602,7 +603,6 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     private void Death()
     {
         PlayerStateShower.ShowState(state);
-        playerDeathEvent?.Invoke(this);
         gamelpayController.OnPlayerDeath(livedTime);
         animationController.Death();
     }
