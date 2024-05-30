@@ -193,14 +193,19 @@ public class ChooseMapSystem : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(1f);
             timeToChooseMap -= 1f;
-            TimeSpan time = TimeSpan.FromSeconds(timeToChooseMap);
 
-            timeView.text = $"00:{time.Seconds}";
+            timeView.text = FormatSeconds(timeToChooseMap);
         }
 
         DecideWhichMapOpen();
     }
-
+    public string FormatSeconds(float seconds)
+    {
+        int totalSeconds = Mathf.FloorToInt(seconds);
+        int minutes = totalSeconds / 60;
+        int remainingSeconds = totalSeconds % 60;
+        return $"{minutes:D2}:{remainingSeconds:D2}";
+    }
     private IEnumerator AIChooseMap(PlayerIcon icon)
     {
         float time = UnityEngine.Random.Range(minTime, maxTime);
