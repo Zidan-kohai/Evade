@@ -3392,6 +3392,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497476675c4d28948a65effda920620a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &399180829 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8784865492773281443, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dedccdf85c8940e4fabc421ee162143d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &433793202
 GameObject:
   m_ObjectHideFlags: 0
@@ -3681,7 +3692,8 @@ MonoBehaviour:
   swipeDetector: {fileID: 394423254}
   spaceButton: {fileID: 937886419}
   isEButton: {fileID: 2143768978}
-  isTabButton: {fileID: 937886417}
+  isQButton: {fileID: 937886417}
+  isTabButton: {fileID: 399180829}
   isTButton: {fileID: 2143768977}
   isT2Button: {fileID: 2143768976}
   isFButton: {fileID: 937886414}

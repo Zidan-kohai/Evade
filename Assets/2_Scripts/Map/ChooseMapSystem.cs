@@ -124,7 +124,18 @@ public class ChooseMapSystem : MonoBehaviour
             if (i == 0)
             {
                 playerIcon = player;
-                player.Initialize(i, "Вы");
+                if(Geekplay.Instance.language == "ru")
+                {
+                    player.Initialize(i, "Вы");
+                }
+                else if (Geekplay.Instance.language == "en")
+                {
+                    player.Initialize(i, "You");
+                }
+                else if (Geekplay.Instance.language == "tr")
+                {
+                    player.Initialize(i, "Sen");
+                }
             }
             else
             {
@@ -182,7 +193,9 @@ public class ChooseMapSystem : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(1f);
             timeToChooseMap -= 1f;
-            timeView.text = $"{timeToChooseMap}";
+            TimeSpan time = TimeSpan.FromSeconds(timeToChooseMap);
+
+            timeView.text = $"00:{time.Seconds}";
         }
 
         DecideWhichMapOpen();

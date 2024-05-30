@@ -80,11 +80,11 @@ public class StateShower
                 }
                 else if (Geekplay.Instance.language == "en")
                 {
-                    text.text = $"<color=yellow> You, die</color>";
+                    text.text = $"<color=red> You, die</color>";
                 }
                 else
                 {
-                    text.text = $"<color=yellow> Sen, Olmek</color>";
+                    text.text = $"<color=red> Sen, Olmek</color>";
                 }
                 break;
         }

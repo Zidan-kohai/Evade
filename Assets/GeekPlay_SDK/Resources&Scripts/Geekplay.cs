@@ -164,7 +164,7 @@ namespace GeekplaySchool
             DailyExerciseController.Instance.SetProgress(Days.Day5, 1);
 
             Save();
-
+            StartCoroutine(TimeTreker());
         }
 
         private void EnterTreker()

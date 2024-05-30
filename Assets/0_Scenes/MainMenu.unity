@@ -846,7 +846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
       propertyPath: mobile
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
       propertyPath: SoundOn
@@ -3296,7 +3296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 321.18, y: -87.283}
+  m_AnchoredPosition: {x: 375.136, y: -87.283}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &343362229
@@ -3950,8 +3950,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5879,7 +5879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1143.54, y: -87.283}
+  m_AnchoredPosition: {x: 1151.248, y: -87.283}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &635826055
@@ -8951,8 +8951,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10020,8 +10020,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10361,7 +10361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 595.3, y: -87.283}
+  m_AnchoredPosition: {x: 633.84, y: -87.283}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1049344395
@@ -12927,7 +12927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3591219127961058785, guid: 97a78e4f5cb924642b6970c0bd8ca138, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3591219127961058785, guid: 97a78e4f5cb924642b6970c0bd8ca138, type: 3}
       propertyPath: m_AnchorMin.x
@@ -12935,7 +12935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3591219127961058785, guid: 97a78e4f5cb924642b6970c0bd8ca138, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3591219127961058785, guid: 97a78e4f5cb924642b6970c0bd8ca138, type: 3}
       propertyPath: m_SizeDelta.x
@@ -12975,11 +12975,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3591219127961058785, guid: 97a78e4f5cb924642b6970c0bd8ca138, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 75
+      value: 39.352005
       objectReference: {fileID: 0}
     - target: {fileID: 3591219127961058785, guid: 97a78e4f5cb924642b6970c0bd8ca138, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -52
+      value: -27.907997
       objectReference: {fileID: 0}
     - target: {fileID: 3591219127961058785, guid: 97a78e4f5cb924642b6970c0bd8ca138, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16756,8 +16756,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -19049,7 +19049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 869.42, y: -87.283}
+  m_AnchoredPosition: {x: 892.544, y: -87.283}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1918585383

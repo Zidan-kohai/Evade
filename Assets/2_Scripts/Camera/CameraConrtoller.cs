@@ -70,7 +70,7 @@ public class CameraConrtoller : MonoBehaviour
                 break;
         }
 
-        if (inputManager.GetIsTab && canSwitchCamera && canSwitchCostill)
+        if (inputManager.GetIsQ && canSwitchCamera && canSwitchCostill)
             NextState();
     }
 

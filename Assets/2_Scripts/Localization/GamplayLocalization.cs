@@ -34,6 +34,7 @@ public class GamplayLocalization : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mobileCarryTextView;
     [SerializeField] private TextMeshProUGUI mobilePutTextView;
     [SerializeField] private TextMeshProUGUI mobileRaisingTextView;
+    [SerializeField] private TextMeshProUGUI mobileMainMenuTextView;
      
 
     private void Start()
@@ -46,7 +47,7 @@ public class GamplayLocalization : MonoBehaviour
             }
             else
             {
-                switchCameraTextView.text = "Переключить камеру(TAB)";
+                switchCameraTextView.text = "Переключить камеру(Q)";
             }
 
             carryTextView.text = "Нести";
@@ -75,6 +76,7 @@ public class GamplayLocalization : MonoBehaviour
             mobileCarryTextView.text = "Нести";
             mobilePutTextView.text = "Отпустить";
             mobileRaisingTextView.text = "Поднять";
+            mobileMainMenuTextView.text = "Выйти (Таб)";
 
         }
         else if (Geekplay.Instance.language == "en")
@@ -85,7 +87,7 @@ public class GamplayLocalization : MonoBehaviour
             }
             else
             {
-                switchCameraTextView.text = "Switch camera(TAB)";
+                switchCameraTextView.text = "Switch camera(Q)";
             }
 
             carryTextView.text = "Carry";
@@ -111,6 +113,7 @@ public class GamplayLocalization : MonoBehaviour
             mobileCarryTextView.text = "Carry";
             mobilePutTextView.text = "Release";
             mobileRaisingTextView.text = "Raise";
+            mobileMainMenuTextView.text = "Exit (Tab)";
         }
         else if (Geekplay.Instance.language == "tr")
         {
@@ -120,7 +123,7 @@ public class GamplayLocalization : MonoBehaviour
             }
             else 
             { 
-                switchCameraTextView.text = "Kamerayi degistir(TAB)";
+                switchCameraTextView.text = "Kamerayi degistir(Q)";
             }
 
             carryTextView.text = "Oyle";
@@ -148,6 +151,7 @@ public class GamplayLocalization : MonoBehaviour
             mobileCarryTextView.text = "Oyle";
             mobilePutTextView.text = "Iptal";
             mobileRaisingTextView.text = "Artirmak";
+            mobileMainMenuTextView.text = "Cikmak (Tab)";
         }
     }
 }

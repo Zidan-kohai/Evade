@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private SwipeDetector swipeDetector;
     [SerializeField] private MyButton spaceButton;
     [SerializeField] private MyButton isEButton;
+    [SerializeField] private MyButton isQButton;
     [SerializeField] private MyButton isTabButton;
     [SerializeField] private MyButton isTButton;
     [SerializeField] private MyButton isT2Button;
@@ -32,6 +33,7 @@ public class InputManager : MonoBehaviour
     private bool isT;
     private bool isTab;
     private bool isFClick;
+    private bool isQ;
     private bool is1;
     private bool is2;
     private bool is3;
@@ -47,12 +49,14 @@ public class InputManager : MonoBehaviour
     public bool GetIsTab => isTab;
     public bool GetIsT => isT;
     public bool GetIsF => isFClick;
+    public bool GetIsQ => isQ;
     public bool GetIs1 => is1;
     public bool GetIs2 => is2;
     public bool GetIs3 => is3;
     public bool GetIs4 => is4;
     public bool GetIs5 => is5;
     public bool GetIs6 => is6;
+
 
     private void Start()
     {
@@ -72,7 +76,11 @@ public class InputManager : MonoBehaviour
         {
             MobileInput();
         }
-        
+
+        if(isTab)
+        {
+            Geekplay.Instance.LoadScene(0);
+        }
     }
 
     private void MobileInput()
@@ -98,6 +106,12 @@ public class InputManager : MonoBehaviour
         {
             isTab = true;
             StartCoroutine(WaitFrame(() => isTab = false));
+        });
+
+        isQButton.onClick.AddListener(() =>
+        {
+            isQ = true;
+            StartCoroutine(WaitFrame(() => isQ = false));
         });
 
         isTButton.onClick.AddListener(() =>
@@ -173,6 +187,8 @@ public class InputManager : MonoBehaviour
         isT = Input.GetKeyDown(KeyCode.T);
 
         isFClick = Input.GetKeyDown(KeyCode.F);
+
+        isQ = Input.GetKeyDown(KeyCode.Q);
 
         is1 = Input.GetKeyDown(KeyCode.Alpha1);
 

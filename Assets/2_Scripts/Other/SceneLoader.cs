@@ -13,5 +13,10 @@ public class SceneLoader
         {
             DailyExerciseController.Instance.SetProgress(Days.Day1, 1);
         }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
