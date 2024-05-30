@@ -642,4 +642,14 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         Gizmos.color = Color.yellow;
         Gizmos.DrawRay(groundChekcRaycastOrigin.position, Vector3.down * groundChekcRaycastHeight);
     }
+
+    public void DisableLight()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void EnabledLight()
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -114,6 +114,8 @@ public class ActionHandler : MonoBehaviour
         if (deathCoroutine != null)
             StopCoroutine(deathCoroutine);
 
+        if (!gameObject.activeInHierarchy) return;
+
         deathCoroutine = StartCoroutine(Wait(1f, () =>
         {
             DeathHandler.SetActive(false);

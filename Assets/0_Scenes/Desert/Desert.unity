@@ -3931,7 +3931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 219219791}
   - component: {fileID: 219219792}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12139,8 +12139,8 @@ Transform:
   m_GameObject: {fileID: 843046719}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -56.9531, y: -0, z: 286.6591}
-  m_LocalScale: {x: 81.38901, y: 1, z: 115}
+  m_LocalPosition: {x: -61.7541, y: 0, z: 296.2987}
+  m_LocalScale: {x: 79.011024, y: 1, z: 111.23499}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1850725854}
@@ -17694,7 +17694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1354661804}
   - component: {fileID: 1354661805}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18964,7 +18964,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 503
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -24039,7 +24039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2003853895}
   - component: {fileID: 2003853896}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24290,7 +24290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2014604344}
   - component: {fileID: 2014604345}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}

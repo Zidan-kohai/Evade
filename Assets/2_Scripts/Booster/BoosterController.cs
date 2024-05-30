@@ -75,7 +75,7 @@ public class BoosterController : MonoBehaviour
                 bool result = false;
                 foreach (MyDictionary booster in Boosters)
                 {
-                    if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == booster.data.indexOnPlayer)
+                    if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == booster.data.indexOnPlayer && Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(booster.data.indexOnPlayer).value != 0)
                     {
                         boosterItem[j].gameObject.SetActive(true);
                         boosterItem[j].image.sprite = booster.data.mainIcon;

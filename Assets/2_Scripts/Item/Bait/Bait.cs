@@ -110,4 +110,14 @@ public class Bait : MonoBehaviour, IPlayer, IHumanoid
     public void Teleport(Vector3 teleportPosition)
     {
     }
+
+    public void DisableLight()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void EnabledLight()
+    {
+        throw new NotImplementedException();
+    }
 }

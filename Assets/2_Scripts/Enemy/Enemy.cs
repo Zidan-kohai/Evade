@@ -162,7 +162,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
 
         if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
         {
-            currentPatrolPositionIndex = (currentPatrolPositionIndex + 1) % patrolTransform.Count;
+            currentPatrolPositionIndex = UnityEngine.Random.Range(0, patrolTransform.Count);
         }
     }
 

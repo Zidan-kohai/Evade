@@ -115,9 +115,13 @@ public class CameraConrtoller : MonoBehaviour
             return;
         }
 
+        AIPlayersCamera[currentAIPlayerCameraIndex].IPlayer.DisableLight();
+
         AIPlayersCamera[currentAIPlayerCameraIndex].VirtualCamera.Priority = 1;
 
         currentAIPlayerCameraIndex = (currentAIPlayerCameraIndex + 1) % AIPlayersCamera.Count;
+
+        AIPlayersCamera[currentAIPlayerCameraIndex].IPlayer.EnabledLight();
 
         AIPlayersCamera[currentAIPlayerCameraIndex].VirtualCamera.Priority = 2;
     }

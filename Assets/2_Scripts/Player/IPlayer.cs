@@ -39,6 +39,10 @@ public interface IPlayer
     public void GetDownOnGround();
 
     public void SubscribeOnFall(Action<IPlayer> onPlayerDeath);
+
+    public void DisableLight();
+
+    public void EnabledLight();
 }
 
 public interface IRealyPlayer : IPlayer

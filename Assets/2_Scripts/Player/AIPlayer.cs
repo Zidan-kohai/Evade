@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 {
@@ -66,6 +67,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private int experienceMultiplierFactor = 1;
     [SerializeField] private Transform carriedTransform;
     [SerializeField] private float livedTime = 0;
+    [SerializeField] private Light pointLight;
     private Action<IPlayer> playerFallEvent;
     private Coroutine coroutine;
     private string name;
@@ -402,7 +404,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
         if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
         {
-            currnetWalkPointIndex = (currnetWalkPointIndex + 1) % pointsToWalk.Count;
+            currnetWalkPointIndex = UnityEngine.Random.Range(0, pointsToWalk.Count);
         }
     }
 
@@ -670,5 +672,15 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         yield return new WaitForSeconds(time);
 
         action.Invoke();
+    }
+
+    public void DisableLight()
+    {
+        StartCoroutine(Wait(0.5f, () => pointLight.enabled = false));
+    }
+
+    public void EnabledLight()
+    {
+        pointLight.enabled = true;
     }
 }

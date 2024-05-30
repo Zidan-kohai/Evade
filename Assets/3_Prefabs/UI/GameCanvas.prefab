@@ -136,7 +136,7 @@ MonoBehaviour:
   EndPanelWindowTimeTextView: {fileID: 3949246827532630171}
   EndPanelWindowMoneyTextView: {fileID: 1725844215244384234}
   EndPanelWindowExperienceTextView: {fileID: 6468084513881804346}
-  ExitTextView: {fileID: 0}
+  ExitTextView: {fileID: 7054819232377520697}
   chooseMapVoiseTextView: {fileID: 3049858925205252421}
   mobileCarryTextView: {fileID: 2735425963192141668}
   mobilePutTextView: {fileID: 3286107836326540809}
