@@ -1,5 +1,6 @@
 using Cinemachine;
 using DG.Tweening;
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -458,7 +459,9 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     private void MoveAwayFromEnemies()
     {
         Vector3 escapeDirection = CalculateEscapeDirection();
-        Vector3 escapePoint = transform.position + escapeDirection * agent.speed;
+
+        int distance = 25;
+        Vector3 escapePoint = transform.position + escapeDirection * distance;
 
         if (CheckGround(escapePoint))
         {
@@ -506,9 +509,11 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     private void TryAlternativeRoutes(Vector3 initialDirection)
     {
         Vector3[] alternatives = { transform.right, -transform.right };
-        foreach (var direction in alternatives)
+        int distance = 25;
+
+        foreach (Vector3 direction in alternatives)
         {
-            Vector3 point = transform.position + direction * agent.speed;
+            Vector3 point = transform.position + direction * distance;
             if (CheckGround(point))
             {
                 SetDestination(point);
@@ -517,7 +522,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         }
 
         Debug.Log("No valid escape route found!");
-        agent.SetDestination(transform.position);
+        agent.SetDestination(pointsToWalk[UnityEngine.Random.Range(0, pointsToWalk.Count)].position);
     }
 
     private bool CheckPlayerAndEnemyToHelp()
@@ -555,7 +560,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
         CheckEnemyDistanceBetweenPlayerToHelpAndEnemy(ref distanceToNeanestEnemy, ref nearnestEnemy, nearnestPlayer);
         
-        if(HasEnemyBetweenPlayerToHelpAndThisPlayer(ref nearnestPlayer, distanceNeanestToPlayer)) return false;
+        if(HasEnemyBetweenFallPlayerAndThisPlayerToHelp(ref nearnestPlayer, distanceNeanestToPlayer)) return false;
         
 
         Debug.Log("nearnestPlayer: " + distanceNeanestToPlayer);
@@ -620,7 +625,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         }
     }
 
-    private bool HasEnemyBetweenPlayerToHelpAndThisPlayer(ref IPlayer nearnestPlayer, float distanceToNearnestPlayer)
+    private bool HasEnemyBetweenFallPlayerAndThisPlayerToHelp(ref IPlayer nearnestPlayer, float distanceToNearnestPlayer)
     {
         bool result = false;
 
