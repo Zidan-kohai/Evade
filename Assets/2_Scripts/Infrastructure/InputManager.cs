@@ -94,18 +94,23 @@ public class InputManager : MonoBehaviour
         isEButton.OnHandDown += () => isE = true;
         isEButton.OnHandUp += () => isE = false;
 
-        isT2Button.OnHandDown += () => isT = true;
-        isT2Button.OnHandUp += () => isT = false;
-
-        isTButton.OnHandDown += () => isT = true;
-        isTButton.OnHandUp += () => isT = false;
-
         isTabButton.onClick.AddListener(() =>
         {
             isTab = true;
             StartCoroutine(WaitFrame(() => isTab = false));
         });
 
+        isTButton.onClick.AddListener(() =>
+        {
+            isT = true;
+            StartCoroutine(WaitFrame(() => isT = false));
+        });
+
+        isT2Button.onClick.AddListener(() =>
+        {
+            isT = true;
+            StartCoroutine(WaitFrame(() => isT = false));
+        });
 
         isFButton.onClick.AddListener(() =>
         {

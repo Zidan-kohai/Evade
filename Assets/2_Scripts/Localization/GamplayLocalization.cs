@@ -30,6 +30,12 @@ public class GamplayLocalization : MonoBehaviour
     [Header("Choose Map")]
     [SerializeField] private TextMeshProUGUI chooseMapVoiseTextView;
 
+    [Header("Mobile Panel")]
+    [SerializeField] private TextMeshProUGUI mobileCarryTextView;
+    [SerializeField] private TextMeshProUGUI mobilePutTextView;
+    [SerializeField] private TextMeshProUGUI mobileRaisingTextView;
+     
+
     private void Start()
     {
         if (Geekplay.Instance.language == "ru")
@@ -65,6 +71,11 @@ public class GamplayLocalization : MonoBehaviour
 
             chooseMapVoiseTextView.text = "Проголосуйте за карту";
 
+
+            mobileCarryTextView.text = "Нести";
+            mobilePutTextView.text = "Отпустить";
+            mobileRaisingTextView.text = "Поднять";
+
         }
         else if (Geekplay.Instance.language == "en")
         {
@@ -96,6 +107,10 @@ public class GamplayLocalization : MonoBehaviour
             EndPanelWindowExperienceTextView.text = "Experience";
 
             chooseMapVoiseTextView.text = "Vote for a map";
+
+            mobileCarryTextView.text = "Carry";
+            mobilePutTextView.text = "Release";
+            mobileRaisingTextView.text = "Raise";
         }
         else if (Geekplay.Instance.language == "tr")
         {
@@ -129,6 +144,10 @@ public class GamplayLocalization : MonoBehaviour
 
 
             chooseMapVoiseTextView.text = "Haritaya oy verin";
+
+            mobileCarryTextView.text = "Oyle";
+            mobilePutTextView.text = "Iptal";
+            mobileRaisingTextView.text = "Artirmak";
         }
     }
 }

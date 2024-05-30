@@ -7,8 +7,12 @@ public class GameplayMainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject exerciseHandler;
     [SerializeField] private TextMeshProUGUI lostTimeView;
-
     [SerializeField] private GameObject mobilePanel;
+
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private ActionHandler PCActionHandler;
+    [SerializeField] private ActionHandler mobileActionHandler;
+
 
     private void Start()
     {
@@ -20,6 +24,12 @@ public class GameplayMainMenu : MonoBehaviour
         if(Geekplay.Instance.mobile)
         {
             mobilePanel.SetActive(true);
+            playerController.actionUI = mobileActionHandler;
+        }
+        else
+        {
+            mobilePanel.SetActive(false);
+            playerController.actionUI = PCActionHandler;
         }
     }
 

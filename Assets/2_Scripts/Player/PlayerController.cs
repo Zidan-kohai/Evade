@@ -44,11 +44,11 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     [Header("Components")]
     [SerializeField] private InputManager inputManager;
     [SerializeField] private ReachArea reachArea;
-    [SerializeField] private ActionHandler actionUI;
     [SerializeField] private PlayerAnimationController animationController;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private Transform playerVisual;
     private CharacterController characterController;
+    public ActionHandler actionUI;
 
     [Header("Humanoids")]
     private List<IEnemy> enemies = new List<IEnemy>();
@@ -585,6 +585,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         isCarry = true;
         player.Carried(carriedTransform, virtualCamera);
         carriedPlayer = player;
+        actionUI.DisableHelpingUIHandler();
         ChangeState(PlayerState.Carry);
     }
 

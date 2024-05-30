@@ -31,6 +31,12 @@ public class ActionHandler : MonoBehaviour
     [Header("Camera")]
     [SerializeField] private GameObject cameraSwither;
 
+    private void Start()
+    {
+
+    }
+
+
     #region Help
     public void ShowHelpingUIManual()
     {
@@ -54,7 +60,8 @@ public class ActionHandler : MonoBehaviour
 
     public void FilHelpigUI(float helpPercent)
     {
-        raisingExplain.SetActive(false);
+        if(!Geekplay.Instance.mobile)
+            raisingExplain.SetActive(false);
 
         raisingPercent.gameObject.SetActive(true);
 
@@ -117,7 +124,6 @@ public class ActionHandler : MonoBehaviour
 
     #endregion
 
-
     #region Carry
     public void ShowCarryExplain()
     {
@@ -141,6 +147,7 @@ public class ActionHandler : MonoBehaviour
 
 
     #endregion 
+
     private IEnumerator Wait(float waitTime, Action action)
     {
         yield return new WaitForSeconds(waitTime);
