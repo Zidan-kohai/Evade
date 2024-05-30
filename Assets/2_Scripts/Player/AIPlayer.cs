@@ -162,8 +162,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     public void GetDownOnGround()
     {
-        transform.position = playerVisual.transform.position;
-        agent.enabled = true;
+        transform.position = playerVisual.transform.position; 
+        agent.isStopped = false;
         playerVisual.parent = transform;
         playerVisual.localPosition = new Vector3(0, 1, 0);
         playerVisual.localEulerAngles = Vector3.zero;
@@ -352,7 +352,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
             case PlayerState.Carried:
                 animationController.Carried();
-                agent.enabled = false;
+                agent.isStopped = true;
                 break;
 
             case PlayerState.Death:
@@ -661,6 +661,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         currrentSpeed = Mathf.Clamp(currrentSpeed, currrentMinSpeed, currrentMaxSpeed);
 
         agent.speed = currrentSpeed;
+
         agent.SetDestination(target);
     }
 
