@@ -27,14 +27,16 @@ public class LightController : MonoBehaviour
     {
         int rand = UnityEngine.Random.Range(0, 6);
 
-        if(rand >= 3)
+        if(rand >= 3 && Geekplay.Instance.nightCount < 3)
         {
+            Geekplay.Instance.nightCount++;
             isNight = true;
             pointLight.gameObject.SetActive(true);
             DisableGlobalLight();
         }
         else
         {
+            Geekplay.Instance.nightCount = 0;
             pointLight.gameObject.SetActive(false);
             ActivateGlobalLight();
         }

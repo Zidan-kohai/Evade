@@ -94,6 +94,7 @@ namespace GeekplaySchool
 
         #endregion
 
+        public int nightCount; 
 
         public GameObject reviewPanel;
         private bool openReview;
@@ -159,6 +160,7 @@ namespace GeekplaySchool
             PlayerData.GameTime++;
 
             DailyExerciseController.Instance.SetProgress(Days.Day1, 0);
+            DailyExerciseController.Instance.SetProgress(Days.Day2, 1);
             DailyExerciseController.Instance.SetProgress(Days.Day2, 1);
             DailyExerciseController.Instance.SetProgress(Days.Day3, 0);
             DailyExerciseController.Instance.SetProgress(Days.Day5, 1);
