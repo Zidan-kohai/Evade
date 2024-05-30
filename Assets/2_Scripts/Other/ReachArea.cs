@@ -1,19 +1,23 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ReachArea : MonoBehaviour
 {
-    private ISee see;
+    private List<ISee> see = new List<ISee>();
 
     public void SetISee(ISee ISee)
     {
-        see = ISee;
+        see.Add(ISee);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.TryGetComponent(out IHumanoid IHumanoid))
         {
-            see.AddHumanoid(IHumanoid);
+            foreach (ISee ISee in see)
+            {
+                ISee.AddHumanoid(IHumanoid);
+            }
         }
     }
 
@@ -21,7 +25,10 @@ public class ReachArea : MonoBehaviour
     {
         if (other.transform.TryGetComponent(out IHumanoid IHumanoid))
         {
-            see.RemoveHumanoid(IHumanoid);
+            foreach (ISee ISee in see)
+            {
+                ISee.RemoveHumanoid(IHumanoid);
+            }
         }
     }
 }

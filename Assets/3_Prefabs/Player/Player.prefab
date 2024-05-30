@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 1626719977090493698}
   - component: {fileID: 584000485050038201}
   - component: {fileID: 7005582488443753406}
+  - component: {fileID: 7599746156975539442}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -308,10 +309,10 @@ MonoBehaviour:
   lostedTimeFromFallToDeath: 0
   inputManager: {fileID: 0}
   reachArea: {fileID: 8162641037547260621}
-  actionUI: {fileID: 0}
   animationController: {fileID: 3072787035800879077}
   virtualCamera: {fileID: 5953735550957598145}
   playerVisual: {fileID: 4347578350522250872}
+  actionUI: {fileID: 0}
   distanceToHelp: 10
   isCarry: 0
   carriedTransform: {fileID: 2755025758214090766}
@@ -534,6 +535,29 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _pointerParent: {fileID: 0}
   isActive: 0
+--- !u!114 &7599746156975539442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569462121483549870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c5b67dd5377a74da8f6241a02a4654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area: {fileID: 8162641037547260621}
+  firstPerson: {fileID: 7773828245269893676}
+  thirdPerson: {fileID: 5953735550957598145}
+  enemyCount: 0
+  Duration: 10
+  Strength: 1
+  Vibrato: 15
+  Randomness: 180
+  Snapping: 0
+  FadeOut: 1
+  shakeRandomlessMode: 0
 --- !u!1 &817575997565210850
 GameObject:
   m_ObjectHideFlags: 0
