@@ -100,8 +100,6 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
             case PlayerState.Death:
                 break;
         }
-
-        //CheckPlayerAndEnemyToHelp();
     }
 
     public void Initialize(List<Transform> Points, Vector3 spawnPoint)
@@ -401,7 +399,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     {
         SetDestination(pointsToWalk[currnetWalkPointIndex].position);   
 
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
         {
             currnetWalkPointIndex = (currnetWalkPointIndex + 1) % pointsToWalk.Count;
         }

@@ -160,13 +160,10 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     {
         agent.SetDestination(patrolTransform[currentPatrolPositionIndex].position);
 
-        //StartCoroutine(Wait(0.1f, () =>
-        //{
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                currentPatrolPositionIndex = (currentPatrolPositionIndex + 1) % patrolTransform.Count;
-            }
-        //}));
+        if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
+        {
+            currentPatrolPositionIndex = (currentPatrolPositionIndex + 1) % patrolTransform.Count;
+        }
     }
 
     private void OnChase()
