@@ -36,12 +36,32 @@ public class GamplayLocalization : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mobilePutTextView;
     [SerializeField] private TextMeshProUGUI mobileRaisingTextView;
     [SerializeField] private TextMeshProUGUI mobileMainMenuTextView;
+
+    [SerializeField] private TextMeshProUGUI booster1TextView;
+    [SerializeField] private TextMeshProUGUI booster2TextView;
+    [SerializeField] private TextMeshProUGUI booster3TextView;
+    [SerializeField] private TextMeshProUGUI booster4TextView;
+    [SerializeField] private TextMeshProUGUI booster5TextView;
+    [SerializeField] private TextMeshProUGUI booster6TextView;
      
 
     private void Start()
     {
+
+        if(Geekplay.Instance.mobile)
+        {
+            booster1TextView.gameObject.SetActive(false);
+            booster2TextView.gameObject.SetActive(false);
+            booster3TextView.gameObject.SetActive(false);
+            booster4TextView.gameObject.SetActive(false);
+            booster5TextView.gameObject.SetActive(false);
+            booster6TextView.gameObject.SetActive(false);
+        }
+
         if (Geekplay.Instance.language == "ru")
         {
+            booster6TextView.text = "П";
+
             if (Geekplay.Instance.mobile)
             {
                 switchCameraTextView.text = "Переключить камеру";
@@ -82,6 +102,8 @@ public class GamplayLocalization : MonoBehaviour
         }
         else if (Geekplay.Instance.language == "en")
         {
+            booster6TextView.text = "G";
+
             if (Geekplay.Instance.mobile)
             {
                 switchCameraTextView.text = "Switch camera";
@@ -120,6 +142,8 @@ public class GamplayLocalization : MonoBehaviour
         }
         else if (Geekplay.Instance.language == "tr")
         {
+            booster6TextView.text = "G";
+
             if (Geekplay.Instance.mobile)
             {
                 switchCameraTextView.text = "Kamera kamerasini oynat";

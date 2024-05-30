@@ -7,6 +7,7 @@ public class LightController : MonoBehaviour
 {
     [SerializeField] private InputManager inputManager;
     [SerializeField] private List<Light> globalLights;
+    [SerializeField] private Color cameraColorOnDay;
 
     [Header("SpotLight")]
     [SerializeField] private Light spotLight;
@@ -38,6 +39,7 @@ public class LightController : MonoBehaviour
         {
             Geekplay.Instance.nightCount = 0;
             pointLight.gameObject.SetActive(false);
+            Camera.main.backgroundColor = cameraColorOnDay;
             ActivateGlobalLight();
         }
         

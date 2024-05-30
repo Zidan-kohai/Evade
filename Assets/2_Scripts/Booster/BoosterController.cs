@@ -120,6 +120,8 @@ public class BoosterController : MonoBehaviour
 
                     meatUsedCount++;
                     booster.boosterEvent?.Invoke();
+
+                    if(meatUsedCount >= meatMaxUseCount) boosterItem[5].gameObject?.SetActive(false);
                 });
                 break;
             }
@@ -155,7 +157,7 @@ public class BoosterController : MonoBehaviour
             boosterItem[4].boostEvent?.Invoke();
         }
 
-        if (inputManager.GetIs6 && boosterItem[5].gameObject.activeSelf)
+        if (inputManager.GetIsG && boosterItem[5].gameObject.activeSelf)
         {
             boosterItem[5].boostEvent?.Invoke();
         }

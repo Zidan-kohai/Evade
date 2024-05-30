@@ -142,6 +142,12 @@ MonoBehaviour:
   mobilePutTextView: {fileID: 3286107836326540809}
   mobileRaisingTextView: {fileID: 223276682129601990}
   mobileMainMenuTextView: {fileID: 1794365682227938389}
+  booster1TextView: {fileID: 5447450927865475824}
+  booster2TextView: {fileID: 637016347358472285}
+  booster3TextView: {fileID: 468507006848597480}
+  booster4TextView: {fileID: 1802729846283863996}
+  booster5TextView: {fileID: 2816968131981995521}
+  booster6TextView: {fileID: 6857195513915123486}
 --- !u!1 &300975730111986919
 GameObject:
   m_ObjectHideFlags: 0
@@ -8444,7 +8450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6
+  m_text: G
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c7dfaf7049a354c778b0680f873e5f21, type: 2}
   m_sharedMaterial: {fileID: 5042227976159541632, guid: 630c9251bf5e2984dae253d20accc820, type: 2}

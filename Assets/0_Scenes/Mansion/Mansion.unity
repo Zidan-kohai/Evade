@@ -3702,7 +3702,7 @@ MonoBehaviour:
   is3Button: {fileID: 937886411}
   is4Button: {fileID: 937886410}
   is5Button: {fileID: 937886409}
-  is6Button: {fileID: 11430987}
+  isGButton: {fileID: 11430987}
 --- !u!1 &461251828
 GameObject:
   m_ObjectHideFlags: 0
