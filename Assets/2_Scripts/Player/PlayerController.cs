@@ -78,6 +78,20 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         GameplayController.AddRealyPlayerST(this);
         BuffHandler.AddRealyPlayerST(this);
         BoosterController.AddRealyPlayerST(this);
+
+
+        if(Geekplay.Instance.language == "ru")
+        {
+            name = "Вы";
+        }
+        else if (Geekplay.Instance.language == "ru")
+        {
+            name = "You";
+        }
+        else if (Geekplay.Instance.language == "ru")
+        {
+            name = "Sen";
+        }
     }
 
     private void Update()
