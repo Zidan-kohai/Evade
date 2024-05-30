@@ -136,6 +136,8 @@ namespace GeekplaySchool
             }
 
             StartCoroutine(TimeTreker());
+
+            
         }
 
         private void Start()
@@ -151,6 +153,11 @@ namespace GeekplaySchool
             RemainingTimeUntilRewardADV -= Time.deltaTime;
 
             remainingTimeUntilUpdateLeaderboard -= Time.deltaTime;
+
+            if(Input.GetKeyDown(KeyCode.J))
+            {
+                Wallet.AddMoneyST(1000);
+            }
         }
 
 
@@ -552,7 +559,7 @@ namespace GeekplaySchool
             }
             else if(leaderNumber == 9)
             {
-                EndGetLeaderboardsValue();
+                EndGetLeaderboardsValue("score");
             }
         }
 
@@ -571,10 +578,12 @@ namespace GeekplaySchool
             }
         }
 
-        public void EndGetLeaderboardsValue()
+        public void EndGetLeaderboardsValue(string type)
         {
             if (leaderboard == null) Debug.Log("Leaderboard is null");
 
+            if (type != "score") return;
+            
             leaderboard.SetLeadersView(lN.ToArray(), l.ToArray(), l.Count);
         }
 

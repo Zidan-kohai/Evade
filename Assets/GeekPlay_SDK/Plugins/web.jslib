@@ -190,7 +190,7 @@ var plugin = {
             console.log(res);
             if (res.entries.length <= number)
             {
-              myGameInstance.SendMessage('Init', 'EndGetLeaderboardsValue');
+              myGameInstance.SendMessage('Init', 'EndGetLeaderboardsValue', type);
               console.log("NULL");
               return;
             }
@@ -198,8 +198,11 @@ var plugin = {
             {
               console.log("SCORE");              
               console.log(String(res.entries[number].score));
+
               var message = String(res.entries[number].score) + "," + String(name);
+
               myGameInstance.SendMessage('Init', 'GetLeadersScore', message);
+
               //return String(res.entries[number].score);
             }
             else if (type == "name")

@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using GeekplaySchool;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -109,6 +108,7 @@ public class Leaderboard : MonoBehaviour
             SetLeadersView(Geekplay.Instance.lN.ToArray(), Geekplay.Instance.l.ToArray(), Geekplay.Instance.lN.Count);
             return;
         }
+
         switch(type)
         {
             case LeaderboardType.Survive:
@@ -156,7 +156,7 @@ public class Leaderboard : MonoBehaviour
     private void SpawnLeaderboardItem(LeaderboardItem prefab, string name, string value, int place)
     {
         LeaderboardItem item = Instantiate(prefab, leaderhandler);
-        item.Initialize(place, name, value);
+        item.Initialize(place + 1, name, value);
         currentLeaders.Add(item);
     }
 

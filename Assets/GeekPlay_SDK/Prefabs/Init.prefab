@@ -101,8 +101,8 @@ MonoBehaviour:
   leaderboardBtn: {fileID: 0}
   adOpen: 0
   MultipleSpeedBuff: 1
-  TimeToShowReward: 0
-  TimePasedFromLastReward: 0
+  TimeToShowReward: 90
+  RemainingTimeUntilRewardADV: 0
   IsTournamentStart: 0
   pausePopup: {fileID: 0}
   canPause: 1
@@ -115,6 +115,7 @@ MonoBehaviour:
   remainingTimeUntilUpdateLeaderboard: 0
   timeToUpdateLeaderboard: 60
   lastLeaderText: 
+  nightCount: 0
   reviewPanel: {fileID: 0}
   interstitialRemainingText: {fileID: 0}
   interstitialTime: 75

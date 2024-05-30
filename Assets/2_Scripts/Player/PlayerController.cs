@@ -158,7 +158,9 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     public void GetDownOnGround()
     {
+        characterController.enabled = false;
         transform.position = playerVisual.transform.position;
+        characterController.enabled = true;
         playerVisual.parent = transform;
         playerVisual.localPosition = new Vector3(0, 1, 0);
         playerVisual.localEulerAngles = Vector3.zero;
@@ -196,6 +198,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     public int GetEarnedMoney()
     {
+
         int earnedMoney = (helpCount * 10) + 25;
 
         earnedMoney *= moneyMultiplierFactor;
