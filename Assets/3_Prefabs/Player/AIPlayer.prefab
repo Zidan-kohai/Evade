@@ -1556,7 +1556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e855ea0f03f66d840b73f68a2a1f4249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeedOnPlayerUp: 70
+  startSpeedOnPlayerUp: 100
   maxSpeedOnPlayerUp: 200
   startSpeedOnPlayerFall: 3
   maxSpeedOnPlayerFall: 7

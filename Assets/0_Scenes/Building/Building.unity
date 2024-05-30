@@ -21847,6 +21847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 817575997565210850, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: m_Name
+      value: Thirsd Person Virtual Camera
+      objectReference: {fileID: 0}
     - target: {fileID: 836883443137320651, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.7
@@ -21951,6 +21955,26 @@ PrefabInstance:
       propertyPath: globalLights.Array.data[3]
       value: 
       objectReference: {fileID: 2028290866}
+    - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99119866
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.13238299
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0000000015302521
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613692486732782720, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -2.0437817e-10
+      objectReference: {fileID: 0}
     - target: {fileID: 7005582488443753406, guid: 4cfc360b7d0ac3a46aa0529908f9d88f, type: 3}
       propertyPath: _camera
       value: 

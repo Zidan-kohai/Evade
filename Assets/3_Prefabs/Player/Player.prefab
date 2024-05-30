@@ -586,8 +586,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 1
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 836883443137320651}
-  m_Follow: {fileID: 836883443137320651}
+  m_LookAt: {fileID: 4347578350522250872}
+  m_Follow: {fileID: 4347578350522250872}
   m_Lens:
     FieldOfView: 60.000004
     OrthographicSize: 5
@@ -1939,7 +1939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9384ab8608cdc3d479fe89cd51eed48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 1
+  m_BindingMode: 0
   m_FollowOffset: {x: 0, y: 25, z: -25}
   m_XDamping: 1
   m_YDamping: 0
