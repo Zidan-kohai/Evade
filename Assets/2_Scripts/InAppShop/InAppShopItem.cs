@@ -28,14 +28,14 @@ public class InAppShopItem : MonoBehaviour
         switch(data.RewardType)
         {
             case RewardType.Gold:
-                goldRewardView.text = data.Goldcount.ToString();
+                goldRewardView.text = $"{data.Goldcount}$";
                 break;
             case RewardType.Diamond:
-                diamondRewardView.text = data.DiamondCount.ToString();
+                diamondRewardView.text = $"{data.DiamondCount}$";
                 break;
             case RewardType.Both:
-                goldRewardView.text = data.Goldcount.ToString();
-                diamondRewardView.text = data.DiamondCount.ToString();
+                goldRewardView.text = $"{data.Goldcount}$";
+                diamondRewardView.text = $"{data.DiamondCount}$";
                 break;
         }
 

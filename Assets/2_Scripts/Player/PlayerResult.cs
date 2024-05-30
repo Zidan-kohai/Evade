@@ -20,7 +20,7 @@ public class PlayerResult : MonoBehaviour
         this.helpedCount.text = helpedCount.ToString();
         TimeSpan timeSpan = TimeSpan.FromSeconds(survivedTime);
         this.survivedTime.text = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
-        this.earnedMoney.text = earnedMoney.ToString();
+        this.earnedMoney.text = $"{earnedMoney}$";
         this.experience.text = experience.ToString();
     }
 
