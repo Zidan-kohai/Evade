@@ -26,6 +26,7 @@ public class GamplayLocalization : MonoBehaviour
     [SerializeField] private TextMeshProUGUI EndPanelWindowExperienceTextView;
 
     [Header("Look Panel")]
+    [SerializeField] private TextMeshProUGUI ExitTextView;
 
     [Header("Choose Map")]
     [SerializeField] private TextMeshProUGUI chooseMapVoiseTextView;
@@ -68,7 +69,7 @@ public class GamplayLocalization : MonoBehaviour
             EndPanelWindowMoneyTextView.text = "Деньги";
             EndPanelWindowExperienceTextView.text = "Опыт";
 
-
+            ExitTextView.text = "Выйти";
 
             chooseMapVoiseTextView.text = "Проголосуйте за карту";
 
@@ -108,6 +109,8 @@ public class GamplayLocalization : MonoBehaviour
             EndPanelWindowMoneyTextView.text = "Money";
             EndPanelWindowExperienceTextView.text = "Experience";
 
+            ExitTextView.text = "Exit";
+
             chooseMapVoiseTextView.text = "Vote for a map";
 
             mobileCarryTextView.text = "Carry";
@@ -144,7 +147,7 @@ public class GamplayLocalization : MonoBehaviour
             EndPanelWindowMoneyTextView.text = "Para";
             EndPanelWindowExperienceTextView.text = "Deneyim";
 
-
+            ExitTextView.text = "Cikmak";
 
             chooseMapVoiseTextView.text = "Haritaya oy verin";
 
