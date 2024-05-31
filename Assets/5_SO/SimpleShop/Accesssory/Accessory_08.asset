@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 0
   mainIcon: {fileID: 0}
   secondIcon: {fileID: 0}
-  openOnLevel: 0
+  openOnLevel: 5
   indexOnPlayer: 8
   nameRu: "\u0422\u0443\u0444\u043B\u0438 \u0413\u0435\u0440\u043C\u0435\u0441\u0430"
   nameEn: Hermes shoes

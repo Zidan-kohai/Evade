@@ -21,7 +21,7 @@ public class Shop : MonoBehaviour
 
     [SerializeField] private BoosterSwitcher boosterSwitcher;
 
-    private void Start()
+    private void OnEnable()
     {
         FirstSubscribe(firstItem);  
 
@@ -199,7 +199,6 @@ public class Shop : MonoBehaviour
 
             buyButton.onClick.AddListener(() =>
             {
-
                 Buy(item);
             });
         }

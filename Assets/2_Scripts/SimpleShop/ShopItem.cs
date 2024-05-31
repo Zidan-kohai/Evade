@@ -27,13 +27,9 @@ public class ShopItem : MonoBehaviour
 
     public Sprite GetMainIcn => data.mainIcon;
 
-    private void Start()
+    private void OnEnable()
     {
         nameTextView.text = data.Name();
-
-        isClose = CompareLevel();
-
-        if (IsClose) return;
 
         buyedCount = CheckBuyedCount();
 
@@ -41,6 +37,8 @@ public class ShopItem : MonoBehaviour
 
         CheckIsEquiped();
 
+        if(buyedCount == 0)
+            isClose = CompareLevel();
     }
 
     public void ChangeBuyedInfoText(int value)

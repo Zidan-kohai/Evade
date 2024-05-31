@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 [System.Serializable]
 public class Codes
@@ -76,13 +77,24 @@ public class Promocode : MonoBehaviour
 
     public void Promocode1()
     {
+        Wallet.AddMoneyST(100);
     }
 
     public void Promocode2()
     {
+        Wallet.AddMoneyST(100);
     }
 
     public void Promocode3()
     {
+        Wallet.AddMoneyST(100);
+    }
+    public void Promocode4()
+    {
+        Wallet.AddMoneyST(100);
+    }   
+    public void Promocode5()
+    {
+        Geekplay.Instance.PlayerData.BuyedAccessoryID.Add(8);
     }
 }
