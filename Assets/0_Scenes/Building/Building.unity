@@ -16906,7 +16906,7 @@ MonoBehaviour:
   - {fileID: 1788417969}
   - {fileID: 1863300195}
   - {fileID: 1621787897}
-  minSpawnCount: 4
+  minSpawnCount: 8
   spawnedEnemyCount: 0
   players:
   - {fileID: 2693988674285264582}

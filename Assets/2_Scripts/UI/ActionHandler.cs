@@ -88,7 +88,7 @@ public class ActionHandler : MonoBehaviour
         {
             speedValueView.text = $"{value.ToString("F0")}";
         }
-        else if (Geekplay.Instance.language == "ru")
+        else if (Geekplay.Instance.language == "tr")
         {
             speedValueView.text = $"{value.ToString("F0")}";
         }

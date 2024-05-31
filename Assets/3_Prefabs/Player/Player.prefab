@@ -313,7 +313,7 @@ MonoBehaviour:
   virtualCamera: {fileID: 5953735550957598145}
   playerVisual: {fileID: 4347578350522250872}
   actionUI: {fileID: 0}
-  distanceToHelp: 20
+  distanceToHelp: 35
   isCarry: 0
   carriedTransform: {fileID: 2755025758214090766}
   helpCount: 0
