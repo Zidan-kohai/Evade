@@ -68,7 +68,7 @@ public class PointerManager : MonoBehaviour {
 
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(_camera);
 
-        foreach (var kvp in _dictionary)
+        foreach (KeyValuePair<IEnemy, PointerIcon> kvp in _dictionary)
         {
 
             IEnemy enemyPointer = kvp.Key;

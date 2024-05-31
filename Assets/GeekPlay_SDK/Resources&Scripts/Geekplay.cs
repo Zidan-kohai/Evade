@@ -108,7 +108,7 @@ namespace GeekplaySchool
         //private Image curtainLoadVisual;
 
         private SceneLoader sceneLoader;
-        public Leaderboard leaderboard;
+        public LeaderboardController leaderboard;
 
         public OurGameWindow OurGame;
 
@@ -559,7 +559,7 @@ namespace GeekplaySchool
             }
             else if(leaderNumber == 9)
             {
-                EndGetLeaderboardsValue("score");
+                EndGetLeaderboardsValue("score", leaderboardName);
             }
         }
 
@@ -578,13 +578,15 @@ namespace GeekplaySchool
             }
         }
 
-        public void EndGetLeaderboardsValue(string type)
+        public void EndGetLeaderboardsValue(string type, string leaderboardName)
         {
             if (leaderboard == null) Debug.Log("Leaderboard is null");
 
             if (type != "score") return;
             
-            leaderboard.SetLeadersView(lN.ToArray(), l.ToArray(), l.Count);
+            leaderboard.SetLeadersView(lN.ToArray(), l.ToArray(), l.Count, leaderboardName);
+            lN.Clear();
+            l.Clear();
         }
 
         //СОХАРЕНИЕ И ЗАГРУЗКА
