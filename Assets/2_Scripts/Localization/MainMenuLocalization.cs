@@ -81,10 +81,10 @@ public class MainMenuLocalization : MonoBehaviour
             bonusDescriptionTextView.text = "Подпишись на наш канал и введи промокод который найдёшь там";
 
             ourGameOpenMainMenuTextView.text = "Меню";
-            geomertyDashNameTextView.text = "Геомметри деш";
-            dressGameNameTextView.text = "Одевалка";
-            slapBattlesTextView.text = "Битва пощёчин";
-            twoPlayerTextView.text = "Два игрока";
+            geomertyDashNameTextView.text = "Geometry Dash 3D";
+            dressGameNameTextView.text = "Создай Королеву - Салон Уэнсдей";
+            slapBattlesTextView.text = "Битва Пощечин | Робби Обби";
+            twoPlayerTextView.text = "Игры На Двоих: Дуэль";
 
             survivalTextView.text = "Пережитые игры";
             savedTextView.text = "Спасенные";
@@ -132,10 +132,10 @@ public class MainMenuLocalization : MonoBehaviour
 
 
             ourGameOpenMainMenuTextView.text = "Menu";
-            geomertyDashNameTextView.text = "Geomerty Dash";
-            dressGameNameTextView.text = "Dress Up";
-            slapBattlesTextView.text = "Slap Battle";
-            twoPlayerTextView.text = "Two Players";
+            geomertyDashNameTextView.text = "Geometry Dash 3D";
+            dressGameNameTextView.text = "Create a Queen - Wednesday Salon";
+            slapBattlesTextView.text = "Slap Battles | Robbi Obbi";
+            twoPlayerTextView.text = "Games For Two: Duel";
 
             survivalTextView.text = "Survived Games";
             savedTextView.text = "Saved";
@@ -181,10 +181,10 @@ public class MainMenuLocalization : MonoBehaviour
 
 
             ourGameOpenMainMenuTextView.text = "Menu";
-            geomertyDashNameTextView.text = "Geomerty Dash";
-            dressGameNameTextView.text = "Giydirme";
-            slapBattlesTextView.text = "Tokat Savasi";
-            twoPlayerTextView.text = "Iki Oyuncu";
+            geomertyDashNameTextView.text = "Geometry Dash 3D";
+            dressGameNameTextView.text = "Kralicesini Yaratin - Carsamba Salonu";
+            slapBattlesTextView.text = "Savas Tokadi | Robbi Obbi";
+            twoPlayerTextView.text = "Iki Kisilik Oyunlar: Duello";
 
             survivalTextView.text = "Hayatta Kalan Oyunlar";
             savedTextView.text = "Kaydedildi";

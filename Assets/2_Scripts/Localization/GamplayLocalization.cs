@@ -9,6 +9,7 @@ public class GamplayLocalization : MonoBehaviour
     [SerializeField] private TextMeshProUGUI putTextView;
     [SerializeField] private TextMeshProUGUI raisingTextView;
     [SerializeField] private TextMeshProUGUI exerciseTextView;
+    [SerializeField] private TextMeshProUGUI mainMenuButtonTextView;
 
 
     [Header("Lose Panel")]
@@ -47,8 +48,9 @@ public class GamplayLocalization : MonoBehaviour
 
     private void Start()
     {
+        mainMenuButtonTextView.text = "Выйти";
 
-        if(Geekplay.Instance.mobile)
+        if (Geekplay.Instance.mobile)
         {
             booster1TextView.gameObject.SetActive(false);
             booster2TextView.gameObject.SetActive(false);
@@ -97,11 +99,12 @@ public class GamplayLocalization : MonoBehaviour
             mobileCarryTextView.text = "Нести";
             mobilePutTextView.text = "Отпустить";
             mobileRaisingTextView.text = "Поднять";
-            mobileMainMenuTextView.text = "Выйти (Таб)";
+            mobileMainMenuTextView.text = "Выйти";
 
         }
         else if (Geekplay.Instance.language == "en")
         {
+            mainMenuButtonTextView.text = "Exit";
             booster6TextView.text = "G";
 
             if (Geekplay.Instance.mobile)
@@ -138,10 +141,11 @@ public class GamplayLocalization : MonoBehaviour
             mobileCarryTextView.text = "Carry";
             mobilePutTextView.text = "Release";
             mobileRaisingTextView.text = "Raise";
-            mobileMainMenuTextView.text = "Exit (Tab)";
+            mobileMainMenuTextView.text = "Exit";
         }
         else if (Geekplay.Instance.language == "tr")
         {
+            mainMenuButtonTextView.text = "Cikmak";
             booster6TextView.text = "G";
 
             if (Geekplay.Instance.mobile)
@@ -178,7 +182,7 @@ public class GamplayLocalization : MonoBehaviour
             mobileCarryTextView.text = "Oyle";
             mobilePutTextView.text = "Iptal";
             mobileRaisingTextView.text = "Artirmak";
-            mobileMainMenuTextView.text = "Cikmak (Tab)";
+            mobileMainMenuTextView.text = "Cikmak";
         }
     }
 }

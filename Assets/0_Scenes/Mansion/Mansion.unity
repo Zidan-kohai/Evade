@@ -1431,6 +1431,8 @@ MonoBehaviour:
   cameraSwitherHandler: {fileID: 1020071678}
   canSwitchCamera: 0
   mouseSensitivity: 100
+  mouseSensitivityPC: 100
+  mouseSensitivityMobile: 150
   minVerticalRotateClamp: -90
   maxVerticalRotateClamp: 90
   verticalRotation: 0
@@ -2803,7 +2805,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3693,6 +3695,7 @@ MonoBehaviour:
   spaceButton: {fileID: 937886419}
   isEButton: {fileID: 2143768978}
   isQButton: {fileID: 937886417}
+  isQ2Button: {fileID: 522452031}
   isTabButton: {fileID: 399180829}
   isTButton: {fileID: 2143768977}
   isT2Button: {fileID: 2143768976}
@@ -3983,6 +3986,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5682b406daeb52b4d919fa58369057b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &522452031 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8281259839534283742, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dedccdf85c8940e4fabc421ee162143d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &523728907
@@ -7959,7 +7973,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8982,7 +8996,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -16779,7 +16793,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

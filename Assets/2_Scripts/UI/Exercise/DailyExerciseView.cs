@@ -36,6 +36,28 @@ public class DailyExerciseView : MonoBehaviour
 
     }
 
+    public bool HasRewardThatNoneClaim()
+    {
+        for (int day = 0; day < dates.Count; day++)
+        {
+            for (int j = 0; j < dates[day].ExerciseCount(); j++)
+            {
+                if (!DailyExerciseController.Instance.HasExercise((Days)day, j) || day >= Geekplay.Instance.PlayerData.EnterCount) continue;
+
+                ExerciseProgress exercise = DailyExerciseController.Instance.GetExerciseInfo((Days)day, j);
+
+                bool isClaimed = Geekplay.Instance.PlayerData.IsExerciseClaim((Days)day, j);
+
+                if(!isClaimed && exercise.GetMaxProgress <= exercise.GetProgress)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     private void ActivateButton()
     {
         for(int i = 0; i < dates.Count; i++)

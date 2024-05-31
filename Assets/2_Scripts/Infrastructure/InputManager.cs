@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private MyButton spaceButton;
     [SerializeField] private MyButton isEButton;
     [SerializeField] private MyButton isQButton;
+    [SerializeField] private MyButton isQ2Button;
     [SerializeField] private MyButton isTabButton;
     [SerializeField] private MyButton isTButton;
     [SerializeField] private MyButton isT2Button;
@@ -109,6 +110,12 @@ public class InputManager : MonoBehaviour
         });
 
         isQButton.onClick.AddListener(() =>
+        {
+            isQ = true;
+            StartCoroutine(WaitFrame(() => isQ = false));
+        });
+
+        isQ2Button.onClick.AddListener(() =>
         {
             isQ = true;
             StartCoroutine(WaitFrame(() => isQ = false));

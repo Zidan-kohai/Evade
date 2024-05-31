@@ -20,7 +20,9 @@ public class CameraConrtoller : MonoBehaviour
     [SerializeField] private GameObject cameraSwitherHandler;
     [SerializeField] private bool canSwitchCamera = true;
 
-    [SerializeField] private float mouseSensitivity;
+    [SerializeField] private float mouseSensitivity = 100;
+    [SerializeField] private float mouseSensitivityPC = 100;
+    [SerializeField] private float mouseSensitivityMobile = 150;
     [SerializeField] private float minVerticalRotateClamp = -90f;
     [SerializeField] private float maxVerticalRotateClamp = 90f;
     [SerializeField] private float verticalRotation = 0f; 
@@ -35,10 +37,13 @@ public class CameraConrtoller : MonoBehaviour
 
     private void Awake()
     {
+        mouseSensitivity = mouseSensitivityPC;
+
         if (!Geekplay.Instance.mobile)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            mouseSensitivity = mouseSensitivityMobile;
         }
 
         thirdPlayerOrbitalTransposer = thirdPlayer.GetCinemachineComponent<CinemachineOrbitalTransposer>();

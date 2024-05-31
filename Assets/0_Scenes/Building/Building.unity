@@ -1840,6 +1840,8 @@ MonoBehaviour:
   cameraSwitherHandler: {fileID: 1018388905}
   canSwitchCamera: 0
   mouseSensitivity: 100
+  mouseSensitivityPC: 100
+  mouseSensitivityMobile: 150
   minVerticalRotateClamp: -90
   maxVerticalRotateClamp: 90
   verticalRotation: 0
@@ -5130,6 +5132,7 @@ MonoBehaviour:
   spaceButton: {fileID: 848229366}
   isEButton: {fileID: 2050252492}
   isQButton: {fileID: 848229364}
+  isQ2Button: {fileID: 603132118}
   isTabButton: {fileID: 6294590400431297059}
   isTButton: {fileID: 1262491941}
   isT2Button: {fileID: 848229362}
@@ -6324,6 +6327,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600449596}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &603132118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8281259839534283742, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 1234144572}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dedccdf85c8940e4fabc421ee162143d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &603331065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12444,6 +12458,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 122790199}
+    - target: {fileID: 4786414331149624629, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5802869809023053315, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

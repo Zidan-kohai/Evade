@@ -28,14 +28,6 @@ public class ActionHandler : MonoBehaviour
     [SerializeField] private SimpleSlider deathPercent;
     private Coroutine deathCoroutine;
 
-    [Header("Camera")]
-    [SerializeField] private GameObject cameraSwither;
-
-    private void Start()
-    {
-
-    }
-
 
     #region Help
     public void ShowHelpingUIManual()
@@ -90,15 +82,15 @@ public class ActionHandler : MonoBehaviour
     {
         if(Geekplay.Instance.language == "ru")
         {
-            speedValueView.text = $"Cкорость: {value.ToString("F0")}";
+            speedValueView.text = $"{value.ToString("F0")}";
         }
         else if (Geekplay.Instance.language == "en")
         {
-            speedValueView.text = $"Speed: {value.ToString("F0")}";
+            speedValueView.text = $"{value.ToString("F0")}";
         }
         else if (Geekplay.Instance.language == "ru")
         {
-            speedValueView.text = $"Hiz: {value.ToString("F0")}";
+            speedValueView.text = $"{value.ToString("F0")}";
         }
     }
 

@@ -13,7 +13,7 @@ public class GameplayEndMenu : MonoBehaviour
     [SerializeField] private ChooseMapSystem chooseMap;
     [SerializeField] private TextMeshProUGUI HeaderTextView;
     [SerializeField] private int playerCount = 0;
-
+    [SerializeField] private Color youDiedColor;
 
     public void Initialize(List<IPlayer> players, IPlayer realyPlayer)
     {
@@ -24,6 +24,7 @@ public class GameplayEndMenu : MonoBehaviour
         if(realyPlayer.IsDeath())
         {
             HeaderTextView.text = "Вы мертвы";
+            HeaderTextView.color = youDiedColor;
         }
         else
         {

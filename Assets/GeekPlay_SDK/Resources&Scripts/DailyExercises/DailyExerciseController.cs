@@ -88,6 +88,19 @@ public class DailyExerciseController : MonoBehaviour
 
     }
 
+    public bool HasExercise(Days day, int exerciseNumber)
+    {
+        foreach (var item in dailyExercises)
+        {
+            if (item.day == day)
+            {
+                return item.dailyExercise.HasExercise(exerciseNumber);
+            }
+        }
+
+        return false;
+    }
+
     public ExerciseProgress GetExerciseInfo(Days day, int exerciseNumber)
     {
         foreach (var item in dailyExercises)

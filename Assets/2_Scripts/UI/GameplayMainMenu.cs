@@ -8,6 +8,11 @@ public class GameplayMainMenu : MonoBehaviour
     [SerializeField] private GameObject exerciseHandler;
     [SerializeField] private TextMeshProUGUI lostTimeView;
     [SerializeField] private GameObject mobilePanel;
+    [SerializeField] private GameObject flashLight;
+    [SerializeField] private GameObject switchCameraPC;
+    [SerializeField] private GameObject switchCameraMobile;
+    [SerializeField] private GameObject mainMenuButtonPC;
+    [SerializeField] private GameObject mainMenuButtonMobile;
 
     [SerializeField] private PlayerController playerController;
     [SerializeField] private ActionHandler PCActionHandler;
@@ -25,9 +30,33 @@ public class GameplayMainMenu : MonoBehaviour
         {
             mobilePanel.SetActive(true);
             playerController.actionUI = mobileActionHandler;
-        }
+
+            if(Geekplay.Instance.PlayerData.CurrentEquipedLightID == 0)
+            {
+                flashLight.SetActive(false);
+            }
+
+            PCActionHandler.gameObject.SetActive(false);
+            mobileActionHandler.gameObject.SetActive(true);
+
+            switchCameraPC.SetActive(false);
+            switchCameraMobile.SetActive(true);
+
+            mainMenuButtonPC.SetActive(false);
+            mainMenuButtonMobile.SetActive(true);
+
+        }                                      
         else
         {
+            PCActionHandler.gameObject.SetActive(true);
+            mobileActionHandler.gameObject.SetActive(false);
+
+            switchCameraPC.SetActive(true);
+            switchCameraMobile.SetActive(false);
+
+            mainMenuButtonPC.SetActive(true);
+            mainMenuButtonMobile.SetActive(false);
+
             mobilePanel.SetActive(false);
             playerController.actionUI = PCActionHandler;
         }

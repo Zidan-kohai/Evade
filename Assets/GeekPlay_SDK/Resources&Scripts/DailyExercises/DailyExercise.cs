@@ -48,6 +48,11 @@ public class DailyExercise
         return result;
     }
 
+    public bool HasExercise(int exerciseNumber)
+    {
+        return exercises.Count > exerciseNumber;
+    }
+
     public ExerciseProgress GetExercise(int exerciseNumber)
     {
         return exercises[exerciseNumber];

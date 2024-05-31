@@ -2381,7 +2381,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2493,6 +2493,8 @@ MonoBehaviour:
   cameraSwitherHandler: {fileID: 492470159}
   canSwitchCamera: 0
   mouseSensitivity: 100
+  mouseSensitivityPC: 100
+  mouseSensitivityMobile: 150
   minVerticalRotateClamp: -90
   maxVerticalRotateClamp: 90
   verticalRotation: 0
@@ -2828,7 +2830,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6786,6 +6788,7 @@ MonoBehaviour:
   spaceButton: {fileID: 724549754}
   isEButton: {fileID: 1242668186}
   isQButton: {fileID: 639862858}
+  isQ2Button: {fileID: 705748705}
   isTabButton: {fileID: 947150428}
   isTButton: {fileID: 1242668185}
   isT2Button: {fileID: 1242668184}
@@ -10091,6 +10094,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4213957870099950250, guid: fbbbf6d323793654e837896a6fa3ea8b, type: 3}
   m_PrefabInstance: {fileID: 703413950}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &705748705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8281259839534283742, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 5759701419978455603}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dedccdf85c8940e4fabc421ee162143d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &706958715
 GameObject:
   m_ObjectHideFlags: 0
@@ -13540,7 +13554,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -22802,7 +22816,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -23935,7 +23949,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.25
+  m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
