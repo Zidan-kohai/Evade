@@ -131,7 +131,7 @@ TextureImporter:
         width: 265
         height: 259
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,7 +152,7 @@ TextureImporter:
         width: 159
         height: 306
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,7 +173,7 @@ TextureImporter:
         width: 353
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,7 +194,7 @@ TextureImporter:
         width: 320
         height: 104
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,7 +215,7 @@ TextureImporter:
         width: 345
         height: 313
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,7 +236,7 @@ TextureImporter:
         width: 389
         height: 312
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -257,7 +257,7 @@ TextureImporter:
         width: 316
         height: 353
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,12 +273,12 @@ TextureImporter:
       name: atlas_7
       rect:
         serializedVersion: 2
-        x: 89
-        y: 797
-        width: 369
-        height: 556
+        x: 1433
+        y: 1206
+        width: 334
+        height: 252
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,12 +294,12 @@ TextureImporter:
       name: atlas_8
       rect:
         serializedVersion: 2
-        x: 578
-        y: 942
-        width: 343
-        height: 332
+        x: 89
+        y: 797
+        width: 369
+        height: 556
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -315,12 +315,12 @@ TextureImporter:
       name: atlas_9
       rect:
         serializedVersion: 2
-        x: 1131
-        y: 1229
-        width: 103
-        height: 8
+        x: 578
+        y: 942
+        width: 343
+        height: 332
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -336,12 +336,12 @@ TextureImporter:
       name: atlas_10
       rect:
         serializedVersion: 2
-        x: 995
-        y: 936
-        width: 378
-        height: 291
+        x: 1131
+        y: 1229
+        width: 103
+        height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,12 +357,12 @@ TextureImporter:
       name: atlas_11
       rect:
         serializedVersion: 2
-        x: 1450
-        y: 970
-        width: 512
-        height: 184
+        x: 995
+        y: 936
+        width: 378
+        height: 291
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -378,12 +378,12 @@ TextureImporter:
       name: atlas_12
       rect:
         serializedVersion: 2
-        x: 106
-        y: 445
-        width: 656
-        height: 236
+        x: 1450
+        y: 970
+        width: 512
+        height: 184
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -399,12 +399,12 @@ TextureImporter:
       name: atlas_13
       rect:
         serializedVersion: 2
-        x: 870
-        y: 450
-        width: 283
-        height: 369
+        x: 106
+        y: 445
+        width: 656
+        height: 236
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -420,12 +420,12 @@ TextureImporter:
       name: atlas_14
       rect:
         serializedVersion: 2
-        x: 1348
-        y: 462
-        width: 189
-        height: 358
+        x: 870
+        y: 450
+        width: 283
+        height: 369
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -441,12 +441,12 @@ TextureImporter:
       name: atlas_15
       rect:
         serializedVersion: 2
-        x: 1669
-        y: 586
-        width: 333
-        height: 197
+        x: 1348
+        y: 462
+        width: 189
+        height: 358
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -462,12 +462,12 @@ TextureImporter:
       name: atlas_16
       rect:
         serializedVersion: 2
-        x: 99
-        y: 95
-        width: 201
-        height: 227
+        x: 1669
+        y: 586
+        width: 333
+        height: 197
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -483,12 +483,12 @@ TextureImporter:
       name: atlas_17
       rect:
         serializedVersion: 2
-        x: 442
-        y: 89
-        width: 332
-        height: 224
+        x: 99
+        y: 95
+        width: 201
+        height: 227
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -504,12 +504,12 @@ TextureImporter:
       name: atlas_18
       rect:
         serializedVersion: 2
-        x: 906
-        y: 81
-        width: 234
+        x: 442
+        y: 89
+        width: 332
         height: 224
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -525,12 +525,12 @@ TextureImporter:
       name: atlas_19
       rect:
         serializedVersion: 2
-        x: 1257
-        y: 48
-        width: 366
-        height: 332
+        x: 906
+        y: 81
+        width: 234
+        height: 224
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -546,12 +546,12 @@ TextureImporter:
       name: atlas_20
       rect:
         serializedVersion: 2
-        x: 1738
-        y: 82
-        width: 224
-        height: 420
+        x: 1257
+        y: 48
+        width: 366
+        height: 332
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -559,6 +559,48 @@ TextureImporter:
       bones: []
       spriteID: ed6f2c0233d2ae248bc9151e1877fe9d
       internalID: 822544436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_21
+      rect:
+        serializedVersion: 2
+        x: 1738
+        y: 82
+        width: 49
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9817ba765b51fc44bbf212db7e282f3
+      internalID: 737469240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas_22
+      rect:
+        serializedVersion: 2
+        x: 1915
+        y: 75
+        width: 44
+        height: 426
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03057839afe51cc4cbaae4e565a7346f
+      internalID: 2024488176
       vertices: []
       indices: 
       edges: []
@@ -589,6 +631,7 @@ TextureImporter:
       atlas_2: -1882948700
       atlas_20: 822544436
       atlas_21: 737469240
+      atlas_22: 2024488176
       atlas_3: -1684020414
       atlas_4: -1594494557
       atlas_5: 66077627
