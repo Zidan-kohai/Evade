@@ -18,6 +18,8 @@ public class CameraConrtoller : MonoBehaviour
     [SerializeField] private List<IPlayerCamera> AIPlayersCamera;
     [SerializeField] private int currentAIPlayerCameraIndex;
     [SerializeField] private GameObject cameraSwitherHandler;
+    [SerializeField] private GameObject cameraSwitherHandlerPC;
+    [SerializeField] private GameObject cameraSwitherHandlerMobile;
     [SerializeField] private bool canSwitchCamera = true;
 
     [SerializeField] private float mouseSensitivity = 100;
@@ -37,13 +39,18 @@ public class CameraConrtoller : MonoBehaviour
 
     private void Awake()
     {
-        mouseSensitivity = mouseSensitivityPC;
 
         if (!Geekplay.Instance.mobile)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            mouseSensitivity = mouseSensitivityPC;
+            cameraSwitherHandler = cameraSwitherHandlerPC;
+        }
+        else
+        {
             mouseSensitivity = mouseSensitivityMobile;
+            cameraSwitherHandler = cameraSwitherHandlerMobile;
         }
 
         thirdPlayerOrbitalTransposer = thirdPlayer.GetCinemachineComponent<CinemachineOrbitalTransposer>();

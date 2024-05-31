@@ -1428,7 +1428,9 @@ MonoBehaviour:
   thirdPlayerOrbitalTransposer: {fileID: 0}
   AIPlayersCamera: []
   currentAIPlayerCameraIndex: 0
-  cameraSwitherHandler: {fileID: 1020071678}
+  cameraSwitherHandler: {fileID: 0}
+  cameraSwitherHandlerPC: {fileID: 790047002}
+  cameraSwitherHandlerMobile: {fileID: 790047001}
   canSwitchCamera: 0
   mouseSensitivity: 100
   mouseSensitivityPC: 100
@@ -3993,7 +3995,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8281259839534283742, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
   m_PrefabInstance: {fileID: 218587383}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 790047001}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dedccdf85c8940e4fabc421ee162143d, type: 3}
@@ -5916,6 +5918,16 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781119636}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &790047001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8090434893723200005, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &790047002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4299857445869925743, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &794419748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7586,7 +7598,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 656903037924374633, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
   m_PrefabInstance: {fileID: 218587383}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 790047002}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dedccdf85c8940e4fabc421ee162143d, type: 3}
@@ -8548,11 +8560,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019960305}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1020071678 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4333873862571533406, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
-  m_PrefabInstance: {fileID: 218587383}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1020081443
 GameObject:
   m_ObjectHideFlags: 0
