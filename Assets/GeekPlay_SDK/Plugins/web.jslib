@@ -190,7 +190,10 @@ var plugin = {
             console.log(res);
             if (res.entries.length <= number)
             {
-              myGameInstance.SendMessage('Init', 'EndGetLeaderboardsValue', type);
+              var message = String(type) + "," + String(name);
+
+              myGameInstance.SendMessage('Init', 'EndGetLeaderboardsValue', message);
+
               console.log("NULL");
               return;
             }

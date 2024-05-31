@@ -1074,6 +1074,10 @@ PrefabInstance:
       propertyPath: Platform
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
+      propertyPath: leaderboard
+      value: 
+      objectReference: {fileID: 1134440620}
     - target: {fileID: 5023734575896185686, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

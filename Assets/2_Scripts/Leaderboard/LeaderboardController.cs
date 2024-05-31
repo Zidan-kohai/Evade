@@ -28,6 +28,8 @@ public class LeaderboardController : MonoBehaviour
 
     private void Start()
     {
+        Geekplay.Instance.leaderboard = this;
+
         surviveChapterButton.onClick.AddListener(OpenSurviveChapter);
         helpChapterButton.onClick.AddListener(OpenHelpChapter);
         donatChapterButton.onClick.AddListener(OpenDonatChapter);

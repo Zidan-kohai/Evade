@@ -559,7 +559,8 @@ namespace GeekplaySchool
             }
             else if(leaderNumber == 9)
             {
-                EndGetLeaderboardsValue("score", leaderboardName);
+                string paramets = "score" + ',' + leaderboardName;
+                EndGetLeaderboardsValue(paramets);
             }
         }
 
@@ -578,8 +579,12 @@ namespace GeekplaySchool
             }
         }
 
-        public void EndGetLeaderboardsValue(string type, string leaderboardName)
+        public void EndGetLeaderboardsValue(string paramets)
         {
+            string[] parts = paramets.Split(',');
+            string type = parts[0];
+            string leaderboardName = parts[1];
+
             if (leaderboard == null) Debug.Log("Leaderboard is null");
 
             if (type != "score") return;

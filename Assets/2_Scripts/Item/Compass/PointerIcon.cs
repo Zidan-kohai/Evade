@@ -12,9 +12,8 @@ public class PointerIcon : MonoBehaviour {
         _isShown = false;
     }
 
-    public void SetIconPosition(Vector3 position, Quaternion rotation) {
+    public void SetIconPosition(Vector3 position) {
         transform.position = position;
-        transform.rotation = rotation;
     }
 
     public void Show() {
