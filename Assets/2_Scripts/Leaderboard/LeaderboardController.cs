@@ -52,10 +52,8 @@ public class LeaderboardController : MonoBehaviour
 
     private void StartGetLeaderboard()
     {
-        if (Geekplay.Instance.Platform == Platform.Editor) return;
-
-        Utils.GetLeaderboard("score", 0, Helper.SurviveLeaderboardName);
-        Utils.GetLeaderboard("name", 0, Helper.SurviveLeaderboardName);
+        Geekplay.Instance.GetLeaderboard("score", 0, Helper.SurviveLeaderboardName);
+        Geekplay.Instance.GetLeaderboard("name", 0, Helper.SurviveLeaderboardName);
     }
 
     public void OpenSurviveChapter()
@@ -159,14 +157,14 @@ public class LeaderboardController : MonoBehaviour
         {
             surviveLeaderboard.SetLeadersView(names, values, count);
 
-            Utils.GetLeaderboard("score", 0, Helper.HelpLeaderboardName);
-            Utils.GetLeaderboard("name", 0, Helper.HelpLeaderboardName);
+            Geekplay.Instance.GetLeaderboard("score", 0, Helper.HelpLeaderboardName);
+            Geekplay.Instance.GetLeaderboard("name", 0, Helper.HelpLeaderboardName);
         }
         else if (leaderboardName == "Help")
         {
             helpLeaderboard.SetLeadersView(names, values, count);
-            Utils.GetLeaderboard("score", 0, Helper.DonatLeaderboardName);
-            Utils.GetLeaderboard("name", 0, Helper.DonatLeaderboardName);
+            Geekplay.Instance.GetLeaderboard("score", 0, Helper.DonatLeaderboardName);
+            Geekplay.Instance.GetLeaderboard("name", 0, Helper.DonatLeaderboardName);
         }
         else if (leaderboardName == "Donat")
         {

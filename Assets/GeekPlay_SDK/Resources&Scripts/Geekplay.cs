@@ -3,7 +3,9 @@ using GamePix;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -528,6 +530,22 @@ namespace GeekplaySchool
             }
         }
 
+        public void GetLeaderboard(string type, int number, string leaderboardName)
+        {
+            if (Platform == Platform.Editor)
+            {
+                string[] Names = { "asdsad", "asdsd", "assdsad", "adssadasd" };
+                string[] Values = { "13412", "2313", "123", "23" };
+                lN = Names.ToList();
+                l = Values.ToList();
+
+                string paramets = type + "," + leaderboardName;
+                EndGetLeaderboardsValue(paramets);
+                return;
+
+            }
+            Utils.GetLeaderboard(type, number, leaderboardName);
+        }
         public void LeaderboardBtn(int value) //Для кнопки лидерборда в VK
         {
             //value = playerData.Level;

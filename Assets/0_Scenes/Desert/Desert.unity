@@ -2493,7 +2493,7 @@ MonoBehaviour:
   cameraSwitherHandler: {fileID: 0}
   cameraSwitherHandlerPC: {fileID: 1172286547}
   cameraSwitherHandlerMobile: {fileID: 1172286546}
-  canSwitchCamera: 0
+  canSwitchCamera: 1
   mouseSensitivity: 100
   mouseSensitivityPC: 100
   mouseSensitivityMobile: 150
