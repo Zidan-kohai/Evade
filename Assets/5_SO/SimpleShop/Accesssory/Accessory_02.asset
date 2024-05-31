@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Accessory_02
   m_EditorClassIdentifier: 
   type: 0
-  mainIcon: {fileID: 0}
-  secondIcon: {fileID: 0}
+  mainIcon: {fileID: -810930117, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
+  mainIconSize: {x: 163.865, y: 185.061}
+  secondIcon: {fileID: -810930117, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
+  secondIconSize: {x: 100, y: 100}
   openOnLevel: 2
   indexOnPlayer: 2
   nameRu: "\u0411\u044D\u0439\u0434\u0436"

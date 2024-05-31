@@ -14,6 +14,7 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI equipedTextView;
     [SerializeField] private TextMeshProUGUI buyedCountTextView;
     [SerializeField] private TextMeshProUGUI nameTextView;
+    [SerializeField] private Image Icon;
     [SerializeField] private int buyedCount;
     [SerializeField] private bool isClose;
 
@@ -43,6 +44,9 @@ public class ShopItem : MonoBehaviour
 
     public void ChangeBuyedInfoText(int value)
     {
+        Icon.sprite = data.mainIcon;
+        Icon.rectTransform.sizeDelta = data.mainIconSize;
+
         if (value == 0 || data.type == SubjectType.Accessory || data.type == SubjectType.Light) return;
 
         buyedCountTextView.text = value.ToString();

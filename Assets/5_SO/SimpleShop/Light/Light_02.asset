@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Light_02
   m_EditorClassIdentifier: 
   type: 2
-  mainIcon: {fileID: 0}
+  mainIcon: {fileID: -267215687, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
+  mainIconSize: {x: 93.259, y: 179.48}
   secondIcon: {fileID: 0}
+  secondIconSize: {x: 100, y: 100}
   openOnLevel: 0
   indexOnPlayer: 2
   nameRu: "\u041B\u0430\u043C\u043F\u0430"

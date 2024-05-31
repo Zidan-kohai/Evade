@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Item_02
   m_EditorClassIdentifier: 
   type: 1
-  mainIcon: {fileID: 0}
-  secondIcon: {fileID: 0}
+  mainIcon: {fileID: -1716617638, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
+  mainIconSize: {x: 171.353, y: 167.473}
+  secondIcon: {fileID: -1716617638, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
+  secondIconSize: {x: 100, y: 100}
   openOnLevel: 0
   indexOnPlayer: 2
   nameRu: "\u0422\u0430\u0439\u043C\u0435\u0440"

@@ -1,13 +1,16 @@
 
 using GeekplaySchool;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "Item Data", menuName = "Shop/Item Data")]
 public class ShopItemData : ScriptableObject
 {
     public SubjectType type;
     public Sprite mainIcon;
+    public Vector2 mainIconSize = new Vector2(200, 65);
     public Sprite secondIcon;
+    public Vector2 secondIconSize = new Vector2(100, 100);
     public int openOnLevel;
     public int indexOnPlayer;
     public string nameRu;

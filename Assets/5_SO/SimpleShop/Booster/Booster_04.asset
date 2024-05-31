@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Booster_04
   m_EditorClassIdentifier: 
   type: 3
-  mainIcon: {fileID: 0}
-  secondIcon: {fileID: 0}
+  mainIcon: {fileID: -705856482, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
+  mainIconSize: {x: 181.976, y: 122.78}
+  secondIcon: {fileID: -705856482, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
+  secondIconSize: {x: 100, y: 100}
   openOnLevel: 0
   indexOnPlayer: 4
   nameRu: "\u0414\u0430\u0442\u0447\u0438\u043A"

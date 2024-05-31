@@ -25,17 +25,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427828170029541010}
-  m_LocalRotation: {x: -0, y: -0, z: -0.39296916, w: 0.9195517}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7141291523325381292}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -46.279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
-  m_SizeDelta: {x: 200, y: 65}
+  m_AnchoredPosition: {x: 0, y: 13}
+  m_SizeDelta: {x: 166.219, y: 162.455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1502870159331250381
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1684020414, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
+  m_Sprite: {fileID: -1716617638, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4419848274639338809
@@ -564,6 +564,7 @@ MonoBehaviour:
   equipedTextView: {fileID: 8185518556811303195}
   buyedCountTextView: {fileID: 7475299911719161766}
   nameTextView: {fileID: 1942821650641256799}
+  Icon: {fileID: 335832227794201277}
   buyedCount: 0
   isClose: 0
 --- !u!1 &8318580142107093149
@@ -907,6 +908,6 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
