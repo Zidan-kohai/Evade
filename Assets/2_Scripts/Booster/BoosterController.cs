@@ -79,6 +79,8 @@ public class BoosterController : MonoBehaviour
                     {
                         boosterItem[j].gameObject.SetActive(true);
                         boosterItem[j].image.sprite = booster.data.mainIcon;
+                        boosterItem[j].image.rectTransform.sizeDelta = booster.data.secondIconSize;
+                        
                         int index = i;
                         int boosterIndex = j;
                         boosterItem[j].boostEvent.AddListener(() =>

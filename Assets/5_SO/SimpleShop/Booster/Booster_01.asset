@@ -16,7 +16,7 @@ MonoBehaviour:
   mainIcon: {fileID: 1468405521, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
   mainIconSize: {x: 92.481, y: 175.176}
   secondIcon: {fileID: 1468405521, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
-  secondIconSize: {x: 100, y: 100}
+  secondIconSize: {x: 45.792, y: 86.7383}
   openOnLevel: 0
   indexOnPlayer: 1
   nameRu: "\u041A\u043E\u043B\u0430"

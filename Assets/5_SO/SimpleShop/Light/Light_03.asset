@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 2
   mainIcon: {fileID: 1077991393, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
   mainIconSize: {x: 180.779, y: 136.397}
-  secondIcon: {fileID: 0}
+  secondIcon: {fileID: 1077991393, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
   secondIconSize: {x: 100, y: 100}
   openOnLevel: 0
   indexOnPlayer: 3
