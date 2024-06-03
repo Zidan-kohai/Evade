@@ -48,7 +48,7 @@ public class GamplayLocalization : MonoBehaviour
 
     private void Start()
     {
-        mainMenuButtonTextView.text = "Выйти";
+        mainMenuButtonTextView.text = "Меню-Tab";
 
         if (Geekplay.Instance.mobile)
         {
@@ -104,7 +104,7 @@ public class GamplayLocalization : MonoBehaviour
         }
         else if (Geekplay.Instance.language == "en")
         {
-            mainMenuButtonTextView.text = "Exit";
+            mainMenuButtonTextView.text = "Menu-Tab";
             booster6TextView.text = "G";
 
             if (Geekplay.Instance.mobile)
@@ -145,7 +145,7 @@ public class GamplayLocalization : MonoBehaviour
         }
         else if (Geekplay.Instance.language == "tr")
         {
-            mainMenuButtonTextView.text = "Cikmak";
+            mainMenuButtonTextView.text = "Menu-Tab";
             booster6TextView.text = "G";
 
             if (Geekplay.Instance.mobile)
