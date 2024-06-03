@@ -530,7 +530,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654f3b02c4ae714438f90512406fa051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointerPrefab: {fileID: 475852734613081093, guid: 6675d8c381d78a74782f1f39dcdc6804, type: 3}
+  _enemyPointerPrefab: {fileID: 475852734613081093, guid: 6675d8c381d78a74782f1f39dcdc6804, type: 3}
+  _playerFallPointerPrefab: {fileID: 475852734613081093, guid: fcc8adb55e10eba4db3f9437f13c032f, type: 3}
   _playerTransform: {fileID: 836883443137320651}
   _camera: {fileID: 0}
   _pointerParent: {fileID: 0}

@@ -244,6 +244,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
         if (state == PlayerState.Carry) PutPlayer();
 
+        PointerManager.Instance.AddToList(this);
+
         ChangeState(PlayerState.Fall);
     }
 
@@ -333,6 +335,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 animationController.Up();
                 currrentMinSpeed = startSpeedOnPlayerUp;
                 currrentMaxSpeed = maxSpeedOnPlayerUp;
+
+                PointerManager.Instance.RemoveFromList(this);
                 break;
 
             case PlayerState.Walk:
@@ -359,6 +363,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
                 break;
 
             case PlayerState.Death:
+                PointerManager.Instance.RemoveFromList(this);
                 Death();
                 break;
         }

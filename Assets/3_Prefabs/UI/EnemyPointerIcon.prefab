@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5502318526949078899}
   - component: {fileID: 475852734613081093}
   m_Layer: 8
-  m_Name: PointerIcon
+  m_Name: EnemyPointerIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
