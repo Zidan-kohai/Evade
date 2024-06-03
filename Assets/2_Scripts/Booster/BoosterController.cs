@@ -2,6 +2,7 @@ using DG.Tweening;
 using GeekplaySchool;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -81,7 +82,9 @@ public class BoosterController : MonoBehaviour
                         boosterItem[j].gameObject.SetActive(true);
                         boosterItem[j].image.sprite = booster.data.mainIcon;
                         boosterItem[j].image.rectTransform.sizeDelta = booster.data.secondIconSize;
-                        
+
+                        boosterItem[j].remainingCounView.text = Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(booster.data.indexOnPlayer).value.ToString();
+
                         int index = i;
                         int boosterIndex = j;
                         boosterItem[j].boostEvent.AddListener(() =>
@@ -92,6 +95,7 @@ public class BoosterController : MonoBehaviour
                             }
 
                             Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(booster.data.indexOnPlayer).value--;
+                            boosterItem[j].remainingCounView.text = Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(booster.data.indexOnPlayer).value.ToString();
 
                             booster.boosterEvent?.Invoke();
                             DailyExerciseController.Instance.SetProgress(Days.Day3, 2);
@@ -114,17 +118,21 @@ public class BoosterController : MonoBehaviour
         {
             if (Geekplay.Instance.PlayerData.CurrentEquipedItemID == booster.data.indexOnPlayer && booster.data.type == SubjectType.Item)
             {
+                meatUsedCount = meatMaxUseCount;
 
                 boosterItem[5].gameObject.SetActive(true);
                 boosterItem[5].image.sprite = booster.data.mainIcon;
+                boosterItem[5].remainingCounView.text = meatUsedCount.ToString();
+
                 boosterItem[5].boostEvent.AddListener(() =>
                 {
-                    if (meatUsedCount >= meatMaxUseCount) return;
+                    if (meatUsedCount <= 0) return;
 
-                    meatUsedCount++;
+                    meatUsedCount--;
+                    boosterItem[5].remainingCounView.text = meatUsedCount.ToString();
                     booster.boosterEvent?.Invoke();
 
-                    if(meatUsedCount >= meatMaxUseCount) boosterItem[5].gameObject?.SetActive(false);
+                    if(meatUsedCount <= 0) boosterItem[5].gameObject?.SetActive(false);
                 });
                 break;
             }
@@ -335,7 +343,8 @@ public class BoosterItem
 {
     public GameObject gameObject;
     public Image image;
-
+    public TextMeshProUGUI remainingCounView;
+ 
     [HideInInspector]
     public UnityEvent boostEvent;
 }

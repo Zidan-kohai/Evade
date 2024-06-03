@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using GeekplaySchool;
 public static class Extension
 {
     public static bool HasKey(this List<MyDictionary> collection, int key)

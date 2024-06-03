@@ -260,9 +260,11 @@ public class ExerciseSaveData
     public bool IsClaim;
 }
 
+namespace GeekplaySchool{ 
 [Serializable]
 public class MyDictionary
 {
     public int key;
     public int value;
+}
 }

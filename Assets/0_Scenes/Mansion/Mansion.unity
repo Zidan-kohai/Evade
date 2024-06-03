@@ -3823,6 +3823,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 103639689}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &474792708 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4017349406989118769, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &474792709 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5589704058311973154, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &474792710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6733019437838778357, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &474792711 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1719031133569849268, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &474792712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5216935854633867075, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &474792713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4410703153805917293, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &475464571
 GameObject:
   m_ObjectHideFlags: 0
@@ -6489,31 +6555,37 @@ MonoBehaviour:
   boosterItem:
   - gameObject: {fileID: 284119848}
     image: {fileID: 284119847}
+    remainingCounView: {fileID: 474792712}
     boostEvent:
       m_PersistentCalls:
         m_Calls: []
   - gameObject: {fileID: 284119846}
     image: {fileID: 284119845}
+    remainingCounView: {fileID: 474792711}
     boostEvent:
       m_PersistentCalls:
         m_Calls: []
   - gameObject: {fileID: 284119844}
     image: {fileID: 284119843}
+    remainingCounView: {fileID: 474792710}
     boostEvent:
       m_PersistentCalls:
         m_Calls: []
   - gameObject: {fileID: 284119842}
     image: {fileID: 284119841}
+    remainingCounView: {fileID: 474792709}
     boostEvent:
       m_PersistentCalls:
         m_Calls: []
   - gameObject: {fileID: 284119849}
     image: {fileID: 284119840}
+    remainingCounView: {fileID: 474792708}
     boostEvent:
       m_PersistentCalls:
         m_Calls: []
   - gameObject: {fileID: 270541659}
     image: {fileID: 270541658}
+    remainingCounView: {fileID: 474792713}
     boostEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -11304,7 +11376,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 2.3333333
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 8af4dfa1106f1a94ba513cf423927752, type: 2}
   m_BuildHeightMesh: 0
