@@ -299,9 +299,11 @@ namespace GeekplaySchool
 
             for (int i = 0; i < purchasesList.Length; i++)
             {
+                Debug.Log("I: " + i);
                 if (PlayerData.LastBuy == purchasesList[i].itemName)
                 {
                     purchasesList[i].purchaseEvent.Invoke();
+                    Debug.Log("Get Reward");
                     PlayerData.LastBuy = "";
                     Save();
                 }

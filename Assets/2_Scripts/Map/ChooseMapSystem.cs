@@ -12,7 +12,7 @@ public class ChooseMapSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI descriptionView;
     [SerializeField] private float timeToChooseMap;
 
-    [SerializeField] private PlayerIcon playerIconPrefab;
+    [SerializeField] private List<PlayerIcon> playerIcons;
     [SerializeField] private PlayerIconHandler easyMapPlayerHandler;
     [SerializeField] private PlayerIconHandler middleMapPlayerHandler;
     [SerializeField] private PlayerIconHandler hardMapPlayerHandler;
@@ -117,33 +117,40 @@ public class ChooseMapSystem : MonoBehaviour
 
     private void SpawnPlayerIcon(int playerCount)
     {
-        for (int i = 0; i < playerCount; i++)
+        for (int i = 0; i < playerIcons.Count; i++)
         {
-            PlayerIcon player = Instantiate(playerIconPrefab);
-
-            if (i == 0)
+            if(i < playerCount)
             {
-                playerIcon = player;
-                if(Geekplay.Instance.language == "ru")
+                playerIcon = playerIcons[i];
+
+                playerIcon.gameObject.SetActive(true);
+
+                if (i == 0)
                 {
-                    player.Initialize(i, "Вы");
+                    if (Geekplay.Instance.language == "ru")
+                    {
+                        playerIcon.Initialize(i, "Вы");
+                    }
+                    else if (Geekplay.Instance.language == "en")
+                    {
+                        playerIcon.Initialize(i, "You");
+                    }
+                    else if (Geekplay.Instance.language == "tr")
+                    {
+                        playerIcon.Initialize(i, "Sen");
+                    }
                 }
-                else if (Geekplay.Instance.language == "en")
+                else
                 {
-                    player.Initialize(i, "You");
-                }
-                else if (Geekplay.Instance.language == "tr")
-                {
-                    player.Initialize(i, "Sen");
+                    AIPlayersIcon.Add(playerIcons[i]);
+                    playerIcons[i].Initialize(i, i.ToString());
+                    playerIcons[i].SetMap(easyMapPlayerHandler);
                 }
             }
             else
             {
-                AIPlayersIcon.Add(player);
-                player.Initialize(i, i.ToString());
+                playerIcons[i].gameObject.SetActive(false);
             }
-
-            player.SetMap(easyMapPlayerHandler);
 
         }
     }
