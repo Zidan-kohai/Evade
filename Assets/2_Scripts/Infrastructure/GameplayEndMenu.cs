@@ -23,12 +23,35 @@ public class GameplayEndMenu : MonoBehaviour
 
         if(realyPlayer.IsFallOrDeath())
         {
-            HeaderTextView.text = "Вы мертвы";
+            if (Geekplay.Instance.language == "ru")
+            {
+                HeaderTextView.text = "Вы мертвы";
+            }
+            else if (Geekplay.Instance.language == "en")
+            {
+                HeaderTextView.text = "you are dead";
+            }
+            else if (Geekplay.Instance.language == "tr")
+            {
+                HeaderTextView.text = "sen olusun";
+            }
+
             HeaderTextView.color = youDiedColor;
         }
         else
         {
-            HeaderTextView.text = "Вы выжили";
+            if(Geekplay.Instance.language == "ru")
+            {
+                HeaderTextView.text = "Вы выжили";
+            }
+            else if(Geekplay.Instance.language == "en")
+            {
+                HeaderTextView.text = "You survived";
+            }
+            else if(Geekplay.Instance.language == "tr")
+            {
+                HeaderTextView.text = "hayatta kaldin";
+            }
 
             Geekplay.Instance.PlayerData.SurviveCount++;
 
