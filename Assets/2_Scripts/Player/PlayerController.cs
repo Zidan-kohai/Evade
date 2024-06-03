@@ -135,10 +135,13 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
 
         if (isCarry && inputManager.GetIsT)
+        {
             PutPlayer();
-
-        if (state != PlayerState.Fall && state != PlayerState.Death)
+        }
+        else if (state != PlayerState.Fall && state != PlayerState.Death)
+        {
             Help();
+        }
     }
 
     public void CreateBait()
@@ -546,12 +549,12 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     private void Help()
     {
-        if (CanHelp(out IPlayer player))
+        if (CanHelp(out IPlayer player) && !isCarry)
         {
             actionUI.ShowHelpingUIManual();
             actionUI.ShowCarryExplain();
 
-            if(inputManager.GetIsT && !isCarry)
+            if(inputManager.GetIsT)
             {
                 Carry(player);
             }
@@ -583,6 +586,8 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     private bool CanHelp(out IPlayer player)
     {
+        player = null;
+
         for(int i = 0; i < players.Count; i++)
         {
             float distanceToPlayer = (players[i].GetTransform().position - transform.position).magnitude;
@@ -593,7 +598,6 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
             }
         }
 
-        player = null;
         return false;
     }
 
