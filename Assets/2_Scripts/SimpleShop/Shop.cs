@@ -245,7 +245,7 @@ public class Shop : MonoBehaviour
 
     private void EquipBooster(ShopItem item)
     {
-        for(int i = 0; i < Geekplay.Instance.PlayerData.CurrentBoosterKeys.Count; i++)
+        for(int i = 0; i < 3; i++)
         {
             if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == -1 && !Geekplay.Instance.PlayerData.CurrentBoosterKeys.Contains(item.GetIndexOnPlayer))
             {

@@ -32,7 +32,7 @@ public class PlayerData
     public List<int> BuyedItemID = new List<int>();
     public int CurrentEquipedItemID = 0;
     public List<MyDictionary> BuyedBoosterID = new List<MyDictionary>();
-    public List<int> CurrentBoosterKeys = new List<int>() { -1, -1, -1};
+    public List<int> CurrentBoosterKeys = new List<int>() { -1, -1, -1, -1, -1};
 
     public List<int> Codes = new List<int>();
     #region Exercise Day
