@@ -319,6 +319,8 @@ public class BoosterController : MonoBehaviour
 
     public void Teleport(TeleportPoint point, IPlayer player)
     {
+        if (teleportsInstance.Count == 1) return; 
+
         int rand = UnityEngine.Random.Range(0, teleportsInstance.Count);
         if(point == teleportsInstance[rand])
         {

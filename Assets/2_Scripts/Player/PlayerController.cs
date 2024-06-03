@@ -179,12 +179,11 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         isTeleport = true;
         characterController.enabled = false;
         transform.position = teleportPosition;
-
+        characterController.enabled = true;
         DOTween.Sequence()
             .AppendInterval(0.3f)
             .AppendCallback(() => 
             {
-                characterController.enabled = true;
                 isTeleport = false;
             });  
     }
