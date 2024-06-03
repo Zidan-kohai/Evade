@@ -65,7 +65,7 @@ public class BuffHandler : MonoBehaviour
 
     public void HelthKitBuff()
     {
-        realyPlayer.SetMaxSpeedOnFall(30);
+        realyPlayer.SetMaxSpeedOnFall(20, false);
     }
 
     public void StiltsKitBuff()

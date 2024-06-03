@@ -232,7 +232,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     public float SetMaxSpeedOnFall(int value, bool isFactor = true)
     {
-        //increase maximum Fall speed by percentage(increaseFactor)
+        //increase maximum Fall speed by percentage(value)
         float result;
         if(isFactor)
         {
@@ -250,7 +250,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     public float SetMaxSpeedOnUp(int value, bool isFactor = true)
     {
-        //increase maximum Up speed by percentage(increaseFactor)
+        //increase maximum Up speed by percentage(value)
         float result;
         if(isFactor)
         {
