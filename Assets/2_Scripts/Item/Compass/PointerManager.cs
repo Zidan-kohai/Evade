@@ -60,28 +60,7 @@ public class PointerManager : MonoBehaviour {
     }
     public void AddToList(IPlayer playerPointer)
     {
-        if (_dictionaryFallAIPlayer.Count > 0 && !_dictionaryFallAIPlayer.ContainsKey(playerPointer))
-        {
-            List<PointerIcon> icons = new List<PointerIcon>();
-
-            foreach (var item in _dictionaryFallAIPlayer)
-            {
-                icons.Add(item.Value);
-            }
-
-            while (icons.Count > 0)
-            {
-                PointerIcon icon = icons[0];
-                icons.RemoveAt(0);
-                Destroy(icon.gameObject);
-            }
-
-            _dictionaryFallAIPlayer.Clear();
-        }
-        else if (_dictionaryFallAIPlayer.ContainsKey(playerPointer))
-        {
-            return;
-        }
+        if (_dictionaryFallAIPlayer.ContainsKey(playerPointer)) return;
 
         PointerIcon newPointer = Instantiate(_playerFallPointerPrefab, _pointerParent);
         _dictionaryFallAIPlayer.Add(playerPointer, newPointer);
@@ -104,16 +83,32 @@ public class PointerManager : MonoBehaviour {
     {
         foreach (KeyValuePair<IPlayer, PointerIcon> kvp in _dictionaryFallAIPlayer)
         {
-            IPlayer enemyPointer = kvp.Key;
+            IPlayer playerPointer = kvp.Key;
             PointerIcon pointerIcon = kvp.Value;
 
-            Vector3 position = _camera.WorldToScreenPoint(enemyPointer.GetTransform().position);
+            Vector3 position = _camera.WorldToScreenPoint(playerPointer.GetTransform().position);
+
+            Vector3 from = (playerPointer.GetTransform().position - transform.position).normalized;
+
+            float angle = Vector3.Dot(from, transform.forward);
+
+            if (angle < 0f)
+            {
+                if (position.x < Screen.width / 2)
+                {
+                    position.x = Screen.width;
+                }
+                else
+                {
+                    position.x = 0;
+                }
+            }
+
 
             position.x = Mathf.Clamp(position.x, 50, Screen.width - 50);
             position.y = Mathf.Clamp(position.y, 50, Screen.height - 50);
 
             pointerIcon.Show();
-
             pointerIcon.SetIconPosition(position);
         }
 
@@ -125,12 +120,29 @@ public class PointerManager : MonoBehaviour {
             PointerIcon pointerIcon = kvp.Value;
 
             Vector3 position = _camera.WorldToScreenPoint(enemyPointer.GetTransform().position);
+
+            Vector3 from = (enemyPointer.GetTransform().position - transform.position).normalized;
+
+            float angle = Vector3.Dot(from, transform.forward);
+
+            if (angle < 0f)
+            {
+                if (position.x < Screen.width / 2)
+                {
+                    position.x = Screen.width;
+                }
+                else
+                {
+                    position.x = 0;
+                }
+            }
+
             position.x = Mathf.Clamp(position.x, 50, Screen.width - 50);
             position.y = Mathf.Clamp(position.y, 50, Screen.height - 50);
 
             pointerIcon.Show();
-
             pointerIcon.SetIconPosition(position);
+
         }
 
     }
