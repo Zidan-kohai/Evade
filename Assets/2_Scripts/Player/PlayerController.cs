@@ -234,6 +234,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     {
         //increase maximum Fall speed by percentage(value)
         float result;
+
         if(isFactor)
         {
             result = (maxSpeedOnPlayerFall * value) / 100;

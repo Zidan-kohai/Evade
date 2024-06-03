@@ -11,6 +11,8 @@ public class BoosterSwitcher : MonoBehaviour
     [SerializeField] private List<ShopItemData> Boosters;
     [SerializeField] private Sprite defaultSprite;
 
+    public event Action BoosterChange;
+
     //Need refactoring
     public void Initialize(ShopItem currentHandItem, TextMeshProUGUI equipButtonTextView)
     {
@@ -45,53 +47,35 @@ public class BoosterSwitcher : MonoBehaviour
                 {
                     cells[cellIndex].cellIcon.sprite = defaultSprite;
                     Debug.Log("sprite: " + cells[cellIndex].cellIcon.sprite);
-                }   
+                }
+                currentHandItem.Equip();
+
+                BoosterChange?.Invoke();
             });
         }
 
-        //Need refactoring
+        int count = 3;
+
         if (Geekplay.Instance.PlayerData.CurrentEquipedAccessoryID == 7)
-        {
-            for (int i = 0; i < Geekplay.Instance.PlayerData.CurrentBoosterKeys.Count; i++)
-            {
-                cells[i].mainObject.SetActive(true);
+            count = 5;
 
-                for (int j = i; j < cells.Count; j++)
-                {
-                    bool result = false;
-                    foreach (ShopItemData booster in Boosters)
-                    {
-                        if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == booster.indexOnPlayer)
-                        {
-                            cells[j].cellIcon.sprite = booster.mainIcon;
-                            result = true;
-                            break;
-                        }
-                    }
-                    if (result) break;
-                }
-            }
-        }
-        else
+        for (int i = 0; i < count; i++)
         {
-            for (int i = 0; i < 3; i++)
-            {
-                cells[i].mainObject.SetActive(true);
+            cells[i].mainObject.SetActive(true);
 
-                for (int j = i; j < cells.Count; j++)
+            for (int j = i; j < cells.Count; j++)
+            {
+                bool result = false;
+                foreach (ShopItemData booster in Boosters)
                 {
-                    bool result = false;
-                    foreach (ShopItemData booster in Boosters)
+                    if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == booster.indexOnPlayer)
                     {
-                        if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == booster.indexOnPlayer)
-                        {
-                            cells[j].cellIcon.sprite = booster.mainIcon;
-                            result = true;
-                            break;
-                        }
+                        cells[j].cellIcon.sprite = booster.mainIcon;
+                        result = true;
+                        break;
                     }
-                    if (result) break;
                 }
+                if (result) break;
             }
         }
     }

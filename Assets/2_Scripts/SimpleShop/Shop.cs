@@ -26,6 +26,8 @@ public class Shop : MonoBehaviour
         FirstSubscribe(firstItem);  
 
         SubscribeEventOnItemsClick();
+
+        boosterSwitcher.BoosterChange += BoosterChange;
     }
 
     private void FirstSubscribe(ShopItem item)
@@ -245,7 +247,11 @@ public class Shop : MonoBehaviour
 
     private void EquipBooster(ShopItem item)
     {
-        for(int i = 0; i < 3; i++)
+        int count = 3;
+        if (Geekplay.Instance.PlayerData.CurrentEquipedAccessoryID == 7)
+            count = 5;
+
+        for (int i = 0; i < count; i++)
         {
             if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == -1 && !Geekplay.Instance.PlayerData.CurrentBoosterKeys.Contains(item.GetIndexOnPlayer))
             {
@@ -257,7 +263,23 @@ public class Shop : MonoBehaviour
 
         Geekplay.Instance.Save();
     }
-
+    private void BoosterChange()
+    {
+        foreach (var item in items)
+        {
+            if (item.GetType == SubjectType.Booster)
+            {
+                if(Geekplay.Instance.PlayerData.CurrentBoosterKeys.Contains(item.GetIndexOnPlayer))
+                {
+                    item.Equip();
+                }
+                else
+                {
+                    item.Dequip();
+                }
+            }
+        }
+    }
     private void EquipItem(ShopItem item)
     {
         Geekplay.Instance.PlayerData.CurrentEquipedItemID = item.GetIndexOnPlayer;
@@ -386,5 +408,10 @@ public class Shop : MonoBehaviour
         {
             equipTextView.text = "Donatmak";
         }
+    }
+
+    private void OnDisable()
+    {
+        boosterSwitcher.BoosterChange -= BoosterChange;
     }
 }
