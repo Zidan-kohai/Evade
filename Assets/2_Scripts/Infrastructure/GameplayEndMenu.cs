@@ -17,6 +17,9 @@ public class GameplayEndMenu : MonoBehaviour
 
     public void Initialize(List<IPlayer> players, IPlayer realyPlayer)
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         gameObject.SetActive(true);
 
         AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney(), realyPlayer.GetEarnedExperrience());
@@ -76,8 +79,6 @@ public class GameplayEndMenu : MonoBehaviour
         {
             AddPlayer(player.GetName(), player.GetHelpCount(), player.GetSurvivedTime(), player.GetEarnedMoney(), player.GetEarnedExperrience());
         }
-
-        Close();
         
     }
 
@@ -95,18 +96,11 @@ public class GameplayEndMenu : MonoBehaviour
         }
     }
 
-    private void Close()
+    public void Close()
     {
-        StartCoroutine(Wait(5f, () =>
-        {
-            gameObject.SetActive(false);
-            chooseMap.Initialize(playerCount);
-        }));
-    }
+        Geekplay.Instance.ShowInterstitialAd();
 
-    private IEnumerator Wait(float waitTime, Action action)
-    {
-        yield return new WaitForSecondsRealtime(waitTime);
-        action?.Invoke();
+        gameObject.SetActive(false);
+        chooseMap.Initialize(playerCount);
     }
 }

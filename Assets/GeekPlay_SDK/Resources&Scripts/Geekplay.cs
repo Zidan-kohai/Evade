@@ -209,6 +209,8 @@ namespace GeekplaySchool
 
         public void LoadScene(int sceneIndex)
         {
+            ShowInterstitialAd();
+
             sceneLoader.LoadScene(sceneIndex);
         }
         public void EnablePlayedGameToggle(int id)

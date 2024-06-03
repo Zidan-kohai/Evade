@@ -1,3 +1,4 @@
+using GeekplaySchool;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -118,7 +119,9 @@ public class GameplayController : MonoBehaviour
 
     public void LoadScene(int index)
     {
-        SceneManager.LoadScene(index);
+        Geekplay.Instance.ShowInterstitialAd();
+
+        Geekplay.Instance.LoadScene(index);
     }
 
     private void End()

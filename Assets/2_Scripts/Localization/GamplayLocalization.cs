@@ -26,6 +26,7 @@ public class GamplayLocalization : MonoBehaviour
     [SerializeField] private TextMeshProUGUI EndPanelWindowTimeTextView;
     [SerializeField] private TextMeshProUGUI EndPanelWindowMoneyTextView;
     [SerializeField] private TextMeshProUGUI EndPanelWindowExperienceTextView;
+    [SerializeField] private TextMeshProUGUI EndPanelNewGameButtonTextView;
 
     [Header("Look Panel")]
     [SerializeField] private TextMeshProUGUI ExitTextView;
@@ -93,6 +94,7 @@ public class GamplayLocalization : MonoBehaviour
             EndPanelWindowTimeTextView.text = "Время";
             EndPanelWindowMoneyTextView.text = "Деньги";
             EndPanelWindowExperienceTextView.text = "Опыт";
+            EndPanelNewGameButtonTextView.text = "Новая игра";
 
             ExitTextView.text = "Выйти";
 
@@ -137,6 +139,7 @@ public class GamplayLocalization : MonoBehaviour
             EndPanelWindowTimeTextView.text = "Time";
             EndPanelWindowMoneyTextView.text = "Money";
             EndPanelWindowExperienceTextView.text = "Experience";
+            EndPanelNewGameButtonTextView.text = "New Game";
 
             ExitTextView.text = "Exit";
 
@@ -179,6 +182,7 @@ public class GamplayLocalization : MonoBehaviour
             EndPanelWindowTimeTextView.text = "Zaman";
             EndPanelWindowMoneyTextView.text = "Para";
             EndPanelWindowExperienceTextView.text = "Deneyim";
+            EndPanelNewGameButtonTextView.text = "Yeni oyun";
 
             ExitTextView.text = "Cikmak";
 
