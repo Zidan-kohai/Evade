@@ -96,6 +96,7 @@ MonoBehaviour:
   description: {fileID: 2429686265160040313}
   progress: {fileID: 8544980229625642366}
   reward: {fileID: 7944755283452323838}
+  rewardDescription: {fileID: 2368361210082912436}
   progressSlider: {fileID: 6892910367457225020}
   claimButton: {fileID: 6499091232176452101}
   claimButtonText: {fileID: 6481809042496922247}

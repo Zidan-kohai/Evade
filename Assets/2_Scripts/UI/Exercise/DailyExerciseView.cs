@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class DailyExerciseView : MonoBehaviour
 {
     [Header("Button")]
     [SerializeField] private List<ExerciseDayButton> daysButton;
 
+    [SerializeField] private TextMeshProUGUI dailyMainMenuText;
     [SerializeField] private TextMeshProUGUI dailyHeaderText;
     [SerializeField] private TextMeshProUGUI dailyRewardText;
     [SerializeField] private Button dailyClaimButton;
@@ -26,6 +28,18 @@ public class DailyExerciseView : MonoBehaviour
 
     private void Start()
     {
+        if (Geekplay.Instance.language == "ru")
+        {
+            dailyMainMenuText.text = "Μενώ";
+        }
+        else if (Geekplay.Instance.language == "en")
+        {
+            dailyMainMenuText.text = "Menu";
+        }
+        else if (Geekplay.Instance.language == "tr")
+        {
+            dailyMainMenuText.text = "Menu";
+        }
     }
 
     private void OnEnable()
@@ -63,8 +77,21 @@ public class DailyExerciseView : MonoBehaviour
         for(int i = 0; i < dates.Count; i++)
         {
             int dayIndex = i;
+            
+            if(Geekplay.Instance.language == "ru")
+            {
+                daysButton[i].text.text = $"Δενό {dayIndex + 1}";
+            }
+            else if (Geekplay.Instance.language == "en")
+            {
+                daysButton[i].text.text = $"Day {dayIndex + 1}";
+            }
+            else if (Geekplay.Instance.language == "tr")
+            {
+                daysButton[i].text.text = $"Gun {dayIndex + 1}";
+            }
 
-            if(dayIndex < Geekplay.Instance.PlayerData.EnterCount)
+            if (dayIndex < Geekplay.Instance.PlayerData.EnterCount)
                 daysButton[i].closePanel.gameObject.SetActive(false);
 
             daysButton[i].button.onClick.AddListener(() =>
@@ -194,5 +221,6 @@ public class DailyExerciseView : MonoBehaviour
     {
         public Button button;
         public GameObject closePanel; 
+        public TextMeshProUGUI text; 
     }
 }

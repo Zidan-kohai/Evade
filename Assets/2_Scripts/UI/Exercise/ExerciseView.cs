@@ -8,6 +8,7 @@ public class ExerciseView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private TextMeshProUGUI progress;
     [SerializeField] private TextMeshProUGUI reward;
+    [SerializeField] private TextMeshProUGUI rewardDescription;
 
     [SerializeField] private Slider progressSlider;
     [SerializeField] private Button claimButton;
@@ -15,6 +16,19 @@ public class ExerciseView : MonoBehaviour
 
     public void Initialize(Days day, int exerciseNumber, string description, int maxProgress, int currentProgress, int reward, bool isClaimed)
     {
+        if (Geekplay.Instance.language == "ru")
+        {
+            rewardDescription.text = "Награда:";
+        }
+        else if (Geekplay.Instance.language == "en")
+        {
+            rewardDescription.text = "Reward";
+        }
+        else if (Geekplay.Instance.language == "tr")
+        {
+            rewardDescription.text = "Odul";
+        }
+
         this.description.text = description;
         progress.text = $"{currentProgress}/{maxProgress}";
 
