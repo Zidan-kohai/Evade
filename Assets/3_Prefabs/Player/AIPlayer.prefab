@@ -1666,6 +1666,7 @@ MonoBehaviour:
   reachArea: {fileID: 2861010759206526833}
   animationController: {fileID: 14873245123960596}
   virtualCamera: {fileID: 6700030000169661991}
+  playerCollider: {fileID: 2689890232233979099}
   playerVisual: {fileID: 2941067104648093884}
   state: 0
   timeToUpFromFall: 2

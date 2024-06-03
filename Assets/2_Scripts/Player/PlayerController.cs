@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     [Header("Components")]
     [SerializeField] private InputManager inputManager;
+    [SerializeField] private CapsuleCollider playerCollider;
     [SerializeField] private ReachArea reachArea;
     [SerializeField] private PlayerAnimationController animationController;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
@@ -96,6 +97,10 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     private void Update()
     {
+        if(state == PlayerState.Carried)
+        {
+            gameObject.transform.position = playerVisual.position;
+        }
 
         if (state == PlayerState.Death || state == PlayerState.Carried) return;
 
@@ -155,7 +160,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         playerVisual.parent = point.transform;
         playerVisual.localEulerAngles = Vector3.zero;
         animationController.Carried();
-
+        playerCollider.enabled = false;
         CameraConrtoller.PlayerCarriedST(virtualCamera);
     }
 
@@ -168,6 +173,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         playerVisual.localPosition = new Vector3(0, 1, 0);
         playerVisual.localEulerAngles = Vector3.zero;
         animationController.PutPlayer();
+        playerCollider.enabled = true;
 
         ChangeState(PlayerState.Fall);
     }
@@ -318,7 +324,8 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
         coroutine = StartCoroutine(Wait(0.5f, () =>
         {
-            ChangeState(PlayerState.Fall);
+            if(state != PlayerState.Carried)
+                ChangeState(PlayerState.Fall);
         }));
 
         lostedTimeFromFallToUp -= Time.deltaTime;

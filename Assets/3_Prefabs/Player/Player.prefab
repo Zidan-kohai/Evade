@@ -308,6 +308,7 @@ MonoBehaviour:
   lostedTimeFromFallToUp: 0
   lostedTimeFromFallToDeath: 0
   inputManager: {fileID: 0}
+  playerCollider: {fileID: 584000485050038201}
   reachArea: {fileID: 8162641037547260621}
   animationController: {fileID: 3072787035800879077}
   virtualCamera: {fileID: 5953735550957598145}

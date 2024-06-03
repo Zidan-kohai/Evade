@@ -108,6 +108,7 @@ public class PointerManager : MonoBehaviour {
             PointerIcon pointerIcon = kvp.Value;
 
             Vector3 position = _camera.WorldToScreenPoint(enemyPointer.GetTransform().position);
+
             position.x = Mathf.Clamp(position.x, 50, Screen.width - 50);
             position.y = Mathf.Clamp(position.y, 50, Screen.height - 50);
 

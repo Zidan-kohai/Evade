@@ -28,6 +28,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
     [SerializeField] private ReachArea reachArea;
     [SerializeField] private PlayerAnimationController animationController;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private CapsuleCollider playerCollider;
     [SerializeField] private Transform playerVisual;
 
     [Header("Humanoids")]
@@ -95,6 +96,9 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
             case PlayerState.Carry:
                 MoveAwayFromEnemies();
                 break;
+            case PlayerState.Carried:
+                OnCarried();
+                break;
             case PlayerState.Fall:
                 OnFall();
                 break;
@@ -103,6 +107,11 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
             case PlayerState.Death:
                 break;
         }
+    }
+
+    private void OnCarried()
+    {
+        gameObject.transform.position = playerVisual.position;
     }
 
     public void Initialize(List<Transform> Points, Vector3 spawnPoint)
@@ -130,7 +139,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         ChangeState(PlayerState.Carried);
         playerVisual.position = point.transform.position;
         playerVisual.parent = point.transform;
-        playerVisual.localEulerAngles = Vector3.zero;
+        playerVisual.localEulerAngles = Vector3.zero; 
+        playerCollider.enabled = false;
     }
 
     public string GetName() => name;
@@ -170,7 +180,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         playerVisual.localPosition = new Vector3(0, 1, 0);
         playerVisual.localEulerAngles = Vector3.zero;
         animationController.PutPlayer();
-
+        playerCollider.enabled = true;
         ChangeState(PlayerState.Fall);
     }
 
@@ -186,7 +196,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
         if (IHumanoid.gameObject.TryGetComponent(out IEnemy enemy))
         {
             enemies.Add(enemy);
-            ChangeState(PlayerState.Escape);
+            if(state != PlayerState.Carry)
+                ChangeState(PlayerState.Escape);
         }
         else if (IHumanoid.gameObject.TryGetComponent(out IPlayer player) && !IHumanoid.gameObject.TryGetComponent(out Bait bait))
         {
@@ -277,7 +288,8 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
         coroutine = StartCoroutine(Wait(0.5f, () =>
         {
-            ChangeState(PlayerState.Fall);
+            if (state != PlayerState.Carried)
+                ChangeState(PlayerState.Fall);
         }));
 
         lostedTimeFromFallToUp -= Time.deltaTime;
