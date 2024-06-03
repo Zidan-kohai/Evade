@@ -1683,7 +1683,7 @@ MonoBehaviour:
   maxEscapeTime: 5
   carryDistance: 55
   safeDistance: 25
-  helpDistance: 11
+  helpDistance: 20
   helpCount: 0
   moneyMultiplierFactor: 1
   experienceMultiplierFactor: 1
