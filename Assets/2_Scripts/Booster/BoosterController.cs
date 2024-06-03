@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngineInternal;
 
 public class BoosterController : MonoBehaviour
 {
@@ -266,6 +267,22 @@ public class BoosterController : MonoBehaviour
         RaycastHit hit;
 
         Physics.Raycast(ray.origin, ray.direction, out hit, 100, barrierSpawnable, QueryTriggerInteraction.Ignore);
+        
+
+        if (hit.normal != Vector3.up)
+        {
+            ray.origin = hit.point + hit.normal;
+            ray.direction = Vector3.down;
+
+            Physics.Raycast(ray.origin, ray.direction, out hit, 100, barrierSpawnable, QueryTriggerInteraction.Ignore);
+        }
+
+        if (hit.collider != null && hit.collider.gameObject.layer != 6)
+        {
+            Debug.Log("Don`t Find Ground");
+            return;
+        }
+
         GameObject barrierInstance = Instantiate(minePrefab, hit.point, realyPlayerTransform.rotation, null);
 
         DOTween.Sequence()
