@@ -3874,7 +3874,7 @@ MonoBehaviour:
   loseMenu: {fileID: 473195531}
   endMenu: {fileID: 899512927}
   lookMenu: {fileID: 304568216}
-  lastedtime: 180
+  lastedtime: 90
   gameOver: 0
 --- !u!1001 &216266772
 PrefabInstance:
@@ -28283,10 +28283,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 122790199}
-    - target: {fileID: 656903037924374633, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 122790199}
     - target: {fileID: 743090780318431350, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
       propertyPath: m_Camera
       value: 
@@ -28391,10 +28387,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 210689042}
-    - target: {fileID: 8199132826878033204, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

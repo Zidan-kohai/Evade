@@ -9,6 +9,7 @@ public class GamplayLocalization : MonoBehaviour
     [SerializeField] private TextMeshProUGUI putTextView;
     [SerializeField] private TextMeshProUGUI raisingTextView;
     [SerializeField] private TextMeshProUGUI exerciseTextView;
+    [SerializeField] private TextMeshProUGUI remainingTextView;
     [SerializeField] private TextMeshProUGUI mainMenuButtonTextView;
 
 
@@ -76,7 +77,9 @@ public class GamplayLocalization : MonoBehaviour
             carryTextView.text = "Нести";
             putTextView.text = "Отпустить";
             raisingTextView.text = "Поднять";
-            exerciseTextView.text = "Ваша задача выжить в течении 3 минуты";
+            exerciseTextView.text = "Ваша задача выжить в течении 1 минуты и 30 секунд";
+            remainingTextView.text = "Оставшееся время";
+
 
             LoseMenuHeaderTextView.text = "Вы мертвы";
             LoseMenuMainMenuTextView.text = "Главное меню";
@@ -119,7 +122,8 @@ public class GamplayLocalization : MonoBehaviour
             carryTextView.text = "Carry";
             putTextView.text = "Release";
             raisingTextView.text = "Raise";
-            exerciseTextView.text = "Your task is to survive for 3 minutes";
+            exerciseTextView.text = "Your task is to survive for 1 minute and 30 seconds";
+            remainingTextView.text = "Remaining time";
 
             LoseMenuHeaderTextView.text = "You are dead";
             LoseMenuMainMenuTextView.text = "Main Menu";
@@ -160,7 +164,8 @@ public class GamplayLocalization : MonoBehaviour
             carryTextView.text = "Oyle";
             putTextView.text = "Iptal";
             raisingTextView.text = "Artirmak";
-            exerciseTextView.text = "3 dakika boyunca silinecek";
+            exerciseTextView.text = "Goreviniz 1 dakika 30 saniye boyunca hayatta kalmak";
+            remainingTextView.text = "Kalan sure";
 
             LoseMenuHeaderTextView.text = "Oldunuz";
             LoseMenuMainMenuTextView.text = "Ana Menu";
