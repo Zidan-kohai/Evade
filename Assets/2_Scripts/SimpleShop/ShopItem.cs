@@ -104,6 +104,12 @@ public class ShopItem : MonoBehaviour
                     Equip();
                 }
                 break;
+            case SubjectType.Booster:
+                if (Geekplay.Instance.PlayerData.CurrentBoosterKeys.Contains(data.indexOnPlayer))
+                {
+                    Equip();
+                }    
+                break;
         }
     }
 

@@ -237,9 +237,25 @@ public class Shop : MonoBehaviour
                 EquipLight(item);
                 break;
             case SubjectType.Booster:
+                EquipBooster(item);
                 break;
 
         }
+    }
+
+    private void EquipBooster(ShopItem item)
+    {
+        for(int i = 0; i < Geekplay.Instance.PlayerData.CurrentBoosterKeys.Count; i++)
+        {
+            if (Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == -1 && !Geekplay.Instance.PlayerData.CurrentBoosterKeys.Contains(item.GetIndexOnPlayer))
+            {
+                Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] = item.GetIndexOnPlayer;
+                item.Equip();
+                break;
+            }
+        }
+
+        Geekplay.Instance.Save();
     }
 
     private void EquipItem(ShopItem item)
