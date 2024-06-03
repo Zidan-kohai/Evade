@@ -233,6 +233,7 @@ namespace GeekplaySchool
 
         public void SubscribeOnPurshace(string tag, UnityAction action)
         {
+            Debug.Log("Subscripe Purchase: " + tag);
             for (int i = 0; i < purchasesList.Length; i++)
             {
                 if (purchasesList[i].itemName == tag)
@@ -299,10 +300,10 @@ namespace GeekplaySchool
 
             for (int i = 0; i < purchasesList.Length; i++)
             {
-                Debug.Log("I: " + i);
+                Debug.Log("I: " + i + " " + purchasesList[i].itemName);
                 if (PlayerData.LastBuy == purchasesList[i].itemName)
                 {
-                    purchasesList[i].purchaseEvent.Invoke();
+                    purchasesList[i].purchaseEvent?.Invoke(); // здесь выдаёт ошибку ArgumentOutOfRangeException: Index was out of range
                     Debug.Log("Get Reward");
                     PlayerData.LastBuy = "";
                     Save();

@@ -22,7 +22,7 @@ public class Shop : MonoBehaviour
 
     [SerializeField] private BoosterSwitcher boosterSwitcher;
 
-    private void OnEnable()
+    private void Start()
     {
         FirstSubscribe(firstItem);  
 

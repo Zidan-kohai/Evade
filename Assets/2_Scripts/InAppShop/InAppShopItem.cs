@@ -1,4 +1,6 @@
 using GeekplaySchool;
+using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -51,11 +53,24 @@ public class InAppShopItem : MonoBehaviour
 
     private void Reward()
     {
-        Wallet.AddMoneyST(data.Goldcount);
+        Geekplay.Instance.StartCoroutine(Wait(() =>
+        {
+            Debug.Log("Start Reward");
+            Wallet.AddMoneyST(data.Goldcount);
 
-        Geekplay.Instance.PlayerData.DonatCount += data.Cost;
-        Geekplay.Instance.SetLeaderboard(Helper.DonatLeaderboardName, Geekplay.Instance.PlayerData.DonatCount);
-        Geekplay.Instance.Save();
+            Geekplay.Instance.PlayerData.DonatCount += data.Cost;
+            Geekplay.Instance.SetLeaderboard(Helper.DonatLeaderboardName, Geekplay.Instance.PlayerData.DonatCount);
+            Geekplay.Instance.Save();
+            Debug.Log("End Reward");
+        }));
+        
+    }
+
+    private IEnumerator Wait(Action action)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        action?.Invoke();
     }
 
     private void PurchaseEvent()
