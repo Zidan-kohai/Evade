@@ -265,20 +265,31 @@ public class Shop : MonoBehaviour
     }
     private void BoosterChange()
     {
-        foreach (var item in items)
+        int count = 3;
+        if (Geekplay.Instance.PlayerData.CurrentEquipedItemID == 7)
+            count = 5;
+
+        foreach (ShopItem item in items)
         {
             if (item.GetType == SubjectType.Booster)
             {
-                if(Geekplay.Instance.PlayerData.CurrentBoosterKeys.Contains(item.GetIndexOnPlayer))
+                item.Dequip();
+            }
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            foreach (ShopItem item in items)
+            {
+                if (item.GetType == SubjectType.Booster && Geekplay.Instance.PlayerData.CurrentBoosterKeys[i] == item.GetIndexOnPlayer)
                 {
                     item.Equip();
-                }
-                else
-                {
-                    item.Dequip();
+                    break;
                 }
             }
         }
+
+        
     }
     private void EquipItem(ShopItem item)
     {
@@ -294,6 +305,7 @@ public class Shop : MonoBehaviour
 
         item.Equip();
         Geekplay.Instance.Save();
+
     }
 
     private void EquipAccessory(ShopItem item)
@@ -310,6 +322,7 @@ public class Shop : MonoBehaviour
 
         item.Equip();
         Geekplay.Instance.Save();
+        BoosterChange();
     }
 
     private void EquipLight(ShopItem item)
