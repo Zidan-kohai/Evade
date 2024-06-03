@@ -16,7 +16,7 @@ public class OurGameWindow : MonoBehaviour
     [SerializeField] private TextMeshProUGUI twoPlayerGameRewardButtonTextView;
 
 
-    void Start()
+    private void Start()
     {
         Geekplay.Instance.OurGame = this;
 
@@ -31,6 +31,8 @@ public class OurGameWindow : MonoBehaviour
 
     public void EnabledGameToggle(int id)
     {
+        Debug.Log($"EnabledGameToggle ID {id}");
+
         if (id == 284619)
         {
             if (!Geekplay.Instance.PlayerData.IsGeometryDashRewardTaked)
@@ -215,6 +217,8 @@ public class OurGameWindow : MonoBehaviour
 
     public void DisableGameToggle(int id)
     {
+        Debug.Log($"DisableGameToggle ID {id}");
+
         if (id == 284619)
         {
             geometryDashButton.interactable = true;

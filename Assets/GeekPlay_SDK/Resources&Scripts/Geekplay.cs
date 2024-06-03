@@ -1,4 +1,5 @@
 using CrazyGames;
+using DG.Tweening;
 using GamePix;
 using System;
 using System.Collections;
@@ -139,7 +140,7 @@ namespace GeekplaySchool
 
             StartCoroutine(TimeTreker());
 
-            
+            GameReady();
         }
 
         private void Start()
@@ -209,7 +210,14 @@ namespace GeekplaySchool
 
         public void LoadScene(int sceneIndex)
         {
-            ShowInterstitialAd();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            DOTween.Sequence().AppendInterval(0.5f).OnComplete(() =>
+            {
+                ShowInterstitialAd();
+            });
+
 
             sceneLoader.LoadScene(sceneIndex);
         }
@@ -287,6 +295,8 @@ namespace GeekplaySchool
         }
         public void SetPurchasedItem() //начислить уже купленные предметы на старте
         {
+            Debug.Log(PlayerData.LastBuy);
+
             for (int i = 0; i < purchasesList.Length; i++)
             {
                 if (PlayerData.LastBuy == purchasesList[i].itemName)
@@ -653,8 +663,6 @@ namespace GeekplaySchool
         {
             PlayerData = JsonUtility.FromJson<PlayerData>(value);
             Debug.Log("LOAD " + JsonUtility.ToJson(PlayerData));
-            
-            SetPurchasedItem();
         }
 
 
@@ -949,7 +957,7 @@ namespace GeekplaySchool
 
         void OnApplicationPause(bool isPaused)
         {
-            Silence(isPaused);
+            //Silence(isPaused);
         }
 
         private void Silence(bool silence)

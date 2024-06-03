@@ -10,6 +10,7 @@ public class InAppShop : MonoBehaviour
     private void Start()
     {
         SubscribeAllRewards();
+
         Geekplay.Instance.SetPurchasedItem();
     }
 

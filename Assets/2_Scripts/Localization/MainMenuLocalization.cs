@@ -98,7 +98,7 @@ public class MainMenuLocalization : MonoBehaviour
             boosterTextView.text = "Бустеры";
             accessoryTextView.text = "Аксесуары";
             buyTextView.text = "Купить";
-            closeTextView.text = "Закрыть";
+            closeTextView.text = "Закрыто";
 
 
             inAppShopOpenMainMenuTextView.text = "Меню";

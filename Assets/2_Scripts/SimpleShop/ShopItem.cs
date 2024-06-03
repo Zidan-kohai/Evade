@@ -3,7 +3,6 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class ShopItem : MonoBehaviour
 {
@@ -28,6 +27,8 @@ public class ShopItem : MonoBehaviour
     public SubjectType GetType => data.type;
 
     public Sprite GetMainIcn => data.mainIcon;
+
+    public Vector2 GetMainIconSize => data.mainIconSize;
 
     private void OnEnable()
     {

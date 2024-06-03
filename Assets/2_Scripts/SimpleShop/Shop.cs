@@ -13,6 +13,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private RectTransform closeButton;
 
     [SerializeField] private TextMeshProUGUI nameView;
+    [SerializeField] private Image iconView;
     [SerializeField] private TextMeshProUGUI descriptionView;
     [SerializeField] private TextMeshProUGUI costView;
 
@@ -343,6 +344,8 @@ public class Shop : MonoBehaviour
 
     private void ShowItemInfo(ShopItem item)
     {
+        iconView.sprite = item.GetMainIcn;
+        iconView.rectTransform.sizeDelta = item.GetMainIconSize;
         nameView.text = item.GetName;
         descriptionView.text = item.GetDescription;
         costView.text = item.GetCost.ToString();
