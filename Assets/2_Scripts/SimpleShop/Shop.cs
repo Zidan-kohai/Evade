@@ -16,6 +16,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private Image iconView;
     [SerializeField] private TextMeshProUGUI descriptionView;
     [SerializeField] private TextMeshProUGUI costView;
+    [SerializeField] private TextMeshProUGUI itemCountView;
 
     [SerializeField] private List<ShopItem> items;
     [SerializeField] private ShopItem firstItem;
@@ -91,11 +92,24 @@ public class Shop : MonoBehaviour
     {
         buyButton.gameObject.SetActive(true);
         equipButton.gameObject.SetActive(false);
-        
+        itemCountView.gameObject.SetActive(true);
 
         if (item.GetBuyedCount > 0)
         {
             equipButton.gameObject.SetActive(true);
+
+            if (Geekplay.Instance.language == "ru")
+            {
+                itemCountView.text = $"У вас {item.GetBuyedCount}";
+            }
+            else if (Geekplay.Instance.language == "en")
+            {
+                itemCountView.text = $"You have {item.GetBuyedCount}";
+            }
+            else if (Geekplay.Instance.language == "tr")
+            {
+                itemCountView.text = $"Var {item.GetBuyedCount}";
+            }
 
             if (Geekplay.Instance.PlayerData.CurrentBoosterKeys.Contains(item.GetIndexOnPlayer))
             {
@@ -115,15 +129,30 @@ public class Shop : MonoBehaviour
         buyButton.onClick.AddListener(() =>
         {
             Buy(item);
+
+            if(Geekplay.Instance.language == "ru")
+            {
+                itemCountView.text = $"У вас {item.GetBuyedCount}";
+            }
+            else if(Geekplay.Instance.language == "en")
+            {
+                itemCountView.text = $"You have {item.GetBuyedCount}";
+            }
+            else if(Geekplay.Instance.language == "tr")
+            {
+                itemCountView.text = $"Var {item.GetBuyedCount}";
+            }
         });
     }
 
     private void EventForLight(ShopItem item)
     {
+        itemCountView.gameObject.SetActive(false);
+
         if (!Geekplay.Instance.PlayerData.BuyedLightID.Contains(item.GetIndexOnPlayer))
         {
             buyButton.gameObject.SetActive(true);
-            equipButton.gameObject.SetActive(false);
+            equipButton.gameObject.SetActive(false); 
 
             buyButton.onClick.AddListener(() =>
             {
@@ -159,6 +188,7 @@ public class Shop : MonoBehaviour
 
     private void EventForItem(ShopItem item)
     {
+        itemCountView.gameObject.SetActive(false);
         if (!Geekplay.Instance.PlayerData.BuyedItemID.Contains(item.GetIndexOnPlayer))
         {
             buyButton.gameObject.SetActive(true);
@@ -195,6 +225,8 @@ public class Shop : MonoBehaviour
 
     private void EventForAccessory(ShopItem item)
     {
+        itemCountView.gameObject.SetActive(false);
+
         if (!Geekplay.Instance.PlayerData.BuyedAccessoryID.Contains(item.GetIndexOnPlayer))
         {
             buyButton.gameObject.SetActive(true);
