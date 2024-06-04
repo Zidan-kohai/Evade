@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         if (isCarry && inputManager.GetIsT)
         {
             PutPlayer();
-            ChangeState(PlayerState.Idle, true);
+            ChangeState(PlayerState.Idle, true); ;
         }
         else if (state != PlayerState.Fall && state != PlayerState.Death)
         {
@@ -422,7 +422,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         if (velocityXY.magnitude < 0.01f) return;
 
         Quaternion targetRotation = Quaternion.LookRotation(velocityXY.normalized, Vector3.up);
-        visualHandler.transform.rotation = Quaternion.Lerp(visualHandler.transform.rotation, targetRotation, Time.deltaTime * mouseSensitivity);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * mouseSensitivity);
     }
 
     private void FirstPersonRotate()

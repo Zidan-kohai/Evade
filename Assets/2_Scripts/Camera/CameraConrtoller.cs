@@ -253,6 +253,7 @@ public class CameraConrtoller : MonoBehaviour
                 thirdPlayer.Priority = 1;
                 break;
             case CameraState.Third:
+                thirdPlayerOrbitalTransposer.m_XAxis.Value = 0;
                 firstPersonCamera.Priority = 1;
                 thirdPlayer.Priority = 2;
                 break;
