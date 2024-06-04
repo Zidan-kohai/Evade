@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPlayer
@@ -149,9 +150,10 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         }
     }
 
-    public void CreateBait()
+    public bool CreateBait(ShopItemData data)
     {
         Instantiate(baitPrefab, transform.position + visualHandler.transform.forward * 5 + new Vector3(0, 15, 0), Quaternion.Euler(transform.eulerAngles), null);
+        return true;
     }
     public void Carried(Transform point, CinemachineVirtualCamera virtualCamera)
     {
@@ -302,7 +304,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     [ContextMenu("Fall")]
     public void Fall()
     {
-        if (state == PlayerState.Death) return;
+        if (state == PlayerState.Death || state == PlayerState.Fall) return;
 
         if(isCarry)
         {

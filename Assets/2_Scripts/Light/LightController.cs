@@ -2,6 +2,7 @@ using GeekplaySchool;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LightController : MonoBehaviour
 {
@@ -28,7 +29,9 @@ public class LightController : MonoBehaviour
     {
         int rand = UnityEngine.Random.Range(0, 6);
 
-        if(rand >= 3 && Geekplay.Instance.nightCount < 3)
+        bool isfirstOrSecondScene = SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 4;
+
+        if (isfirstOrSecondScene || (rand >= 3 && Geekplay.Instance.nightCount < 3))
         {
             Geekplay.Instance.nightCount++;
             isNight = true;

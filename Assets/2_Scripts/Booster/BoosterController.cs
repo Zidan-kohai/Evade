@@ -19,6 +19,7 @@ public class BoosterController : MonoBehaviour
     [SerializeField] private List<MyDictionary> Boosters;
 
     [Header("Realy Player")]
+    [SerializeField] private PlayerController playerController;
     [SerializeField] private IRealyPlayer realyPlayer;
     [SerializeField] private Transform realyPlayerTransform;
 
@@ -94,10 +95,13 @@ public class BoosterController : MonoBehaviour
                                 return;
                             }
 
-                            Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(booster.data.indexOnPlayer).value--;
-                            boosterItem[j].remainingCounView.text = Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(booster.data.indexOnPlayer).value.ToString();
 
-                            booster.boosterEvent?.Invoke();
+                            if(booster.boosterEvent?.Invoke(booster.data) == true)
+                            {
+                                Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(booster.data.indexOnPlayer).value--;
+                                boosterItem[j].remainingCounView.text = Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(booster.data.indexOnPlayer).value.ToString();
+                            }
+
                             DailyExerciseController.Instance.SetProgress(Days.Day3, 2);
 
                             if (Geekplay.Instance.PlayerData.BuyedBoosterID.GetByKey(booster.data.indexOnPlayer).value == 0)
@@ -130,13 +134,27 @@ public class BoosterController : MonoBehaviour
 
                     meatUsedCount--;
                     boosterItem[5].remainingCounView.text = meatUsedCount.ToString();
-                    booster.boosterEvent?.Invoke();
+
+                    booster.boosterEvent?.Invoke(booster.data);
 
                     if(meatUsedCount <= 0) boosterItem[5].gameObject?.SetActive(false);
                 });
                 break;
             }
         }
+
+        Subcscribe();
+    }
+
+    private void Subcscribe()
+    {
+        Boosters[0].boosterEvent += ColaBoost;
+        Boosters[1].boosterEvent += WandOfLightBoost;
+        Boosters[2].boosterEvent += Barrier;
+        Boosters[3].boosterEvent += Sensor;
+        Boosters[4].boosterEvent += Mine;
+        Boosters[5].boosterEvent += TeleportActivate;
+        Boosters[6].boosterEvent += playerController.CreateBait;
     }
 
     private void Update()
@@ -186,7 +204,7 @@ public class BoosterController : MonoBehaviour
 
     #region Cola
 
-    public void ColaBoost()
+    public bool ColaBoost(ShopItemData data)
     {
         ColaSequence.Kill();
 
@@ -196,6 +214,8 @@ public class BoosterController : MonoBehaviour
         ColaSequence = DOTween.Sequence()
             .AppendInterval(colaDiactivateTime)
             .OnKill(() => ColaBoostDiactivate(deltaUp, deltaFall));
+
+        return true;
 
     }
 
@@ -209,16 +229,18 @@ public class BoosterController : MonoBehaviour
 
     #region WangOfLight
 
-    public void WandOfLightBoost()
+    public bool WandOfLightBoost(ShopItemData data)
     {
         Instantiate(WandOfLightPrefab, realyPlayerTransform.position + realyPlayerTransform.forward * 5 + new Vector3(0, 5, 0), Quaternion.identity, null);
+
+        return true;
     }
 
     #endregion
 
     #region Barrier
 
-    public void Barrier()
+    public bool Barrier(ShopItemData data)
     {
         Ray ray = mainCamera.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
@@ -238,6 +260,8 @@ public class BoosterController : MonoBehaviour
         {
             DailyExerciseController.Instance.SetProgress(Days.Day5, 3);
         }
+
+        return true;
     }
 
     private void DiactivateBarrier(GameObject barrierInstance)
@@ -248,7 +272,7 @@ public class BoosterController : MonoBehaviour
     #endregion
 
     #region Sensor
-    public void Sensor()
+    public bool Sensor(ShopItemData data)
     {
         Ray ray = mainCamera.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
@@ -259,6 +283,8 @@ public class BoosterController : MonoBehaviour
         DOTween.Sequence()
             .AppendInterval(diactivateSensorTime)
             .AppendCallback(() => DiactivateSensor(sensorPrefab));
+
+        return true;
     }
 
     private void DiactivateSensor(GameObject sensor)
@@ -269,7 +295,7 @@ public class BoosterController : MonoBehaviour
     #endregion
 
     #region Mine
-    public void Mine()
+    public bool Mine(ShopItemData data)
     {
         Ray ray = mainCamera.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
@@ -285,10 +311,10 @@ public class BoosterController : MonoBehaviour
             Physics.Raycast(ray.origin, ray.direction, out hit, 100, barrierSpawnable, QueryTriggerInteraction.Ignore);
         }
 
-        if (hit.collider != null && hit.collider.gameObject.layer != 6)
+        if (hit.collider == null || hit.collider.gameObject.layer != 6)
         {
             Debug.Log("Don`t Find Ground");
-            return;
+            return false;
         }
 
         GameObject barrierInstance = Instantiate(minePrefab, hit.point, realyPlayerTransform.rotation, null);
@@ -296,6 +322,8 @@ public class BoosterController : MonoBehaviour
         DOTween.Sequence()
             .AppendInterval(diactivateMineTime)
             .AppendCallback(() => DiactivateMine(minePrefab));
+
+        return true;
     }
 
     private void DiactivateMine(GameObject mine)
@@ -306,15 +334,33 @@ public class BoosterController : MonoBehaviour
     #endregion
 
     #region Teleport
-    public void TeleportActivate()
+    public bool TeleportActivate(ShopItemData data)
     {
         Ray ray = mainCamera.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit hit;
 
         Physics.Raycast(ray.origin, ray.direction, out hit, 100, barrierSpawnable, QueryTriggerInteraction.Ignore);
+
+
+        if (hit.normal != Vector3.up)
+        {
+            ray.origin = hit.point + hit.normal * 5;
+            ray.direction = Vector3.down;
+
+            Physics.Raycast(ray.origin, ray.direction, out hit, 100, barrierSpawnable, QueryTriggerInteraction.Ignore);
+        }
+
+        if (hit.collider == null || hit.collider.gameObject.layer != 6)
+        {
+            Debug.Log("Don`t Find Ground");
+            return false;
+        }
+
         TeleportPoint teleport = Instantiate(teleportPrefab, hit.point, realyPlayerTransform.rotation, null);
         teleport.enterAction += Teleport;
         teleportsInstance.Add(teleport);
+
+        return true;
     }
 
     public void Teleport(TeleportPoint point, IPlayer player)
@@ -336,7 +382,7 @@ public class BoosterController : MonoBehaviour
     public class MyDictionary
     {
         public ShopItemData data;
-        public UnityEvent boosterEvent;
+        public Predicate<ShopItemData> boosterEvent;
     }
 }
 
