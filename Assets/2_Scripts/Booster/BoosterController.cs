@@ -246,7 +246,12 @@ public class BoosterController : MonoBehaviour
         RaycastHit hit;
 
         Physics.Raycast(ray.origin, ray.direction, out hit, 100, barrierSpawnable, QueryTriggerInteraction.Ignore);
-        GameObject barrierInstance = Instantiate(barrierPrefab, hit.point, realyPlayerTransform.rotation, null);
+
+        Quaternion rotation = Quaternion.LookRotation(mainCamera.transform.forward, Vector2.up);
+        rotation.x = 0;
+        rotation.z = 0;
+
+        GameObject barrierInstance = Instantiate(barrierPrefab, hit.point, rotation, null);
 
         DOTween.Sequence()
             .AppendInterval(barrierDiactivateTime)

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 [Serializable]
 public class PlayerData
 {
-    public int Gold = 1000;
+    public int Gold = 400;
     public int Diamond = 100;
     public float CurrentExperience = 0;
     public float ExperienceProgresion = 100;

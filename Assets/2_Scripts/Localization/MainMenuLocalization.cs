@@ -26,6 +26,7 @@ public class MainMenuLocalization : MonoBehaviour
     [SerializeField] private TextMeshProUGUI bonusDescriptionTextView;
 
     [Header("Our Game")]
+    [SerializeField] private TextMeshProUGUI ruleTextView;
     [SerializeField] private TextMeshProUGUI ourGameOpenMainMenuTextView;
     [SerializeField] private TextMeshProUGUI geomertyDashNameTextView;
     [SerializeField] private TextMeshProUGUI dressGameNameTextView;
@@ -80,6 +81,7 @@ public class MainMenuLocalization : MonoBehaviour
             promocodeUndefinedTextView.text = "Такого промокода нет";
             bonusDescriptionTextView.text = "Подпишись на наш канал и введи промокод который найдёшь там";
 
+            ruleTextView.text = "Только для авторизованных пользователей";
             ourGameOpenMainMenuTextView.text = "Меню";
             geomertyDashNameTextView.text = "Geometry Dash 3D";
             dressGameNameTextView.text = "Создай Королеву - Салон Уэнсдей";
@@ -130,7 +132,7 @@ public class MainMenuLocalization : MonoBehaviour
             promocodeUndefinedTextView.text = "There is no such promotional code";
             bonusDescriptionTextView.text = "Subscribe to our channel and enter the promotional code you find there";
 
-
+            ruleTextView.text = "Only for authorized users";
             ourGameOpenMainMenuTextView.text = "Menu";
             geomertyDashNameTextView.text = "Geometry Dash 3D";
             dressGameNameTextView.text = "Create a Queen - Wednesday Salon";
@@ -179,7 +181,7 @@ public class MainMenuLocalization : MonoBehaviour
             promocodeUndefinedTextView.text = "Boyle bir promosyon kodu yoktur";
             bonusDescriptionTextView.text = "Kanalimiza abone olun ve orada buldugunuz promosyon kodunu girin";
 
-
+            ruleTextView.text = "Yalnizca yetkili kullanicilar icin";
             ourGameOpenMainMenuTextView.text = "Menu";
             geomertyDashNameTextView.text = "Geometry Dash 3D";
             dressGameNameTextView.text = "Kralicesini Yaratin - Carsamba Salonu";
