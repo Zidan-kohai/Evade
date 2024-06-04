@@ -29,7 +29,7 @@ public class LightController : MonoBehaviour
     {
         int rand = UnityEngine.Random.Range(0, 6);
 
-        bool isfirstOrSecondScene = SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 4;
+        bool isfirstOrSecondScene = SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 3;
 
         if (isfirstOrSecondScene || (rand >= 3 && Geekplay.Instance.nightCount < 3))
         {

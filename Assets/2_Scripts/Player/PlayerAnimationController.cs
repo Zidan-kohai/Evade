@@ -10,6 +10,7 @@ public class PlayerAnimationController : MonoBehaviour
     private const string PutPlayerKey = "PutPlayer";
     private const string CrawlKey = "Crawl";
     private const string UpKey = "Up";
+    private const string FallKey = "Fall";
 
     [SerializeField] private IMove movement;
     [SerializeField] private Animator animator;
@@ -73,12 +74,14 @@ public class PlayerAnimationController : MonoBehaviour
     {
         isFall = true;
         animator.SetTrigger(CrawlKey);
+        animator.SetBool(FallKey, isFall);
     }
 
     public void Up()
     {
         isFall = false;
         animator.SetTrigger(UpKey);
+        animator.SetBool(FallKey, isFall);
     }
     public void Death()
     {

@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         if (isCarry && inputManager.GetIsT)
         {
             PutPlayer();
+            ChangeState(PlayerState.Idle, true);
         }
         else if (state != PlayerState.Fall && state != PlayerState.Death)
         {
@@ -309,6 +310,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         if(isCarry)
         {
             PutPlayer();
+            ChangeState(PlayerState.Idle, true);
         }
 
         actionUI.DisableCarryExplain();
@@ -499,7 +501,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         isOnGround = Physics.Raycast(groundChekcRaycastOrigin.position, Vector3.down, groundChekcRaycastHeight, groundLayer);
     }
 
-    private void ChangeState(PlayerState newState)
+    private void ChangeState(PlayerState newState, bool power = false)
     {
         //if state and newState are equal we don`t do anything
         //if current state is fall we can switch only to the idle, death or carried state
@@ -516,6 +518,9 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
             ||
             (state == PlayerState.Carried)
             && newState != PlayerState.Fall
+            ||
+
+            (state == PlayerState.Carry) && (!power)
 
             || state == PlayerState.Death) return;
 
