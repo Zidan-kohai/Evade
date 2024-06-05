@@ -1246,7 +1246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
       propertyPath: mobile
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
       propertyPath: Platform
@@ -12965,6 +12965,7 @@ MonoBehaviour:
   dailyClaimButtonText: {fileID: 179101967}
   dailyClaimSlider: {fileID: 1566074508}
   dailySliderValue: {fileID: 1570892625}
+  clickAudio: {fileID: 875251984}
   exerciseViewPrefab: {fileID: 5869513790990671153, guid: afc7227de35af8641a1c52fb4644f36a, type: 3}
   exerciseViewParent: {fileID: 525445576}
   dates:
