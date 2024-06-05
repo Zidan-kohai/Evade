@@ -14,7 +14,7 @@ public class ExerciseView : MonoBehaviour
     [SerializeField] private Button claimButton;
     [SerializeField] private TextMeshProUGUI claimButtonText;
 
-    public void Initialize(Days day, int exerciseNumber, string description, int maxProgress, int currentProgress, int reward, bool isClaimed)
+    public void Initialize(Days day, int exerciseNumber, string description, int maxProgress, int currentProgress, int reward, bool isClaimed, AudioSource clickAudio)
     {
         if (Geekplay.Instance.language == "ru")
         {
@@ -57,6 +57,7 @@ public class ExerciseView : MonoBehaviour
 
             claimButton.onClick.AddListener(() =>
             {
+                clickAudio.Play();
                 Wallet.AddMoneyST(reward);
                 claimButton.gameObject.SetActive(false);
                 Geekplay.Instance.PlayerData.SetExerciseClaim(day, exerciseNumber);

@@ -18,6 +18,7 @@ public class DailyExerciseView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dailyClaimButtonText;
     [SerializeField] private Slider dailyClaimSlider;
     [SerializeField] private TextMeshProUGUI dailySliderValue;
+    [SerializeField] private AudioSource clickAudio;
 
     [SerializeField] private ExerciseView exerciseViewPrefab;
     [SerializeField] private Transform exerciseViewParent;
@@ -112,7 +113,7 @@ public class DailyExerciseView : MonoBehaviour
 
             bool isClaimed = Geekplay.Instance.PlayerData.IsExerciseClaim((Days)day, j);
 
-            exerciseView.Initialize((Days)day, j, exercise.Description, exercise.GetMaxProgress, exercise.GetProgress, exercise.Reward, isClaimed);
+            exerciseView.Initialize((Days)day, j, exercise.Description, exercise.GetMaxProgress, exercise.GetProgress, exercise.Reward, isClaimed, clickAudio);
 
             exerciseViewHandler.Add(exerciseView);
         }

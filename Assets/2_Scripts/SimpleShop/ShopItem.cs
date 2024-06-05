@@ -155,7 +155,7 @@ public class ShopItem : MonoBehaviour
 
     private bool CompareLevel()
     {
-        if(data.openOnLevel >= Geekplay.Instance.PlayerData.Level)
+        if(data.openOnLevel > Geekplay.Instance.PlayerData.Level)
         {
             if(Geekplay.Instance.language == "ru")
             {
