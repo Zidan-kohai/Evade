@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     [Header("Audio")]
     [SerializeField] private AudioSource helpAudio;
+    [SerializeField] private AudioSource fallAudio;
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -314,7 +315,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
             PutPlayer();
             ChangeState(PlayerState.Idle, true);
         }
-
+        fallAudio.Play();
         actionUI.DisableCarryExplain();
         actionUI.DisablePutExplain();
         actionUI.DisableHelpingUIHandler();

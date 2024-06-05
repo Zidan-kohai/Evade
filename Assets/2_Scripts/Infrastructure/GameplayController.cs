@@ -15,6 +15,7 @@ public class GameplayController : MonoBehaviour
     [SerializeField] private float lastedtime;
     [SerializeField] private bool gameOver = false;
     [SerializeField] private IPlayer realyPlayer;
+    [SerializeField] private AudioSource winAudio;
     [SerializeField] private List<IPlayer> players  = new List<IPlayer>();
     [SerializeField] private List<IEnemy> enemies = new List<IEnemy>();
 
@@ -133,12 +134,12 @@ public class GameplayController : MonoBehaviour
 
         if(!realyPlayer.IsFallOrDeath())
         {
+            winAudio.Play();
             Wallet.AddMoneyST(realyPlayer.GetEarnedMoney() + 50);
             PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience() + 50);
         }
         else
         {
-
             Wallet.AddMoneyST(realyPlayer.GetEarnedMoney() + 25);
             PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience() + 25);
         }

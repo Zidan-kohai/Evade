@@ -28,28 +28,34 @@ public class BoosterController : MonoBehaviour
 
     [Header("Cola")]
     [SerializeField] private float colaDiactivateTime;
+    [SerializeField] private AudioSource cocacolaAudio;
     private Sequence ColaSequence;
 
     [Header("WandOfLight")]
-    [SerializeField] private GameObject WandOfLightPrefab;
+    [SerializeField] private GameObject WandOfLightPrefab; 
+    [SerializeField] private AudioSource WandOfLightAudio;
 
     [Header("Barrier")]
     [SerializeField] private GameObject barrierPrefab;
     [SerializeField] private float barrierDiactivateTime;
     [SerializeField] private LayerMask barrierSpawnable;
+    [SerializeField] private AudioSource barrierAudio;
     private int barrierUsedCount;
 
     [Header("Sensor")]
     [SerializeField] private GameObject sensorPrefab;
     [SerializeField] private float diactivateSensorTime;
+    [SerializeField] private AudioSource sensorAudio;
 
     [Header("Mine")]
     [SerializeField] private GameObject minePrefab;
     [SerializeField] private float diactivateMineTime;
+    [SerializeField] private AudioSource mineAudio;
 
     [Header("Teleport")]
     [SerializeField] private TeleportPoint teleportPrefab;
     [SerializeField] private List<TeleportPoint> teleportsInstance = new();
+    [SerializeField] private AudioSource teleportAudio;
 
     [Header("Meat")]
     [SerializeField] private int meatMaxUseCount = 3;
@@ -208,6 +214,8 @@ public class BoosterController : MonoBehaviour
     {
         ColaSequence.Kill();
 
+        cocacolaAudio.Play();
+
         float deltaUp = realyPlayer.SetMaxSpeedOnUp(50);
         float deltaFall = realyPlayer.SetMaxSpeedOnFall(50);
 
@@ -232,7 +240,7 @@ public class BoosterController : MonoBehaviour
     public bool WandOfLightBoost(ShopItemData data)
     {
         Instantiate(WandOfLightPrefab, realyPlayerTransform.position + realyPlayerTransform.forward * 5 + new Vector3(0, 5, 0), Quaternion.identity, null);
-
+        WandOfLightAudio.Play();
         return true;
     }
 
@@ -265,7 +273,7 @@ public class BoosterController : MonoBehaviour
         {
             DailyExerciseController.Instance.SetProgress(Days.Day5, 3);
         }
-
+        barrierAudio.Play();
         return true;
     }
 
@@ -289,6 +297,7 @@ public class BoosterController : MonoBehaviour
             .AppendInterval(diactivateSensorTime)
             .AppendCallback(() => DiactivateSensor(sensorPrefab));
 
+        sensorAudio.Play();
         return true;
     }
 
@@ -328,6 +337,7 @@ public class BoosterController : MonoBehaviour
             .AppendInterval(diactivateMineTime)
             .AppendCallback(() => DiactivateMine(minePrefab));
 
+        mineAudio.Play();
         return true;
     }
 
@@ -365,6 +375,7 @@ public class BoosterController : MonoBehaviour
         teleport.enterAction += Teleport;
         teleportsInstance.Add(teleport);
 
+        teleportAudio.Play();
         return true;
     }
 

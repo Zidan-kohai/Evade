@@ -2026,6 +2026,7 @@ MonoBehaviour:
   lookMenu: {fileID: 218587384}
   lastedtime: 90
   gameOver: 0
+  winAudio: {fileID: 312789409}
 --- !u!1001 &218587383
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2562,6 +2563,11 @@ GameObject:
 --- !u!1 &284119849 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6908164702812216496, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &312789409 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4985702784391028132, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
   m_PrefabInstance: {fileID: 218587383}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &315562540
@@ -6601,18 +6607,24 @@ MonoBehaviour:
   realyPlayerTransform: {fileID: 7418738573951536420}
   mainCamera: {fileID: 122790196}
   colaDiactivateTime: 6
+  cocacolaAudio: {fileID: 2113874175}
   WandOfLightPrefab: {fileID: 4533692729920292040, guid: 7742390501abf0341a5c45973d28b4eb, type: 3}
+  WandOfLightAudio: {fileID: 2113874174}
   barrierPrefab: {fileID: 4288638696105442381, guid: 50deece7a867c8b4dbefbd332bdebec0, type: 3}
   barrierDiactivateTime: 30
   barrierSpawnable:
     serializedVersion: 2
     m_Bits: 65
+  barrierAudio: {fileID: 2113874173}
   sensorPrefab: {fileID: 6073065526690199634, guid: c676305298048b9499f30ba5f12d87c1, type: 3}
   diactivateSensorTime: 150
+  sensorAudio: {fileID: 2113874172}
   minePrefab: {fileID: 6742085414725502431, guid: 91877a2868eb9a64d99c717bcc46c25a, type: 3}
   diactivateMineTime: 150
+  mineAudio: {fileID: 2113874171}
   teleportPrefab: {fileID: 8101250319899581318, guid: 005f39b66498ff64688c0c768e7ccadd, type: 3}
   teleportsInstance: []
+  teleportAudio: {fileID: 2113874170}
   meatMaxUseCount: 3
   meatUsedCount: 0
 --- !u!1 &833908420
@@ -16514,6 +16526,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112478207}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &2113874170 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7580265611451975746, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2113874171 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1498261030100787559, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2113874172 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8481868129492566267, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2113874173 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4039327750498431939, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2113874174 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1102441399408156651, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2113874175 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2073179966222900998, guid: 8f29baf73fee4c34e837ecb00d9abf6a, type: 3}
+  m_PrefabInstance: {fileID: 218587383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2117420555
 GameObject:
   m_ObjectHideFlags: 0
