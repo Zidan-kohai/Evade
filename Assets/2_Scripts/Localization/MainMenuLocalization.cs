@@ -98,7 +98,7 @@ public class MainMenuLocalization : MonoBehaviour
             lightChapterTextView.text = "Свет";
             itemTextView.text = "Предметы";
             boosterTextView.text = "Бустеры";
-            accessoryTextView.text = "Аксесуары";
+            accessoryTextView.text = "Аксессуары";
             buyTextView.text = "Купить";
             closeTextView.text = "Закрыто";
 

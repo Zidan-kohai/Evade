@@ -127,7 +127,7 @@ public class GameplayController : MonoBehaviour
     private void End()
     {
         gameOver = true;
-        Time.timeScale = 0;
+        Geekplay.Instance.GamePause();
 
         mainMenu.Disable();
         loseMenu.Disable();

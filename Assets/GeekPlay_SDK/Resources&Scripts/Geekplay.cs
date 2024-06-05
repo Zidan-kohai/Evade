@@ -74,7 +74,7 @@ namespace GeekplaySchool
         public bool IsTournamentStart;
 
         #region Pause
-        public GameObject pausePopup;
+        public bool pause = false;
         public bool canPause = true;
         public bool isOnPause = false;
         public bool isOnPromocodeZone = false;
@@ -113,15 +113,11 @@ namespace GeekplaySchool
         private SceneLoader sceneLoader;
         public LeaderboardController leaderboard;
 
-        public OurGameWindow OurGame;
-
         public void Awake()
         {
             AudioListener.volume = PlayerData.IsVolumeOn ? 1 : 0;
 
             sceneLoader = new SceneLoader();
-
-            isOnPause = false;
 
             if (Instance == null)
             {
@@ -210,25 +206,16 @@ namespace GeekplaySchool
 
         public void LoadScene(int sceneIndex)
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
 
-            DOTween.Sequence().AppendInterval(0.5f).OnComplete(() =>
+            DOTween.Sequence().AppendInterval(1f).OnComplete(() =>
             {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 ShowInterstitialAd();
             });
 
 
             sceneLoader.LoadScene(sceneIndex);
-        }
-        public void EnablePlayedGameToggle(int id)
-        {
-            OurGame.EnabledGameToggle(id);
-        }
-
-        public void DisablePlayedGameToggle(int id)
-        {
-            OurGame.DisableGameToggle(id);
         }
 
         public void SubscribeOnPurshace(string tag, UnityAction action)
@@ -336,6 +323,7 @@ namespace GeekplaySchool
             {
                 case Platform.Editor:
                     Debug.Log($"<color={colorDebug}>INTERSTITIAL SHOW</color>");
+                    ResumeMusAndGame();
                     break;
                 case Platform.Yandex:
                     Utils.AdInterstitial();
@@ -949,7 +937,19 @@ namespace GeekplaySchool
             adOpen = false;
             AudioListener.volume = PlayerData.IsVolumeOn ? 1 : 0;
             AudioListener.pause = false;
-            Time.timeScale = 1;
+
+            if(!pause)
+            {
+                Time.timeScale = 1;
+
+                if(!mobile)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+            }
+
+
         }
 
         //ФОКУС И ЗВУК
@@ -966,7 +966,7 @@ namespace GeekplaySchool
         private void Silence(bool silence)
         {
             AudioListener.volume = PlayerData.IsVolumeOn ? 1 : 0;
-            Time.timeScale = isOnPause ? 0 : 1;
+            //Time.timeScale = isOnPause ? 0 : 1;
 
             if (adOpen)
             {
@@ -992,5 +992,10 @@ namespace GeekplaySchool
                 Utils.GameReady();
         }
 
+        public void GamePause()
+        {
+            Time.timeScale = 0;
+            pause = true;
+        }
     }
 }

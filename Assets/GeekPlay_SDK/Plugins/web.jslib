@@ -131,12 +131,12 @@ var plugin = {
                 if(id == res[i].appID)
                 {
                     console.log("GameID:", id, "We Play");
-                    myGameInstance.SendMessage('Init', 'EnablePlayedGameToggle', id);
+                    myGameInstance.SendMessage('OurGame', 'EnabledGameToggle', id);
                     return "true";
                 }
             }   
             console.log("GameID:", id, "We didn`t Play");
-            myGameInstance.SendMessage('Init', 'DisablePlayedGameToggle', id);
+            myGameInstance.SendMessage('OurGame', 'DisableGameToggle', id);
           });
 
         return "false";

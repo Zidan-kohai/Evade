@@ -18,8 +18,6 @@ public class OurGameWindow : MonoBehaviour
 
     private void Start()
     {
-        Geekplay.Instance.OurGame = this;
-
         if (Geekplay.Instance.Platform == Platform.Yandex)
         {
             Utils.CheckPlayGame(284619);
@@ -27,6 +25,11 @@ public class OurGameWindow : MonoBehaviour
             Utils.CheckPlayGame(289951);
             Utils.CheckPlayGame(227711);
         }
+
+        geometryDashButton.onClick.AddListener(() => OpenGame(284619));
+        cloesChangeRewardButton.onClick.AddListener(() => OpenGame(295391));
+        slapBattleRewardButton.onClick.AddListener(() => OpenGame(289951));
+        twoPlayerGameRewardButton.onClick.AddListener(() => OpenGame(227711));
     }
 
     public void EnabledGameToggle(int id)
