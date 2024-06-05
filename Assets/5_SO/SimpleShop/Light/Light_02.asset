@@ -17,7 +17,7 @@ MonoBehaviour:
   mainIconSize: {x: 93.259, y: 179.48}
   secondIcon: {fileID: 0}
   secondIconSize: {x: 100, y: 100}
-  openOnLevel: 0
+  openOnLevel: 2
   indexOnPlayer: 2
   nameRu: "\u041B\u0430\u043C\u043F\u0430"
   nameEn: Lamp
@@ -28,5 +28,5 @@ MonoBehaviour:
   descriptionEn: shines in a spherical area around the player
   descriptionTr: "oynat\u0131c\u0131n\u0131n etraf\u0131ndaki k\xFCresel bir alanda
     parl\u0131yor"
-  cost: 250
+  cost: 500
   oneTimePurchase: 1

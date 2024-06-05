@@ -27,5 +27,5 @@ MonoBehaviour:
     6 \u0441\u0435\u043A\u0443\u043D\u0434"
   descriptionEn: Increases speed by 50% for 6 seconds
   descriptionTr: "H\u0131z\u0131 6 saniyeli\u011Fine %50 art\u0131r\u0131r"
-  cost: 150
+  cost: 60
   oneTimePurchase: 0

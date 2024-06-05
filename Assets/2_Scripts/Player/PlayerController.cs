@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     public int GetEarnedMoney()
     {
 
-        int earnedMoney = (helpCount * 10) + 25;
+        int earnedMoney = (helpCount * 10) + 50;
 
         earnedMoney *= moneyMultiplierFactor;
 
@@ -219,7 +219,7 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
 
     public int GetEarnedExperrience()
     {
-        int earnedExperience = (helpCount * 10) + 10;
+        int earnedExperience = (helpCount * 5);
 
         earnedExperience *= experienceMultiplierFactor;
 

@@ -17,7 +17,7 @@ MonoBehaviour:
   mainIconSize: {x: 169.715, y: 162.462}
   secondIcon: {fileID: -208884553, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
   secondIconSize: {x: 89.2409, y: 82.489}
-  openOnLevel: 0
+  openOnLevel: 6
   indexOnPlayer: 5
   nameRu: "\u041D\u0430\u0437\u0435\u043C\u043D\u0430\u044F \u043C\u0438\u043D\u0430"
   nameEn: Landmine
@@ -37,5 +37,5 @@ MonoBehaviour:
   descriptionTr: "Bir d\xFC\u015Fman \xFCzerine basarsa patlayacak ve 20 saniye boyunca
     kapanacakt\u0131r. Bir oyuncu \xFCzerine basarsa \u201C\xE7\xF6melme\u201D durumuna
     ge\xE7ecektir. 1,5 dakika s\xFCreyle ge\xE7erlidir"
-  cost: 450
+  cost: 100
   oneTimePurchase: 0

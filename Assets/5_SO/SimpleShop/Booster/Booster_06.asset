@@ -17,7 +17,7 @@ MonoBehaviour:
   mainIconSize: {x: 200, y: 71.875}
   secondIcon: {fileID: 2112446536, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
   secondIconSize: {x: 102.9156, y: 45.4964}
-  openOnLevel: 0
+  openOnLevel: 9
   indexOnPlayer: 6
   nameRu: "\u0422\u0435\u043B\u0435\u043F\u043E\u0440\u0442\u0430\u0442\u043E\u0440"
   nameEn: Teleporter
@@ -31,5 +31,5 @@ MonoBehaviour:
     with their help
   descriptionTr: "Birkac \u0131s\u0131nlay\u0131c\u0131 kurarsan\u0131z, onlar\u0131n
     yard\u0131m\u0131yla bir noktadan di\u011Ferine ge\xE7ebilirsiniz."
-  cost: 450
+  cost: 250
   oneTimePurchase: 0

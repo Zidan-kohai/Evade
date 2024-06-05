@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RewardType: 1
   PurchaseTag: Diamond3
-  Goldcount: 35
-  DiamondCount: 35
-  Cost: 25
+  Goldcount: 1500
+  DiamondCount: 1500
+  Cost: 45

@@ -17,7 +17,7 @@ MonoBehaviour:
   mainIconSize: {x: 181.976, y: 122.78}
   secondIcon: {fileID: -705856482, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
   secondIconSize: {x: 89.2409, y: 82.489}
-  openOnLevel: 0
+  openOnLevel: 4
   indexOnPlayer: 4
   nameRu: "\u0414\u0430\u0442\u0447\u0438\u043A"
   nameEn: Sensor
@@ -31,5 +31,5 @@ MonoBehaviour:
     ring. Works 1.5 minutes
   descriptionTr: "Onu yere koyabilirsiniz ve bir d\xFC\u015Fman ona dokunursa zil
     \xE7alacakt\u0131r. 1,5 dakika \xE7al\u0131\u015F\u0131r"
-  cost: 450
+  cost: 50
   oneTimePurchase: 0

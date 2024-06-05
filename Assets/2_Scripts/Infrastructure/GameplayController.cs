@@ -105,9 +105,6 @@ public class GameplayController : MonoBehaviour
         Cursor.visible = true;
 
         loseMenu.Show(livedTime, realyPlayer.GetEarnedMoney());
-
-        Wallet.AddMoneyST(realyPlayer.GetEarnedMoney());
-        PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience());
     }
 
     public void ShowLookPanel()
@@ -133,5 +130,17 @@ public class GameplayController : MonoBehaviour
         loseMenu.Disable();
         lookMenu.SetActive(false);
         endMenu.Initialize(players, realyPlayer);
+
+        if(!realyPlayer.IsFallOrDeath())
+        {
+            Wallet.AddMoneyST(realyPlayer.GetEarnedMoney() + 50);
+            PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience() + 50);
+        }
+        else
+        {
+
+            Wallet.AddMoneyST(realyPlayer.GetEarnedMoney() + 25);
+            PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience() + 25);
+        }
     }
 }

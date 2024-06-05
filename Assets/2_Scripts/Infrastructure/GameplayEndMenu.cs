@@ -1,7 +1,4 @@
 ﻿using GeekplaySchool;
-using JetBrains.Annotations;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -22,10 +19,11 @@ public class GameplayEndMenu : MonoBehaviour
 
         gameObject.SetActive(true);
 
-        AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney(), realyPlayer.GetEarnedExperrience());
 
         if(realyPlayer.IsFallOrDeath())
         {
+            AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney() + 25, realyPlayer.GetEarnedExperrience());
+
             if (Geekplay.Instance.language == "ru")
             {
                 HeaderTextView.text = "Вы мертвы";
@@ -43,7 +41,9 @@ public class GameplayEndMenu : MonoBehaviour
         }
         else
         {
-            if(Geekplay.Instance.language == "ru")
+            AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney() + 50, realyPlayer.GetEarnedExperrience());
+
+            if (Geekplay.Instance.language == "ru")
             {
                 HeaderTextView.text = "Вы выжили";
             }

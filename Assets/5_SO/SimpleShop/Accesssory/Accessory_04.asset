@@ -17,7 +17,7 @@ MonoBehaviour:
   mainIconSize: {x: 119.271, y: 179.715}
   secondIcon: {fileID: 940364395, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
   secondIconSize: {x: 100, y: 100}
-  openOnLevel: 0
+  openOnLevel: 3
   indexOnPlayer: 4
   nameRu: "\u0421\u0442\u0435\u0442\u043E\u0441\u043A\u043E\u043F"
   nameEn: Stethoscope
@@ -28,5 +28,5 @@ MonoBehaviour:
   descriptionEn: allows you to raise comrades 30% faster
   descriptionTr: "Yolda\u015Flar\u0131n\u0131z\u0131 %30 daha h\u0131zl\u0131 y\xFCkseltmenizi
     sa\u011Flar"
-  cost: 200
+  cost: 500
   oneTimePurchase: 1

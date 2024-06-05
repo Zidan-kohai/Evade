@@ -17,7 +17,7 @@ MonoBehaviour:
   mainIconSize: {x: 200, y: 71.951}
   secondIcon: {fileID: 1588896855, guid: 779f86d285016e2489aa98979b9ebfd4, type: 3}
   secondIconSize: {x: 89.2409, y: 82.489}
-  openOnLevel: 0
+  openOnLevel: 1
   indexOnPlayer: 3
   nameRu: "\u0411\u0430\u0440\u044C\u0435\u0440"
   nameEn: Barrier
@@ -30,5 +30,5 @@ MonoBehaviour:
     seconds
   descriptionTr: "D\xFC\u015Fman\u0131n ge\xE7mesini engelleyen b\xFCy\xFCk bir barikat.
     30 saniye s\xFCrer"
-  cost: 450
+  cost: 100
   oneTimePurchase: 0

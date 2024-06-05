@@ -33,5 +33,5 @@ MonoBehaviour:
   descriptionTr: "Zemine d\xFC\u015Ferek g\xFC\xE7l\xFC bir \u0131\u015F\u0131k kayna\u011F\u0131
     (nokta) ile en karanl\u0131k alanlar\u0131 bile ayd\u0131nlat\u0131r. Oyun boyunca
     ge\xE7erlidir"
-  cost: 300
+  cost: 20
   oneTimePurchase: 0

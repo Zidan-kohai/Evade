@@ -1186,6 +1186,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
+      propertyPath: Platform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
       propertyPath: leaderboard
       value: 
       objectReference: {fileID: 1134440620}
@@ -25074,7 +25078,7 @@ MonoBehaviour:
   closePanel: {fileID: 1882055457}
   remainingText: {fileID: 1994884982}
   button: {fileID: 8172992074568902101}
-  goldCount: 50
+  goldCount: 100
   rewardTag: Diamond1
 --- !u!1001 &8474539402511917010
 PrefabInstance:
