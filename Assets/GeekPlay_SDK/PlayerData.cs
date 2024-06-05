@@ -8,8 +8,7 @@ public class PlayerData
     public int Gold = 400;
     public int Diamond = 100;
     public float CurrentExperience = 0;
-    public float ExperienceProgresion = 100;
-    public float ExperienceToIncreaseLevel = 100;
+    public float ExperienceToIncreaseLevel = 30;
     public int Level = 1;
     public string LastBuy;
     public bool Review;

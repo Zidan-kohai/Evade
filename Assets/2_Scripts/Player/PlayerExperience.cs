@@ -1,6 +1,6 @@
 using GeekplaySchool;
 using System;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerExperience : MonoBehaviour
@@ -13,20 +13,25 @@ public class PlayerExperience : MonoBehaviour
 
     [Header("Don`t tauch")]
     [SerializeField] private float currentExperience = 0;
-    [SerializeField] private float experienceProgresion = 100;
-    [SerializeField] private float experienceToIncreaseLevel = 100;
+    [SerializeField] private List<float> experienceList;
     [SerializeField] private int level = 1;
 
     private void Awake()
     {
+        if(instance != null)
+        {
+            Destroy(gameObject);
+        }   
+
+        
         instance = this;
+        DontDestroyOnLoad(gameObject);
+        
     }
 
     private void Start()
     {
         currentExperience = Geekplay.Instance.PlayerData.CurrentExperience;
-        experienceProgresion = Geekplay.Instance.PlayerData.ExperienceProgresion;
-        experienceToIncreaseLevel = Geekplay.Instance.PlayerData.ExperienceToIncreaseLevel;
         level = Geekplay.Instance.PlayerData.Level;
     }
 
@@ -38,30 +43,29 @@ public class PlayerExperience : MonoBehaviour
     private void SetExperience(float addValue)
     {
         currentExperience += addValue;
+
         //Check New Level
-        if(currentExperience >= experienceToIncreaseLevel)
+        if(currentExperience >= experienceList[level])
         {
-            currentExperience -= experienceToIncreaseLevel;
             level += 1;
-            experienceToIncreaseLevel = experienceProgresion * level;
 
             LevelUp?.Invoke(level);
         }
 
 
-        ChangeExperience?.Invoke(currentExperience, experienceToIncreaseLevel);
+        ChangeExperience?.Invoke(currentExperience, experienceList[level]);
 
-        Geekplay.Instance.PlayerData.SetExperience(currentExperience, experienceToIncreaseLevel, level);
+        Geekplay.Instance.PlayerData.SetExperience(currentExperience, experienceList[level], level);
         Geekplay.Instance.Save();
     }
 
     public string GetLevel()
     {
-        return level.ToString();
+        return Geekplay.Instance.PlayerData.Level.ToString();
     }
 
     public float GetFillPercentage()
     {
-        return currentExperience / experienceToIncreaseLevel;
+        return Geekplay.Instance.PlayerData.CurrentExperience / Geekplay.Instance.PlayerData.ExperienceToIncreaseLevel;
     }
 }

@@ -1,3 +1,4 @@
+using GeekplaySchool;
 using System;
 using System.Collections;
 using TMPro;
@@ -8,6 +9,7 @@ public class ExperienceShower : MonoBehaviour
     [SerializeField] private PlayerExperience experience;
     [SerializeField] private SimpleSlider simpleSlider;
     [SerializeField] private TextMeshProUGUI levelView;
+    [SerializeField] private TextMeshProUGUI experienceView;
 
     private void Start()
     {
@@ -19,6 +21,8 @@ public class ExperienceShower : MonoBehaviour
         levelView.text = $"Level " + experience.GetLevel();
 
         simpleSlider.Fill(experience.GetFillPercentage());
+
+        experienceView.text = $"{Geekplay.Instance.PlayerData.CurrentExperience}/{Geekplay.Instance.PlayerData.ExperienceToIncreaseLevel}";
     }
 
     private IEnumerator Wait(float time, Action action)

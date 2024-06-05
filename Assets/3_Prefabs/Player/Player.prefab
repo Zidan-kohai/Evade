@@ -211,7 +211,6 @@ GameObject:
   - component: {fileID: 2861547996078224846}
   - component: {fileID: 1512673573069339496}
   - component: {fileID: 2727070378565412836}
-  - component: {fileID: 1626719977090493698}
   - component: {fileID: 584000485050038201}
   - component: {fileID: 7005582488443753406}
   - component: {fileID: 7599746156975539442}
@@ -480,22 +479,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1626719977090493698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569462121483549870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b603da8be7e8093408db940a8b932311, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentExperience: 0
-  experienceProgresion: 100
-  experienceToIncreaseLevel: 100
-  level: 1
 --- !u!136 &584000485050038201
 CapsuleCollider:
   m_ObjectHideFlags: 0
