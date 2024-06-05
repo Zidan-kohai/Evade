@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
     private float livedTime = 0;
     private Coroutine coroutine;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource helpAudio;
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -345,6 +347,11 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
             StopCoroutine(coroutine);
         }
 
+        if(!helpAudio.isPlaying)
+        {
+            helpAudio.Play();
+        }
+
         return Mathf.Abs(lostedTimeFromFallToUp / timeToUpFromFall - 1);
     }
 
@@ -568,12 +575,17 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
             actionUI.ShowHelpingUIManual();
             actionUI.ShowCarryExplain();
 
-            if(inputManager.GetIsT)
+            if (inputManager.GetIsT)
             {
                 Carry(player);
             }
             else if (inputManager.GetIsE)
             {
+                if (!helpAudio.isPlaying)
+                {
+                    helpAudio.Play();
+                }
+
                 float helpPercent = player.Raising();
                 actionUI.FilHelpigUI(helpPercent);
 
@@ -593,6 +605,9 @@ public class PlayerController : MonoBehaviour, IHumanoid, ISee, IMove, IRealyPla
         }
         else
         {
+            if(state != PlayerState.Fall)
+                helpAudio.Stop();
+
             actionUI.DisableHelpingUIHandler();
             actionUI.DisableCarryExplain();
         }

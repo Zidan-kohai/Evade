@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Enemy 30
   m_EditorClassIdentifier: 
   enemyVisual: {fileID: 149395050, guid: d6c29f9b9abb22a40b0511deb04f4f14, type: 3}
-  voise: {fileID: 8300000, guid: 26817e31b49eb414cbb7250c02d2c588, type: 3}
+  voise: {fileID: 8300000, guid: f416a38b8852a304685208d71ca71b04, type: 3}

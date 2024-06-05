@@ -9,6 +9,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace GeekplaySchool
 {
@@ -207,10 +208,11 @@ namespace GeekplaySchool
         public void LoadScene(int sceneIndex)
         {
 
-            DOTween.Sequence().AppendInterval(1f).OnComplete(() =>
+            DOTween.Sequence().AppendInterval(0.2f).OnComplete(() =>
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+
                 ShowInterstitialAd();
             });
 
@@ -942,7 +944,7 @@ namespace GeekplaySchool
             {
                 Time.timeScale = 1;
 
-                if(!mobile)
+                if(!mobile && SceneManager.GetActiveScene().buildIndex != 0)
                 {
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
