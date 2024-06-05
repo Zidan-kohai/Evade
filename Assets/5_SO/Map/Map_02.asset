@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c86c360fa3a96f47b0f47a605e91a30, type: 3}
   m_Name: Map_02
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 6df85d015aade014c93b838d323bd25c, type: 3}
+  Icon: {fileID: 21300000, guid: a8ccda0f377e56b478f1ca902f298632, type: 3}
   nameRu: "\u041E\u0441\u043E\u0431\u043D\u044F\u043A"
   nameEn: Mansion
   nameTr: Konak
