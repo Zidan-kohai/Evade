@@ -608,6 +608,9 @@ namespace GeekplaySchool
             if (type != "score") return;
             
             leaderboard.SetLeadersView(lN.ToArray(), l.ToArray(), l.Count, leaderboardName);
+
+            leaderNumberN = 0;
+            leaderNumber = 0;
             lN.Clear();
             l.Clear();
         }
