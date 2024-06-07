@@ -22,6 +22,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private ShopItem firstItem;
 
     [SerializeField] private BoosterSwitcher boosterSwitcher;
+    [SerializeField] private WindowHandler windowSwitcher;
 
     private void Start()
     {
@@ -395,6 +396,8 @@ public class Shop : MonoBehaviour
         }
         else
         {
+            windowSwitcher.OpenInAppShopShopWindow();
+
             Debug.Log("You Don`t Have Money");
         }
     }

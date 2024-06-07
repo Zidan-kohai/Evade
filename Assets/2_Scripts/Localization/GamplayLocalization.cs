@@ -50,7 +50,7 @@ public class GamplayLocalization : MonoBehaviour
 
     private void Start()
     {
-        mainMenuButtonTextView.text = "Меню-Tab";
+        mainMenuButtonTextView.text = "РњРµРЅСЋ-РўР°Р±";
 
         if (Geekplay.Instance.mobile)
         {
@@ -64,47 +64,47 @@ public class GamplayLocalization : MonoBehaviour
 
         if (Geekplay.Instance.language == "ru")
         {
-            booster6TextView.text = "П";
+            booster6TextView.text = "Рџ";
 
             if (Geekplay.Instance.mobile)
             {
-                switchCameraTextView.text = "Переключить камеру";
+                switchCameraTextView.text = "РџРµСЂРµРєР»СЋС‡РёС‚СЊ РєР°РјРµСЂСѓ";
             }
             else
             {
-                switchCameraTextView.text = "Переключить камеру(Q)";
+                switchCameraTextView.text = "РџРµСЂРµРєР»СЋС‡РёС‚СЊ РєР°РјРµСЂСѓ(Q)";
             }
 
-            carryTextView.text = "Нести";
-            putTextView.text = "Отпустить";
-            raisingTextView.text = "Поднять";
-            exerciseTextView.text = "Ваша задача выжить в течении 1 минуты и 30 секунд";
-            remainingTextView.text = "Оставшееся время";
+            carryTextView.text = "РќРµСЃС‚Рё";
+            putTextView.text = "РћС‚РїСѓСЃС‚РёС‚СЊ";
+            raisingTextView.text = "РџРѕРґРЅСЏС‚СЊ";
+            exerciseTextView.text = "Р’Р°С€Р° Р·Р°РґР°С‡Р° РІС‹Р¶РёС‚СЊ РІ С‚РµС‡РµРЅРёРё 1 РјРёРЅСѓС‚С‹ Рё 30 СЃРµРєСѓРЅРґ";
+            remainingTextView.text = "РћСЃС‚Р°РІС€РµРµСЃСЏ РІСЂРµРјСЏ";
 
 
-            LoseMenuHeaderTextView.text = "Вы мертвы";
-            LoseMenuMainMenuTextView.text = "Главное меню";
-            LoseMenuLookTextView.text = "Наблюдать";
-            LoseMenuYoutTimeTextView.text = "Ваше время";
-            LoseMenuYoutEarnTextView.text = "Вы заработали";
+            LoseMenuHeaderTextView.text = "<color=red>Р’С‹ РјРµСЂС‚РІС‹</color>";
+            LoseMenuMainMenuTextView.text = "Р“Р»Р°РІРЅРѕРµ РјРµРЅСЋ";
+            LoseMenuLookTextView.text = "РќР°Р±Р»СЋРґР°С‚СЊ";
+            LoseMenuYoutTimeTextView.text = "Р’Р°С€Рµ РІСЂРµРјСЏ";
+            LoseMenuYoutEarnTextView.text = "Р’С‹ Р·Р°СЂР°Р±РѕС‚Р°Р»Рё";
 
 
-            EndPanelWindowNameTextView.text = "Имя";
-            EndPanelWindowHelpTextView.text = "Помог";
-            EndPanelWindowTimeTextView.text = "Время";
-            EndPanelWindowMoneyTextView.text = "Деньги";
-            EndPanelWindowExperienceTextView.text = "Опыт";
-            EndPanelNewGameButtonTextView.text = "Новая игра";
+            EndPanelWindowNameTextView.text = "РРјСЏ";
+            EndPanelWindowHelpTextView.text = "РџРѕРјРѕРі";
+            EndPanelWindowTimeTextView.text = "Р’СЂРµРјСЏ";
+            EndPanelWindowMoneyTextView.text = "Р”РµРЅСЊРіРё";
+            EndPanelWindowExperienceTextView.text = "РћРїС‹С‚";
+            EndPanelNewGameButtonTextView.text = "РќРѕРІР°СЏ РёРіСЂР°";
 
-            ExitTextView.text = "Выйти";
+            ExitTextView.text = "Р’С‹Р№С‚Рё";
 
-            chooseMapVoiseTextView.text = "Проголосуйте за карту";
+chooseMapVoiseTextView.text = "РџСЂРѕРіРѕР»РѕСЃСѓР№С‚Рµ Р·Р° РєР°СЂС‚Сѓ";
 
 
-            mobileCarryTextView.text = "Нести";
-            mobilePutTextView.text = "Отпустить";
-            mobileRaisingTextView.text = "Поднять";
-            mobileMainMenuTextView.text = "Выйти";
+            mobileCarryTextView.text = "РќРµСЃС‚Рё";
+            mobilePutTextView.text = "РћС‚РїСѓСЃС‚РёС‚СЊ";
+            mobileRaisingTextView.text = "РџРѕРґРЅСЏС‚СЊ";
+            mobileMainMenuTextView.text = "Р’С‹Р№С‚Рё";
 
         }
         else if (Geekplay.Instance.language == "en")

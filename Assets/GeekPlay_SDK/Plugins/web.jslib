@@ -62,6 +62,7 @@ var plugin = {
         },
         onError: function(error) {
           // some action on error
+          myGameInstance.SendMessage('Init', 'ResumeMusAndGame');
         }
         }
     });

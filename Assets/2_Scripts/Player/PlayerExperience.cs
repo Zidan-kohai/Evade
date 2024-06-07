@@ -21,6 +21,7 @@ public class PlayerExperience : MonoBehaviour
         if(instance != null)
         {
             Destroy(gameObject);
+            return;
         }   
 
         

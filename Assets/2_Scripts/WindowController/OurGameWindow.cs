@@ -18,6 +18,11 @@ public class OurGameWindow : MonoBehaviour
 
     private void Start()
     {
+        geometryDashButton.onClick.AddListener(() => OpenGame(284619));
+        cloesChangeRewardButton.onClick.AddListener(() => OpenGame(295391));
+        slapBattleRewardButton.onClick.AddListener(() => OpenGame(289951));
+        twoPlayerGameRewardButton.onClick.AddListener(() => OpenGame(227711));
+        
         if (Geekplay.Instance.Platform == Platform.Yandex)
         {
             Utils.CheckPlayGame(284619);
@@ -25,11 +30,6 @@ public class OurGameWindow : MonoBehaviour
             Utils.CheckPlayGame(289951);
             Utils.CheckPlayGame(227711);
         }
-
-        geometryDashButton.onClick.AddListener(() => OpenGame(284619));
-        cloesChangeRewardButton.onClick.AddListener(() => OpenGame(295391));
-        slapBattleRewardButton.onClick.AddListener(() => OpenGame(289951));
-        twoPlayerGameRewardButton.onClick.AddListener(() => OpenGame(227711));
     }
 
     public void EnabledGameToggle(int id)
@@ -40,6 +40,7 @@ public class OurGameWindow : MonoBehaviour
         {
             if (!Geekplay.Instance.PlayerData.IsGeometryDashRewardTaked)
             {
+                geometryDashButton.onClick.RemoveAllListeners();
                 DailyExerciseController.Instance.SetProgress(Days.Day5, 4);
 
                 geometryDashButton.interactable = true;
@@ -52,7 +53,7 @@ public class OurGameWindow : MonoBehaviour
 
                 if (Geekplay.Instance.language == "ru")
                 {
-                    geometryDashButtonTextView.text = "Забрать";
+                    geometryDashButtonTextView.text = "Р—Р°Р±СЂР°С‚СЊ";
                 }
                 else if (Geekplay.Instance.language == "en")
                 {
@@ -69,7 +70,7 @@ public class OurGameWindow : MonoBehaviour
 
                 if (Geekplay.Instance.language == "ru")
                 {
-                    geometryDashButtonTextView.text = "Забрали";
+                    geometryDashButtonTextView.text = "Р—Р°Р±СЂР°Р»Рё";
                 }
                 else if (Geekplay.Instance.language == "en")
                 {
@@ -85,6 +86,7 @@ public class OurGameWindow : MonoBehaviour
         {
             if (!Geekplay.Instance.PlayerData.IsCloesChangeRewardTaked)
             {
+                cloesChangeRewardButton.onClick.RemoveAllListeners();
                 DailyExerciseController.Instance.SetProgress(Days.Day5, 4);
 
                 cloesChangeRewardButton.interactable = true;
@@ -97,7 +99,7 @@ public class OurGameWindow : MonoBehaviour
 
                 if (Geekplay.Instance.language == "ru")
                 {
-                    cloesChangeRewardButtonTextView.text = "Забрать";
+                    cloesChangeRewardButtonTextView.text = "Р—Р°Р±СЂР°С‚СЊ";
                 }
                 else if (Geekplay.Instance.language == "en")
                 {
@@ -114,7 +116,7 @@ public class OurGameWindow : MonoBehaviour
 
                 if (Geekplay.Instance.language == "ru")
                 {
-                    cloesChangeRewardButtonTextView.text = "Забрали";
+                    cloesChangeRewardButtonTextView.text = "Р—Р°Р±СЂР°Р»Рё";
                 }
                 else if (Geekplay.Instance.language == "en")
                 {
@@ -130,6 +132,8 @@ public class OurGameWindow : MonoBehaviour
         {
             if (!Geekplay.Instance.PlayerData.IsSlapBattleRewardTaked)
             {
+
+                slapBattleRewardButton.onClick.RemoveAllListeners();
                 DailyExerciseController.Instance.SetProgress(Days.Day5, 4);
                 slapBattleRewardButton.interactable = true;
                 slapBattleRewardButton.onClick.AddListener(() =>
@@ -141,7 +145,7 @@ public class OurGameWindow : MonoBehaviour
 
                 if (Geekplay.Instance.language == "ru")
                 {
-                    slapBattleRewardButtonTextView.text = "Забрать";
+                    slapBattleRewardButtonTextView.text = "Р—Р°Р±СЂР°С‚СЊ";
                 }
                 else if (Geekplay.Instance.language == "en")
                 {
@@ -158,7 +162,7 @@ public class OurGameWindow : MonoBehaviour
 
                 if (Geekplay.Instance.language == "ru")
                 {
-                    slapBattleRewardButtonTextView.text = "Забрали";
+                    slapBattleRewardButtonTextView.text = "Р—Р°Р±СЂР°Р»Рё";
                 }
                 else if (Geekplay.Instance.language == "en")
                 {
@@ -174,6 +178,7 @@ public class OurGameWindow : MonoBehaviour
         {
             if (!Geekplay.Instance.PlayerData.IsTwoPlayerGameRewardTaked)
             {
+                twoPlayerGameRewardButton.onClick.RemoveAllListeners();
                 DailyExerciseController.Instance.SetProgress(Days.Day5, 4);
                 twoPlayerGameRewardButton.interactable = true;
                 twoPlayerGameRewardButton.onClick.AddListener(() =>
@@ -185,7 +190,7 @@ public class OurGameWindow : MonoBehaviour
 
                 if (Geekplay.Instance.language == "ru")
                 {
-                    twoPlayerGameRewardButtonTextView.text = "Забрать";
+                    twoPlayerGameRewardButtonTextView.text = "Р—Р°Р±СЂР°С‚СЊ";
                 }
                 else if (Geekplay.Instance.language == "en")
                 {
@@ -202,7 +207,7 @@ public class OurGameWindow : MonoBehaviour
 
                 if (Geekplay.Instance.language == "ru")
                 {
-                    twoPlayerGameRewardButtonTextView.text = "Забрали";
+                    twoPlayerGameRewardButtonTextView.text = "Р—Р°Р±СЂР°Р»Рё";
                 }
                 else if (Geekplay.Instance.language == "en")
                 {
@@ -224,6 +229,8 @@ public class OurGameWindow : MonoBehaviour
 
         if (id == 284619)
         {
+            geometryDashButton.onClick.RemoveAllListeners();
+
             geometryDashButton.interactable = true;
 
             geometryDashButton.onClick.AddListener(() =>
@@ -233,7 +240,7 @@ public class OurGameWindow : MonoBehaviour
 
             if (Geekplay.Instance.language == "ru")
             {
-                geometryDashButtonTextView.text = "Играть";
+                geometryDashButtonTextView.text = "РРіСЂР°С‚СЊ";
             }
             else if (Geekplay.Instance.language == "en")
             {
@@ -246,6 +253,8 @@ public class OurGameWindow : MonoBehaviour
         }
         else if (id == 295391)
         {
+            cloesChangeRewardButton.onClick.RemoveAllListeners();
+
             cloesChangeRewardButton.interactable = true;
 
             cloesChangeRewardButton.onClick.AddListener(() =>
@@ -255,7 +264,7 @@ public class OurGameWindow : MonoBehaviour
 
             if (Geekplay.Instance.language == "ru")
             {
-                cloesChangeRewardButtonTextView.text = "Играть";
+                cloesChangeRewardButtonTextView.text = "РРіСЂР°С‚СЊ";
             }
             else if (Geekplay.Instance.language == "en")
             {
@@ -268,6 +277,8 @@ public class OurGameWindow : MonoBehaviour
         }
         else if (id == 289951)
         {
+            slapBattleRewardButton.onClick.RemoveAllListeners();
+
             slapBattleRewardButton.interactable = true;
 
             slapBattleRewardButton.onClick.AddListener(() =>
@@ -277,7 +288,7 @@ public class OurGameWindow : MonoBehaviour
 
             if (Geekplay.Instance.language == "ru")
             {
-                slapBattleRewardButtonTextView.text = "Играть";
+                slapBattleRewardButtonTextView.text = "РРіСЂР°С‚СЊ";
             }
             else if (Geekplay.Instance.language == "en")
             {
@@ -299,7 +310,7 @@ public class OurGameWindow : MonoBehaviour
 
             if (Geekplay.Instance.language == "ru")
             {
-                twoPlayerGameRewardButtonTextView.text = "Играть";
+                twoPlayerGameRewardButtonTextView.text = "РРіСЂР°С‚СЊ";
             }
             else if (Geekplay.Instance.language == "en")
             {
@@ -333,7 +344,7 @@ public class OurGameWindow : MonoBehaviour
 
         if (Geekplay.Instance.language == "ru")
         {
-            text.text = "Забрали";
+            text.text = "РџРѕР»СѓС‡РµРЅРѕ";
         }
         else if (Geekplay.Instance.language == "en")
         {

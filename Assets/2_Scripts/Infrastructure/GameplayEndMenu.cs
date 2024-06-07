@@ -22,7 +22,7 @@ public class GameplayEndMenu : MonoBehaviour
 
         if(realyPlayer.IsFallOrDeath())
         {
-            AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney() + 25, realyPlayer.GetEarnedExperrience() + 25);
+            AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney() + 25, realyPlayer.GetEarnedExperrience() + 10);
 
             if (Geekplay.Instance.language == "ru")
             {
@@ -41,7 +41,7 @@ public class GameplayEndMenu : MonoBehaviour
         }
         else
         {
-            AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney() + 50, realyPlayer.GetEarnedExperrience() + 50);
+            AddPlayer(realyPlayer.GetName(), realyPlayer.GetHelpCount(), realyPlayer.GetSurvivedTime(), realyPlayer.GetEarnedMoney() + 50, realyPlayer.GetEarnedExperrience() + 25);
 
             if (Geekplay.Instance.language == "ru")
             {

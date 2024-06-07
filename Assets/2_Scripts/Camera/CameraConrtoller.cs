@@ -223,11 +223,15 @@ public class CameraConrtoller : MonoBehaviour
             carryPlayerCamera.Priority = 1;
             carryPlayerCamera = null;
         }
+        else
+        {
+            canSwitchCamera = false;
+            stateOnUp = currentState;
+        }
 
-        canSwitchCamera = false;
-        stateOnUp = currentState;
         cameraSwitherHandler.SetActive(false);
         ChangeState(CameraState.Third);
+
     }
 
     private void PlayerUp()

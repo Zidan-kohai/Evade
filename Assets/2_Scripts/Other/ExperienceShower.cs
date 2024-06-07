@@ -13,7 +13,7 @@ public class ExperienceShower : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Wait(0.3f, Show));
+        StartCoroutine(Wait(0.01f, Show));
     }
 
     private void Show()

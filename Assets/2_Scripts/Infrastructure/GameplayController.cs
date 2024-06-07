@@ -136,12 +136,12 @@ public class GameplayController : MonoBehaviour
         {
             winAudio.Play();
             Wallet.AddMoneyST(realyPlayer.GetEarnedMoney() + 50);
-            PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience() + 50);
+            PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience() + 25);
         }
         else
         {
             Wallet.AddMoneyST(realyPlayer.GetEarnedMoney() + 25);
-            PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience() + 25);
+            PlayerExperience.SetExperienceST(realyPlayer.GetEarnedExperrience() + 10);
         }
     }
 }

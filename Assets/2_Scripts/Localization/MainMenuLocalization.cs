@@ -54,7 +54,7 @@ public class MainMenuLocalization : MonoBehaviour
 
 
     [Header("Dayli Quest")]
-    [SerializeField] private TextMeshProUGUI dailyСonditionText;
+    [SerializeField] private TextMeshProUGUI dailyРЎonditionText;
     [SerializeField] private TextMeshProUGUI dailyHeaderText;
     [SerializeField] private TextMeshProUGUI rewardText;
 
@@ -62,54 +62,54 @@ public class MainMenuLocalization : MonoBehaviour
     {
         if(Geekplay.Instance.language == "ru")
         {
-            chooseModeTextView.text = "Выбрать режим";
-            simpleShopTextView.text = "Магазин";
-            inAppShopTextView.text = "Премиум магазин";
-            dailyExerciseTextView.text = "Ежедневные задание";
-            lidersTextView.text = "Лидеры";
-            telergamBonusTextView.text = "Бонусы";
-            ourGameTextView.text = "Наши игры";
+            chooseModeTextView.text = "Р’С‹Р±СЂР°С‚СЊ СЂРµР¶РёРј";
+            simpleShopTextView.text = "РњР°РіР°Р·РёРЅ";
+            inAppShopTextView.text = "РџСЂРµРјРёСѓРј РјР°РіР°Р·РёРЅ";
+            dailyExerciseTextView.text = "Р•Р¶РµРґРЅРµРІРЅС‹Рµ Р·Р°РґР°РЅРёРµ";
+            lidersTextView.text = "Р›РёРґРµСЂС‹";
+            telergamBonusTextView.text = "Р‘РѕРЅСѓСЃС‹";
+            ourGameTextView.text = "РќР°С€Рё РёРіСЂС‹";
 
-            chooseModeOpenMainMenuTextView.text = "Меню";
+            chooseModeOpenMainMenuTextView.text = "РњРµРЅСЋ";
 
 
-            telegramTextView.text = "Наш канал";
-            claimTextView.text = "Забрать";
-            telegramOpenMainMenuTextView.text = "Меню";
-            promocodeSuccessTextView.text = "Промокод успешно использован";
-            promocodeAlreadyUseTextView.text = "Промокод уже использован";
-            promocodeUndefinedTextView.text = "Такого промокода нет";
-            bonusDescriptionTextView.text = "Подпишись на наш канал и введи промокод который найдёшь там";
+            telegramTextView.text = "РќР°С€ РєР°РЅР°Р»";
+            claimTextView.text = "Р—Р°Р±СЂР°С‚СЊ";
+            telegramOpenMainMenuTextView.text = "РњРµРЅСЋ";
+            promocodeSuccessTextView.text = "РџСЂРѕРјРѕРєРѕРґ СѓСЃРїРµС€РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅ";
+            promocodeAlreadyUseTextView.text = "РџСЂРѕРјРѕРєРѕРґ СѓР¶Рµ РёСЃРїРѕР»СЊР·РѕРІР°РЅ";
+            promocodeUndefinedTextView.text = "РўР°РєРѕРіРѕ РїСЂРѕРјРѕРєРѕРґР° РЅРµС‚";
+            bonusDescriptionTextView.text = "РџРѕРґРїРёС€РёСЃСЊ РЅР° РЅР°С€ РєР°РЅР°Р» Рё РІРІРµРґРё РїСЂРѕРјРѕРєРѕРґ РєРѕС‚РѕСЂС‹Р№ РЅР°Р№РґС‘С€СЊ С‚Р°Рј";
 
-            ruleTextView.text = "Только для авторизованных пользователей";
-            ourGameOpenMainMenuTextView.text = "Меню";
+            ruleTextView.text = "РќР°РіСЂР°РґР° С‚РѕР»СЊРєРѕ РґР»СЏ Р°РІС‚РѕСЂРёР·РѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№";
+            ourGameOpenMainMenuTextView.text = "РњРµРЅСЋ";
             geomertyDashNameTextView.text = "Geometry Dash 3D";
-            dressGameNameTextView.text = "Создай Королеву - Салон Уэнсдей";
-            slapBattlesTextView.text = "Битва Пощечин | Робби Обби";
-            twoPlayerTextView.text = "Игры На Двоих: Дуэль";
+            dressGameNameTextView.text = "РЎРѕР·РґР°Р№ РљРѕСЂРѕР»РµРІСѓ - РЎР°Р»РѕРЅ РЈСЌРЅСЃРґРµР№";
+            slapBattlesTextView.text = "Р‘РёС‚РІР° РџРѕС‰РµС‡РёРЅ | Р РѕР±Р±Рё РћР±Р±Рё";
+            twoPlayerTextView.text = "РРіСЂС‹ РќР° Р”РІРѕРёС…: Р”СѓСЌР»СЊ";
 
-            survivalTextView.text = "Пережитые игры";
-            savedTextView.text = "Спасенные";
-            donatTextView.text = "Донаты";
-            lidersOpenMainMenuTextView.text = "Меню";
-
-
-            simpleShopOpenMainMenuTextView.text = "Меню";
-            lightChapterTextView.text = "Свет";
-            itemTextView.text = "Предметы";
-            boosterTextView.text = "Бустеры";
-            accessoryTextView.text = "Аксессуары";
-            buyTextView.text = "Купить";
-            closeTextView.text = "Закрыто";
+            survivalTextView.text = "РџРµСЂРµР¶РёС‚С‹Рµ РёРіСЂС‹";
+            savedTextView.text = "РЎРїР°СЃРµРЅРЅС‹Рµ";
+            donatTextView.text = "Р”РѕРЅР°С‚С‹";
+            lidersOpenMainMenuTextView.text = "РњРµРЅСЋ";
 
 
-            inAppShopOpenMainMenuTextView.text = "Меню";
-            headerNameTextView.text = "Премиум Магазин";
+            simpleShopOpenMainMenuTextView.text = "РњРµРЅСЋ";
+            lightChapterTextView.text = "РЎРІРµС‚";
+            itemTextView.text = "РџСЂРµРґРјРµС‚С‹";
+            boosterTextView.text = "Р‘СѓСЃС‚РµСЂС‹";
+            accessoryTextView.text = "РђРєСЃРµСЃСЃСѓР°СЂС‹";
+            buyTextView.text = "РљСѓРїРёС‚СЊ";
+            closeTextView.text = "Р—Р°РєСЂС‹С‚Рѕ";
 
 
-            dailyСonditionText.text = "Выполните все условия чтобы получить награду";
-            dailyHeaderText.text = "Ежедневные задания";
-            rewardText.text = "Награда:";
+            inAppShopOpenMainMenuTextView.text = "РњРµРЅСЋ";
+            headerNameTextView.text = "РџСЂРµРјРёСѓРј РњР°РіР°Р·РёРЅ";
+
+
+            dailyРЎonditionText.text = "Р’С‹РїРѕР»РЅРёС‚Рµ РІСЃРµ СѓСЃР»РѕРІРёСЏ С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ РЅР°РіСЂР°РґСѓ";
+            dailyHeaderText.text = "Р•Р¶РµРґРЅРµРІРЅС‹Рµ Р·Р°РґР°РЅРёСЏ";
+            rewardText.text = "РќР°РіСЂР°РґР°:";
         }
         else if(Geekplay.Instance.language == "en")
         {
@@ -132,7 +132,7 @@ public class MainMenuLocalization : MonoBehaviour
             promocodeUndefinedTextView.text = "There is no such promotional code";
             bonusDescriptionTextView.text = "Subscribe to our channel and enter the promotional code you find there";
 
-            ruleTextView.text = "Only for authorized users";
+            ruleTextView.text = "Reward only for authorized users";
             ourGameOpenMainMenuTextView.text = "Menu";
             geomertyDashNameTextView.text = "Geometry Dash 3D";
             dressGameNameTextView.text = "Create a Queen - Wednesday Salon";
@@ -156,7 +156,7 @@ public class MainMenuLocalization : MonoBehaviour
             inAppShopOpenMainMenuTextView.text = "Menu";
             headerNameTextView.text = "Premium Shop";
 
-            dailyСonditionText.text = "Meet all conditions to receive the reward";
+            dailyРЎonditionText.text = "Meet all conditions to receive the reward";
             dailyHeaderText.text = "Daily Tasks";
             rewardText.text = "Reward:";
         }
@@ -172,8 +172,7 @@ public class MainMenuLocalization : MonoBehaviour
 
             chooseModeOpenMainMenuTextView.text = "Menu";
 
-
-            telegramTextView.text = "Kanalimiz";
+telegramTextView.text = "Kanalimiz";
             claimTextView.text = "Al";
             telegramOpenMainMenuTextView.text = "Menu";
             promocodeSuccessTextView.text = "Promosyon kodu basariyla kullanildi";
@@ -205,7 +204,7 @@ public class MainMenuLocalization : MonoBehaviour
             inAppShopOpenMainMenuTextView.text = "Menu";
             headerNameTextView.text = "Premium Magaza";
 
-            dailyСonditionText.text = "Odulu almak icin tum kosullari karsilayin";
+            dailyРЎonditionText.text = "Odulu almak icin tum kosullari karsilayin";
             dailyHeaderText.text = "Gunluk Gorevler";
             rewardText.text = "Odul:";
         }

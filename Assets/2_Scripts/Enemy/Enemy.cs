@@ -131,7 +131,7 @@ public class Enemy : MonoBehaviour, IEnemy, ISee, IHumanoid
     {
         audiosource.Play();
 
-        StartCoroutine(Wait(minVoiseTime, maxVoiseTime, PlaySound));
+        //StartCoroutine(Wait(minVoiseTime, maxVoiseTime, PlaySound));
     }
 
     private void OnIdle()

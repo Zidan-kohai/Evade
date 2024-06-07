@@ -152,7 +152,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     public int GetEarnedMoney()
     {
-        int earnedMoney = (helpCount * 10) + 25;
+        int earnedMoney = (helpCount * 10) + 50;
 
         earnedMoney *= moneyMultiplierFactor;
 
@@ -161,7 +161,7 @@ public class AIPlayer : MonoBehaviour, IPlayer, ISee, IHumanoid, IMove
 
     public int GetEarnedExperrience()
     {
-        int earnedExperience = (helpCount * 10) + 10;
+        int earnedExperience = (helpCount * 5) + 25;
 
         earnedExperience *= experienceMultiplierFactor;
 

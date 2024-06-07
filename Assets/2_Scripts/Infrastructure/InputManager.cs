@@ -80,6 +80,7 @@ public class InputManager : MonoBehaviour
 
         if(isTab)
         {
+            PlayerExperience.SetExperienceST(10);
             Geekplay.Instance.LoadScene(0);
         }
     }

@@ -153,11 +153,6 @@ namespace GeekplaySchool
             RemainingTimeUntilRewardADV -= Time.deltaTime;
 
             remainingTimeUntilUpdateLeaderboard -= Time.deltaTime;
-
-            if(Input.GetKeyDown(KeyCode.J))
-            {
-                Wallet.AddMoneyST(1000);
-            }
         }
 
 
