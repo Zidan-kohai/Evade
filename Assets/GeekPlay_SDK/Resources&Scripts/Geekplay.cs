@@ -713,7 +713,7 @@ namespace GeekplaySchool
                     {
                         PlayerData = new PlayerData();
                     }
-                    language = "en"; //ВЫБРАТЬ ЯЗЫК ДЛЯ ТЕСТОВ. ru/en/tr/
+                    language = "ru"; //ВЫБРАТЬ ЯЗЫК ДЛЯ ТЕСТОВ. ru/en/tr/
                     Localization();
                     break;
                 case Platform.Yandex:
