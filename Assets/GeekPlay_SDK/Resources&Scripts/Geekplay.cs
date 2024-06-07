@@ -202,6 +202,7 @@ namespace GeekplaySchool
 
         public void LoadScene(int sceneIndex)
         {
+            pause = false;
 
             DOTween.Sequence().AppendInterval(0.2f).OnComplete(() =>
             {
