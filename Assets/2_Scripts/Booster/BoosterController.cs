@@ -70,7 +70,8 @@ public class BoosterController : MonoBehaviour {
         //Need refactoring
 
 
-        // Object geekPlayData = Geekplay.Instance.PlayerData;
+        PlayerData geekPlayData = Geekplay.Instance.PlayerData;
+
         for (int i = 0; i < geekPlayData.CurrentBoosterKeys.Count; i++) {
             if (geekPlayData.CurrentBoosterKeys[i] == -1) {
                 continue;

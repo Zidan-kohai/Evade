@@ -1250,7 +1250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
       propertyPath: Platform
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5023734575896185641, guid: 275f8a7c89da8458f9efd280784a4bfe, type: 3}
       propertyPath: leaderboard
@@ -6704,7 +6704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3591219127961058785, guid: 97a78e4f5cb924642b6970c0bd8ca138, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -26.099976
+      value: -26.100098
       objectReference: {fileID: 0}
     - target: {fileID: 3591219127961058785, guid: 97a78e4f5cb924642b6970c0bd8ca138, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -27171,7 +27171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2701132419518818925, guid: d65b41479f37a9b42ac75f85c7cb7490, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -9.342041
+      value: -9.342285
       objectReference: {fileID: 0}
     - target: {fileID: 2701132419518818925, guid: d65b41479f37a9b42ac75f85c7cb7490, type: 3}
       propertyPath: m_AnchoredPosition.y
